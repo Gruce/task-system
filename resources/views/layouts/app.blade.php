@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,17 +28,17 @@
 </head>
 
 <body class="font-sans antialiased bg-gray-200">
-    <div class="p-6 mx-auto  ">
+    <div class="p-6 mx-auto ">
 
-        <div class="text-center bg-white rounded-lg  ">
+        <div class="text-center bg-white rounded-lg ">
             <div class="flex flex-row h-screen " x-data="{ sidebar_extended: false }" dir="rtl">
                 {{-- Left Sidebar --}}
                 <x-sidebar />
 
                 {{-- Content --}}
-                <div class="basis-8/12 w-8/12 grow pb-10">
-                    <div class="h-36 flex items-center p-10 border-b justify-between mb-10">
-                        <span class="text-2xl text-gray-600 font-semibold">@yield('title')</span>
+                <div class="w-8/12 pb-10 basis-8/12 grow">
+                    <div class="flex items-center justify-between p-10 mb-10 border-b h-36">
+                        <span class="text-2xl font-semibold text-gray-600">@yield('title')</span>
                         @yield('header-actions')
 
                         @hasSection ('disable-search')

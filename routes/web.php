@@ -21,7 +21,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('change-language/{locale}', [MainController::class, 'changeLanguage'])->name('change_locale');
 
 Route::middleware([
