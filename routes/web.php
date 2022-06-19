@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Livewire\Test\Test;
+use App\Http\Livewire\Home\Home;
+use App\Http\Livewire\Task\Task;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +37,12 @@ Route::middleware([
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::prefix('Test')->group(function () {
-        Route::get('/test', Test::class)->name('test');
+
+    Route::prefix('home')->group(function () {
+        Route::get('/', Home::class)->name('home');
+    });
+
+    Route::prefix('task')->group(function () {
+        Route::get('/', Task::class)->name('task');
     });
 });

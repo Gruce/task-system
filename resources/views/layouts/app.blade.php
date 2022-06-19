@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,36 +18,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap" rel="stylesheet">
     @livewireStyles
     @laravelPWA
+
+
+
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/flowbite@1.4.6/dist/flowbite.js"></script>
     <script src="https://kit.fontawesome.com/4e8940f861.js" crossorigin="anonymous"></script>
 </head>
-<body class="font-sans antialiased">
-    <x-jet-banner />
 
-    <div class="min-h-screen bg-gray-100">
-        @livewire('navigation-menu')
+<body class="font-sans antialiased bg-gray-200">
+    <div class="p-6 mx-auto  ">
 
-        <!-- Page Heading -->
-        @if (isset($header))
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
+        <div class="text-center bg-white rounded-lg  ">
+            <div class="flex flex-row h-screen " x-data="{ sidebar_extended: false }" dir="rtl">
+                {{-- Left Sidebar --}}
+                <x-sidebar />
+
+                {{-- Content --}}
+                <div class="basis-8/12 w-8/12 grow pb-10">
+                    <div class="h-36 flex items-center p-10 border-b justify-between mb-10">
+                        <span class="text-2xl text-gray-600 font-semibold">@yield('title')</span>
+                        @yield('header-actions')
+
+                        @hasSection ('disable-search')
+                        @else
+                        <livewire:ui.search />
+                        @endif
+                    </div>
+                    <div class="px-10">
+                        @isset($slot)
+                        {{ $slot }}
+                        @endisset
+                    </div>
+                </div>
+
+                {{-- Right Sidebar --}}
+                {{-- @if (Route::is('home*') || Route::is('movies-all') || Route::is('series-all'))
+                @livewire('right-side')
+                @endif --}}
             </div>
-        </header>
-        @endif
-
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
+        </div>
     </div>
 
     @stack('modals')
-
     @livewireScripts
-    @livewireChartsScripts
+    {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
+
 </body>
 </html>
