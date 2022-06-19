@@ -16,9 +16,7 @@
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.6/dist/flowbite.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap" rel="stylesheet">
     @livewireStyles
-
-
-
+    @laravelPWA
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -49,5 +47,6 @@
     @stack('modals')
 
     @livewireScripts
+    @livewireChartsScripts
 </body>
 </html>
