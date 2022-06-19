@@ -32,12 +32,18 @@
             </div>
         </div>
         <div class="flex flex-col">
+            <div class="flex flex-row justify-between items-center">
             <div>
                 <h5 class="p-1 bg-red-500/20 rounded-lg text-sm text-red-500 ">
                     تفليش
                 </h5>
             </div>
-
+            <div>
+                <h5 class="p-1 bg-red-500/20 rounded-lg text-sm text-red-500 ">
+                    غير مسندة
+                </h5>
+            </div>
+            </div>
             <p class="mb-3 text-sm font-normal text-gray-400 mt-3  ">هدم هدم هدم هدم هدم هدم هدم</p>
             <div class="flex flex-row">
                 <img class="w-6 h-6 rounded-full ml-1"
