@@ -3,7 +3,7 @@
 //Englash Sentense File
 
 return [
-    'home'        => 'Home', 
+    'home'        => 'Home',
     'task_system' => 'Task System',
     'add'         => 'Add',
     'create'      => 'Create',
@@ -48,5 +48,6 @@ return [
     'search' => 'Search',
     'employees' => 'Employees',
     'projects' => 'Projects',
+    'tasks' => 'Tasks',
 
 ];

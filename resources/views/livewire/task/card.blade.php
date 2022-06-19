@@ -1,5 +1,5 @@
 <div>
-    <div class="p-6 text-right max-w-sm bg-white rounded-lg border border-gray-200  dark:bg-gray-800 dark:border-gray-700">
+    <div class="p-6 text-right  bg-white rounded-lg border w-full border-gray-200  dark:bg-gray-800 dark:border-gray-700">
         <div class="flex flex-row justify-between items-center">
             <h5 class="mb-3 text-l font-semibold tracking-tight text-gray-900 dark:text-white ">البناية الاولى
             </h5>
@@ -31,11 +31,11 @@
                 </ul>
             </div>
         </div>
-        <div class="flex flex-col ">
+        <div class="flex flex-col">
             <div>
-                <span class="p-1 bg-red-500/20 rounded-lg text-sm text-red-500 ">
+                <h5 class="p-1 bg-red-500/20 rounded-lg text-sm text-red-500 ">
                     تفليش
-                </span>
+                </h5>
             </div>
 
             <p class="mb-3 text-sm font-normal text-gray-400 mt-3  ">هدم هدم هدم هدم هدم هدم هدم</p>
@@ -43,9 +43,9 @@
                 <img class="w-6 h-6 rounded-full ml-1"
                     src="https://cdn.dribbble.com/users/5084254/avatars/normal/7412fd6c884231ed6f256c39b244f8d0.jpg?1644808490&compress=1&resize=40x40"
                     alt="Rounded avatar">
-                <span class="p-1 bg-red-200/20 rounded-lg text-xs text-red-500 ">
+                <h5 class="p-1 bg-red-200/20 rounded-lg text-xs text-red-500 ">
                     ضعيف
-                </span>
+                </h5>
             </div>
             <hr class="mt-3">
             <div class="flex flex-row items-center mt-1">
