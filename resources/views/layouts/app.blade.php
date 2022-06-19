@@ -15,7 +15,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.6/dist/flowbite.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+
     @livewireStyles
     @laravelPWA
 
@@ -47,7 +48,7 @@
                 </div>
                 <div class="p-5 overflow-y-auto h-content">
                     @isset($slot)
-                        {{ $slot }}
+                    {{ $slot }}
                     @endisset
                 </div>
             </div>

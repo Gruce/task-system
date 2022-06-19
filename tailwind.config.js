@@ -16,7 +16,7 @@ module.exports = {
                 'tasklist': 'calc(100vh - 12.5rem)',
             },
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Cairo', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 'primary': {
