@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Baghdad',
 
     /*
     |--------------------------------------------------------------------------
@@ -191,7 +191,6 @@ return [
         /*
          * Application Service Providers...
          */
-
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -199,6 +198,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
