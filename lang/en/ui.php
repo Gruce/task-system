@@ -46,5 +46,7 @@ return [
     'archive' => 'Archive',
     'menu' => 'Menu',
     'search' => 'Search',
+    'employees' => 'Employees',
+    'projects' => 'Projects',
 
 ];
