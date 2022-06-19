@@ -3,7 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Livewire\Home\Home;
-use App\Http\Livewire\Task\Task;
+use App\Http\Livewire\{
+    Task\Task as Task,
+    Task\Index as TaskIndex,
+
+    Employee\Index as EmployeeIndex,
+
+    Project\Index as ProjectIndex,
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +47,17 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', Home::class)->name('home');
     });
 
+    Route::prefix('employees')->group(function () {
+        Route::get('/', EmployeeIndex::class)->name('employees');
+    });
+
+    Route::prefix('projects')->group(function () {
+        Route::get('/', ProjectIndex::class)->name('projects');
+    });
+
     Route::prefix('task')->group(function () {
         Route::get('/', Task::class)->name('task');
     });
+
+
 });
