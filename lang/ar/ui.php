@@ -3,6 +3,7 @@
 //Aribc Sentense File
 
 return [
+    'home'        => 'الرئيسية', 
     'task_system' => 'نظام المهام',
     'add'         => 'إضافة',
     'create'      => 'إنشاء',
@@ -43,4 +44,8 @@ return [
     'confirm' => 'تأكيد',
     'cancel' => 'إلغاء',
     'archive' => 'أرشيف',
+    'menu' => 'القائمة',
+    'search' => 'بحث',
+
+
 ];
