@@ -1,6 +1,7 @@
 {
     "version": "2.0.0",
-    "tasks": [{
+    "tasks": [
+        {
             "label": "LARAVEL DEV",
             "type": "shell",
             "command": ".\\START_LARAVEL.bat",
@@ -41,6 +42,6 @@
             "runOptions": {
                 "runOn": "folderOpen"
             }
-        },
+        }
     ],
 }

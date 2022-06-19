@@ -143,6 +143,8 @@ return [
         // 'store'  => 'redis',
     ],
 
+    'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -189,6 +191,7 @@ return [
         /*
          * Application Service Providers...
          */
+
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
