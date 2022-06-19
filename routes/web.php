@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-use App\Http\Livewire\Test\Test;
 use App\Http\Livewire\Home\Home;
 use App\Http\Livewire\{
     Task\Task as Task,
