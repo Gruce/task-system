@@ -3,7 +3,7 @@
 //Aribc Sentense File
 
 return [
-    'home'        => 'الرئيسية', 
+    'home'        => 'الرئيسية',
     'task_system' => 'نظام المهام',
     'add'         => 'إضافة',
     'create'      => 'إنشاء',
@@ -48,6 +48,7 @@ return [
     'search' => 'بحث',
     'employees' => 'الموظفين',
     'projects' => 'المشاريع',
+    'tasks' => 'المهام',
 
 
 
