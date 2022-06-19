@@ -4,10 +4,10 @@ namespace App\Http\Livewire\Task;
 
 use Livewire\Component;
 
-class Index extends Component
+class Main extends Component
 {
     public function render()
     {
-        return view('livewire.task.index');
+        return view('livewire.task.main');
     }
 }

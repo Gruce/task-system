@@ -2,31 +2,32 @@
 
 namespace App\Http\Livewire\Project;
 
-use App\Models\Project;
 use Livewire\Component;
+use App\Models\Project;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
-
-class Index extends Component
+class Main extends Component
 {
     use LivewireAlert;
-    protected $listeners = ['$refresh','delete'];
+    protected $listeners = ['$refresh', 'delete'];
 
     public $ID;
 
-    public function confirmed($id , $function){
+    public function confirmed($id, $function)
+    {
         $this->ID = $id;
         $this->confirm(__('ui.are_you_sure'), [
             'toast' => false,
             'position' => 'center',
             'showConfirmButton' => "true",
             'cancelButtonText' => (__('ui.cancel')),
-            'confirmButtonText' =>  (__('ui.confirm')),
+            'confirmButtonText' => (__('ui.confirm')),
             'onConfirmed' => $function,
         ]);
     }
 
-    public function delete(){
+    public function delete()
+    {
         Project::findOrFail($this->ID)->delete();
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',
@@ -36,9 +37,9 @@ class Index extends Component
             'width' => '400',
         ]);
     }
-
-    public function render(){
-        $projects = Project::withCount(['tasks' , 'files'])->get();
-        return view('livewire.project.index' , ['projects' => $projects]);
+    public function render()
+    {
+        $projects = Project::withCount(['tasks', 'files'])->get();
+        return view('livewire.project.main', compact('projects'));
     }
 }
