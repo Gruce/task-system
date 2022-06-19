@@ -12,7 +12,7 @@ module.exports = {
         extend: {
             height: {
                 'main': 'calc(100vh - 3rem)',
-                'content': 'calc(100vh - 6.5rem)',
+                'content': 'calc(100vh - 8rem)',
                 'tasklist': 'calc(100vh - 12.5rem)',
             },
             fontFamily: {
