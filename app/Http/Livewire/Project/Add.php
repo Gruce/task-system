@@ -34,14 +34,13 @@ class Add extends Component
                 $new_file->add_file('name' , $file , 'projects/' . $project->id . '/files/' . $new_file->id);
             }
 
-        $this->emitTo('project.index' , '$refresh');
+        $this->emitTo('project.main' , '$refresh');
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
             'timer' => 3000,
             'toast' => true,
             'timerProgressBar' => true,
             'width' => '400',
-
         ]);
     }
 
