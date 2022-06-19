@@ -1,10 +1,10 @@
 @section('header-actions')
-<x-navbar />
 @endsection
-@section('title', 'Home')
+@section('title', __('ui.home'))
 
 <div>
     <h1>
         {{__('ui.create')}}
     </h1>
 </div>
+
