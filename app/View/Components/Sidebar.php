@@ -12,6 +12,7 @@ class Sidebar extends Component
      * @return void
      */
     public $tabs;
+    public $langs;
 
     /**
      * Create a new component instance.
@@ -20,24 +21,27 @@ class Sidebar extends Component
      */
     public function __construct()
     {
+        $this->langs = [
+            'en' => 'English',
+            'ar' => 'عربي',
+        ];
+
         $this->tabs = [
             new Tab(
-                'Menu',
+                __('ui.menu'),
                 [
-                    new TabItem('Home', 'fa-solid fa-home', 'task'),
-                    new TabItem('Task', 'fa-solid fa-list-check', 'task'),
+                    new TabItem(__('ui.home'), 'fa-solid fa-home', 'home'),
+                    new TabItem(__('ui.employees'), 'fa-solid fa-users', 'employees'),
+                    new TabItem(__('ui.projects'), 'fa-solid fa-diagram-project', 'projects'),
+                    new TabItem(__('ui.task'), 'fa-solid fa-list-check', 'task'),
 
                 ]
             ),
-            new Tab(
-                'Managements',
-                [],
-                true
-            ),
-            new Tab(
-                'Settings',
-                []
-            ),
+            // new Tab(
+            //     'Managements',
+            //     [],
+            //     true
+            // ),
         ];
 
         $this->tabs = collect($this->tabs);

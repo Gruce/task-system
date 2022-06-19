@@ -1,7 +1,6 @@
 @section('header-actions')
-<x-navbar />
 @endsection
-@section('title', 'Home')
+@section('title', __('ui.home'))
 
 <div>
     <h1>

@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('gender')->default(1); // 1: male  2: female  3: other
-            $table->boolean('state')->default(false); // 1: active  0: not active
-            $table->string('job');
-            $table->softDeletes();
+            $table->integer('gender')->default(1); // 1: male  2: female
+            $table->boolean('state')->default(true); // 1: active  0: not active
+            $table->string('job')->nullable();
+            $table->string('profile_photo')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
