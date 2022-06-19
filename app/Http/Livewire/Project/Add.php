@@ -41,6 +41,7 @@ class Add extends Component
             'toast' => true,
             'timerProgressBar' => true,
             'width' => '400',
+
         ]);
     }
 
