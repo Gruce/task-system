@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HelperTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +19,7 @@ class User extends Authenticatable implements JWTSubject
     use Notifiable;
     use TwoFactorAuthenticatable;
     use SoftDeletes;
-
+    use HelperTrait;
 
 
     public function getJWTIdentifier()
@@ -57,6 +58,9 @@ class User extends Authenticatable implements JWTSubject
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     /**
@@ -81,5 +85,8 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $appends = [
         'profile_photo_url',
+        'created_time',
+        'updated_time',
+        'delete_time',
     ];
 }

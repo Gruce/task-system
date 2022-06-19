@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('files', function (Blueprint $table) {
+        Schema::create('employee_task', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('fileable_id');
-            $table->string('fileable_type');
+            $table->foreignId('employee_id')->nullable()->constrained('employees')->onDelete('cascade');
+            $table->foreignId('task_id')->nullable()->constrained('tasks')->onDelete('cascade');
+            $table->boolean('state')->default(true);
+            $table->string('profile_photo')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('files');
+        Schema::dropIfExists('employee_task');
     }
 };
