@@ -3,7 +3,7 @@
 //Aribc Sentense File
 
 return [
-    'home'        => 'الرئيسية', 
+    'home'        => 'الرئيسية',
     'task_system' => 'نظام المهام',
     'add'         => 'إضافة',
     'create'      => 'إنشاء',
@@ -35,7 +35,7 @@ return [
     'delete_task' => 'حذف مهمة',
     'start_task'  => 'بدء مهمة',
     'finish_task' => 'إنهاء مهمة',
-    'project_name' => 'اسم المشروع',
+    'project_title' => 'اسم المشروع',
     'project_description' => 'وصف المشروع',
     'project_state' => 'حالة المشروع',
     'create_project' => 'إنشاء مشروع',
@@ -48,7 +48,16 @@ return [
     'search' => 'بحث',
     'employees' => 'الموظفين',
     'projects' => 'المشاريع',
-
-
+    'title' => 'العنوان',
+    'description' => 'الوصف',
+    'task_count' => 'عدد المهام',
+    'file_count' => 'عدد الملفات',
+    'settings' => 'الإعدادات',
+    'no_data' => 'لا يوجد بيانات',
+    'are_you_sure' => 'هل أنت متأكد؟',
+    'data_has_been_deleted_successfully' => 'تم حذف البيانات بنجاح',
+    'upload_files' => 'إرفاق ملف',
+    'please_fill_in_this_field' => 'الرجاء ملئ هذا الحقل',
+    'data_has_been_add_successfully' => 'تم إضافة البيانات بنجاح'
 
 ];

@@ -3,7 +3,7 @@
 //Englash Sentense File
 
 return [
-    'home'        => 'Home', 
+    'home'        => 'Home',
     'task_system' => 'Task System',
     'add'         => 'Add',
     'create'      => 'Create',
@@ -35,7 +35,7 @@ return [
     'delete_task' => 'Delete Task',
     'start_task'  => 'Start Task',
     'finish_task' => 'Finish Task',
-    'project_name' => 'Project Name',
+    'project_title' => 'Project Name',
     'project_description' => 'Project Description',
     'project_state' => 'Project State',
     'create_project' => 'Create Project',
@@ -48,5 +48,15 @@ return [
     'search' => 'Search',
     'employees' => 'Employees',
     'projects' => 'Projects',
-
+    'title' => 'Title',
+    'description' => 'Description',
+    'task_count' => 'Tasks Count',
+    'file_count' => 'Files Count',
+    'settings' => 'Settings',
+    'no_data' => 'No Data',
+    'are_you_sure' => 'Are you sure?',
+    'data_has_been_deleted_successfully' => 'Data has been deleted successfully',
+    'upload_files' => 'Upload File',
+    'please_fill_in_this_field' => 'Please fill in this field',
+    'data_has_been_add_successfully' => 'Data has been add successfully',
 ];
