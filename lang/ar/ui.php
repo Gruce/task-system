@@ -58,6 +58,9 @@ return [
     'data_has_been_deleted_successfully' => 'تم حذف البيانات بنجاح',
     'upload_files' => 'إرفاق ملف',
     'please_fill_in_this_field' => 'الرجاء ملئ هذا الحقل',
-    'data_has_been_add_successfully' => 'تم إضافة البيانات بنجاح'
+    'data_has_been_add_successfully' => 'تم إضافة البيانات بنجاح',
+    'tasks' => 'المهام',
+
+
 
 ];

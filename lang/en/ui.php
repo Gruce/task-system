@@ -59,4 +59,6 @@ return [
     'upload_files' => 'Upload File',
     'please_fill_in_this_field' => 'Please fill in this field',
     'data_has_been_add_successfully' => 'Data has been add successfully',
+    'tasks' => 'Tasks',
+
 ];
