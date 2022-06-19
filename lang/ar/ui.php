@@ -46,6 +46,9 @@ return [
     'archive' => 'أرشيف',
     'menu' => 'القائمة',
     'search' => 'بحث',
+    'employees' => 'الموظفين',
+    'projects' => 'المشاريع',
+
 
 
 ];
