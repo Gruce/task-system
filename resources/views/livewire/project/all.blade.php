@@ -1,11 +1,12 @@
-<div class="p-8">
+<div>
 
     <div class="grid gap-8 lg:grid-cols-3 sm:grid-cols-1">
         {{-- @for ($i = 0; $i < 23; $i++)
             @livewire('project.card')
         @endfor --}}
         @forelse ($projects as $project )
-            @livewire('project.card' , ['project' => $project] , ['key' => $project->id])
+            @livewire('project.card' , ['project' => $project] , key($project->id . "-" . now()))
+            {{-- <livewire:project.card :project='$project' @key('')> --}}
         @empty
             <div class="flex items-center justify-center">
                 <div class="text-center">
