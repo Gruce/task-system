@@ -28,6 +28,11 @@
                 <div @click.outside="dropdown = false" x-show="dropdown" class="absolute z-10 text-base list-none bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 {{ar() ? 'left-0' : 'right-0'}}">
                     <ul class="py-1" aria-labelledby="button-dropdown-{{$project->id}}">
                         <li>
+                            <a href="{{route('projects.show' , ['id' => $project->id])}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
+                                {{__('ui.show')}}
+                            </a>
+                        </li>
+                        <li>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
                                 {{__('ui.create_task')}}
                             </a>
