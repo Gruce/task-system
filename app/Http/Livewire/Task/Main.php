@@ -2,16 +2,17 @@
 
 namespace App\Http\Livewire\Task;
 
-use App\Models\Task as TaskModel;
+use App\Models\Task;
 use Livewire\Component;
-use App\Models\Project;
+
+
 
 class Main extends Component
 {
     public function render()
     {
 
-        $tasks = TaskModel::get();
+        $tasks = Task::get();
         //dd($tasks->toArray());
 
         return view('livewire.task.main', compact('tasks'));
