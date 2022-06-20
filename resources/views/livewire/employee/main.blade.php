@@ -1,3 +1,3 @@
 <div>
-    @livewire('employee.card')
+    @livewire('employee.all')
 </div>

@@ -5,7 +5,7 @@
             @livewire('project.card')
         @endfor
     </div>
-    
+
 </div>
 
         {{-- <div>

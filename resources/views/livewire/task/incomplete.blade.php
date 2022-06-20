@@ -1,10 +1,10 @@
 <div>
-        <div class="flex flex-row mt-2 gap-8 bg-gray-50">
+        <div class="p-2 flex flex-row mt-2 gap-8 bg-gray-50">
             <div class="basis-1/3   bg-gray-100 rounded-lg">
 
-                <div class="flex flex-row justify-between m-3 bg-stone-500 rounded-lg p-2">
+                <div class="flex flex-row justify-between m-3  rounded-lg p-2">
                     <div>
-                        <h5 class="mr-3 text-white">
+                        <h5 class="mr-3 text-black font-semibold text-xl">
                             المهام المعلقة
                         </h5>
                     </div>
@@ -19,9 +19,9 @@
                 </div>
             </div>
             <div class="basis-1/3  bg-gray-100 rounded-lg">
-                <div class="flex flex-row justify-between m-3 bg-orange-800 rounded-lg p-2">
+                <div class="flex flex-row justify-between m-3  rounded-lg p-2">
                     <div>
-                        <h5 class="mr-3 text-white">
+                        <h5 class="mr-3 text-black font-semibold text-xl">
                             المهام المتأخرة
                         </h5>
                     </div>
@@ -38,9 +38,9 @@
                 </div>
             </div>
             <div class="basis-1/3  bg-gray-100 rounded-lg">
-                <div class="flex flex-row justify-between m-3 bg-red-600 rounded-lg p-2">
+                <div class="flex flex-row justify-between m-3  rounded-lg p-2">
                     <div>
-                        <h5 class="mr-3 text-white">
+                        <h5 class="mr-3 text-black font-semibold text-xl">
                             المهام المرفوضة
                         </h5>
                     </div>
