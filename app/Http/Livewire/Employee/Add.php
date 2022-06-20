@@ -17,7 +17,8 @@ class Add extends Component
         'employee.user.name' => 'required',
         'employee.user.email' => 'required',
         'employee.user.password' => 'required',
-        'employee.gender' => 'required',
+        'employee.user.gender' => 'required',
+        'employee.user.phonenumber' => 'required',
         'employee.state' => 'required',
         'employee.job' => 'required',
     ];
