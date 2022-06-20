@@ -65,6 +65,15 @@ return [
     'file' => 'الملف',
     'tasks' => 'المهام',
     'incomplete' => 'غير مكتملة',
-
+    'choose_project' => 'اختر مشروع',
+    'start_date' => 'تاريخ البدء',
+    'end_date' => 'تاريخ الانتهاء',
+    'add_task' => 'اضافة مهمة',
+    'assign_task' => 'اسناد مهمة',
+    'importance' => 'الاهمية',
+    'estimated_time' => 'الوقت المقدر',
+    'estimated_time_unit' => 'وحدة الوقت المقدر',
+    'choose_importance' => 'اختر الاهمية',
+    'choose_estimated_time' => 'اختر الوقت المقدر',
 
 ];
