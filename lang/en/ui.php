@@ -64,6 +64,7 @@ return [
     'addattachments' => 'Add Attachments',
     'basicinfo' => 'Basic Information',
     'file' => 'File',
+    'show' => 'Show',
 
 
 ];

@@ -64,6 +64,6 @@ return [
     'addattachments' => 'اضف مرفقات',
     'basicinfo' => 'المعلومات الأساسية',
     'file' => 'الملف',
-
+    'show' => 'عرض',
 
 ];

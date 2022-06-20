@@ -23,6 +23,12 @@
                 class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
                 <ul class="py-1" aria-labelledby="dropdownButton">
                     <li>
+                        <a href="{{route('projects.show' , ['id' => $project->id])}}"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
+                            {{__('ui.show')}}
+                        </a>
+                    </li>
+                    <li>
                         <a href="#"
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
                             {{__('ui.create_task')}}
