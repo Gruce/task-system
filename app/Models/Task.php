@@ -10,12 +10,12 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Task extends Model
 {
-    use HasFactory, SoftDeletes , HelperTrait;
+    use HasFactory, SoftDeletes, HelperTrait;
 
 
     protected $fillable = [
-        'project_id' , 'title', 'description', 'is_active', 'state',
-        'importance' , 'start_at' , 'end_at'
+        'project_id', 'title', 'description', 'is_active', 'state',
+        'importance', 'start_at', 'end_at'
     ];
 
     //protected $appends = ['created_time', 'updated_time' , 'delete_time' , 'start_time' , 'end_time'];
@@ -27,16 +27,24 @@ class Task extends Model
     /******************* RELATIONSHIPS ******************/
     /****************************************************/
 
-    public function project(){
+    public function project()
+    {
         $this->belongsTo(Project::class);
     }
 
-    public function employees(){
+    public function employees()
+    {
         return $this->belongsToMany(Employee::class);
     }
 
-    public function files(){
+    public function files()
+    {
         return $this->morphMany(File::class, 'fileable');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     /****************************************************/
