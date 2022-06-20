@@ -25,13 +25,12 @@ class Add extends Component
 
     public function save()
     {
-        dg($this->employee['user']);
-        $this->validate();
-        $user = new User();
 
+        // $this->validate();
+        $user = new User;
         $user->add($this->employee['user']);
-        Employee::create($this->employee);
 
+        $user->employee()->create($this->employee);
         $this->emitTo('employee.main', '$refresh');
     }
 

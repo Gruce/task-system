@@ -77,6 +77,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function add($data)
     {
+
         $this->fill($data);
         $this->save();
     }
