@@ -1,7 +1,6 @@
 @section('header-actions')
 @livewire('ui.tabs', ['tabs' => $tabs, 'selectedTab' => $selectedTab])
 @endsection
-
 @section('title', __('ui.projects'))
 
 <div>

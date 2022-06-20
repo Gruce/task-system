@@ -63,6 +63,8 @@ return [
     'addattachments' => 'Add Attachments',
     'basicinfo' => 'Basic Information',
     'file' => 'File',
+    'tasks' => 'Tasks',
+    'incomplete' => 'Incomplete',
 
 
 ];
