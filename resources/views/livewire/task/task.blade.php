@@ -29,10 +29,9 @@
                                 المهام
                             </h5>
                         </div>
-                        <div>
                             <i class="fa-solid fa-plus text-l text-white"></i>
-                        </div>
                     </div>
+
                     <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
                         {{-- @for ($i = 0; $i < 10; $i++)
                             <div>@livewire('task.card')</div>

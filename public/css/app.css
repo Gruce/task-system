@@ -1212,6 +1212,9 @@ select {
 .mb-2 {
   margin-bottom: 0.5rem;
 }
+.ml-auto {
+  margin-left: auto;
+}
 .block {
   display: block;
 }
@@ -1566,6 +1569,12 @@ select {
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
 }
+.rounded-bl-lg {
+  border-bottom-left-radius: 0.5rem;
+}
+.rounded-tr-lg {
+  border-top-right-radius: 0.5rem;
+}
 .border {
   border-width: 1px;
 }
@@ -1708,6 +1717,9 @@ select {
 .bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+}
+.bg-transparent {
+  background-color: transparent;
 }
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
@@ -2200,6 +2212,10 @@ select {
 .hover\:text-gray-600:hover {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+.hover\:text-red-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 .focus\:z-10:focus {
   z-index: 10;

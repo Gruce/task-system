@@ -11,19 +11,19 @@ class Add extends Component
 {
     use  LivewireAlert , WithFileUploads;
 
-    public $task;
+    public $task, $title;
     public $files = [];
 
     protected $rules = [
         'title' => 'required',
-        'importance' => 'required',
-        'start_at' => 'required',
-        'end_at' => 'required',
+        // 'importance' => 'required',
+        // 'start_at' => 'required',
+        // 'end_at' => 'required',
     ];
 
     public function add(){
         $this->validate();
-        $task = TaskModel::create($this->task);
+        $task = Task::create($this->task);
 
         if(count($this->files) > 0)
             foreach($this->files as $file){
@@ -33,7 +33,7 @@ class Add extends Component
                 $new_file->add_file('name' , $file , 'tasks/' . $task->id . '/files/' . $new_file->id);
             }
 
-        $this->emitTo('task.index' , '$refresh');
+
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
             'timer' => 3000,
