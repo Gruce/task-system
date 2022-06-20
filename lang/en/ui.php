@@ -57,6 +57,7 @@ return [
     'no_data' => 'No Data',
     'are_you_sure' => 'Are you sure?',
     'data_has_been_deleted_successfully' => 'Data has been deleted successfully',
+    'data_has_been_edited_successfully' => 'Data has been edited successfully',
     'upload_files' => 'Upload File',
     'please_fill_in_this_field' => 'Please fill in this field',
     'data_has_been_add_successfully' => 'Data has been add successfully',
@@ -64,6 +65,7 @@ return [
     'addattachments' => 'Add Attachments',
     'basicinfo' => 'Basic Information',
     'file' => 'File',
+    'show' => 'Show',
 
 
 ];

@@ -57,6 +57,7 @@ return [
     'no_data' => 'لا يوجد بيانات',
     'are_you_sure' => 'هل أنت متأكد؟',
     'data_has_been_deleted_successfully' => 'تم حذف البيانات بنجاح',
+    'data_has_been_edited_successfully' => 'تم تعديل البيانات بنجاح',
     'upload_files' => 'إرفاق ملف',
     'please_fill_in_this_field' => 'الرجاء ملئ هذا الحقل',
     'data_has_been_add_successfully' => 'تم إضافة البيانات بنجاح',
@@ -64,6 +65,6 @@ return [
     'addattachments' => 'اضف مرفقات',
     'basicinfo' => 'المعلومات الأساسية',
     'file' => 'الملف',
-
+    'show' => 'عرض',
 
 ];
