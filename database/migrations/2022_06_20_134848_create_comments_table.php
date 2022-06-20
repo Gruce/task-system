@@ -13,13 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('files', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('fileable_id');
-            $table->string('fileable_type');
+            $table->text('body');
+
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('SET NULL');
+            $table->foreignId('task_id')->nullable()->constrained('tasks')->onDelete('SET NULL');
+
+            $table->integer('commentable_id');
+            $table->string('commentable_type');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('files');
+        Schema::dropIfExists('comments');
     }
 };
