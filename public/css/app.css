@@ -2116,6 +2116,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(101 123 166 / var(--tw-text-opacity));
 }
+.text-secondary-500 {
+  --tw-text-opacity: 1;
+  color: rgb(123 143 182 / var(--tw-text-opacity));
+}
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;

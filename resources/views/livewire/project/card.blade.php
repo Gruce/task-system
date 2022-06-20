@@ -40,14 +40,14 @@
 
 
         <div class="flex justify-between mb-1">
-            <span class="text-xs font-medium text-secondary-700">45%</span>
-            <span class="text-xs font-medium text-secondary-700">18 Hours ago</span>
+            <span class="text-xs font-medium text-secondary-500">45%</span>
+            <span class="text-xs font-medium text-secondary-500">18 Hours ago</span>
         </div>
         <div class="w-full bg-gray-200 rounded-full h-1.5">
             <div class="bg-secondary-600 h-1.5 rounded-full" style="width: 45%"></div>
         </div>
 
-        <div class="flex justify-between mt-6 text-center text-gray-500">
+        <div class="flex justify-between mt-4 text-sm text-center text-gray-500">
             <div @class(['px-4 py-2 basis-1/3 flex items-center justify-center gap-2', 'border-r' => en(), 'border-l' => ar()]) class="">
                 <i class="ri-chat-1-line"></i>
                 <span>3</span>
