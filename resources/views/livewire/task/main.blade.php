@@ -11,8 +11,6 @@
             </li>
         </ul>
     </div>
-
-    @livewire('task.add')
     <div id="myTabContent">
         <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="flex flex-row mt-2 gap-8">
