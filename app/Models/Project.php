@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    use HasFactory, SoftDeletes , HelperTrait;
+    use HasFactory, SoftDeletes, HelperTrait;
 
     protected $fillable = ['title', 'description'];
     // protected $appends = ['created_time', 'updated_time' , 'delete_time'];
@@ -20,13 +20,21 @@ class Project extends Model
     /******************* RELATIONSHIPS ******************/
     /****************************************************/
 
-    public function tasks(){
+    public function tasks()
+    {
         return $this->hasMany(Task::class);
     }
 
-    public function files(){
+    public function files()
+    {
         return $this->morphMany(File::class, 'fileable');
     }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
 
     /****************************************************/
     /******************* END RELATIONSHIPS **************/

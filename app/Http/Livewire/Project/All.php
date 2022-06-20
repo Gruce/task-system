@@ -7,18 +7,18 @@ use App\Models\Project;
 
 class All extends Component
 {
+    protected $listeners = ['$refresh' , 'search'];
     public $search;
-    protected $listeners = ['$refresh', 'search'];
 
-    public function search($value){
-        $this->search = $value;
+    public function search($search){
+        $this->search = $search;
     }
 
     public function render()
     {
-        $projects = Project::withCount(['tasks', 'files']);
-        if($this->search) $projects = $projects->where('title', 'like', '%' . $this->search . '%');
-        $projects = $projects->get();
+        $search = '%' . $this->search . '%';
+
+        $projects = Project::withCount(['tasks', 'files'])->where('title' , 'LIKE' , $search)->get();
         return view('livewire.project.all', compact('projects'));
     }
 }

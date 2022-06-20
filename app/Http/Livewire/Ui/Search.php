@@ -6,15 +6,12 @@ use Livewire\Component;
 
 class Search extends Component
 {
-    public $search;
     protected $queryString = ['search'];
-    
-    public function updatedSearch(){
-        $this->emit('search', $this->search);
-    }
 
-    public function render()
-    {
+    public $search;
+
+    public function render(){
+        $this->emit('search', $this->search);
         return view('livewire.ui.search');
     }
 }
