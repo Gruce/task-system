@@ -51,6 +51,7 @@ class UserSeeder extends Seeder
             'name' => 'Zainab Amjed',
             'email' => 'zainab@gmail.com',
             'password' => bcrypt('123456'),
+            'gender' => 2
         ]);
     }
 }
