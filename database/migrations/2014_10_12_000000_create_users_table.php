@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->integer('is_admin')->default(false);
+            $table->boolean('is_admin')->default(false);
             $table->string('phonenumber')->default(0);
             $table->integer('gender')->default(1); // 1: male  2: female
             $table->foreignId('current_team_id')->nullable();
