@@ -5,7 +5,8 @@
             @livewire('project.card')
         @endfor --}}
         @forelse ($projects as $project )
-            @livewire('project.card' , ['project' => $project] , ['key' => $project->id])
+            {{-- @livewire('project.card' , ['project' => $project] , ['key' => $project->id]) --}}
+            <livewire:project.card :project="$project" key={{now()}} />
         @empty
             <div class="flex justify-center items-center">
                 <div class="text-center">
