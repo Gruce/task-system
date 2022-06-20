@@ -3,7 +3,7 @@
         <div class="flex flex-col items-center justify-center h-full" :class="sidebar_extended ? 'pr-9 pl-3' : ''">
             <div class="flex-none pb-5 mb-5 basis-96">
                 <a href="{{ route('home') }}" class="flex items-center justify-center p-2 text-base rounded-lg text-primary-700 text-gray">
-                    <img :class="sidebar_extended ? 'w-32' : 'w-20'" src="{{asset('images/task-logo.png')}}" alt="">
+                    <img class="w-20" :class="sidebar_extended ? 'w-32' : 'w-20'" src="{{asset('images/task-logo.png')}}" alt="">
                 </a>
             </div>
             <div class="flex-1 w-full grow">
@@ -11,7 +11,7 @@
                 <div :class="sidebar_extended ? 'mb-5 ml-3 {{en() ? 'text-left' : 'text-right'}}' : 'mb-1 text-center text-sm'" class="@if (!$loop->first) mt-10 @endif text-gray-300">
                     {{ $tab->title }}
                 </div>
-                <ul class="space-y-2" :class="sidebar_extended ? 'ml-3' : ''">
+                <ul class="space-y-4" :class="sidebar_extended ? 'ml-3' : ''">
                     @foreach ($tab->items as $item)
                     <li>
                         <a href="{{ route($item->route) }}" :data-tooltip-target="sidebar_extended ? '' : 'tooltip-default-{{ $item->route }}'" :class="sidebar_extended ? 'py-2' : 'justify-center py-3'" class="flex items-center px-4 text-base font-normal @if ($item->active) text-primary-500 @else text-gray-900 @endif rounded-lg group hover:bg-gray-100 ">
