@@ -71,6 +71,8 @@ class Card extends Component
 
 
     public function render(){
+
+
         dg($this->task->toArray());
         return view('livewire.task.card');
     }

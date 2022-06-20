@@ -18,13 +18,8 @@ class Main extends Component
         $this->tabs = [__('ui.tasks'), __('ui.incomplete')];
         $this->selectedTab = 0;}
 
-    public function render()
-    {
+    public function render(){
 
-        $tasks = Task::get();
-//dd($tasks->toArray());
-
-
-        return view('livewire.task.main', compact('tasks'));
+        return view('livewire.task.main');
     }
 }

@@ -77,6 +77,10 @@ return [
     'estimated_time_unit' => 'Estimated Time Unit',
     'choose_importance' => 'Choose Importance',
     'choose_estimated_time' => 'Choose Estimated Time Unit',
+    'importance_low' => 'Low',
+    'importance_medium' => 'Medium',
+    'importance_high' => 'High',
+    'importance_very_high' => 'Very High',
 
 
 ];

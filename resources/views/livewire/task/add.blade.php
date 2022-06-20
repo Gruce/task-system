@@ -10,23 +10,24 @@
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.title') }}
                         </label>
-                        <input wire:model.defer="project.title" type="text"
+                        <input wire:model="title" type="text"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder={{ __('ui.title') }} required>
+
                     </div>
-                    <div>
+                    {{-- <div>
                         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
                             {{ __('ui.choose_project') }}</label>
                         </label>
                         <select id="countries"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected="">Choose a country</option>
+                            <option selected="">{{ __('ui.choose_project') }}</option>
                             <option value="US">United States</option>
                             <option value="CA">Canada</option>
                             <option value="FR">France</option>
                             <option value="DE">Germany</option>
                         </select>
-                    </div>
+                    </div> --}}
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.start_date') }}
@@ -40,7 +41,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </div>
-                            <input datepicker="" type="text"
+                            <input datepicker="" type="text" wire:model="start_at"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input"
                                 placeholder="Select date">
                         </div>
@@ -58,7 +59,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </div>
-                            <input datepicker="" type="text"
+                            <input datepicker="" type="text" wire:model="end_at"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input"
                                 placeholder="Select date">
                         </div>
@@ -69,14 +70,14 @@
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
                         {{ __('ui.description') }}
                     </label>
-                    <textarea wire:model.defer="project.description" rows="4"
+                    <textarea wire:model="description" rows="4"
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder={{ __('ui.project_description') }}></textarea>
 
                 </div>
 
                 <div class="grid xl:grid-cols-2 xl:gap-6">
-                    <div>
+                    {{-- <div>
                         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
                             {{ __('ui.assign_task') }}</label>
                         </label>
@@ -88,25 +89,25 @@
                             <option value="FR">France</option>
                             <option value="DE">Germany</option>
                         </select>
-                    </div>
+                    </div> --}}
                     <div>
                         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
                             {{ __('ui.importance') }}</label>
                         </label>
-                        <select id="countries"
+                        <select id="countries" wire:model="importance"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected="">{{ __('ui.estimated_time_unit') }}</option>
-                            <option value="US">United States</option>
-                            <option value="CA">Canada</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
+                            <option selected="">{{ __('ui.importance') }}</option>
+                            <option value="1">{{  __('ui.importance_low') }}</option>
+                            <option value="2">{{ __('ui.importance_medium') }}</option>
+                            <option value="3">{{ __('ui.importance_high') }}</option>
+                            <option value="4">{{ __('ui.importance_very_high') }}</option>
                         </select>
                     </div>
-                    <div>
+                    {{-- <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.estimated_time') }}
                         </label>
-                        <input wire:model.defer="project.title" type="text"
+                        <input wire:model.defer="" type="text"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder={{ __('ui.estimated_time') }} required>
                     </div>
@@ -122,7 +123,7 @@
                             <option value="FR">France</option>
                             <option value="DE">Germany</option>
                         </select>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <button type="submit"

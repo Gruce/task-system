@@ -77,5 +77,9 @@ return [
     'estimated_time_unit' => 'وحدة الوقت المقدر',
     'choose_importance' => 'اختر الاهمية',
     'choose_estimated_time' => 'اختر الوقت المقدر',
+    'importance_low' => 'منخفض',
+    'importance_medium' => 'متوسط',
+    'importance_high' => 'مرتفع',
+    'importance_very_high' => 'مرتفع جداً',
 
 ];
