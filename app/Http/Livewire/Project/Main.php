@@ -3,20 +3,43 @@
 namespace App\Http\Livewire\Project;
 
 use Livewire\Component;
+use App\Models\Project;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Main extends Component
 {
-    protected $listeners = ['updatedSelectedTab'];
-    public function updatedSelectedTab($value){ $this->selectedTab = $value; }
+    use LivewireAlert;
+    protected $listeners = ['$refresh', 'delete'];
 
-    public function mount(){
-        $this->tabs = [__('ui.projects'), __('ui.add')];
-        $this->selectedTab = 0;
+    public $ID;
+
+    public function confirmed($id, $function)
+    {
+        $this->ID = $id;
+        $this->confirm(__('ui.are_you_sure'), [
+            'toast' => false,
+            'position' => 'center',
+            'showConfirmButton' => "true",
+            'cancelButtonText' => (__('ui.cancel')),
+            'confirmButtonText' => (__('ui.confirm')),
+            'onConfirmed' => $function,
+        ]);
     }
 
-
+    public function delete()
+    {
+        Project::findOrFail($this->ID)->delete();
+        $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
+    }
     public function render()
     {
-        return view('livewire.project.main');
+        $projects = Project::withCount(['tasks', 'files'])->get();
+        return view('livewire.project.main', compact('projects'));
     }
 }

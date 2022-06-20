@@ -62,9 +62,5 @@ return [
     'tasks' => 'Tasks',
     'start_at' => 'Start At',
     'finish_at' => 'Finish At',
-    'addattachments' => 'Add Attachments',
-    'basicinfo' => 'Basic Information',
-    'file' => 'File',
-
 
 ];

@@ -30,7 +30,7 @@
     <script src="https://kit.fontawesome.com/4e8940f861.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="font-sans antialiased bg-secondary-100" dir="{{ config('app.locale') == 'en' ? 'ltr' : 'rtl' }}">
+<body class="font-sans antialiased bg-gray-200" dir="{{ config('app.locale') == 'en' ? 'ltr' : 'rtl' }}">
     <div class="p-6 mx-auto">
         <div class="flex flex-row bg-white rounded-lg h-main" x-data="{ sidebar_extended: false }">
             {{-- Left Sidebar --}}
@@ -47,7 +47,7 @@
                     <livewire:ui.search />
                     @endif
                 </div>
-                <div class="p-5 overflow-y-auto h-content bg-secondary-50">
+                <div class="p-5 overflow-y-auto h-content">
                     @isset($slot)
                     {{ $slot }}
                     @endisset

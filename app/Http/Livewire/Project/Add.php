@@ -22,11 +22,6 @@ class Add extends Component
 
     ];
 
-    public function removeFile($index){
-        unset($this->files[$index]);
-        dg($this->files);
-    }
-
     public function add(){
         $this->validate();
         $project = Project::create($this->project);
