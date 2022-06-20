@@ -15,7 +15,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.6/dist/flowbite.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+
     @livewireStyles
     @laravelPWA
 
@@ -48,7 +49,7 @@
                 </div>
                 <div class="p-5 overflow-y-auto h-content">
                     @isset($slot)
-                        {{ $slot }}
+                    {{ $slot }}
                     @endisset
                 </div>
             </div>
@@ -62,7 +63,8 @@
 
     @stack('modals')
     @livewireScripts
-    {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
+    <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
+    <x-livewire-alert::flash />
 
 </body>
 
