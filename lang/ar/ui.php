@@ -35,6 +35,8 @@ return [
     'delete_task' => 'حذف مهمة',
     'start_task'  => 'بدء مهمة',
     'finish_task' => 'إنهاء مهمة',
+    'start_at'    => 'تاريح البداية',
+    'finish_at'   => 'تاريخ الانتهاء',
     'project_title' => 'اسم المشروع',
     'project_description' => 'وصف المشروع',
     'project_state' => 'حالة المشروع',

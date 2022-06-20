@@ -60,5 +60,7 @@ return [
     'please_fill_in_this_field' => 'Please fill in this field',
     'data_has_been_add_successfully' => 'Data has been add successfully',
     'tasks' => 'Tasks',
+    'start_at' => 'Start At',
+    'finish_at' => 'Finish At',
 
 ];
