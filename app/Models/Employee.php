@@ -10,7 +10,7 @@ class Employee extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['user_id', 'name', 'gender', 'state', 'job', 'profile_photo'];
+    protected $fillable = ['user_id','state', 'job', 'profile_photo'];
 
     protected $appends = ['created_time', 'updated_time', 'delete_time'];
     protected $hidden = ['created_at', 'updated_at', 'delete_at'];
