@@ -49,6 +49,7 @@ class Card extends Component
             'timerProgressBar' => true,
             'width' => '400',
         ]);
+        $this->emitUp('$refresh');
     }
 
     public function edit(){
