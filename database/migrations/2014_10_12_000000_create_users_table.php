@@ -23,6 +23,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->integer('is_admin')->default(false);
             $table->integer('phonenumber')->default(0);
+            $table->integer('gender')->default(1); // 1: male  2: female
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
