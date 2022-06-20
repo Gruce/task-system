@@ -13,7 +13,12 @@ class Add extends Component
     public $employee;
 
     protected $rules = [
-        'employee.name' => 'required',
+        'employee.user.name' => 'required',
+        'employee.user.email' => 'required',
+        'employee.user.password' => 'required',
+        'employee.gender' => 'required',
+        'employee.state' => 'required',
+        'employee.job' => 'required',
     ];
 
     public function save()
@@ -21,7 +26,7 @@ class Add extends Component
         $this->validate();
         Employee::create($this->employee);
 
-        $this->emitTo('employee.index', '$refresh');
+        $this->emitTo('employee.main', '$refresh');
     }
 
     public function render()

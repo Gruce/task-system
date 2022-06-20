@@ -10,9 +10,9 @@ class Employee extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'gender', 'state', 'job' , 'profile_photo'];
+    protected $fillable = ['user_id', 'name', 'gender', 'state', 'job', 'profile_photo'];
 
-    protected $appends = ['created_time', 'updated_time' , 'delete_time'];
+    protected $appends = ['created_time', 'updated_time', 'delete_time'];
     protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
@@ -20,7 +20,13 @@ class Employee extends Model
     /******************* RELATIONSHIPS ******************/
     /****************************************************/
 
-    public function tasks(){
+    public function tasks()
+    {
         return $this->belongsToMany(Task::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

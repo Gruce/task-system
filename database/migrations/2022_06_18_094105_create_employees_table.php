@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->integer('gender')->default(1); // 1: male  2: female
             $table->boolean('state')->default(true); // 1: active  0: not active
             $table->string('job')->nullable();
-            $table->string('profile_photo')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
