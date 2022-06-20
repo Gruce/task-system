@@ -56,7 +56,7 @@
                 <div class="flex flex-row justify-between items-center">
                     <div class="max-w-xs">
                         <h5 class="p-1   tracking-tighter bg-indigo-600/20 rounded-lg text-sm text-indigo-600 ">
-                            اسم المشروع
+                            {{-- {{ $task->project->name }} --}}
                         </h5>
                     </div>
                 </div>
@@ -67,10 +67,10 @@
 
                     <div class="flex flex-col items-center ">
                         <h6 class="p-1  text-sm text-gray-500 ">
-                           تاريخ البداية 2020/10/10
+                            {{$task->start_at}}
                         </h6>
                         <h6 class="p-1  text-sm text-gray-500 ">
-                            تاريخ الانتهاء 2020/10/10
+                            {{$task->end_at}}
                         </h6>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                         'border-l' => ar(),
                     ]) class="">
 
-                        <span class="font-semibold">متوسطة</span>
+                        <span class="font-semibold">{{ $task->importance }}</span>
                     </div>
                     <div @class([
                         'px-4 py-2 basis-1/4 flex items-center justify-center gap-2',

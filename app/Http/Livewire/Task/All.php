@@ -9,6 +9,7 @@ class All extends Component
     public function render()
     {
         $tasks = TaskModel::get();
+
         return view('livewire.task.all', compact('tasks'));
     }
 }
