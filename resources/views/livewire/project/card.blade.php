@@ -1,5 +1,5 @@
-<div class="relative p-5 bg-white border-t-[12px] border-x border-b border-x-transparent border-b-transparent rounded-lg transition-all duration-200 delay-100 ease-in-out hover:border-x-secondary-500 hover:border-b-secondary-500 hover:shadow-xl hover:shadow-secondary-100 border-secondary-500 hover:border-2">
-    <span class="absolute px-2 py-1 tracking-wider text-white uppercase rounded-lg left-5 text-2xs -top-2 bg-secondary-500">
+<div class="relative p-5 group bg-white border-t-[12px] border-x border-b border-x-transparent border-b-transparent rounded-lg transition-all duration-200 delay-100 ease-in-out hover:border-x-secondary-500 hover:border-b-secondary-500 hover:shadow-xl hover:shadow-secondary-100 border-secondary-500 hover:border-2">
+    <span class="absolute px-2 py-1 tracking-wider text-white uppercase duration-200 ease-in-out delay-100 border-2 border-transparent rounded-lg ransition-all left-5 text-2xs -top-2 bg-secondary-500 group-hover:bg-white group-hover:border-secondary-500 group-hover:text-secondary-600">
         Section
     </span>
     <div class="flex flex-col">
@@ -8,7 +8,7 @@
             <h5 class="mb-3 text-xl font-bold tracking-tight text-secondary-700 ">
                 {{__('ui.project_title')}}
             </h5>
-            <button id="dropdownButton" data-dropdown-toggle="dropdown" class="hidden sm:inline-block text-gray-400 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-200 focus:outline-none focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
+            <button id="dropdownButton" data-dropdown-toggle="dropdown" class="hidden sm:inline-block text-gray-400 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z">
                     </path>
@@ -31,9 +31,9 @@
         </div>
 
         <p class="max-w-xs text-sm tracking-tighter text-secondary-600">
-            مشروع بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا 
-             بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا 
-             بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا 
+            مشروع بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا
+            بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا
+            بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا
         </p>
 
 
@@ -54,11 +54,11 @@
         </div>
 
         <div class="flex justify-between mt-4 text-sm text-center text-gray-500">
-            <div @class(['px-4 py-2 basis-1/3 flex items-center justify-center gap-2', 'border-r' => en(), 'border-l' => ar()]) class="">
+            <div @class(['px-4 py-2 basis-1/3 flex items-center justify-center gap-2', 'border-r'=> en(), 'border-l' => ar()]) class="">
                 <i class="ri-chat-1-line"></i>
                 <span>3</span>
             </div>
-            <div @class(['px-4 py-2 basis-1/3 flex items-center justify-center gap-2', 'border-r' => en(), 'border-l' => ar()]) class="">
+            <div @class(['px-4 py-2 basis-1/3 flex items-center justify-center gap-2', 'border-r'=> en(), 'border-l' => ar()]) class="">
                 <i class="ri-attachment-line"></i>
                 <span>5</span>
             </div>
