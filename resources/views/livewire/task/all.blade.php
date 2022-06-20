@@ -2,10 +2,10 @@
 <div>
         <div class="p-2 bg-gray-50 rounded-lg dark:bg-gray-800" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="flex flex-row  gap-8">
-                <div class="basis-1/3  bg-gray-100 rounded-lg">
-                    <div class="flex flex-row justify-between m-3 bg-indigo-600 rounded-lg p-2">
+                <div class="basis-1/3  bg-gray-100 rounded-lg ">
+                    <div class="flex flex-row justify-between m-3  rounded-lg p-2">
                         <div>
-                            <h5 class="mr-3 text-white">
+                            <h5 class="mr-3 text-black font-semibold text-xl ">
                                 المهام
                             </h5>
                         </div>
@@ -22,9 +22,9 @@
                 </div>
             </div>
             <div class="basis-1/3  bg-gray-100 rounded-lg">
-                <div class="flex flex-row justify-between m-3 bg-amber-600 rounded-lg p-2">
+                <div class="flex flex-row justify-between m-3 text-black font-semibold text-xl rounded-lg p-2">
                     <div>
-                        <h5 class="mr-3 text-white">
+                        <h5 class="mr-3 text-black font-semibold text-xl">
                             المهام قيد التنفيذ
                         </h5>
                     </div>
@@ -41,9 +41,9 @@
                 </div>
             </div>
             <div class="basis-1/3  bg-gray-100 rounded-lg">
-                <div class="flex flex-row justify-between m-3 bg-green-600 rounded-lg p-2">
+                <div class="flex flex-row justify-between m-3 text-black font-semibold text-xl rounded-lg p-2">
                     <div>
-                        <h5 class="mr-3 text-white">
+                        <h5 class="mr-3 text-black font-semibold text-xl">
                             المهام المنتهية
                         </h5>
                     </div>
