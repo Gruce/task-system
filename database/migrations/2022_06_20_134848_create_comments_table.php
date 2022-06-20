@@ -16,9 +16,7 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('body');
-
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('SET NULL');
-            $table->foreignId('task_id')->nullable()->constrained('tasks')->onDelete('SET NULL');
 
             $table->integer('commentable_id');
             $table->string('commentable_type');

@@ -29,4 +29,14 @@ class Employee extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function add($data)
+    {
+        $this->name = $data['name'];
+        $this->email = $data['email'];
+        $this->password = bcrypt($data['password']);
+        $this->is_admin = $data['is_admin'];
+        $this->phonenumber = $data['phonenumber'];
+        $this->save();
+    }
 }
