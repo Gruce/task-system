@@ -62,7 +62,9 @@ return [
     'please_fill_in_this_field' => 'الرجاء ملئ هذا الحقل',
     'data_has_been_add_successfully' => 'تم إضافة البيانات بنجاح',
     'tasks' => 'المهام',
-
+    'addattachments' => 'اضف مرفقات',
+    'basicinfo' => 'المعلومات الأساسية',
+    'file' => 'الملف',
 
 
 ];
