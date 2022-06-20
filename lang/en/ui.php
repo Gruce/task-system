@@ -67,6 +67,16 @@ return [
     'file' => 'File',
     'tasks' => 'Tasks',
     'incomplete' => 'Incomplete',
+    'choose_project' => 'Choose Project',
+    'start_date' => 'Start Date',
+    'end_date' => 'End Date',
+    'add_task' => 'Add Task',
+    'assign_task' => 'Assign Task',
+    'importance' => 'Importance',
+    'estimated_time' => 'Estimated Time',
+    'estimated_time_unit' => 'Estimated Time Unit',
+    'choose_importance' => 'Choose Importance',
+    'choose_estimated_time' => 'Choose Estimated Time Unit',
 
 
 ];

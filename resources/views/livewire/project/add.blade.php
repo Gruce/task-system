@@ -1,5 +1,4 @@
 <div class="p-8 bg-white rounded-lg">
-
     <form wire:submit.prevent="add">
         <div class="flex gap-10">
             {{-- Basic Inputs --}}
@@ -30,15 +29,23 @@
             {{-- Attachments --}}
             <div class="flex flex-col gap-4 basis-1/4">
                 {{-- Label --}}
-                <label class="block mb-2 text-sm font-medium text-gray-500">
-                    {{ __('ui.addattachments') }}
+                <label class="flex items-center justify-between mb-2 text-sm font-medium text-gray-500">
+                    <span>{{ __('ui.addattachments') }}</span>
+                    @if (count($files) > 0)
+                        <span class="text-xs text-secondary-400">{{ __('ui.file_count') }}: {{count($files)}} </span>
+                    @endif
                 </label>
 
                 {{-- Input --}}
                 <div class="relative flex items-center justify-center h-48 border-2 border-dotted rounded-lg bg-secondary-50 border-secondary-300">
                     <div class="absolute">
                         <div class="flex flex-col items-center cursor-pointer">
-                            <i class="ri-upload-line ri-3x text-secondary-600"></i>
+                            <div wire:loading wire:target="files">
+                                <i class="mb-3 fas fa-spinner fa-spin fa-3x text-secondary-600"></i>
+                            </div>
+                            <div wire:loading.remove wire:target="files">
+                                <i class="ri-upload-line ri-3x text-secondary-600"></i>
+                            </div>
                             <span class="block font-normal text-secondary-600">{{__('ui.upload_files')}}</span>
                         </div>
                     </div>
@@ -48,7 +55,7 @@
                 {{-- Preview --}}
                 <div class="flex flex-col gap-2">
                     @foreach ($files as $key => $file)
-                    <div class="flex items-center justify-between p-4 rounded-lg bg-secondary-50 text-secondary-500">
+                    <div class="flex items-center justify-between px-4 py-2 rounded-lg bg-secondary-50 text-secondary-500">
                         <span>{{__('ui.file') . ' ' . ($key+1)}}</span>
                         <button wire:click="removeFile({{$key}})" type="button" class="focus:outline-none text-error-600 hover:bg-error-100 focus:ring-4 focus:ring-error-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2">
                             <i class="fa-solid fa-trash"></i>
