@@ -1,11 +1,11 @@
-<div class="relative p-5 bg-white border-t-[12px] rounded-lg shadow-sm border-secondary-500">
+<div class="relative p-5 bg-white border-t-[12px] border-x border-b border-x-transparent border-b-transparent rounded-lg transition-all duration-200 delay-100 ease-in-out hover:border-x-secondary-500 hover:border-b-secondary-500 hover:shadow-xl hover:shadow-secondary-100 border-secondary-500 hover:border-2">
     <span class="absolute px-2 py-1 tracking-wider text-white uppercase rounded-lg left-5 text-2xs -top-2 bg-secondary-500">
         Section
     </span>
     <div class="flex flex-col">
         {{-- Do your work, then step back. --}}
         <div class="flex items-center justify-between mt-3">
-            <h5 class="mb-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white ">
+            <h5 class="mb-3 text-xl font-bold tracking-tight text-secondary-700 ">
                 {{__('ui.project_title')}}
             </h5>
             <button id="dropdownButton" data-dropdown-toggle="dropdown" class="hidden sm:inline-block text-gray-400 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-200 focus:outline-none focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
@@ -29,6 +29,12 @@
                 </ul>
             </div>
         </div>
+
+        <p class="max-w-xs text-sm tracking-tighter text-secondary-600">
+            مشروع بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا 
+             بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا 
+             بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا 
+        </p>
 
 
         <div class="flex my-4 -space-x-4 rtl:space-x-reverse">
