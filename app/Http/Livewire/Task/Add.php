@@ -25,7 +25,6 @@ class Add extends Component
         $this->validate();
 
         $data = [
-            'project_id' => $this->project_id,
             'title' => $this->title,
             'description' => $this->description,
             'importance' => $this->importance,

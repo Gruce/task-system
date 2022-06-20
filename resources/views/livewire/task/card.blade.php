@@ -21,11 +21,11 @@
                             class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">Edit</a>
                     </li>
                     <li>
-                         <a href="#"
+                        <a href="#"
                             class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">Export
                             Data</a>
                     </li>
-                    <li  wire:click="confirmed({{ $task->id }} )>
+                    <li  wire:click="confirmed({{ $task->id }} , 'delete')">
                         <a href="#"
                             class="block py-2 px-4 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">Delete</a>
                     </li>
@@ -51,7 +51,7 @@
                     src="https://cdn.dribbble.com/users/5084254/avatars/normal/7412fd6c884231ed6f256c39b244f8d0.jpg?1644808490&compress=1&resize=40x40"
                     alt="Rounded avatar">
                 <h5 class="p-1 bg-red-200/20 rounded-lg text-xs text-red-500 ">
-                   {{$task->importance}}
+                    {{$task->importance}}
                 </h5>
             </div>
             <hr class="mt-3">
