@@ -12,8 +12,8 @@ class Project extends Model
     use HasFactory, SoftDeletes , HelperTrait;
 
     protected $fillable = ['title', 'description'];
-    protected $appends = ['created_time', 'updated_time' , 'delete_time'];
-    protected $hidden = ['created_at', 'updated_at', 'delete_at'];
+    // protected $appends = ['created_time', 'updated_time' , 'delete_time'];
+    // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
     /****************************************************/
