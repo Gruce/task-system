@@ -65,6 +65,8 @@ return [
     'addattachments' => 'اضف مرفقات',
     'basicinfo' => 'المعلومات الأساسية',
     'file' => 'الملف',
+    'tasks' => 'المهام',
+    'incomplete' => 'غير مكتملة',
 
 
 ];
