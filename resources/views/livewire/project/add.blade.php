@@ -1,5 +1,4 @@
 <div class="p-8 bg-white rounded-lg">
-
     <form wire:submit.prevent="add">
         <div class="flex gap-10">
             {{-- Basic Inputs --}}
