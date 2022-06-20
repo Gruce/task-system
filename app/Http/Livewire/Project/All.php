@@ -18,7 +18,10 @@ class All extends Component
     {
         $search = '%' . $this->search . '%';
 
-        $projects = Project::withCount(['tasks', 'files'])->where('title' , 'LIKE' , $search)->get();
+        $projects = Project::withCount(['tasks', 'files'])
+                    ->where('title' , 'LIKE' , $search)
+                    ->orderByDesc('id')
+                    ->get();
         return view('livewire.project.all', compact('projects'));
     }
 }
