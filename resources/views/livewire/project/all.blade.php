@@ -1,11 +1,21 @@
 <div class="p-8">
-    
+
     <div class="grid grid-cols-4 grid-rows-3 gap-8">
-        @for ($i = 0; $i < 23; $i++)
+        {{-- @for ($i = 0; $i < 23; $i++)
             @livewire('project.card')
-        @endfor
+        @endfor --}}
+        @forelse ($projects as $project )
+            {{-- @livewire('project.card' , ['project' => $project] , ['key' => $project->id]) --}}
+            <livewire:project.card :project="$project" key={{now()}} />
+        @empty
+            <div class="flex justify-center items-center">
+                <div class="text-center">
+                    <h1 class="text-lg text-gray-500 text-center">{{ __('ui.no_data') }}</h1>
+                </div>
+            </div>
+        @endforelse
     </div>
-    
+
 </div>
 
         {{-- <div>
