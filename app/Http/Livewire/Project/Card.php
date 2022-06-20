@@ -13,6 +13,21 @@ class Card extends Component
     protected $listeners = ['delete'];
     public $project , $ID;
 
+    protected $rules = [
+        'project.title' => 'required',
+    ];
+
+    public function edit_name(){
+        $this->project->save();
+        $this->alert('success', __('ui.data_has_been_edited_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
+    }
+
     public function confirmed($id, $function){
         $this->ID = $id;
         $this->confirm(__('ui.are_you_sure'), [
