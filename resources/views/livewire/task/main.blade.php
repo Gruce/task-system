@@ -1,5 +1,6 @@
 @section('title', __('ui.tasks'))
 <div>
+
     <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
         <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
             <li class="mr-2" role="presentation">
@@ -20,13 +21,17 @@
                                 المهام
                             </h5>
                         </div>
-                        <div>
-                            <i class="fa-solid fa-plus text-l text-white"></i>
-                        </div>
+                        <i class="fa-solid fa-plus text-l text-white"></i>
                     </div>
+
                     <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
-                        @for ($i = 0; $i < 10; $i++) <div>@livewire('task.card')</div>
-                    @endfor
+                        {{-- @for ($i = 0; $i < 10; $i++) <div>@livewire('task.card')</div>
+                    @endfor --}}
+                    @forelse ( $tasks as $item )
+                    <div>@livewire('task.card', ['task'=>$item])</div>
+                    @empty
+
+                    @endforelse
                 </div>
             </div>
             <div class="basis-1/3  bg-gray-100 rounded-lg">
@@ -41,80 +46,97 @@
                     </div> --}}
                 </div>
                 <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
-                    @for ($i = 0; $i < 10; $i++) <div>@livewire('task.card')</div>
-                @endfor
-            </div>
-        </div>
-        <div class="basis-1/3  bg-gray-100 rounded-lg">
-            <div class="flex flex-row justify-between m-3 bg-green-600 rounded-lg p-2">
-                <div>
-                    <h5 class="mr-3 text-white">
-                        المهام المنتهية
-                    </h5>
-                </div>
-                {{-- <div>
-                    <i class="fa-solid fa-plus text-l text-white"></i>
-                </div> --}}
-            </div>
-            <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
-                @for ($i = 0; $i < 10; $i++) <div>@livewire('task.card')</div>
-            @endfor
-        </div>
-    </div>
-</div>
-</div>
-<div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-    <div class="flex flex-row mt-2 gap-8">
-        <div class="basis-1/3  bg-gray-100 rounded-lg">
+                    @forelse ( $tasks as $item )
+                    <div>@livewire('task.card', ['task'=>$item])</div>
+                    @empty
 
-            <div class="flex flex-row justify-between m-3 bg-stone-500 rounded-lg p-2">
-                <div>
-                    <h5 class="mr-3 text-white">
-                        المهام المعلقة
-                    </h5>
-                </div>
-                <div>
-                    <i class="fa-solid fa-plus text-l text-white"></i>
+                    @endforelse
                 </div>
             </div>
-            <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
-                @for ($i = 0; $i < 10; $i++) <div>@livewire('task.card')</div>
-            @endfor
-        </div>
-    </div>
-    <div class="basis-1/3  bg-gray-100 rounded-lg">
-        <div class="flex flex-row justify-between m-3 bg-orange-800 rounded-lg p-2">
-            <div>
-                <h5 class="mr-3 text-white">
-                    المهام المتأخرة
-                </h5>
+            <div class="basis-1/3  bg-gray-100 rounded-lg">
+                <div class="flex flex-row justify-between m-3 bg-green-600 rounded-lg p-2">
+                    <div>
+                        <h5 class="mr-3 text-white">
+                            المهام المنتهية
+                        </h5>
+                    </div>
+                    {{-- <div>
+                        <i class="fa-solid fa-plus text-l text-white"></i>
+                    </div> --}}
+                </div>
+                <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
+                    @forelse ( $tasks as $item )
+                    <div>@livewire('task.card', ['task'=>$item])</div>
+                    @empty
+
+                    @endforelse
+                </div>
             </div>
-            {{-- <div>
-                <i class="fa-solid fa-plus text-l text-white"></i>
-            </div> --}}
         </div>
-        <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
-            @for ($i = 0; $i < 10; $i++) <div>@livewire('task.card')</div>
-        @endfor
+    </div>
+    <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+        <div class="flex flex-row mt-2 gap-8">
+            <div class="basis-1/3  bg-gray-100 rounded-lg">
+
+                <div class="flex flex-row justify-between m-3 bg-stone-500 rounded-lg p-2">
+                    <div>
+                        <h5 class="mr-3 text-white">
+                            المهام المعلقة
+                        </h5>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-plus text-l text-white"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
+                    @forelse ( $tasks as $item )
+                    <div>@livewire('task.card', ['task'=>$item])</div>
+                    @empty
+
+                    @endforelse
+                </div>
+            </div>
+            <div class="basis-1/3  bg-gray-100 rounded-lg">
+                <div class="flex flex-row justify-between m-3 bg-orange-800 rounded-lg p-2">
+                    <div>
+                        <h5 class="mr-3 text-white">
+                            المهام المتأخرة
+                        </h5>
+                    </div>
+                    {{-- <div>
+                        <i class="fa-solid fa-plus text-l text-white"></i>
+                    </div> --}}
+                </div>
+                <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
+                    @forelse ( $tasks as $item )
+                    <div>@livewire('task.card', ['task'=>$item])</div>
+                    @empty
+
+                    @endforelse
+                </div>
+            </div>
+            <div class="basis-1/3  bg-gray-100 rounded-lg">
+                <div class="flex flex-row justify-between m-3 bg-red-600 rounded-lg p-2">
+                    <div>
+                        <h5 class="mr-3 text-white">
+                            المهام المرفوضة
+                        </h5>
+                    </div>
+                    {{-- <div>
+                        <i class="fa-solid fa-plus text-l text-white"></i>
+                    </div> --}}
+                </div>
+                <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
+                    @forelse ( $tasks as $item )
+                    <div>@livewire('task.card', ['task'=>$item])</div>
+                    @empty
+
+                    @endforelse
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<div class="basis-1/3  bg-gray-100 rounded-lg">
-    <div class="flex flex-row justify-between m-3 bg-red-600 rounded-lg p-2">
-        <div>
-            <h5 class="mr-3 text-white">
-                المهام المرفوضة
-            </h5>
-        </div>
-        {{-- <div>
-            <i class="fa-solid fa-plus text-l text-white"></i>
-        </div> --}}
-    </div>
-    <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
-        @for ($i = 0; $i < 10; $i++) <div>@livewire('task.card')</div>
-    @endfor
-</div>
-</div>
-</div>
-</div>
-</div>
+
+
 </div>
