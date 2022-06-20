@@ -1,7 +1,8 @@
 <div>
     <div class="p-6 text-right  bg-white rounded-lg border w-full border-gray-200  dark:bg-gray-800 dark:border-gray-700">
         <div class="flex flex-row justify-between items-center">
-            <h5 class="mb-3 text-l font-semibold tracking-tight text-gray-900 dark:text-white ">البناية الاولى
+            <h5 class="mb-3 text-l font-semibold tracking-tight text-gray-900 dark:text-white ">
+                {{$task->title}}
             </h5>
             <button id="dropdownButton" data-dropdown-toggle="dropdown"
                 class="hidden sm:inline-block text-gray-400 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-200 focus:outline-none focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
@@ -35,7 +36,7 @@
             <div class="flex flex-row justify-between items-center">
             <div>
                 <h5 class="p-1 bg-red-500/20 rounded-lg text-sm text-red-500 ">
-                    تفليش
+                    {{$task->start_at}}{{$task->end_at}}
                 </h5>
             </div>
             <div>
@@ -44,13 +45,13 @@
                 </h5>
             </div>
             </div>
-            <p class="mb-3 text-sm font-normal text-gray-400 mt-3  ">هدم هدم هدم هدم هدم هدم هدم</p>
+            <p class="mb-3 text-sm font-normal text-gray-400 mt-3  ">{{$task->description}}</p>
             <div class="flex flex-row">
                 <img class="w-6 h-6 rounded-full ml-1"
                     src="https://cdn.dribbble.com/users/5084254/avatars/normal/7412fd6c884231ed6f256c39b244f8d0.jpg?1644808490&compress=1&resize=40x40"
                     alt="Rounded avatar">
                 <h5 class="p-1 bg-red-200/20 rounded-lg text-xs text-red-500 ">
-                    ضعيف
+                   {{$task->importance}}
                 </h5>
             </div>
             <hr class="mt-3">
