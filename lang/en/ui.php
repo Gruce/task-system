@@ -95,6 +95,7 @@ return [
     'state' => 'State',
     'completed_tasks' => 'Completed Tasks',
     'files' => 'files',
+    'users' => 'users',
 
 
 ];
