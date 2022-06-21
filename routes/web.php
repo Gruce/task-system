@@ -39,10 +39,10 @@ Route::get('change-language/{locale}', [MainController::class, 'changeLanguage']
 
 Route::middleware(['auth'])->group(function () {
 
-    // Route::get('/', Home::class)->name('home');
+    Route::get('/', Home::class)->name('dashboard');
 
     Route::prefix('home')->group(function () {
-        // Route::get('/', Home::class)->name('home');
+        Route::get('/', Home::class)->name('home');
 
     });
 
