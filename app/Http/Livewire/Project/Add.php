@@ -22,8 +22,7 @@ class Add extends Component
 
     ];
 
-    public function removeFile($index)
-    {
+    public function removeFile($index){
         unset($this->files[$index]);
     }
 
