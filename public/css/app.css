@@ -1110,9 +1110,6 @@ select {
 .top-0 {
   top: 0px;
 }
-.right-5 {
-  right: 1.25rem;
-}
 .z-0 {
   z-index: 0;
 }
@@ -1548,9 +1545,6 @@ select {
 }
 .justify-between {
   justify-content: space-between;
-}
-.justify-around {
-  justify-content: space-around;
 }
 .justify-items-center {
   justify-items: center;

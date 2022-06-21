@@ -18,7 +18,13 @@ class All extends Component
     {
         $search = '%' . $this->search . '%';
 
-        $projects = Project::withCount(['tasks', 'files'])
+        $projects = Project::withCount(['tasks', 'files' , 'employees'])
+                    ->with(
+                        [
+                            'employees'=> function($employee){
+                                $employee->limit(3);
+                            }
+                        ])
                     ->where('title' , 'LIKE' , $search)
                     ->orderByDesc('id')
                     ->get();

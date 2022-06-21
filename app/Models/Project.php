@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory, SoftDeletes, HelperTrait;
+    use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
     protected $fillable = ['title', 'description'];
     // protected $appends = ['created_time', 'updated_time' , 'delete_time'];
@@ -19,6 +20,10 @@ class Project extends Model
     /****************************************************/
     /******************* RELATIONSHIPS ******************/
     /****************************************************/
+
+    public function employees(){
+        return $this->belongsToMany(Employee::class);
+    }
 
     public function tasks()
     {
