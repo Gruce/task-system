@@ -84,5 +84,16 @@ return [
     'importance_medium' => 'متوسط',
     'importance_high' => 'مرتفع',
     'importance_very_high' => 'مرتفع جداً',
+    'name' => 'الاسم',
+    'email' => 'البريد الالكتروني',
+    'password' => 'كلمة المرور',
+    'confirm_password' => 'تأكيد كلمة المرور',
+    'phonenumber' => 'رقم الهاتف',
+    'address' => 'العنوان',
+    'gender' => 'الجنس',
+    'job'   => 'الوظيفة',
+    'state' => 'الحالة',
+
+
 
 ];

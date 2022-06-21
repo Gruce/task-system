@@ -27,9 +27,8 @@ class Task extends Model
     /******************* RELATIONSHIPS ******************/
     /****************************************************/
 
-    public function project()
-    {
-        $this->belongsTo(Project::class);
+    public function project(){
+        return $this->belongsTo(Project::class);
     }
 
     public function employees()
@@ -43,7 +42,7 @@ class Task extends Model
     }
 
     public function comments()
-{
+    {
         return $this->morphMany(Comment::class, 'commentable');
     }
 
