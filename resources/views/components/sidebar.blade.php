@@ -23,9 +23,11 @@
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
                     </li>
+
                     @endforeach
                 </ul>
                 @endforeach
+                
             </div>
             <div class="flex flex-col items-center justify-center flex-none w-full basis-96">
                 @foreach ($langs as $locale => $name)

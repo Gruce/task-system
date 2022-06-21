@@ -8,6 +8,8 @@
                             text-gray-400 @endif  text-lg font-bold  rounded md:bg-transparent  md:p-0 " aria-current="page">{{ $nav['name'] }}</a>
             </li>
             @endforeach
+
         </ul>
+
     </div>
 </div>

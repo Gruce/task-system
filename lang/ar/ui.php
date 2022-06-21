@@ -93,6 +93,14 @@ return [
     'gendre' => 'الجنس',
     'job'   => 'الوظيفة',
     'state' => 'الحالة',
+    'to_do' => ' المهام ',
+    'in_progress' => '  المهام القيد التنفيذ ',
+    'done' => ' المهام المنتهية ',
+    'outstanding_tasks' => 'المهام المعلقة',
+    'late_tasks' => 'المهام المتأخرة',
+    'rejected_tasks' => 'المهام المرفوضة',
+    'notifications' => 'الاشعارات'
+
 
 
 

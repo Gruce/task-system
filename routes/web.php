@@ -9,6 +9,7 @@ use App\Http\Livewire\{
 
     Project\Main as ProjectMain,
     Project\Show as ProjectShow,
+    Notification\Main as NotificationMain,
 };
 
 /*
@@ -59,5 +60,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('task')->group(function () {
         Route::get('/', TaskMain::class)->name('task');
+    });
+
+    Route::prefix('notifications')->group(function () {
+        Route::get('/', NotificationMain::class)->name('notifications');
     });
 });

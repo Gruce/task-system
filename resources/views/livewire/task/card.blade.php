@@ -88,8 +88,8 @@
                         'border-r' => en(),
                         'border-l' => ar(),
                     ]) class="">
-                        <i class="ri-chat-1-line"></i>
-                        <span>3</span>
+                            <i class="ri-chat-1-line"></i>
+                            <span>3</span>
                     </div>
                     <div @class([
                         'px-4 py-2 basis-1/4 flex items-center justify-center gap-2',

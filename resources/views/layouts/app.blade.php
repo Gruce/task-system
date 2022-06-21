@@ -42,11 +42,15 @@
                 <div class="flex items-center justify-between h-20 p-5 border-b">
                     <span class="text-2xl font-semibold text-gray-600">@yield('title')</span>
                     @yield('header-actions')
-
-                    @hasSection ('disable-search')
-                    @else
-                    <livewire:ui.search />
-                    @endif
+                    <div class="flex flex-row items-center">
+                        <div class="m-6">
+                            @livewire('notification.card')
+                        </div>
+                        @hasSection ('disable-search')
+                        @else
+                        <livewire:ui.search />
+                        @endif
+                    </div>
                 </div>
                 <div class="p-5 overflow-y-auto h-content bg-secondary-50">
                     @isset($slot)

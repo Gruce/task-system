@@ -93,6 +93,14 @@ return [
     'gendre' => 'Gendre',
     'job' => 'Job',
     'state' => 'State',
+    'to_do' => 'To Do',
+    'in_progress' => 'In Progress',
+    'done' => 'Done',
+    'late_tasks' => 'Late Tasks',
+    'rejected_tasks' => 'Rejected Tasks',
+    'outstanding_tasks' => 'Outstanding Tasks',
+    'notifications' => 'Notifications',
+
 
 
 ];
