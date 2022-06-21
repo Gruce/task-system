@@ -21,12 +21,12 @@
 
 *::-webkit-scrollbar-thumb:vertical {
   height: 5px;
-  background-color: #aaa;
+  background-color: #c2cce1;
   border-radius: 10px;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background-color: #4f46e5;
+  background-color: #92a3c5;
 }
 
 [x-cloak] {
