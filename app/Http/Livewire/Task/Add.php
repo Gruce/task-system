@@ -18,6 +18,7 @@ class Add extends Component
 
     protected $rules = [
         'title' => 'required',
+        //'project_id' => 'required',
         'importance' => 'required',
         'start_at' => 'required',
         'end_at' => 'required',
@@ -35,6 +36,7 @@ class Add extends Component
 
         $data = [
             'title' => $this->title,
+            'project_id' => $this->project_id,
             'description' => $this->description,
             'importance' => $this->importance,
             'start_at' => $this->start_at,
