@@ -17,9 +17,9 @@ class All extends Component
 
     public function render(){
         $search = '%' . $this->search . '%';
-        $tasks  = Task::with('project')
+        $tasks  = Task::withCount(['project' ,'files'])
                 ->where('title' , 'like' , $search)
-                ->where('state' , $this->state )
+                ->orderByDesc('id')
                 ->get();
                 if ($this->state) $tasks = $tasks->where('state', $this->state);
                 
