@@ -1,7 +1,7 @@
 
 <div class="flex h-full gap-8">
     {{-- Right Side --}}
-    @livewire('project.show.side-details')
+    @livewire('project.show.side-details' , ['project' => $project])
 
     {{-- Left Side --}}
     <div class="flex flex-col gap-8 basis-3/4">
@@ -9,7 +9,7 @@
         <div class="flex gap-8 basis-1/3">
             {{-- Right : Users --}}
             @livewire('project.show.users')
-            
+
 
             {{-- Left --}}
             <div class="flex flex-col gap-4 p-8 text-lg font-semibold capitalize bg-white rounded-lg basis-1/2 text-secondary-600">

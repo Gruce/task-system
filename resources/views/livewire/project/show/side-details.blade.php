@@ -1,11 +1,13 @@
 <div class="flex flex-col items-center gap-2 p-8 text-center bg-white rounded-lg basis-1/4">
     <div class="flex items-center gap-2">
-        <span class="text-2xl font-bold text-secondary-600">Project Title</span>
+        <span class="text-2xl font-bold text-secondary-600">
+            {{$project->title}}
+        </span>
     </div>
     <p class="text-sm tracking-tighter text-secondary-500">
-        Project Description
+        {{$project->description}}
     </p>
-    
+
     {{-- <span class="px-2 py-1 text-xs rounded text-secondary-600 bg-secondary-100 w-fit">#{{ $project->id }}</span> --}}
 
     <div class="w-full mt-5">
@@ -20,7 +22,11 @@
 
     {{-- Files --}}
     <div class="relative w-full px-3 pt-5 pb-3 mt-5 border rounded-lg">
-        <span class="absolute px-2 text-xs bg-white -top-2 right-5 text-secondary-500">{{__('ui.files')}}</span>
+        <div class="flex justify-between absolute -top-2 w-full left-0 ">
+            <span class="px-2 mx-4 text-xs bg-white text-secondary-500 capitalize">{{__('ui.files')}}</span>
+            <span class="px-2 mx-4 text-xs bg-white text-secondary-500">{{$project->files_count}}</span>
+        </div>
+
         <div class="flex flex-col w-full gap-2 pl-2 overflow-y-auto h-projectfiles">
             {{-- Addition --}}
             <div class="relative flex items-center justify-center h-20 border-2 border-dotted rounded-lg hover:bg-secondary-50 border-secondary-300">
@@ -38,19 +44,24 @@
             </div>
 
             {{-- Loop Item Below --}}
-            @for ($i = 0; $i < 10; $i++)
+            @forelse ($project->files as $key => $file)
                 <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
-                    <span>{{__('ui.file')}} 1</span>
+                    <span>{{__('ui.file')}} {{$key + 1}}</span>
                     <div class="flex gap-2">
-                        <button class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
+                        <a href="{{$file->file_path}}" download class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
                             <i class="fas fa-download"></i>
-                        </button>
-                        <button class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
+                        </a>
+                        {{-- <button class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
+                            <i class="fas fa-download"></i>
+                        </button> --}}
+                        <button wire:click="confirmed({{ $file->id }} , 'delete')" class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
                 </div>
-            @endfor
+            @empty
+                {{__('ui.no_data')}}
+            @endforelse
         </div>
     </div>
 </div>
