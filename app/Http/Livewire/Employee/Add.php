@@ -30,7 +30,10 @@ class Add extends Component
         $user = new User;
         $user->add($this->employee['user']);
 
-        $user->employee()->create($this->employee);
+        $user->employee()->create([
+            'state' => $this->employee['state'],
+            'job' => $this->employee['job'],
+        ]);
         $this->emitTo('employee.main', '$refresh');
     }
 
