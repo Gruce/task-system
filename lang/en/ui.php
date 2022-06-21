@@ -100,6 +100,7 @@ return [
     'no_comment' => 'لايوجد تعليقات',
     'Leave_a_comment' => 'Leave a comment',
     'profile_photo' => 'Profile Photo',
+    'comments' => 'comments',
 
 
 ];

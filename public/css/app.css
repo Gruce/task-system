@@ -1334,6 +1334,9 @@ select {
 .h-content {
   height: calc(100vh - 8rem);
 }
+.h-7 {
+  height: 1.75rem;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1411,6 +1414,18 @@ select {
   width: -moz-fit-content;
   width: fit-content;
 }
+.w-7 {
+  width: 1.75rem;
+}
+.w-24 {
+  width: 6rem;
+}
+.w-40 {
+  width: 10rem;
+}
+.w-80 {
+  width: 20rem;
+}
 .min-w-0 {
   min-width: 0px;
 }
@@ -1471,6 +1486,9 @@ select {
 .basis-8\/12 {
   flex-basis: 66.666667%;
 }
+.basis-1 {
+  flex-basis: 0.25rem;
+}
 .origin-top-left {
   transform-origin: top left;
 }
@@ -1517,6 +1535,24 @@ select {
   -webkit-animation: spin 1s linear infinite;
           animation: spin 1s linear infinite;
 }
+@-webkit-keyframes ping {
+
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+@keyframes ping {
+
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.animate-ping {
+  -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+          animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
 .cursor-default {
   cursor: default;
 }
@@ -1555,6 +1591,12 @@ select {
 }
 .flex-wrap {
   flex-wrap: wrap;
+}
+.items-start {
+  align-items: flex-start;
+}
+.items-end {
+  align-items: flex-end;
 }
 .items-center {
   align-items: center;
@@ -1633,6 +1675,9 @@ select {
 }
 .self-end {
   align-self: flex-end;
+}
+.justify-self-end {
+  justify-self: end;
 }
 .overflow-hidden {
   overflow: hidden;
@@ -1726,6 +1771,9 @@ select {
 }
 .border-t-0 {
   border-top-width: 0px;
+}
+.border-r-4 {
+  border-right-width: 4px;
 }
 .border-dotted {
   border-style: dotted;
@@ -1884,6 +1932,18 @@ select {
 .bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+}
+.bg-cyan-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 211 238 / var(--tw-bg-opacity));
+}
+.bg-sky-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(56 189 248 / var(--tw-bg-opacity));
+}
+.bg-sky-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 165 233 / var(--tw-bg-opacity));
 }
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
@@ -2399,6 +2459,9 @@ select {
 }
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+.hover\:rounded-lg:hover {
+  border-radius: 0.5rem;
 }
 .hover\:border-2:hover {
   border-width: 2px;
