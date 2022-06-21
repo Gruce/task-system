@@ -6,6 +6,8 @@ use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
 use App\Models\Task;
+use App\Models\Project;
+
 
 class Add extends Component
 {
@@ -20,6 +22,8 @@ class Add extends Component
         'start_at' => 'required',
         'end_at' => 'required',
     ];
+
+
 
 
     public function removeFile($index){
@@ -55,8 +59,12 @@ class Add extends Component
             'width' => '400',
         ]);
     }
+    public function mount(){
+        $this->projects = Project::get(['id','title']);
+    }
 
     public function render(){
+
         return view('livewire.task.add');
     }
 }

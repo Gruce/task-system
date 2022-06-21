@@ -14,19 +14,20 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder={{ __('ui.title') }} required>
                     </div>
-                    {{-- <div>
+                    <div>
                         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
                             {{ __('ui.choose_project') }}</label>
                         </label>
                         <select id="countries"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected="">{{ __('ui.choose_project') }}</option>
-                            <option value="US">United States</option>
-                            <option value="CA">Canada</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
+                            @forelse( $projects as $item )
+                            <option value="{{ $item->id }}">{{ $item->title }}</option>
+                            @empty
+                            <option value="id">{{ __('ui.no_projects') }}</option>
+                            @endforelse
                         </select>
-                    </div> --}}
+                    </div>
                     {{-- <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.start_date') }}
