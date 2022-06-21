@@ -11,10 +11,10 @@ class Show extends Component
 
     public function mount($id){
         $this->project = Project::with(['tasks' , 'files' , 'employees'])
-                        ->withCount(['tasks' , 'files' , 'employees'])
+                        ->withCount(['tasks' , 'files', 'employees'])
                         ->findOrFail($id);
-
         debug($this->project->toArray());
+
     }
 
     public function render()

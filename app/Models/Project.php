@@ -22,7 +22,7 @@ class Project extends Model
     /****************************************************/
 
     public function employees(){
-        return $this->belongsToMany(Employee::class);
+        return $this->belongsToMany(Employee::class)->withTimestamps();
     }
 
     public function tasks()

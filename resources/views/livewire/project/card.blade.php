@@ -54,10 +54,14 @@
 
         <div class="flex my-4 -space-x-4 rtl:space-x-reverse">
             @foreach ($project->employees as  $employee)
-                <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="">
+                <a href="https://github.com/Gruce/task-system/issues/2" target="_blank">
+                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="">
+                </a>
             @endforeach
-            @if($project->tasks_count > 2)
-                <a class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800" href="#">+99</a>
+            @if($project->employees_count > 3)
+                <a href="#" class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800" >
+                    + {{$project->employees_count - 3}}
+                </a>
             @endif
         </div>
 

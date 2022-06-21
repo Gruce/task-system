@@ -15,7 +15,7 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 2 ; $i <= 5 ; $i++)
+        for($i = 2 ; $i <= 6 ; $i++)
             Employee::create([
                 'user_id' => $i,
             ]);

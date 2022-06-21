@@ -25,9 +25,12 @@ class ProjectSeeder extends Seeder
         }
 
         $projects = Project::get();
-        $employees = Employee::pluck('id');
-
+        $employees = Employee::get();
         foreach($projects as $project)
-            $project->employees()->attach($employees);
+            foreach ($employees as $employee)
+                if(array_rand([true , false]))
+                $project->employees()->attach([
+                    'employee_id' => $employee->id
+                ]);
     }
 }

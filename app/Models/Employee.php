@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 
 class Employee extends Model
 {
@@ -13,7 +15,7 @@ class Employee extends Model
 
     protected $fillable = ['user_id', 'state', 'job', 'profile_photo'];
 
-    // protected $appends = ['created_time', 'updated_time', 'delete_time'];
+    protected $appends = ['name'];
     // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
@@ -26,7 +28,7 @@ class Employee extends Model
     }
 
     public function projects(){
-        return $this->belongsToMany(Project::class);
+        return $this->belongsToMany(Project::class)->withTimestamps();
     }
 
     public function files()
@@ -47,5 +49,13 @@ class Employee extends Model
         $this->is_admin = $data['is_admin'];
         $this->phonenumber = $data['phonenumber'];
         $this->save();
+    }
+
+    protected function name(): Attribute {
+        return Attribute::make(
+            get: function () {
+                return $this->user->name;
+            },
+        );
     }
 }

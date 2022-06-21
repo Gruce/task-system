@@ -8,7 +8,7 @@
         {{-- Top --}}
         <div class="flex gap-8 basis-1/3">
             {{-- Right : Users --}}
-            @livewire('project.show.users')
+            @livewire('project.show.users' , ['employees' => $project->employees])
 
 
             {{-- Left --}}
