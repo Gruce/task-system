@@ -22353,12 +22353,9 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************!*\
   !*** ./resources/css/app.css ***!
   \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/postcss-loader/dist/cjs.js):\nTypeError: Cannot read properties of undefined (reading 'config')\n    at getTailwindConfig (E:\\GitHub\\task-system\\node_modules\\tailwindcss\\lib\\lib\\setupTrackingContext.js:131:62)\n    at E:\\GitHub\\task-system\\node_modules\\tailwindcss\\lib\\lib\\setupTrackingContext.js:22:92\n    at E:\\GitHub\\task-system\\node_modules\\tailwindcss\\lib\\processTailwindFeatures.js:38:11\n    at plugins (E:\\GitHub\\task-system\\node_modules\\tailwindcss\\lib\\index.js:30:63)\n    at LazyResult.runOnRoot (E:\\GitHub\\task-system\\node_modules\\postcss\\lib\\lazy-result.js:339:16)\n    at LazyResult.runAsync (E:\\GitHub\\task-system\\node_modules\\postcss\\lib\\lazy-result.js:393:26)\n    at LazyResult.async (E:\\GitHub\\task-system\\node_modules\\postcss\\lib\\lazy-result.js:221:30)\n    at LazyResult.then (E:\\GitHub\\task-system\\node_modules\\postcss\\lib\\lazy-result.js:206:17)\n    at processResult (E:\\GitHub\\task-system\\node_modules\\webpack\\lib\\NormalModule.js:758:19)\n    at E:\\GitHub\\task-system\\node_modules\\webpack\\lib\\NormalModule.js:860:5\n    at E:\\GitHub\\task-system\\node_modules\\loader-runner\\lib\\LoaderRunner.js:400:11\n    at E:\\GitHub\\task-system\\node_modules\\loader-runner\\lib\\LoaderRunner.js:252:18\n    at context.callback (E:\\GitHub\\task-system\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at Object.loader (E:\\GitHub\\task-system\\node_modules\\postcss-loader\\dist\\index.js:142:7)");
 
 /***/ }),
 
