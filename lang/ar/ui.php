@@ -90,9 +90,12 @@ return [
     'confirm_password' => 'تأكيد كلمة المرور',
     'phonenumber' => 'رقم الهاتف',
     'address' => 'العنوان',
-    'gendre' => 'الجنس',
+    'gender' => 'الجنس',
     'job'   => 'الوظيفة',
     'state' => 'الحالة',
+    'completed_tasks' => 'مهمة مكتملة',
+    'files' => 'الملفات',
+    'users' => 'المستخدمين',
     'to_do' => ' المهام ',
     'in_progress' => '  المهام القيد التنفيذ ',
     'done' => ' المهام المنتهية ',
@@ -103,7 +106,6 @@ return [
     'the_sender_name' => 'اسم المرسل',
     'date' => 'التاريخ',
     'time'=>'الوقت',
-
 
 
 

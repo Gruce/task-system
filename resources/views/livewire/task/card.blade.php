@@ -2,14 +2,14 @@
     <div
         class="relative p-5 bg-white border-t-[12px] border-x border-b border-x-transparent border-b-transparent rounded-lg transition-all duration-200 delay-100 ease-in-out hover:border-x-indigo-600 hover:border-b-indigo-600 hover:shadow-xl hover:shadow-secondary-100 border-indigo-600 hover:border-2">
 
-            <select id="states" class="absolute text-center  py-1 tracking-wider  uppercase rounded-lg left-5 text-2xs -top-2 bg-indigo-600  text-white text-sm rounded-r-lg   block w-1/4 p-1.5 ">
+            <select   wire:model.lazy="state" id="states" class="absolute text-center  py-1 tracking-wider  uppercase rounded-lg left-5 text-2xs -top-2 bg-indigo-600  text-white text-sm rounded-r-lg   block w-1/4 p-1.5 ">
                 <option selected>اختر حالة المهمة</option>
-                <option value="CA">غير مسندة</option>
-                <option value="TX">قيد التنفيذ</option>
-                <option value="WH">منتهية</option>
-                <option value="FL">معلقة</option>
-                <option value="VG">متأخرة</option>
-                <option value="GE">معطلة</option>
+                <option value="1">غير مسندة</option>
+                <option value="2">قيد التنفيذ</option>
+                <option value="3">منتهية</option>
+                <option value="4">معلقة</option>
+                <option value="7">متأخرة</option>
+                <option value="8">معطلة</option>
             </select>
 
         <div
@@ -45,7 +45,7 @@
                                 class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">Export
                                 Data</a>
                         </li>
-                        <li  wire>
+                        <li >
                             <a href="#"  wire:click="confirmed({{ $task->id }})"
                                 class="block py-2 px-4 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">Delete</a>
                         </li>
@@ -71,6 +71,7 @@
                         </h6>
                         <h6 class="p-1  text-sm text-gray-500 ">
                             {{$task->end_at}}
+
                         </h6>
                     </div>
                 </div>
@@ -100,7 +101,9 @@
                         <span>{{$task->files_count}}</span>
                     </div>
                     <div @class(['px-4 py-2 basis-1/3 flex items-center justify-center gap-2']) class="">
+                        <a href="#"  >
                         <i class="fa-solid fa-circle-check"></i>
+                    </a>
                     </div>
 
                 </div>

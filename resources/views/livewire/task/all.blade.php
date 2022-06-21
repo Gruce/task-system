@@ -14,11 +14,13 @@
                     <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
                         {{-- @for ($i = 0; $i < 10; $i++) <div>@livewire('task.card')</div>
                     @endfor --}}
+                    @if($state == 1)
                     @forelse ( $tasks as $item )
                     <div>@livewire('task.card', ['task'=>$item])</div>
                     @empty
 
                     @endforelse
+                    @endif
                 </div>
             </div>
             <div class="basis-1/3  bg-gray-100 rounded-lg">
@@ -33,11 +35,13 @@
                     </div> --}}
                 </div>
                 <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
+                    @if($state == 2)
                     @forelse ( $tasks as $item )
                     <div>@livewire('task.card', ['task'=>$item])</div>
                     @empty
 
                     @endforelse
+                    @endif
                 </div>
             </div>
             <div class="basis-1/3  bg-gray-100 rounded-lg">
@@ -52,10 +56,12 @@
                     </div> --}}
                 </div>
                 <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
+                    @if($state == 3)
                     @forelse ( $tasks as $item )
                     <div>@livewire('task.card', ['task'=>$item])</div>
                     @empty
                     @endforelse
+                    @endif
                 </div>
             </div>
         </div>

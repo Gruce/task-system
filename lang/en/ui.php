@@ -90,9 +90,12 @@ return [
     'confirm_password' => 'Confirm Password',
     'phonenumber' => 'Phone Number',
     'address' => 'Address',
-    'gendre' => 'Gendre',
+    'gender' => 'Gender',
     'job' => 'Job',
     'state' => 'State',
+    'completed_tasks' => 'Completed Tasks',
+    'files' => 'files',
+    'users' => 'users',
     'to_do' => 'To Do',
     'in_progress' => 'In Progress',
     'done' => 'Done',
@@ -103,7 +106,6 @@ return [
     'the_sender_name' => 'The Sender Name',
     'date' => 'Date',
     'time' => 'Time',
-
 
 
 ];

@@ -12,7 +12,7 @@ class Card extends Component
     use LivewireAlert;
     use WithFileUploads;
 
-    protected $listeners = ['$refresh', 'delete'];
+    protected $listeners = ['$refresh', 'delete','changeState'];
     protected $rules = [
         'title' => 'required',
         'importance' => 'required',
@@ -23,6 +23,7 @@ class Card extends Component
     public $task, $ID;
 
     public function mount($task){
+        
         $this->task = $task;
     }
 
@@ -38,8 +39,7 @@ class Card extends Component
         ]);
     }
 
-    public function delete()
-    {
+    public function delete(){
         Task::findOrFail($this->ID)->delete();
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',
@@ -68,7 +68,6 @@ class Card extends Component
             'toast' => true,
         ]);
     }
-
 
     public function render(){
 

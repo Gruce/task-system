@@ -1,5 +1,4 @@
 <div class="p-8 bg-white rounded-lg">
-
     <form wire:submit.prevent="add">
         <div class="flex gap-10">
             {{-- Basic Inputs --}}
@@ -38,7 +37,12 @@
                 <div class="relative flex items-center justify-center h-48 border-2 border-dotted rounded-lg bg-secondary-50 border-secondary-300">
                     <div class="absolute">
                         <div class="flex flex-col items-center cursor-pointer">
-                            <i class="ri-upload-line ri-3x text-secondary-600"></i>
+                            <div wire:loading wire:target="files">
+                                <i class="mb-3 fas fa-spin fa-spinner fa-3x text-secondary-600"></i>
+                            </div>
+                            <div wire:loading.remove wire:target="files">
+                                <i class="ri-upload-line ri-3x text-secondary-600"></i>
+                            </div>
                             <span class="block font-normal text-secondary-600">{{__('ui.upload_files')}}</span>
                         </div>
                     </div>

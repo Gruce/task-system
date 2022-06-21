@@ -14,6 +14,7 @@ module.exports = {
                 'main': 'calc(100vh - 3rem)',
                 'content': 'calc(100vh - 8rem)',
                 'tasklist': 'calc(100vh - 12.5rem)',
+                'projectfiles': 'calc(100vh - 25rem)',
             },
             fontFamily: {
                 sans: ['Cairo', ...defaultTheme.fontFamily.sans],
@@ -31,7 +32,7 @@ module.exports = {
                     800: '#231c9e',
                     900: '#1d187d',
                 },
-                'secondary': {
+                'secondary': { 
                     50: '#f4f6fa',
                     100: '#dbe1ee',
                     200: '#c2cce1',
