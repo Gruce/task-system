@@ -21,6 +21,11 @@ class Add extends Component
         'end_at' => 'required',
     ];
 
+
+    public function removeFile($index){
+        unset($this->files[$index]);
+    }
+
     public function add( Task $task ){
         $this->validate();
 
@@ -41,7 +46,7 @@ class Add extends Component
                 $new_file->add_file('name' , $file , 'tasks/' . $task->id . '/files/' . $new_file->id);
             }
 
-            $this->reset();
+        $this->emitTo('task.main', '$refresh');
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
             'timer' => 3000,
