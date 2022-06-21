@@ -6,6 +6,7 @@ use App\Traits\HelperTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Comment;
 
 class Project extends Model
 {
@@ -39,4 +40,13 @@ class Project extends Model
     /****************************************************/
     /******************* END RELATIONSHIPS **************/
     /****************************************************/
+
+
+    public function comment($body)
+    {
+        $comment = new Comment;
+        $comment->body = $body;
+        $comment->user_id = auth()->id();
+        $this->comments()->save($comment);
+    }
 }

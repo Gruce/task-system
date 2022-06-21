@@ -96,6 +96,11 @@ return [
     'completed_tasks' => 'مهمة مكتملة',
     'files' => 'الملفات',
     'users' => 'المستخدمين',
+    'commend' => 'تعليق',
+    'no_comment' => 'لايوجد تعليقات',
+    'Leave_a_comment' => 'اترك تعليقا',
+    'profile_photo' => 'صورة الملف الشخصي',
+
 
 
 

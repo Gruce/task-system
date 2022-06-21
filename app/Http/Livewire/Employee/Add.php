@@ -21,6 +21,7 @@ class Add extends Component
         'employee.user.password' => 'required',
         'employee.user.gender' => 'required',
         'employee.user.phonenumber' => 'required',
+        'employee.user.profile_photo_path' => 'required',
         'employee.state' => 'required',
         'employee.job' => 'required',
     ];
@@ -28,6 +29,7 @@ class Add extends Component
     public function mount()
     {
         $this->employee['user']['gender'] = 1;
+        $this->employee['user']['profile_photo_path'] = null;
     }
 
 
