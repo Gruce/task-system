@@ -12,7 +12,7 @@ class Card extends Component
     use LivewireAlert;
     use WithFileUploads;
 
-    protected $listeners = ['$refresh', 'delete','changeState'];
+    protected $listeners = ['$refresh', 'delete'];
     protected $rules = [
         'title' => 'required',
         'importance' => 'required',
@@ -23,10 +23,10 @@ class Card extends Component
     public $task, $ID;
 
     public function mount($task){
-        
         $this->task = $task;
     }
 
+    
     public function confirmed($id ){
         $this->ID = $id;
         $this->confirm(__('ui.are_you_sure'), [
