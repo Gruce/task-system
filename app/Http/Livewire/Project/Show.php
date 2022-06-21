@@ -3,11 +3,14 @@
 namespace App\Http\Livewire\Project;
 
 use Livewire\Component;
+use App\Models\Project;
 
 class Show extends Component
 {
-    public function mount($id){
-        dd($id);
+    public $project;
+
+    public function mount(Project $id){
+        $this->project = $id;
     }
 
     public function render()
