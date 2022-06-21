@@ -33,20 +33,24 @@
 
 <body class="font-sans antialiased bg-secondary-100" dir="{{ config('app.locale') == 'en' ? 'ltr' : 'rtl' }}">
     <div class="p-6 mx-auto">
-        <div class="flex flex-row bg-white rounded-lg h-main" x-data="{ sidebar_extended: false }">
+        <div class="flex flex-row bg-white rounded-lg h-main" x-data="{ sidebar_extended: false }" x-cloak>
             {{-- Left Sidebar --}}
             <x-sidebar />
 
             {{-- Content --}}
             <div class="w-8/12 pb-10 basis-8/12 grow">
                 <div class="flex items-center justify-between h-20 p-5 border-b">
-                    <span class="text-2xl font-semibold text-gray-600">@yield('title')</span>
+                    <span class="text-2xl font-semibold text-secondary-700">@yield('title')</span>
                     @yield('header-actions')
-
-                    @hasSection ('disable-search')
-                    @else
-                    <livewire:ui.search />
-                    @endif
+                    <div class="flex flex-row items-center">
+                        <div class="m-6">
+                            @livewire('notification.card')
+                        </div>
+                        @hasSection ('disable-search')
+                        @else
+                        <livewire:ui.search />
+                        @endif
+                    </div>
                 </div>
                 <div class="p-5 overflow-y-auto h-content bg-secondary-50">
                     @isset($slot)

@@ -6,6 +6,8 @@ use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
 use App\Models\Task;
+use App\Models\Project;
+
 
 class Add extends Component
 {
@@ -16,16 +18,25 @@ class Add extends Component
 
     protected $rules = [
         'title' => 'required',
+        //'project_id' => 'required',
         'importance' => 'required',
         'start_at' => 'required',
         'end_at' => 'required',
     ];
+
+
+
+
+    public function removeFile($index){
+        unset($this->files[$index]);
+    }
 
     public function add( Task $task ){
         $this->validate();
 
         $data = [
             'title' => $this->title,
+            'project_id' => $this->project_id,
             'description' => $this->description,
             'importance' => $this->importance,
             'start_at' => $this->start_at,
@@ -33,15 +44,15 @@ class Add extends Component
         ];
         $task = Task::create($data);
 
-        if(count($this->files) > 0)
-            foreach($this->files as $file){
+        if (count($this->files) > 0)
+            foreach ($this->files as $file) {
                 $new_file = $task->files()->create([
                     'name' => 'File',
                 ]);
-                $new_file->add_file('name' , $file , 'tasks/' . $task->id . '/files/' . $new_file->id);
+                $new_file->add_file('name', $file, 'tasks/' . $task->id . '/files/' . $new_file->id);
             }
 
-            $this->reset();
+        $this->emitTo('task.main', '$refresh');
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
             'timer' => 3000,
@@ -50,8 +61,12 @@ class Add extends Component
             'width' => '400',
         ]);
     }
+    public function mount(){
+        $this->projects = Project::get(['id','title']);
+    }
 
     public function render(){
+
         return view('livewire.task.add');
     }
 }

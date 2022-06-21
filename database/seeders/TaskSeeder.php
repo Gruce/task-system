@@ -23,12 +23,14 @@ class TaskSeeder extends Seeder
                 'title' => 'title ' . $key++,
                 'description' => 'description',
                 'start_at' => date('Y-m-d'),
+                'end_at' => date('Y-m-d'),
             ]);
 
             $project->tasks()->create([
                 'title' => 'title ' . $key,
                 'description' => 'description',
                 'start_at' => date('Y-m-d'),
+                'end_at' => date('Y-m-d'),
             ]);
         });
 

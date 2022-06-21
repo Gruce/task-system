@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="my-4" x-show="add">
+    <div class="my-4" x-show="add" x-transition>
         @livewire('task.add')
     </div>
 

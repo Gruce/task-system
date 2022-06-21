@@ -1,4 +1,5 @@
 <div class="p-8 bg-white rounded-lg">
+
     <form wire:submit.prevent="add">
         <div class="flex gap-10">
             {{-- Basic Inputs --}}
@@ -27,30 +28,25 @@
             </div>
 
             {{-- Attachments --}}
-            <div class="flex flex-col gap-4 basis-1/4">
+            {{-- <div class="flex flex-col gap-4 basis-1/4">
                 {{-- Label --}}
-                <label class="block mb-2 text-sm font-medium text-gray-500">
+                {{-- <label class="block mb-2 text-sm font-medium text-gray-500">
                     {{ __('ui.addattachments') }}
-                </label>
+                </label> --}}
 
                 {{-- Input --}}
-                <div class="relative flex items-center justify-center h-48 border-2 border-dotted rounded-lg bg-secondary-50 border-secondary-300">
+                {{-- <div class="relative flex items-center justify-center h-48 border-2 border-dotted rounded-lg bg-secondary-50 border-secondary-300">
                     <div class="absolute">
                         <div class="flex flex-col items-center cursor-pointer">
-                            <div wire:loading wire:target="files">
-                                <i class="mb-3 fas fa-spin fa-spinner fa-3x text-secondary-600"></i>
-                            </div>
-                            <div wire:loading.remove wire:target="files">
-                                <i class="ri-upload-line ri-3x text-secondary-600"></i>
-                            </div>
+                            <i class="ri-upload-line ri-3x text-secondary-600"></i>
                             <span class="block font-normal text-secondary-600">{{__('ui.upload_files')}}</span>
                         </div>
                     </div>
                     <input wire:model="files" type="file" class="w-full h-full opacity-0 cursor-pointer" name="" multiple>
-                </div>
+                </div> --}}
 
                 {{-- Preview --}}
-                <div class="flex flex-col gap-2">
+                {{-- <div class="flex flex-col gap-2">
                     @foreach ($files as $key => $file)
                     <div class="flex items-center justify-between p-4 rounded-lg bg-secondary-50 text-secondary-500">
                         <span>{{__('ui.file') . ' ' . ($key+1)}}</span>
@@ -59,7 +55,7 @@
                         </button>
                     </div>
                     @endforeach
-                </div>
+                </div> --}}
             </div>
         </div>
 

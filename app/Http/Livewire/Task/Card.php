@@ -26,6 +26,7 @@ class Card extends Component
         $this->task = $task;
     }
 
+    
     public function confirmed($id ){
         $this->ID = $id;
         $this->confirm(__('ui.are_you_sure'), [
@@ -38,8 +39,7 @@ class Card extends Component
         ]);
     }
 
-    public function delete()
-    {
+    public function delete(){
         Task::findOrFail($this->ID)->delete();
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',
@@ -68,7 +68,6 @@ class Card extends Component
             'toast' => true,
         ]);
     }
-
 
     public function render(){
 

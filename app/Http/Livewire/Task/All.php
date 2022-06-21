@@ -7,10 +7,23 @@ use App\Models\Task ;
 use App\Models\Project;
 class All extends Component
 {
-    public function render()
-    {
+    public $search  , $state = 1;
 
-        $tasks = Task::get();
+    protected $listeners = ['$refresh' , 'search'];
+
+    public function search($search){
+        $this->search = $search;
+    }
+
+    public function render(){
+        $search = '%' . $this->search . '%';
+        $tasks  = Task::withCount(['project' ,'files'])
+                ->where('title' , 'like' , $search)
+                ->orderByDesc('id')
+                ->get();
+                if ($this->state) $tasks = $tasks->where('state', $this->state);
+                
+
 
         return view('livewire.task.all', compact('tasks'));
     }
