@@ -97,7 +97,7 @@ return [
     'files' => 'files',
     'users' => 'users',
     'comment' => 'Comment',
-    'no_comment' => 'لايوجد تعليقات',
+    'no_comment' => 'No Comments',
     'leave_a_comment' => 'Leave a comment',
     'profile_photo' => 'Profile Photo',
     'comments' => 'Comments',
