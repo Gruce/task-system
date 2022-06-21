@@ -4,43 +4,24 @@ namespace App\Http\Livewire\Project;
 
 use Livewire\Component;
 use App\Models\Project;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class All extends Component
 {
-    use LivewireAlert;
-    protected $listeners = ['$refresh', 'delete'];
-    
-    public $ID;
+    protected $listeners = ['$refresh' , 'search'];
+    public $search;
 
-    public function confirmed($id, $function)
-    {
-        $this->ID = $id;
-        $this->confirm(__('ui.are_you_sure'), [
-            'toast' => false,
-            'position' => 'center',
-            'showConfirmButton' => "true",
-            'cancelButtonText' => (__('ui.cancel')),
-            'confirmButtonText' => (__('ui.confirm')),
-            'onConfirmed' => $function,
-        ]);
-    }
-
-    public function delete()
-    {
-        Project::findOrFail($this->ID)->delete();
-        $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
-            'position' => 'top',
-            'timer' => 3000,
-            'toast' => true,
-            'timerProgressBar' => true,
-            'width' => '400',
-        ]);
+    public function search($search){
+        $this->search = $search;
     }
 
     public function render()
     {
-        $projects = Project::withCount(['tasks', 'files'])->get();
+        $search = '%' . $this->search . '%';
+
+        $projects = Project::withCount(['tasks', 'files'])
+                    ->where('title' , 'LIKE' , $search)
+                    ->orderByDesc('id')
+                    ->get();
         return view('livewire.project.all', compact('projects'));
     }
 }

@@ -6,45 +6,45 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 
 trait HelperTrait {
 
-    protected function createdTime(): Attribute {
-        return Attribute::make(
-            get: function () {
-                return $this->created_at ? $this->created_at->format('Y-m-d H:i:s') : null;
-            },
-        );
-    }
+    // protected function createdTime(): Attribute {
+    //     return Attribute::make(
+    //         get: function () {
+    //             return $this->created_at ? $this->created_at->format('Y-m-d H:i:s') : null;
+    //         },
+    //     );
+    // }
 
-    protected function updatedTime(): Attribute {
-        return Attribute::make(
-            get: function () {
-                return $this->updated_at ? $this->updated_at->format('Y-m-d H:i:s') : null;
-            },
-        );
-    }
+    // protected function updatedTime(): Attribute {
+    //     return Attribute::make(
+    //         get: function () {
+    //             return $this->updated_at ? $this->updated_at->format('Y-m-d H:i:s') : null;
+    //         },
+    //     );
+    // }
 
-    protected function deletedTime(): Attribute {
-        return Attribute::make(
-            get: function () {
-                return $this->delete_at ? $this->delete_at->format('Y-m-d H:i:s') : null;
-            },
-        );
-    }
+    // protected function deletedTime(): Attribute {
+    //     return Attribute::make(
+    //         get: function () {
+    //             return $this->delete_at ? $this->delete_at->format('Y-m-d H:i:s') : null;
+    //         },
+    //     );
+    // }
 
-    protected function startTime(): Attribute {
-        return Attribute::make(
-            get: function () {
-                return $this->updated_at ? $this->updated_at->format('Y-m-d H:i:s') : null;
-            },
-        );
-    }
+    // protected function startTime(): Attribute {
+    //     return Attribute::make(
+    //         get: function () {
+    //             return $this->updated_at ? $this->updated_at->format('Y-m-d H:i:s') : null;
+    //         },
+    //     );
+    // }
 
-    protected function endTime(): Attribute {
-        return Attribute::make(
-            get: function () {
-                return $this->updated_at ? $this->updated_at->format('Y-m-d H:i:s') : null;
-            },
-        );
-    }
+    // protected function endTime(): Attribute {
+    //     return Attribute::make(
+    //         get: function () {
+    //             return $this->updated_at ? $this->updated_at->format('Y-m-d H:i:s') : null;
+    //         },
+    //     );
+    // }
 
     // protected function scopeWhereExist($query, $column, $value = null ,$operator = '=') {
     //     if(is_array($column) && array_key_exists('search' , $column)) unset($column['search']);

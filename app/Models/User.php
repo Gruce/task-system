@@ -44,8 +44,11 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $fillable = [
         'name',
+        'gender',
         'email',
         'password',
+        'phonenumber',
+        'is_admin'
     ];
 
     /**
@@ -74,6 +77,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function add($data)
     {
+
         $this->fill($data);
         $this->save();
     }
@@ -89,4 +93,14 @@ class User extends Authenticatable implements JWTSubject
         'updated_time',
         'delete_time',
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function employee()
+    {
+        return $this->hasOne(Employee::class);
+    }
 }
