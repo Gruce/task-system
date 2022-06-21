@@ -90,9 +90,14 @@ return [
     'confirm_password' => 'تأكيد كلمة المرور',
     'phonenumber' => 'رقم الهاتف',
     'address' => 'العنوان',
-    'gendre' => 'الجنس',
+    'gender' => 'الجنس',
     'job'   => 'الوظيفة',
     'state' => 'الحالة',
+    'commend' => 'تعليق',
+    'no_comment' => 'لايوجد تعليقات',
+    'Leave_a_comment' => 'اترك تعليقا',
+    'profile_photo' => 'صورة الملف الشخصي',
+
 
 
 

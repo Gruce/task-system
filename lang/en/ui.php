@@ -90,9 +90,13 @@ return [
     'confirm_password' => 'Confirm Password',
     'phonenumber' => 'Phone Number',
     'address' => 'Address',
-    'gendre' => 'Gendre',
+    'gender' => 'Gender',
     'job' => 'Job',
     'state' => 'State',
+    'commend' => 'Commend',
+    'no_comment' => 'لايوجد تعليقات',
+    'Leave_a_comment' => 'Leave a comment',
+    'profile_photo' => 'Profile Photo',
 
 
 ];
