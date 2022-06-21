@@ -1107,9 +1107,6 @@ select {
 .-top-2 {
   top: -0.5rem;
 }
-.right-5 {
-  right: 1.25rem;
-}
 .top-0 {
   top: 0px;
 }
@@ -1141,6 +1138,10 @@ select {
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .mx-3 {
   margin-left: 0.75rem;

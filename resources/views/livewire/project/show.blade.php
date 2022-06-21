@@ -12,14 +12,7 @@
 
 
             {{-- Left --}}
-            <div class="flex flex-col gap-4 p-8 text-lg font-semibold capitalize bg-white rounded-lg basis-1/2 text-secondary-600">
-                <div class="flex justify-between">
-                    <div class="flex items-center gap-4">
-                        <span class="w-3.5 h-3.5 bg-warning-400 border-2 border-white rounded-full"></span>
-                        <span>currently no data</span>
-                    </div>
-                </div>
-            </div>
+            @livewire('project.show.comments')
         </div>
 
         {{-- Bottom --}}
