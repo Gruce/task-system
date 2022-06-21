@@ -59,7 +59,7 @@
             @endfor
             <li class="text-center">
 
-                <a href="" class="text-black text-center font-semibold hover:text-indigo-600">
+                <a href="{{route('notifications')}}" class="text-black text-center font-semibold hover:text-indigo-600">
                     show more
                 </a>
             </li>

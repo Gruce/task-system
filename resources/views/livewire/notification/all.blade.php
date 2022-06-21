@@ -6,19 +6,19 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            العنوان
+                            {{ __('ui.title') }}
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            اسم المرسل
+                            {{ __('ui.the_sender_name') }}
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            التاريخ
+                            {{ __('ui.date') }}
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            الوقت
+                            {{ __('ui.time') }}
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            عرض
+                            {{ __('ui.show') }}
                         </th>
                     </tr>
                 </thead>

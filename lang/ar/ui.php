@@ -99,7 +99,10 @@ return [
     'outstanding_tasks' => 'المهام المعلقة',
     'late_tasks' => 'المهام المتأخرة',
     'rejected_tasks' => 'المهام المرفوضة',
-    'notifications' => 'الاشعارات'
+    'notifications' => 'الاشعارات',
+    'the_sender_name' => 'اسم المرسل',
+    'date' => 'التاريخ',
+    'time'=>'الوقت',
 
 
 

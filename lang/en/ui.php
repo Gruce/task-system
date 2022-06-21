@@ -100,6 +100,9 @@ return [
     'rejected_tasks' => 'Rejected Tasks',
     'outstanding_tasks' => 'Outstanding Tasks',
     'notifications' => 'Notifications',
+    'the_sender_name' => 'The Sender Name',
+    'date' => 'Date',
+    'time' => 'Time',
 
 
 
