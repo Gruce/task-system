@@ -28,6 +28,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/flowbite@1.4.6/dist/flowbite.js"></script>
     <script src="https://kit.fontawesome.com/4e8940f861.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/flowbite@1.4.7/dist/datepicker.js"></script>
 </head>
 
 <body class="font-sans antialiased bg-secondary-100" dir="{{ config('app.locale') == 'en' ? 'ltr' : 'rtl' }}">
