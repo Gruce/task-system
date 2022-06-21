@@ -90,7 +90,7 @@ return [
     'confirm_password' => 'تأكيد كلمة المرور',
     'phonenumber' => 'رقم الهاتف',
     'address' => 'العنوان',
-    'gendre' => 'الجنس',
+    'gender' => 'الجنس',
     'job'   => 'الوظيفة',
     'state' => 'الحالة',
     'completed_tasks' => 'مهمة مكتملة',

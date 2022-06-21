@@ -1,4 +1,3 @@
-@section('title', __('ui.projects'))
 
 <div class="flex h-full gap-8">
     {{-- Right Side --}}
@@ -49,4 +48,3 @@
         </div>
     </div>
 </div>
- 

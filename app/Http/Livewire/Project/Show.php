@@ -7,10 +7,9 @@ use App\Models\Project;
 
 class Show extends Component
 {
-    public $project;
-
-    public function mount(Project $id){
-        $this->project = $id;
+    public function mount($id){
+        $this->project = Project::with(['tasks' , 'files'])->findOrFail($id);
+        debug($this->project->toArray());
     }
 
     public function render()
