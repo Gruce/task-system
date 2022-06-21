@@ -14,8 +14,8 @@ class File extends Model
 
     protected $fillable = ['name' , 'fileable_id' , 'fileable_type'];
 
-    protected $appends = ['created_time', 'updated_time' , 'delete_time'];
-    protected $hidden = ['created_at', 'updated_at', 'delete_at'];
+    protected $appends = ['file_path'];
+    // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
     /****************************************************/
     /******************* RELATIONSHIPS ******************/
@@ -28,4 +28,22 @@ class File extends Model
     /****************************************************/
     /******************* END RELATIONSHIPS **************/
     /****************************************************/
+
+
+    protected function filePath(): Attribute {
+        return Attribute::make(
+            get: function () {
+                $file = '/files/' . $this->id . '/' . $this->name ;
+
+                if (str_contains($this->fileable_type, 'Project'))
+                    return config('app.url') . '/storage/projects/' . $this->fileable_id . $file;
+
+                elseif(str_contains($this->fileable_type, 'Task'))
+                    return config('app.url') . '/storage/tasks/' . $this->fileable_id . $file;
+
+                else return null;
+
+            },
+        );
+    }
 }
