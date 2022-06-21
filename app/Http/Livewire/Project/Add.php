@@ -11,7 +11,7 @@ use App\Models\Project;
 
 class Add extends Component
 {
-    use WithFileUploads , LivewireAlert;
+    use WithFileUploads, LivewireAlert;
     public $project;
     public $files = [];
 
@@ -22,23 +22,25 @@ class Add extends Component
 
     ];
 
-    public function removeFile($index){
+    public function removeFile($index)
+    {
         unset($this->files[$index]);
     }
 
-    public function add(){
+    public function add()
+    {
         $this->validate();
         $project = Project::create($this->project);
 
-        if(count($this->files) > 0)
-            foreach($this->files as $file){
+        if (count($this->files) > 0)
+            foreach ($this->files as $file) {
                 $new_file = $project->files()->create([
                     'name' => 'File',
                 ]);
-                $new_file->add_file('name' , $file , 'projects/' . $project->id . '/files/' . $new_file->id);
+                $new_file->add_file('name', $file, 'projects/' . $project->id . '/files/' . $new_file->id);
             }
 
-        $this->emitTo('project.index' , '$refresh');
+        $this->emitTo('project.main', '$refresh');
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
             'timer' => 3000,

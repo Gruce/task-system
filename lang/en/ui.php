@@ -84,6 +84,15 @@ return [
     'importance_medium' => 'Medium',
     'importance_high' => 'High',
     'importance_very_high' => 'Very High',
+    'name' => 'Name',
+    'email' => 'Email',
+    'password' => 'Password',
+    'confirm_password' => 'Confirm Password',
+    'phonenumber' => 'Phone Number',
+    'address' => 'Address',
+    'gendre' => 'Gendre',
+    'job' => 'Job',
+    'state' => 'State',
 
 
 ];
