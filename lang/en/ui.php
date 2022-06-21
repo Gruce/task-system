@@ -93,6 +93,9 @@ return [
     'gender' => 'Gender',
     'job' => 'Job',
     'state' => 'State',
+    'completed_tasks' => 'Completed Tasks',
+    'files' => 'files',
+    'users' => 'users',
 
 
 ];

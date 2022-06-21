@@ -9,20 +9,24 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory, SoftDeletes;
+    use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
     protected $fillable = ['user_id', 'state', 'job', 'profile_photo'];
 
-    protected $appends = ['created_time', 'updated_time', 'delete_time'];
-    protected $hidden = ['created_at', 'updated_at', 'delete_at'];
+    // protected $appends = ['created_time', 'updated_time', 'delete_time'];
+    // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
     /****************************************************/
     /******************* RELATIONSHIPS ******************/
     /****************************************************/
 
-    public function tasks()
-    {
+    public function tasks(){
         return $this->belongsToMany(Task::class);
+    }
+
+    public function projects(){
+        return $this->belongsToMany(Project::class);
     }
 
     public function files()
