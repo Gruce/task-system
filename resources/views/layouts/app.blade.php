@@ -33,7 +33,7 @@
 
 <body class="font-sans antialiased bg-secondary-100" dir="{{ config('app.locale') == 'en' ? 'ltr' : 'rtl' }}">
     <div class="p-6 mx-auto">
-        <div class="flex flex-row bg-white rounded-lg h-main" x-data="{ sidebar_extended: false }" x-clock>
+        <div class="flex flex-row bg-white rounded-lg h-main" x-data="{ sidebar_extended: false }" x-cloak>
             {{-- Left Sidebar --}}
             <x-sidebar />
 
