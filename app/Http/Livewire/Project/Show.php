@@ -3,11 +3,13 @@
 namespace App\Http\Livewire\Project;
 
 use Livewire\Component;
+use App\Models\Project;
 
 class Show extends Component
 {
     public function mount($id){
-        dd($id);
+        $this->project = Project::with(['tasks' , 'files'])->findOrFail($id);
+        debug($this->project->toArray());
     }
 
     public function render()
