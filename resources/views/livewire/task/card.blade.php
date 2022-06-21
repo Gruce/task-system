@@ -18,6 +18,7 @@
                 <h5 class="mb-3 text-l font-semibold tracking-tight text-gray-900 dark:text-white ">
                     {{ $task->title }}
                 </h5>
+                
                 <button id="dropdownButton" data-dropdown-toggle="dropdown"
                     class="hidden sm:inline-block text-gray-400 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-200 focus:outline-none focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
                     type="button">

@@ -7,7 +7,7 @@ use App\Models\Task ;
 use App\Models\Project;
 class All extends Component
 {
-    public $search , $state =1 ;
+    public $search  , $state = 1;
 
     protected $listeners = ['$refresh' , 'search'];
 
@@ -19,7 +19,12 @@ class All extends Component
         $search = '%' . $this->search . '%';
         $tasks  = Task::with('project')
                 ->where('title' , 'like' , $search)
+                ->where('state' , $this->state )
                 ->get();
+                if ($this->state) $tasks = $tasks->where('state', $this->state);
+                
+
+
         return view('livewire.task.all', compact('tasks'));
     }
 }

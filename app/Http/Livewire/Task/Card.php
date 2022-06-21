@@ -26,6 +26,7 @@ class Card extends Component
         $this->task = $task;
     }
 
+    
     public function confirmed($id ){
         $this->ID = $id;
         $this->confirm(__('ui.are_you_sure'), [
