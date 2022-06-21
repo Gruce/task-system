@@ -44,12 +44,12 @@ class Add extends Component
         ];
         $task = Task::create($data);
 
-        if(count($this->files) > 0)
-            foreach($this->files as $file){
+        if (count($this->files) > 0)
+            foreach ($this->files as $file) {
                 $new_file = $task->files()->create([
                     'name' => 'File',
                 ]);
-                $new_file->add_file('name' , $file , 'tasks/' . $task->id . '/files/' . $new_file->id);
+                $new_file->add_file('name', $file, 'tasks/' . $task->id . '/files/' . $new_file->id);
             }
 
         $this->emitTo('task.main', '$refresh');

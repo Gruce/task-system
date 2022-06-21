@@ -92,11 +92,17 @@
                         <i class="ri-chat-1-line"></i>
                         <span>3</span>
                     </div>
-                    <div @class([
+                    {{-- <div @class([
                         'px-4 py-2 basis-1/4 flex items-center justify-center gap-2',
                         'border-r' => en(),
                         'border-l' => ar(),
                     ]) class="">
+                        <i class="ri-attachment-line"></i>
+                        <span>{{$task->files_count}}</span>
+                    </div> --}}
+                    <div @class([ 'px-4 py-2 basis-1/3 flex items-center justify-center gap-2' , 'border-r'=> en(),
+                        'border-l' => ar(),
+                        ]) class="">
                         <i class="ri-attachment-line"></i>
                         <span>{{$task->files_count}}</span>
                     </div>

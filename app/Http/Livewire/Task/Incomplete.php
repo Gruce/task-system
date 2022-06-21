@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Task;
 use Livewire\Component;
 use App\Models\Task as TaskModel;
 class Incomplete extends Component
-{
+{   public $state = 1;
     public function render()
     {
         $tasks = TaskModel::get();
