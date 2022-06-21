@@ -96,9 +96,9 @@ return [
     'completed_tasks' => 'مهمة مكتملة',
     'files' => 'الملفات',
     'users' => 'المستخدمين',
-    'commend' => 'تعليق',
+    'comment' => 'تعليق',
     'no_comment' => 'لايوجد تعليقات',
-    'Leave_a_comment' => 'اترك تعليقا',
+    'leave_a_comment' => 'اترك تعليقا',
     'profile_photo' => 'صورة الملف الشخصي',
     'comments' => 'التعليقات',
 

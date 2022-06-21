@@ -45,7 +45,7 @@ class Add extends Component
             'state' => $this->employee['state'] ?? 1,
             'job' => $this->employee['job'],
         ]);
-        dg($employee->id);
+
         if (count($this->files) > 0)
             foreach ($this->files as $file) {
                 $new_file = $employee->files()->create([

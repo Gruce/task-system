@@ -96,11 +96,11 @@ return [
     'completed_tasks' => 'Completed Tasks',
     'files' => 'files',
     'users' => 'users',
-    'commend' => 'Commend',
+    'comment' => 'comment',
     'no_comment' => 'لايوجد تعليقات',
-    'Leave_a_comment' => 'Leave a comment',
+    'leave_a_comment' => 'Leave a comment',
     'profile_photo' => 'Profile Photo',
-    'comments' => 'comments',
+    'comments' => 'Comments',
 
 
 ];
