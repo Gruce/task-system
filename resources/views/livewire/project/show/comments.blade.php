@@ -17,14 +17,9 @@
         {{-- Loop Item Below --}}
         @for ($i = 0; $i < 2; $i++)
             <div class="flex flex-col justify-between w-full px-4 py-1 border-r-4 hover:bg-secondary-50 text-secondary-500">
-                <div class="flex justify-between">
-                    <div class="text-sm font-normal w-80">
-                        كلام لطيف
-                        لخسهيتب خ
-                        ضخهصثي تضصثهختضص
-                        ث ضخهصثتخضهصثت
-                        ضص هثختضصخهثتضص
-                        خثه تضصثخهتضصخثه
+                <div class="flex justify-between gap-4">
+                    <div class="text-sm font-normal" :class="expandComments ? 'w-full' : ' w-80'">
+                        Text
                     </div>
                     <div class="flex items-start gap-4">
                         <div class="flex flex-col items-end">
