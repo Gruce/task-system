@@ -5,7 +5,7 @@
                 <div class="flex flex-row justify-between m-3  rounded-lg p-2">
                     <div>
                         <h5 class="mr-3 text-black font-semibold text-xl">
-                            المهام المعلقة
+                            {{__('ui.outstanding_tasks')}}
                         </h5>
                     </div>
 
@@ -22,7 +22,7 @@
                 <div class="flex flex-row justify-between m-3  rounded-lg p-2">
                     <div>
                         <h5 class="mr-3 text-black font-semibold text-xl">
-                            المهام المتأخرة
+                            {{__('ui.late_tasks')}}
                         </h5>
                     </div>
                     {{-- <div>
@@ -41,7 +41,7 @@
                 <div class="flex flex-row justify-between m-3  rounded-lg p-2">
                     <div>
                         <h5 class="mr-3 text-black font-semibold text-xl">
-                            المهام المرفوضة
+                            {{__('ui.rejected_tasks')}}
                         </h5>
                     </div>
                     {{-- <div>

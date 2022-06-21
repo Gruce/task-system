@@ -96,11 +96,21 @@ return [
     'completed_tasks' => 'Completed Tasks',
     'files' => 'files',
     'users' => 'users',
-    'comment' => 'comment',
+    'comment' => 'Comment',
     'no_comment' => 'لايوجد تعليقات',
     'leave_a_comment' => 'Leave a comment',
     'profile_photo' => 'Profile Photo',
     'comments' => 'Comments',
+    'to_do' => 'To Do',
+    'in_progress' => 'In Progress',
+    'done' => 'Done',
+    'late_tasks' => 'Late Tasks',
+    'rejected_tasks' => 'Rejected Tasks',
+    'outstanding_tasks' => 'Outstanding Tasks',
+    'notifications' => 'Notifications',
+    'the_sender_name' => 'The Sender Name',
+    'date' => 'Date',
+    'time' => 'Time',
 
 
 ];
