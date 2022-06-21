@@ -90,7 +90,7 @@ return [
     'confirm_password' => 'Confirm Password',
     'phonenumber' => 'Phone Number',
     'address' => 'Address',
-    'gendre' => 'Gendre',
+    'gender' => 'Gender',
     'job' => 'Job',
     'state' => 'State',
 
