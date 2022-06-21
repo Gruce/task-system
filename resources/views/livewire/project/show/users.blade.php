@@ -28,7 +28,7 @@
 
 
         {{-- Loop Item Below --}}
-        @for ($i = 0; $i < 2; $i++)
+        {{-- @for ($i = 0; $i < 2; $i++)
             <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
                 <div class="flex items-center gap-4">
                     <img class="w-10 h-10 rounded-lg" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Bordered avatar">
@@ -43,6 +43,26 @@
                     </button>
                 </div>
             </div>
-        @endfor
+        @endfor --}}
+
+        @forelse ($employees as $employee)
+            <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
+                <div class="flex items-center gap-4">
+                    <img class="w-10 h-10 p-0.5 rounded-full ring-1 ring-gray-300" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Bordered avatar">
+                    <div class="flex flex-col">
+                        <span class="text-base font-normal text-secondary-700">{{$employee->name}}</span>
+                        <span class="text-xs font-normal text-secondary-400">joining date</span>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        @empty
+            {{__('ui.no_data')}}
+        @endforelse
+
     </div>
 </div>

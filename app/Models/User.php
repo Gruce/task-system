@@ -62,9 +62,6 @@ class User extends Authenticatable implements JWTSubject
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
-        'created_at',
-        'updated_at',
-        'deleted_at',
     ];
 
     /**
@@ -95,9 +92,6 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $appends = [
         'profile_photo_url',
-        'created_time',
-        'updated_time',
-        'delete_time',
     ];
 
     public function comments()
