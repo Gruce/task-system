@@ -12,6 +12,7 @@ class Employee extends Model
 {
     use HasFactory, SoftDeletes;
     use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
+    
 
     protected $fillable = ['user_id', 'state', 'job', 'profile_photo'];
 
@@ -51,6 +52,11 @@ class Employee extends Model
         $this->save();
     }
 
+    
+    
+    /****************************************************/
+    /************** ACCESSORS & MUTATORS ****************/
+    /****************************************************/
     protected function name(): Attribute {
         return Attribute::make(
             get: function () {
@@ -58,4 +64,5 @@ class Employee extends Model
             },
         );
     }
+
 }

@@ -40,7 +40,7 @@
                             {{$employee->name}}
                         </span>
                         <span class="text-xs font-normal text-secondary-400">
-                            {{$employee->projects()->wherePivot('project_id', $project->id)->first()->pivot->created_at->diffForHumans()}}
+                            {{$employee->pivot->created_at->diffForHumans()}}
                         </span>
                     </div>
                 </div>
