@@ -38,9 +38,9 @@ class Add extends Component
     {
 
         // $this->validate();
+
         $user = new User;
         $user->add($this->employee['user']);
-
         $employee = $user->employee()->create([
             'state' => $this->employee['state'] ?? 1,
             'job' => $this->employee['job'],

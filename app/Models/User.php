@@ -49,7 +49,8 @@ class User extends Authenticatable implements JWTSubject
         'email',
         'password',
         'phonenumber',
-        'is_admin'
+        'is_admin',
+        'profile_photo_path'
     ];
 
     /**
@@ -75,13 +76,20 @@ class User extends Authenticatable implements JWTSubject
 
     public function add($data)
     {
+        $photo = $data['profile_photo_path'];
+        $ext = $photo->extension();
+        $name = md5($this->id . \Str::random(5) . now()->timestamp) . '.' . $ext;
+        $photo->storeAs('public/' . 'users/' . '/profile_photo/', $name);
+        $photo_path = 'users/' . 'profile_photo/' . $name;
+
         $this->create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'phonenumber' => $data['phonenumber'],
             'is_admin' => $data['is_admin'] ?? false,
-            'gender'   => $data['gender']
+            'gender'   => $data['gender'],
+            'profile_photo_path' => $photo_path,
         ]);
     }
 
