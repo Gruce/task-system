@@ -7,17 +7,13 @@
             </div>
 
             <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
-                @if($state == 1)
                     @forelse ( $tasks as $item)
-                        <div>
-                            @livewire('task.card', ['task'=>$item ],key($item->id . "-" . now()))
-
-                        </div>
-
+                        @if($item->state == 1)
+                            <div>@livewire('task.card', ['task'=>$item])</div>
+                        @endif
                     @empty
 
                     @endforelse
-                @endif
             </div>
         </div>
         <div class="flex flex-col gap-2 bg-white rounded-lg basis-1/3">
@@ -27,13 +23,13 @@
             </div>
 
             <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
-                @if($state == 1)
-                    @forelse ( $tasks as $item)
-                        <div>@livewire('task.card', ['task'=>$item])</div>
+                @forelse ( $tasks as $item)
+                        @if($item->state == 2)
+                            <div>@livewire('task.card', ['task'=>$item])</div>
+                        @endif
                     @empty
 
                     @endforelse
-                @endif
             </div>
         </div>
         <div class="flex flex-col gap-2 bg-white rounded-lg basis-1/3">
@@ -43,13 +39,13 @@
             </div>
 
             <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
-                @if($state == 1)
-                    @forelse ( $tasks as $item)
+                @forelse ( $tasks as $item)
+                    @if($item->state == 3)
                         <div>@livewire('task.card', ['task'=>$item])</div>
-                    @empty
+                    @endif
+                @empty
 
-                    @endforelse
-                @endif
+                @endforelse
             </div>
         </div>
     </div>

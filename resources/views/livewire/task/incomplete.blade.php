@@ -11,13 +11,13 @@
 
                 </div>
                 <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
-                    @if($state == 4)
-                    @forelse ( $tasks as $item )
-                    <div>@livewire('task.card', ['task'=>$item])</div>
+                    @forelse ( $tasks as $item)
+                        @if($item->state == 4)
+                            <div>@livewire('task.card', ['task'=>$item])</div>
+                        @endif
                     @empty
 
                     @endforelse
-                    @endif
                 </div>
             </div>
             <div class="basis-1/3  bg-gray-100 rounded-lg">
@@ -32,13 +32,13 @@
                     </div> --}}
                 </div>
                 <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
-                    @if($state == 5)
-                    @forelse ( $tasks as $item )
-                    <div>@livewire('task.card', ['task'=>$item])</div>
+                    @forelse ( $tasks as $item)
+                        @if($item->state == 5)
+                            <div>@livewire('task.card', ['task'=>$item])</div>
+                        @endif
                     @empty
 
                     @endforelse
-                    @endif
                 </div>
             </div>
             <div class="basis-1/3  bg-gray-100 rounded-lg">
@@ -53,13 +53,13 @@
                     </div> --}}
                 </div>
                 <div class="flex flex-col  overflow-y-auto h-tasklist p-2 gap-4">
-                    @if($state == 6)
-                    @forelse ( $tasks as $item )
-                    <div>@livewire('task.card', ['task'=>$item])</div>
+                    @forelse ( $tasks as $item)
+                        @if($item->state == 6)
+                            <div>@livewire('task.card', ['task'=>$item])</div>
+                        @endif
                     @empty
 
                     @endforelse
-                    @endif
                 </div>
             </div>
         </div>

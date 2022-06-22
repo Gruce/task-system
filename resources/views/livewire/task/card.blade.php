@@ -7,7 +7,7 @@
                     <span>·</span>
                     <span class="text-xs text-secondary-500"><{{$task->project->title}}</span>
                 </div>
-                <span class="text-xs">Deadline</span>
+                <span class="text-xs">{{$task->end_at}}</span>
             </div>
             <div>
                 Button
@@ -134,7 +134,7 @@
                                         {{-- <button class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
                                             <i class="fas fa-download"></i>
                                         </button> --}}
-                                        <button wire:click="confirmed({{ $file->id }} , 'delete')" class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
+                                        <button wire:click="confirmedFile({{ $file->id }} , 'deleteFile')" class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </div>

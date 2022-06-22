@@ -74,7 +74,7 @@ class Card extends Component
         ]);
     }
 
-    public function confirme($id, $function){
+    public function confirmedFile($id, $function){
         dd('k');
         $this->file_id = $id;
         $this->confirm(__('ui.are_you_sure'), [
@@ -87,7 +87,7 @@ class Card extends Component
         ]);
     }
 
-    public function deletee(){
+    public function deleteFile(){
         $this->task->files()->findOrFail($this->file_id)->delete();
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',
