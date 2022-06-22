@@ -10,6 +10,7 @@
                 @if($state == 1)
                     @forelse ( $tasks as $item)
                         <div>@livewire('task.card', ['task'=>$item])</div>
+
                     @empty
 
                     @endforelse
