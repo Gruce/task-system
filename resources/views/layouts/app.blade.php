@@ -79,22 +79,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="p-5 overflow-y-auto h-content bg-secondary-50">
+                    @isset($slot)
+                    {{ $slot }}
+                    @endisset
+                </div>
             </div>
 
+            {{-- Right Sidebar --}}
+            {{-- @if (Route::is('home*') || Route::is('movies-all') || Route::is('series-all'))
+            @livewire('right-side')
+            @endif --}}
         </div>
-    </div>
-    <div class="p-5 overflow-y-auto h-content bg-secondary-50">
-        @isset($slot)
-        {{ $slot }}
-        @endisset
-    </div>
-    </div>
-
-    {{-- Right Sidebar --}}
-    {{-- @if (Route::is('home*') || Route::is('movies-all') || Route::is('series-all'))
-    @livewire('right-side')
-    @endif --}}
-    </div>
     </div>
 
     @stack('modals')
