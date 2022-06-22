@@ -13,7 +13,7 @@ module.exports = {
             height: {
                 'main': 'calc(100vh - 3rem)',
                 'content': 'calc(100vh - 8rem)',
-                'tasklist': 'calc(100vh - 12.5rem)',
+                'tasklist': 'calc(100vh - 23.5rem)',
                 'projectfiles': 'calc(100vh - 25rem)',
             },
             fontFamily: {

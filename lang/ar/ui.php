@@ -96,6 +96,8 @@ return [
     'completed_tasks' => 'مهمة مكتملة',
     'files' => 'الملفات',
     'users' => 'المستخدمين',
+    'select_employee' => 'اختر موظف',
+    'data_already_exists' => 'البيانات موجودة مسبقاً',
     'comment' => 'تعليق',
     'no_comment' => 'لايوجد تعليقات',
     'leave_a_comment' => 'اترك تعليقا',
@@ -111,4 +113,5 @@ return [
     'the_sender_name' => 'اسم المرسل',
     'date' => 'التاريخ',
     'time' => 'الوقت',
+    'overview' => 'نظرة عامة'
 ];
