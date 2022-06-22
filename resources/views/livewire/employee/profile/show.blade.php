@@ -1,7 +1,7 @@
 <div>
     <div class="flex flex-row">
         <div class="basis-1/4">
-            <div class="p-4 max-w-md bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+            <div class="p-4 h-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                 <div class="flex justify-between items-center mb-4">
                     <div class="flex flex-col">
                         <div class="flex items-center justify-between mt-3">
