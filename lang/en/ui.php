@@ -115,6 +115,9 @@ return [
     'time' => 'Time',
     'no_job' => 'No Job',
     'overview' => 'Overview',
+    'profile' => 'Your Profile',
+    'logout' => 'Logout',
+
 
 
 ];

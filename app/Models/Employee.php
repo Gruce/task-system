@@ -14,9 +14,9 @@ class Employee extends Model
     use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
 
-    protected $fillable = ['user_id', 'state', 'job', 'profile_photo'];
+    protected $fillable = ['user_id', 'state', 'job'];
 
-    protected $appends = [];
+    protected $appends = ['photo'];
     // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
@@ -64,6 +64,15 @@ class Employee extends Model
         return Attribute::make(
             get: function () {
                 return $this->user->name;
+            },
+        );
+    }
+
+    protected function photo(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                return $this->user->profile_photo;
             },
         );
     }
