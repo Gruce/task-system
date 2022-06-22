@@ -5,24 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 
 class Employee extends Model
 {
     use HasFactory, SoftDeletes;
+    use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
     protected $fillable = ['user_id', 'state', 'job', 'profile_photo'];
 
-    protected $appends = ['created_time', 'updated_time', 'delete_time'];
-    protected $hidden = ['created_at', 'updated_at', 'delete_at'];
+    protected $appends = ['name'];
+    // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
     /****************************************************/
     /******************* RELATIONSHIPS ******************/
     /****************************************************/
 
-    public function tasks()
-    {
+    public function tasks(){
         return $this->belongsToMany(Task::class);
+    }
+
+    public function projects(){
+        return $this->belongsToMany(Project::class)->withTimestamps();
     }
 
     public function files()
@@ -43,5 +49,13 @@ class Employee extends Model
         $this->is_admin = $data['is_admin'];
         $this->phonenumber = $data['phonenumber'];
         $this->save();
+    }
+
+    protected function name(): Attribute {
+        return Attribute::make(
+            get: function () {
+                return $this->user->name;
+            },
+        );
     }
 }

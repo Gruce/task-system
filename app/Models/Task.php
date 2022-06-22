@@ -31,8 +31,7 @@ class Task extends Model
         return $this->belongsTo(Project::class);
     }
 
-    public function employees()
-    {
+    public function employees(){
         return $this->belongsToMany(Employee::class);
     }
 

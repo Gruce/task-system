@@ -9,13 +9,17 @@ class Users extends Component
     public $userId;
     public $search;
 
-    
-    /* Addition 
+
+    /* Addition
         After addition reset $userId, $search to null
     */
 
-    public function render()
-    {
+    public function mount($employees){
+        $this->employees = $employees;
+        debug($this->employees->toArray());
+    }
+
+    public function render(){
         return view('livewire.project.show.users');
     }
 }

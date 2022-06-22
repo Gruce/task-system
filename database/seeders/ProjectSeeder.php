@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
+use App\Models\Employee;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -22,5 +23,14 @@ class ProjectSeeder extends Seeder
                 'description' => 'Project ' . $i . ' description',
             ]);
         }
+
+        $projects = Project::get();
+        $employees = Employee::get();
+        foreach($projects as $project)
+            foreach ($employees as $employee)
+                if(array_rand([true , false]))
+                $project->employees()->attach([
+                    'employee_id' => $employee->id
+                ]);
     }
 }

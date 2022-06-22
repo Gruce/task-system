@@ -96,6 +96,11 @@ return [
     'completed_tasks' => 'مهمة مكتملة',
     'files' => 'الملفات',
     'users' => 'المستخدمين',
+    'comment' => 'تعليق',
+    'no_comment' => 'لايوجد تعليقات',
+    'leave_a_comment' => 'اترك تعليقا',
+    'profile_photo' => 'صورة الملف الشخصي',
+    'comments' => 'التعليقات',
     'to_do' => ' المهام ',
     'in_progress' => '  المهام القيد التنفيذ ',
     'done' => ' المهام المنتهية ',
@@ -105,8 +110,5 @@ return [
     'notifications' => 'الاشعارات',
     'the_sender_name' => 'اسم المرسل',
     'date' => 'التاريخ',
-    'time'=>'الوقت',
-
-
-
+    'time' => 'الوقت',
 ];

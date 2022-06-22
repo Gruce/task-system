@@ -12,6 +12,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 
+
 class User extends Authenticatable implements JWTSubject
 {
     use HasFactory;
@@ -61,9 +62,6 @@ class User extends Authenticatable implements JWTSubject
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
-        'created_at',
-        'updated_at',
-        'deleted_at',
     ];
 
     /**
@@ -77,9 +75,14 @@ class User extends Authenticatable implements JWTSubject
 
     public function add($data)
     {
-
-        $this->fill($data);
-        $this->save();
+        $this->create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'phonenumber' => $data['phonenumber'],
+            'is_admin' => $data['is_admin'] ?? false,
+            'gender'   => $data['gender']
+        ]);
     }
 
     /**
@@ -89,9 +92,6 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $appends = [
         'profile_photo_url',
-        'created_time',
-        'updated_time',
-        'delete_time',
     ];
 
     public function comments()
