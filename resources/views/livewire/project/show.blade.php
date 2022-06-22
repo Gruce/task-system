@@ -8,7 +8,7 @@
         {{-- Top --}}
         <div :class="expandComments ? 'grow' : 'basis-1/3'" class="flex gap-8">
             {{-- Right : Users --}}
-            @livewire('project.show.users' , ['project_employees' => $project->employees , 'project' => $project])
+            @livewire('project.show.users' , ['project_employees' => $project->employees, 'project' => $project])
 
 
             {{-- Left --}}

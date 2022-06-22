@@ -13,7 +13,7 @@ class Users extends Component
 
     protected $listeners = ['$refresh' , 'delete'];
 
-    public $userId , $employee_id;
+    public $userId , $employee_id, $project_employees;
     public $search;
 
 
@@ -76,8 +76,7 @@ class Users extends Component
         ]);
     }
 
-    public function mount($project_employees , $project){
-        $this->project_employees = $project_employees;
+    public function mount($project){
         $this->project = $project;
     }
 
@@ -85,6 +84,8 @@ class Users extends Component
         $search = '%' . $this->search . '%';
 
         $employees = Employee::whereRelation('user' , 'name' , 'LIKE' , $search)->get();
+
+        $this->project_employees = $this->project->employees()->get();
 
         return view('livewire.project.show.users' , compact('employees'));
     }
