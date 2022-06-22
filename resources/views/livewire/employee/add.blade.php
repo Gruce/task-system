@@ -89,7 +89,6 @@
                         </span>
                         <input class="hidden" type="radio" name="gender" value="1" wire:model="employee.user.gender">
                     </label>
-                    @error('employee.user.gender')<span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
                 <button type="submit" class="text-white hover:bg-blue-700 bg-blue-600 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                     {{__('ui.add')}}

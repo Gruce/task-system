@@ -26,8 +26,8 @@
                         <span class="text-xs font-normal text-secondary-700"> {{ $item->user->name }}</span>
                         <span class="font-normal text-2xs text-secondary-400">{{ $item->created_at->diffForHumans() }}</span>
                     </div>
-                    @if ($item->user->profile_photo_path)
-                    <img class="rounded-lg w-7 h-7" src="{{ asset('storage/' . $item->user->profile_photo_path) }}" alt="Bordered avatar">
+                    @if ($item->user->profile_photo)
+                    <img class="rounded-lg w-7 h-7" src="{{ asset($item->user->profile_photo) }}" alt="Bordered avatar">
                     @else
                     <img class="rounded-lg w-7 h-7" src="https://ccemdata.mcmaster.ca/media/avatars/default.png" alt="Bordered avatar">
                     @endif

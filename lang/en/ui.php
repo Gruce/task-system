@@ -111,6 +111,7 @@ return [
     'the_sender_name' => 'The Sender Name',
     'date' => 'Date',
     'time' => 'Time',
+    'no_job' => 'No Job',
 
 
 ];
