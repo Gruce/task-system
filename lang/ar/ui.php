@@ -111,4 +111,5 @@ return [
     'the_sender_name' => 'اسم المرسل',
     'date' => 'التاريخ',
     'time' => 'الوقت',
+    'overview' => 'نظرة عامة'
 ];
