@@ -96,6 +96,8 @@ return [
     'completed_tasks' => 'مهمة مكتملة',
     'files' => 'الملفات',
     'users' => 'المستخدمين',
+    'select_employee' => 'اختر موظف',
+    'data_already_exists' => 'البيانات موجودة مسبقاً',
 
 
 

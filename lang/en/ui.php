@@ -96,6 +96,8 @@ return [
     'completed_tasks' => 'Completed Tasks',
     'files' => 'files',
     'users' => 'users',
+    'select_employee' => 'Select employee',
+    'data_already_exists' => 'Data already exists',
 
 
 ];
