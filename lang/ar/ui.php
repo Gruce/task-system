@@ -96,6 +96,8 @@ return [
     'completed_tasks' => 'مهمة مكتملة',
     'files' => 'الملفات',
     'users' => 'المستخدمين',
+    'select_employee' => 'اختر موظف',
+    'data_already_exists' => 'البيانات موجودة مسبقاً',
     'comment' => 'تعليق',
     'no_comment' => 'لايوجد تعليقات',
     'leave_a_comment' => 'اترك تعليقا',
@@ -112,4 +114,5 @@ return [
     'date' => 'التاريخ',
     'time' => 'الوقت',
     'no_job' => 'لايوجد وظيفة',
+    'overview' => 'نظرة عامة'
 ];

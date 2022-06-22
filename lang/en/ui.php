@@ -96,6 +96,8 @@ return [
     'completed_tasks' => 'Completed Tasks',
     'files' => 'files',
     'users' => 'users',
+    'select_employee' => 'Select employee',
+    'data_already_exists' => 'Data already exists',
     'comment' => 'Comment',
     'no_comment' => 'No Comments',
     'leave_a_comment' => 'Leave a comment',
@@ -112,6 +114,7 @@ return [
     'date' => 'Date',
     'time' => 'Time',
     'no_job' => 'No Job',
+    'overview' => 'Overview',
 
 
 ];

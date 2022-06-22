@@ -13,6 +13,7 @@ class Employee extends Model
     use HasFactory, SoftDeletes;
     use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
+
     protected $fillable = ['user_id', 'state', 'job', 'profile_photo'];
 
     protected $appends = [];
@@ -51,5 +52,19 @@ class Employee extends Model
         $this->is_admin = $data['is_admin'];
         $this->phonenumber = $data['phonenumber'];
         $this->save();
+    }
+
+
+
+    /****************************************************/
+    /************** ACCESSORS & MUTATORS ****************/
+    /****************************************************/
+    protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                return $this->user->name;
+            },
+        );
     }
 }

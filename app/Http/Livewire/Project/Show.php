@@ -13,8 +13,6 @@ class Show extends Component
         $this->project = Project::with(['tasks' , 'files' , 'employees'])
                         ->withCount(['tasks' , 'files', 'employees'])
                         ->findOrFail($id);
-        debug($this->project->toArray());
-
     }
 
     public function render()
