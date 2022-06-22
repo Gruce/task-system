@@ -29,6 +29,8 @@
     <script src="https://unpkg.com/flowbite@1.4.6/dist/flowbite.js"></script>
     <script src="https://kit.fontawesome.com/4e8940f861.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/flowbite@1.4.7/dist/datepicker.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
 </head>
 
 <body class="font-sans antialiased bg-secondary-100" dir="{{ config('app.locale') == 'en' ? 'ltr' : 'rtl' }}">
@@ -43,7 +45,12 @@
                     <span class="text-2xl font-semibold text-secondary-700">@yield('title')</span>
                     @yield('header-actions')
                     <div class="flex flex-row items-center">
-                        <div class="m-6">
+                        <div >
+                            <a href="{{route('employees.profile',['id' => auth()->id() ])}}">
+                                <i class="fa-solid fa-user text-gray-400 text-lg"></i>
+                            </a>
+                        </div>
+                        <div class="m-5">
                             @livewire('notification.card')
                         </div>
                         @hasSection ('disable-search')
@@ -68,6 +75,7 @@
 
     @stack('modals')
     @livewireScripts
+    @livewireChartsScripts
     <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
     <x-livewire-alert::flash />
 
