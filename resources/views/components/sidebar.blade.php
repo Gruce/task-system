@@ -14,7 +14,7 @@
                 <ul class="space-y-4" :class="sidebar_extended ? 'ml-3' : ''">
                     @foreach ($tab->items as $item)
                     <li>
-                        <a href="{{ route($item->route) }}" :data-tooltip-target="sidebar_extended ? '' : 'tooltip-default-{{ $item->route }}'" :class="sidebar_extended ? 'py-2' : 'justify-center py-3'" class="flex items-center px-4 text-base font-normal @if ($item->active) text-primary-500 @else text-gray-900 @endif rounded-lg group hover:bg-gray-100 ">
+                        <a href="{{ route($item->route) }}" :data-tooltip-target="sidebar_extended ? '' : 'tooltip-default-{{ $item->route }}'" :class="sidebar_extended ? 'py-2' : 'justify-center py-6'" class="flex items-center px-4 text-base font-normal @if ($item->active) text-primary-500 @else text-gray-900 @endif rounded-lg group hover:bg-gray-100 ">
                             <i :class="sidebar_extended ? '' : 'text-lg'" class=" {{ $item->icon }}  @if ($item->active) text-primary-500 group-hover:text-primary-500 @else text-gray-500 group-hover:text-gray-900 @endif transition duration-75   "></i>
                             <span class="mx-3" x-show="sidebar_extended">{{ $item->title }}</span>
                         </a>
@@ -23,9 +23,11 @@
                             <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
                     </li>
+
                     @endforeach
                 </ul>
                 @endforeach
+                
             </div>
             <div class="flex flex-col items-center justify-center flex-none w-full basis-96">
                 @foreach ($langs as $locale => $name)

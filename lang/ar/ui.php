@@ -98,7 +98,19 @@ return [
     'users' => 'المستخدمين',
     'select_employee' => 'اختر موظف',
     'data_already_exists' => 'البيانات موجودة مسبقاً',
-
-
-
+    'comment' => 'تعليق',
+    'no_comment' => 'لايوجد تعليقات',
+    'leave_a_comment' => 'اترك تعليقا',
+    'profile_photo' => 'صورة الملف الشخصي',
+    'comments' => 'التعليقات',
+    'to_do' => ' المهام ',
+    'in_progress' => '  المهام القيد التنفيذ ',
+    'done' => ' المهام المنتهية ',
+    'outstanding_tasks' => 'المهام المعلقة',
+    'late_tasks' => 'المهام المتأخرة',
+    'rejected_tasks' => 'المهام المرفوضة',
+    'notifications' => 'الاشعارات',
+    'the_sender_name' => 'اسم المرسل',
+    'date' => 'التاريخ',
+    'time' => 'الوقت',
 ];

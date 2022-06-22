@@ -37,11 +37,13 @@ class Sidebar extends Component
 
                 ]
             ),
-            // new Tab(
-            //     'Managements',
-            //     [],
-            //     true
-            // ),
+             new Tab(
+                'Notifcation',
+                [
+                    new TabItem(__('ui.notifications'), 'fa-solid fa-bell', 'notifications'),
+                ],
+                 true
+             ),
         ];
 
         $this->tabs = collect($this->tabs);

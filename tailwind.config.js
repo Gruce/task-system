@@ -32,7 +32,7 @@ module.exports = {
                     800: '#231c9e',
                     900: '#1d187d',
                 },
-                'secondary': {
+                'secondary': { 
                     50: '#f4f6fa',
                     100: '#dbe1ee',
                     200: '#c2cce1',

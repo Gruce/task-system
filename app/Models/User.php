@@ -12,6 +12,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 
+
 class User extends Authenticatable implements JWTSubject
 {
     use HasFactory;
@@ -74,9 +75,14 @@ class User extends Authenticatable implements JWTSubject
 
     public function add($data)
     {
-
-        $this->fill($data);
-        $this->save();
+        $this->create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'phonenumber' => $data['phonenumber'],
+            'is_admin' => $data['is_admin'] ?? false,
+            'gender'   => $data['gender']
+        ]);
     }
 
     /**

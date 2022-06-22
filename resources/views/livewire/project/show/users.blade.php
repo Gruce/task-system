@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-4 p-8 text-lg font-semibold capitalize bg-white rounded-lg basis-1/2 text-secondary-600"  x-data="{add:false}" x-cloak>
+<div x-show="!expandComments" class="flex flex-col gap-4 p-8 text-lg font-semibold capitalize bg-white rounded-lg basis-1/2 text-secondary-600"  x-data="{add:false}" x-cloak>
     <div class="flex justify-between">
         <div class="flex items-center gap-4">
             <span class="w-3.5 h-3.5 bg-primary-400 border-2 border-white rounded-full"></span>
@@ -34,7 +34,7 @@
         @forelse ($project_employees as $employee)
             <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
                 <div class="flex items-center gap-4">
-                    <img class="w-10 h-10 p-0.5 rounded-full ring-1 ring-gray-300" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Bordered avatar">
+                    <img class="w-10 h-10 rounded-lg" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Bordered avatar">
                     <div class="flex flex-col">
                         <span class="text-base font-normal text-secondary-700">
                             {{$employee->name}}
