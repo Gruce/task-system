@@ -1,5 +1,5 @@
 <div x-show="selected == 2" class="flex flex-col gap-2">
-    <div class="flex flex-col w-full gap-2 pl-2 overflow-y-auto text-sm">
+    <div class="flex flex-col w-full gap-2 px-2 overflow-y-auto text-sm">
         {{-- Loop Item Below --}}
         @for ($i = 0; $i < 2; $i++)
             <div class="flex flex-col justify-between w-full px-4 py-1 border-r-4 hover:bg-secondary-50 text-secondary-500">

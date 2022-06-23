@@ -13,7 +13,7 @@
             </button>
         </div>
     </div>
-    <div class="flex flex-col w-full gap-2 pl-2 overflow-y-auto text-sm" :class="expandComments ? 'grow' : 'h-44'">
+    <div class="flex flex-col w-full gap-2 px-2 overflow-y-auto text-sm" :class="expandComments ? 'grow' : 'h-44'">
         {{-- Loop Item Below --}}
         @forelse ($comments as $item)
         <div class="flex flex-col justify-between w-full px-4 py-1 border-r-4 hover:bg-secondary-50 text-secondary-500">
