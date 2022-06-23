@@ -1463,6 +1463,15 @@ select {
   width: -moz-fit-content;
   width: fit-content;
 }
+.w-96 {
+  width: 24rem;
+}
+.w-1\/4 {
+  width: 25%;
+}
+.w-40 {
+  width: 10rem;
+}
 .min-w-0 {
   min-width: 0px;
 }

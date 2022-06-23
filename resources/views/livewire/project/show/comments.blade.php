@@ -19,9 +19,9 @@
         <div class="flex flex-col justify-between w-full px-4 py-1 border-r-4 hover:bg-secondary-50 text-secondary-500">
             <div class="flex justify-between gap-4">
                 <div class="text-sm font-normal" :class="expandComments ? 'w-full' : ' w-80'">
-                    {{$item->body}}
+                    {!! $item->body !!}
                 </div>
-                <div class="flex items-start gap-4">
+                <div class="flex items-start justify-end w-40 gap-4">
                     <div class="flex flex-col items-end">
                         <span class="text-xs font-normal text-secondary-700"> {{ $item->user->name }}</span>
                         <span class="font-normal text-2xs text-secondary-400">{{ $item->created_at->diffForHumans() }}</span>
