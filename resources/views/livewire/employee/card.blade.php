@@ -4,9 +4,9 @@
             {{$employee->job ??__('ui.no_job')}}
         </span>
         <div class="max-w-sm bg-white rounded-lg  dark:bg-gray-800">
-            <div class="flex justify-end px-4 pt-4">
+            <div @click.stop="" class="flex justify-end px-4 pt-4">
                 <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-red-900 bg-red-100">
-                    <a href="#"><i class="fa-solid fa-trash text-red-500"></i></a>
+                    <a wire:click="confirmed({{ $employee->id }} , 'delete')"><i class="fa-solid fa-trash text-red-500"></i></a>
                 </div>
             </div>
             <div class="flex flex-col items-center pb-10">
@@ -31,11 +31,11 @@
                     'border-l' => ar(),
                     ]) class="">
                     <i class="fa-solid fa-diagram-project "></i>
-                    <span>243</span>
+                    <span>{{$employee->projects_count}}</span>
                 </div>
                 <div @class(['px-4 py-2 basis-1/3 flex items-center justify-center gap-2']) class="">
                     <i class="fa-solid fa-list-check"></i>
-                    <span>234234</span>
+                    <span>{{$employee->tasks_count}}</span>
                 </div>
             </div>
         </div>

@@ -17,12 +17,8 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.6/dist/flowbite.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
-
     @livewireStyles
     @laravelPWA
-
-
-
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/gh/tvdr/alpine-draganddrop@0.x.x/dist/index.min.js" defer></script>
     <script src="{{ mix('js/app.js') }}" defer></script>
@@ -31,7 +27,6 @@
     <script src="https://kit.fontawesome.com/4e8940f861.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/flowbite@1.4.7/dist/datepicker.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
 </head>
 
 <body class="font-sans antialiased bg-secondary-100" dir="{{ config('app.locale') == 'en' ? 'ltr' : 'rtl' }}">
