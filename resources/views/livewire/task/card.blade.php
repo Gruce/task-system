@@ -67,10 +67,10 @@
                                         <span class="text-sm">{{__('ui.archive')}}</span>
                                         <i class="text-xs fa-solid fa-box-archive"></i>
                                     </span>
-                                      <span class="text-sm">{{__('ui.delete')}}</span>
-                                        <button  wire:click="confirmed({{ $task->id }})">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+
+                                    <a wire:click="confirmed({{ $task->id }} , 'delete')" href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
+                                        {{__('ui.delete')}}
+                                    </a>
 
                                 </div>
                             </div>
