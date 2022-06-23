@@ -45,7 +45,7 @@
                         @else
                         <livewire:ui.search />
                         @endif
-
+                        
                         <div class="m-5">
                             @livewire('notification.card')
                         </div>
