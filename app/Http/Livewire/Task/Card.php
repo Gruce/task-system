@@ -21,12 +21,17 @@ class Card extends Component
         'end_at' => 'required',
     ];
 
-    public $task, $ID;
+    public $task, $ID, $search, $userId, $modal = false;
     public $files = [] , $file_id;
 
     public function mount($task){
         $this->task = $task;
     }
+
+    public function toggleModal(){
+        $this->modal = !$this->modal;
+    }
+
 
     public function confirmed($id, $function){
         $this->ID = $id;
