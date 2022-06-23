@@ -12,7 +12,7 @@ class Card extends Component
     use LivewireAlert;
     use WithFileUploads;
 
-    protected $listeners = ['$refresh' , 'delete' ,'deletee'];
+    protected $listeners = ['$refresh' , 'delete' ,'deleteFile'];
 
     protected $rules = [
         'title' => 'required',
@@ -28,7 +28,8 @@ class Card extends Component
         $this->task = $task;
     }
 
-    public function confirmed($id, $function){
+    public function confirmed($id){
+        dd('ll');
         $this->ID = $id;
         $this->confirm(__('ui.are_you_sure'), [
             'toast' => false,
@@ -36,7 +37,7 @@ class Card extends Component
             'showConfirmButton' => "true",
             'cancelButtonText' => (__('ui.cancel')),
             'confirmButtonText' => (__('ui.confirm')),
-            'onConfirmed' => $function,
+            'onConfirmed' => 'delete',
         ]);
     }
 

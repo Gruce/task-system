@@ -13,7 +13,6 @@ class Add extends Component
 {
     use  LivewireAlert, WithFileUploads;
 
-    // public $task, $title , $description , $importance , $project_id,$start_at,$end_at;
     public $task;
     public $files = [];
 
@@ -29,11 +28,10 @@ class Add extends Component
     {
         $this->task['start_at'] = date('Y-m-d');
         $this->task['end_at'] = date('Y-m-d');
-        $this->projects = Project::get(['id', 'title']);
+        $this->projects = Project::get(['id' , 'title']);
     }
 
-    public function removeFile($index)
-    {
+    public function removeFile($index){
         unset($this->files[$index]);
     }
 
@@ -41,15 +39,6 @@ class Add extends Component
     {
         dg($this->task);
         $this->validate();
-
-        // $data = [
-        //     'title' => $this->title,
-        //     'project_id' => $this->project_id,
-        //     'description' => $this->description,
-        //     'importance' => $this->importance,
-        //     'start_at' => $this->start_at,
-        //     'end_at' => $this->end_at,
-        // ];
         $task->create($this->task);
 
         if (count($this->files) > 0)
@@ -73,7 +62,6 @@ class Add extends Component
 
     public function render()
     {
-
         return view('livewire.task.add');
     }
 }
