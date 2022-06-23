@@ -18,7 +18,7 @@ class Task extends Model
         'importance', 'start_at', 'end_at'
     ];
 
-    //protected $appends = ['project_title'];
+    protected $appends = ['project_title'];
     //protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
@@ -50,6 +50,14 @@ class Task extends Model
     /****************************************************/
     /******************* END RELATIONSHIPS **************/
     /****************************************************/
-    
+
+
+    protected function projectTitle(): Attribute{
+        return Attribute::make(
+            get: function () {
+                return $this->project->title;
+            },
+        );
+    }
 }
 

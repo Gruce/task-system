@@ -5,7 +5,7 @@
                 <div class="flex items-center gap-2">
                     <span class="font-semibold">{{$task->title}}</span>
                     <span>·</span>
-                    <span class="text-xs text-secondary-500"><{{$task->project->title}}</span>
+                    <span class="text-xs text-secondary-500">{{$task->project_title}}</span>
                 </div>
                 <span class="text-xs">{{$task->end_at}}</span>
             </div>

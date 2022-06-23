@@ -7,7 +7,7 @@
             </div>
 
             <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
-                    @forelse ( $tasks as $item)
+                    @forelse ($tasks as $item)
                         @if($item->state == 1)
                             <div>@livewire('task.card', ['task'=>$item])</div>
                         @endif
