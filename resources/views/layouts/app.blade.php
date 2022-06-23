@@ -58,13 +58,13 @@
                                     <img class="h-8 w-8 rounded-full" src="{{auth()->user()->profile_photo}}" alt="profile image">
                                 </button>
                             </div>
-                            <div @click.outside="dropdown = false" @click.stop="" x-show="dropdown" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                            <div @click.outside="dropdown = false" @click.stop="" x-show="dropdown" class="origin-top-right  absolute right-0 mt-2 w-48 rounded-lg  bg-white ring-1  ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                                 <!-- Active: "bg-gray-100", Not Active: "" -->
-                                <a href="{{route('employees.profile',['id' => auth()->id() ])}}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">{{__('ui.profile')}}</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                                <a href="{{route('employees.profile',['id' => auth()->id() ])}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 rounded-lg" role="menuitem" tabindex="-1" id="user-menu-item-0">{{__('ui.profile')}}</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 rounded-lg" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
-                                    <a href="{{ route('logout') }}" @click.prevent="$root.submit();" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">{{__('ui.logout')}}</a>
+                                    <a href="{{ route('logout') }}" @click.prevent="$root.submit();" class="hover:bg-gray-200 block px-4 py-2 text-sm text-gray-700 rounded-lg" role="menuitem" tabindex="-1" id="user-menu-item-2">{{__('ui.logout')}}</a>
                                 </form>
                             </div>
                         </div>

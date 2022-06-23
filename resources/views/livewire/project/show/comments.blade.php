@@ -13,7 +13,7 @@
             </button>
         </div>
     </div>
-    <div class="flex flex-col w-full gap-2 pl-2 overflow-y-auto text-sm" :class="expandComments ? 'grow' : 'h-44'">
+    <div class="flex flex-col w-full gap-2 px-2 overflow-y-auto text-sm" :class="expandComments ? 'grow' : 'h-44'">
         {{-- Loop Item Below --}}
         @forelse ($comments as $item)
         <div class="flex flex-col justify-between w-full px-4 py-1 border-r-4 hover:bg-secondary-50 text-secondary-500">
@@ -23,7 +23,7 @@
                 </div>
                 <div class="flex items-start justify-end w-40 gap-4">
                     <div class="flex flex-col items-end">
-                        <span class="text-xs font-normal text-secondary-700"> {{ $item->user->name }}</span>
+                        <span class="text-xs font-normal {{$item->user->is_admin ? 'text-red-400' : 'text-secondary-700'}}"> {{ $item->user->name }}</span>
                         <span class="font-normal text-2xs text-secondary-400">{{ $item->created_at->diffForHumans() }}</span>
                     </div>
                     <img class="rounded-lg w-7 h-7" src="{{$item->user->profile_photo}}" alt="Bordered avatar">

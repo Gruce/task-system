@@ -11,9 +11,9 @@
             </div>
             <div class="flex flex-col items-center pb-10">
                 @if ($employee->photo)
-                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="{{ asset($employee->photo) }}" alt="Bordered avatar">
+                <img class="mb-3 w-24 h-24 rounded-full " src="{{ asset($employee->photo) }}" alt="Bordered avatar">
                 @else
-                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="https://ccemdata.mcmaster.ca/media/avatars/default.png" alt="Bonnie image">
+                <img class="mb-3 w-24 h-24 rounded-full shadow" src="https://ccemdata.mcmaster.ca/media/avatars/default.png" alt="Bonnie image">
                 @endif
                 <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{$employee->name}}</h5>
                 <span class="text-sm text-gray-500 dark:text-gray-400"><a class="hover:text-gray-900 dark:text-gray-400 dark:hover:text-white" href="mailto: {{$employee->user->email}}">{{$employee->user->email}}</a>

@@ -6,6 +6,7 @@ use App\Traits\HelperTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Models\Comment;
 
 class Project extends Model
@@ -14,7 +15,7 @@ class Project extends Model
     use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
     protected $fillable = ['title', 'description'];
-    // protected $appends = ['created_time', 'updated_time' , 'delete_time'];
+    protected $appends = ['completed_tasks'];
     // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
@@ -46,9 +47,16 @@ class Project extends Model
     /******************* END RELATIONSHIPS **************/
     /****************************************************/
 
+    protected function completedTasks(): Attribute{
+        return Attribute::make(
+            get: function () {
+                return $this->tasks()->where('state' , 1)->count();
+            },
+        );
+    }
 
-    public function comment($body)
-    {
+
+    public function comment($body){
         $comment = new Comment;
         $comment->body = $body;
         $comment->user_id = auth()->id();

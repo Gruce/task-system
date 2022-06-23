@@ -3,9 +3,9 @@
         <button type="button" id="dropdownDefault" data-dropdown-toggle="dropdown"
             class="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 ">
             <i class="fa-solid fa-bell text-gray-400 text-lg"></i>
-                <h6 class="text-sm  text-red-400 ">
-                    4
-                </h6>
+            <h6 class="text-sm  text-red-400 ">
+                4
+            </h6>
         </button>
     </div>
 
@@ -15,10 +15,21 @@
         style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(821.25px, 728.75px);">
         <ul class="py-1 m-2 text-sm overflow-y-auto it h-96 text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownDefault">
+            <div class="flex justify-around pb-3">
+                <h5 class=" font-semibold">
+                    Notifcation
+                </h5>
+                <h2>
+                    <a href="{{ route('notifications') }}"
+                    class="text-black underline  text-center font-semibold hover:text-indigo-600">
+                    show more
+                </a>
+            </h2>
+            </div>
             @for ($i = 0; $i < 5; $i++)
                 <li class="m-2">
                     <div id="toast-interactive"
-                        class="w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg border dark:bg-gray-800 dark:text-gray-400"
+                        class="w-full max-w-xs p-4 text-gray-500  bg-white rounded-lg border hover:bg-gray-200"
                         role="alert">
                         <div class="flex">
                             <div
@@ -32,13 +43,9 @@
                                 <div class="grid grid-cols-2 gap-2">
                                     <div>
                                         <a href="#"
-                                            class="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">View</a>
+                                            class="inline-flex justify-center w-23 px-2 py-0.5 text-xs font-medium text-center text-white bg-secondary-600 rounded-lg hover:bg-secondary-700 focus:ring-4 focus:outline-none focus:ring-secondary-300 ">View</a>
                                     </div>
-                                    <div>
-                                        <a href="#"
-                                            class="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-600 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">Not
-                                            now</a>
-                                    </div>
+
                                 </div>
                             </div>
                             <button type="button"
@@ -57,12 +64,7 @@
 
                 </li>
             @endfor
-            <li class="text-center">
 
-                <a href="{{route('notifications')}}" class="text-black text-center font-semibold hover:text-indigo-600">
-                    show more
-                </a>
-            </li>
         </ul>
     </div>
 </div>

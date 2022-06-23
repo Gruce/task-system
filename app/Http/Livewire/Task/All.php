@@ -17,12 +17,10 @@ class All extends Component
 
     public function render(){
         $search = '%' . $this->search . '%';
-        $tasks  = Task::withCount(['project' ,'files'])
+        $tasks  = Task::withCount('files')
                 ->where('title' , 'like' , $search)
                 ->orderByDesc('id')
                 ->get();
-
-
 
         return view('livewire.task.all', compact('tasks'));
     }
