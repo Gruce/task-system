@@ -87,9 +87,9 @@
                                     <span class="text-sm">{{__('ui.archive')}}</span>
                                     <i class="text-xs fa-solid fa-box-archive"></i>
                                 </span>
-                                <span class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-error-100 w-44 bg-secondary-50 hover:text-error-600">
-                                    <span class="text-sm">{{__('ui.delete')}}</span>
-                                    <button wire:click="confirm({{ $task->id }})" >
+                                <span >
+                                    <button wire:click="confirmed({{ $task->id }}, 'delete') "class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-error-100 w-44 bg-secondary-50 hover:text-error-600" >
+                                        <span class="text-sm">{{__('ui.delete')}}</span>
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </span>
