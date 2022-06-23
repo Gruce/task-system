@@ -26,11 +26,7 @@
                         <span class="text-xs font-normal text-secondary-700"> {{ $item->user->name }}</span>
                         <span class="font-normal text-2xs text-secondary-400">{{ $item->created_at->diffForHumans() }}</span>
                     </div>
-                    @if ($item->user->profile_photo)
-                    <img class="rounded-lg w-7 h-7" src="{{ asset($item->user->profile_photo) }}" alt="Bordered avatar">
-                    @else
-                    <img class="rounded-lg w-7 h-7" src="https://ccemdata.mcmaster.ca/media/avatars/default.png" alt="Bordered avatar">
-                    @endif
+                    <img class="rounded-lg w-7 h-7" src="{{$item->user->profile_photo}}" alt="Bordered avatar">
                 </div>
                 {{-- <div class="flex gap-2">
                     <button class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
