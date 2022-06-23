@@ -12,13 +12,15 @@ class Card extends Component
     use LivewireAlert;
     use WithFileUploads;
 
-    protected $listeners = ['$refresh' , 'delete' ,'deletee'];
+    protected $listeners = ['$refresh' , 'delete'];
 
     protected $rules = [
-        'title' => 'required',
-        'importance' => 'required',
-        'start_at' => 'required',
-        'end_at' => 'required',
+        'task.title' => 'required',
+        'task.project_id' => 'required',
+        'task.importance' => 'required',
+        'task.start_at' => 'required',
+        'task.end_at' => 'required',
+        'task.description' => 'required',
     ];
 
     public $task, $ID, $search, $userId, $modal = false;
@@ -28,21 +30,19 @@ class Card extends Component
         $this->task = $task;
     }
 
-    public function toggleModal(){
-        $this->modal = !$this->modal;
+    public function edit_name(){
+        $this->task->save($task);
+        $this->alert('success', __('ui.data_has_been_edited_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
     }
 
-
-    public function confirmed($id, $function){
-        $this->ID = $id;
-        $this->confirm(__('ui.are_you_sure'), [
-            'toast' => false,
-            'position' => 'center',
-            'showConfirmButton' => "true",
-            'cancelButtonText' => (__('ui.cancel')),
-            'confirmButtonText' => (__('ui.confirm')),
-            'onConfirmed' => $function,
-        ]);
+    public function toggleModal(){
+        $this->modal = !$this->modal;
     }
 
     public function delete(){
@@ -55,6 +55,18 @@ class Card extends Component
             'width' => '400',
         ]);
         $this->emitTo( 'task.all' ,'$refresh');
+    }
+
+
+    public function confirm($id){
+        $this->ID = $id;
+        $this->confirm(__('ui.are_you_sure'), [
+            'position' => 'center',
+            'showConfirmButton' => "true",
+            'cancelButtonText' => (__('ui.cancel')),
+            'confirmButtonText' => (__('ui.confirm')),
+            'onConfirmed' => 'delete',
+        ]);
     }
 
     public function updatedFiles($files){
@@ -79,31 +91,31 @@ class Card extends Component
         ]);
     }
 
-    public function confirmedFile($id, $function){
-        dd('k');
-        $this->file_id = $id;
-        $this->confirm(__('ui.are_you_sure'), [
-            'toast' => false,
-            'position' => 'center',
-            'showConfirmButton' => "true",
-            'cancelButtonText' => (__('ui.cancel')),
-            'confirmButtonText' => (__('ui.confirm')),
-            'onConfirmed' => $function,
-        ]);
-    }
+    // public function confirmedFile($id, $function){
+    //     dd('k');
+    //     $this->file_id = $id;
+    //     $this->confirm(__('ui.are_you_sure'), [
+    //         'toast' => false,
+    //         'position' => 'center',
+    //         'showConfirmButton' => "true",
+    //         'cancelButtonText' => (__('ui.cancel')),
+    //         'confirmButtonText' => (__('ui.confirm')),
+    //         'onConfirmed' => $function,
+    //     ]);
+    // }
 
-    public function deleteFile(){
-        $this->task->files()->findOrFail($this->file_id)->delete();
-        $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
-            'position' => 'top',
-            'timer' => 3000,
-            'toast' => true,
-            'timerProgressBar' => true,
-            'width' => '400',
-        ]);
+    // public function deleteFile(){
+    //     $this->task->files()->findOrFail($this->file_id)->delete();
+    //     $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
+    //         'position' => 'top',
+    //         'timer' => 3000,
+    //         'toast' => true,
+    //         'timerProgressBar' => true,
+    //         'width' => '400',
+    //     ]);
 
-        $this->emitSelf('$refresh');
-    }
+    //     $this->emitSelf('$refresh');
+    // }
 
 
     // public function edit(){

@@ -89,7 +89,7 @@
                                 </span>
                                 <span class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-error-100 w-44 bg-secondary-50 hover:text-error-600">
                                     <span class="text-sm">{{__('ui.delete')}}</span>
-                                    <button wire:click="confirmed({{ $task->id }} , 'delete')" >
+                                    <button wire:click="confirm({{ $task->id }})" >
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </span>
@@ -111,14 +111,20 @@
                                 <div @click.outside="title = false" class="flex items-center gap-4 cursor-pointer group">
                                     <h4 @click="title=!title" x-show="!title" class="text-xl font-semibold">{{$task->title}}</h4>
                                     <a @click="title=!title" x-show="!title" href="#" class="invisible group-hover:visible"><i class="fas fa-pen"></i></a>
-                                    <input x-show="title" type="text" class="block w-full p-1 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500" required>
+                                    <input wire:model.lazy="task.title" wire:keydown.enter="edit_name" x-show="title" type="text" class="block w-full p-1 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500" required>
                                 </div>
                                 <div @click.outside="project = false" class="flex items-center gap-4 cursor-pointer group">
                                     <h4 @click="project=!project" x-show="!project" class="text-sm font-semibold text-secondary-400">{{$task->project->title}}</h4>
                                     <a @click="project=!project" x-show="!project" href="#" class="invisible group-hover:visible"><i class="fas fa-pen"></i></a>
-                                    <select x-show="project" class="block w-full px-4 py-1 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                        <option>United States</option>
+                                    <select wire:model.defer="task.project_id" wire:keydown.enter="edit_name" x-show="project" class="block w-full px-4 py-1 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                                            {{-- @forelse($task as $item)
+                                            <option value="{{ $item->project->id }}">{{ $item->project->title }}</option>
+                                            @empty
+                                            <option value="id">{{ __('ui.no_projects') }}</option>
+                                            @endforelse --}}
                                         </select>
+
+                                    </select>
                                 </div>
                             </div>
                             {{-- Description --}}
@@ -126,7 +132,7 @@
                                 <div x-show="!description" @click="description=!description" class="px-4 py-3 border rounded cursor-pointer hover:bg-secondary-50">
                                     {{$task->description}}
                                 </div>
-                                <textarea x-show="description" id="message" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Description"></textarea>
+                                <textarea   wire:model.defer="task.description" wire:keydown.enter="edit_name" x-show="description" id="message" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Description"></textarea>
                             </div>
                         </div>
 
@@ -224,7 +230,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                
+
                                 {{-- Loop Item Below --}}
                                 @for ($i = 0; $i < 2; $i++)
                                 <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">

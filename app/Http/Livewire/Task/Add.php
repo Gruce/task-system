@@ -22,6 +22,7 @@ class Add extends Component
         'task.importance' => 'required',
         'task.start_at' => 'required',
         'task.end_at' => 'required',
+        'task.description' => 'required',
     ];
 
     public function mount()
