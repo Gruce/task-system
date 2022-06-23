@@ -27,25 +27,13 @@
             </div>
 
             <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
-                <<<<<<< HEAD @forelse ( $tasks as $item) @if($item->state == 2)
-                    <div>@livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))</div>
-                    @endif
-                    @empty
+                @forelse ( $tasks as $item)
+                @if($item->state == 2)
+                <div>@livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))</div>
+                @endif
+                @empty
 
-                    @endforelse
-                    =======
-                    @forelse ($tasks as $item )
-                    @if($item->state == 2)
-                    @livewire('task.card' , ['task' => $item] , key($item->id . "-" . now()))
-                    @endif
-                    @empty
-                    <div class="flex items-center justify-center">
-                        <div class="text-center">
-                            <h1 class="text-lg text-center text-gray-500">{{ __('ui.no_data') }}</h1>
-                        </div>
-                    </div>
-                    @endforelse
-                    >>>>>>> Zainab-Amjed
+                @endforelse
             </div>
         </div>
         <div class="flex flex-col gap-2 bg-white rounded-lg basis-1/3">
@@ -57,20 +45,16 @@
             <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
                 @forelse ($tasks as $item )
                 @if($item->state == 3)
-                <<<<<<< HEAD <div>@livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))
-            </div>
-            =======
-            @livewire('task.card' , ['task' => $item] , key($item->id . "-" . now()))
-            >>>>>>> Zainab-Amjed
-            @endif
-            @empty
-            <div class="flex items-center justify-center">
-                <div class="text-center">
-                    <h1 class="text-lg text-center text-gray-500">{{ __('ui.no_data') }}</h1>
+                <div>@livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))</div>
+                @endif
+                @empty
+                <div class="flex items-center justify-center">
+                    <div class="text-center">
+                        <h1 class="text-lg text-center text-gray-500">{{ __('ui.no_data') }}</h1>
+                    </div>
                 </div>
+                @endforelse
             </div>
-            @endforelse
         </div>
     </div>
-</div>
 </div>
