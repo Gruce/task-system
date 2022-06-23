@@ -37,7 +37,7 @@ class Add extends Component
     public function save()
     {
 
-        // $this->validate();
+        $this->validate();
         $this->employee['user']['password'] = bcrypt($this->employee['user']['password']);
         $user = User::create($this->employee['user']);
 
@@ -58,6 +58,8 @@ class Add extends Component
 
 
         $this->emitTo('employee.main', '$refresh');
+
+        $this->reset();
 
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',

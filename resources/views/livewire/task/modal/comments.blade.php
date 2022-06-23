@@ -18,7 +18,7 @@
             </div>
         </div>
         @empty
-
+        {{__('ui.no_comment')}}
         @endforelse
 
 
