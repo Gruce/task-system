@@ -19,18 +19,14 @@
         <div class="flex flex-col justify-between w-full px-4 py-1 border-r-4 hover:bg-secondary-50 text-secondary-500">
             <div class="flex justify-between gap-4">
                 <div class="text-sm font-normal" :class="expandComments ? 'w-full' : ' w-80'">
-                    {{$item->body}}
+                    {!! $item->body !!}
                 </div>
-                <div class="flex items-start gap-4">
+                <div class="flex items-start justify-end w-40 gap-4">
                     <div class="flex flex-col items-end">
                         <span class="text-xs font-normal {{$item->user->is_admin ? 'text-red-400' : 'text-secondary-700'}}"> {{ $item->user->name }}</span>
                         <span class="font-normal text-2xs text-secondary-400">{{ $item->created_at->diffForHumans() }}</span>
                     </div>
-                    @if ($item->user->profile_photo)
-                    <img class="rounded-lg w-7 h-7" src="{{ asset($item->user->profile_photo) }}" alt="Bordered avatar">
-                    @else
-                    <img class="rounded-lg w-7 h-7" src="https://ccemdata.mcmaster.ca/media/avatars/default.png" alt="Bordered avatar">
-                    @endif
+                    <img class="rounded-lg w-7 h-7" src="{{$item->user->profile_photo}}" alt="Bordered avatar">
                 </div>
                 {{-- <div class="flex gap-2">
                     <button class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">

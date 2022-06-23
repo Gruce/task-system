@@ -103,9 +103,9 @@ class User extends Authenticatable implements JWTSubject
         return Attribute::make(
             get: function () {
                 if ($this->profile_photo_path)
-                    return 'storage/users/' . $this->id . '/profile_photo/' . $this->profile_photo_path;
+                    return asset('storage/users/' . $this->id . '/profile_photo/' . $this->profile_photo_path);
                 else
-                    return null;
+                    return 'https://ccemdata.mcmaster.ca/media/avatars/default.png';
             },
         );
     }
