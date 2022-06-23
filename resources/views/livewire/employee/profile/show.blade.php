@@ -1,14 +1,23 @@
 <div>
-    <div class="flex flex-row">
+    <div class="flex flex-row" x-data="{name:false}">
         <div class="basis-1/4">
             <div class="p-4 h-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                 <div class="flex justify-between items-center mb-4">
                     <div class="flex flex-col">
                         <div class="flex items-center justify-between mt-3">
                             <div class="flex items-center gap-4 mb-3 text-secondary-600 group">
-                                <h5 class="text-xl font-bold tracking-tight text-secondary-700">
-                                    Hassan Hazim
-                                </h5>
+
+                                    <h5 x-show="!name" class="text-xl font-bold tracking-tight text-secondary-700">
+                                        Hassan Hazim
+                                    </h5>
+                                    <div class="flex items-center gap-4" @click.stop="" @click.outside="name = false">
+                                        <input wire:keydown.enter="edit_name" wire:model="project.title" type="text" x-show="name" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
+
+                                        <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-secondary-800 bg-secondary-50">
+                                            <a @click="name = !name" x-show="!name" href="#"><i class="fas fa-pen"></i></a>
+                                            <a wire:click="edit_name" @click="name = !name" x-show="name" href="#"><i class="fas fa-check"></i></a>
+                                        </div>
+                                    </div>
                                 {{-- <div class="flex items-center gap-4" @click.stop="" @click.outside="name = false">
                                     <input wire:keydown.enter="edit_name" wire:model="project.title" type="text" x-show="name" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
 
@@ -20,13 +29,48 @@
                             </div>
 
                         </div>
-                        <h6 class="text-sm  tracking-tight text-secondary-300">
-                            salem.cf11@gmail.com
-                        </h6>
+                        <div class="flex items-center gap-4  text-secondary-600 group">
+                            <h6 x-show="!name" class="text-sm font-bold tracking-tight text-secondary-700">
+                                salem.cf11@gmail.com
+                            </h6>
+                            <div class="flex items-center gap-4" @click.stop="" @click.outside="name = false">
+                                <input wire:keydown.enter="edit_name" wire:model="project.title" type="text" x-show="name" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
+
+                                <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-secondary-800 bg-secondary-50">
+                                    <a @click="name = !name" x-show="!name" href="#"><i class="fas fa-pen"></i></a>
+                                    <a wire:click="edit_name" @click="name = !name" x-show="name" href="#"><i class="fas fa-check"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4  text-secondary-600 group">
+                            <h6 x-show="!name" class="text-xs font-bold tracking-tight text-secondary-700">
+                                077343423423
+                            </h6>
+                            <div class="flex items-center gap-4" @click.stop="" @click.outside="name = false">
+                                <input wire:keydown.enter="edit_name" wire:model="project.title" type="text" x-show="name" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
+
+                                <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-secondary-800 bg-secondary-50">
+                                    <a @click="name = !name" x-show="!name" href="#"><i class="fas fa-pen"></i></a>
+                                    <a wire:click="edit_name" @click="name = !name" x-show="name" href="#"><i class="fas fa-check"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <div>
+                    {{-- <div>
                         <livewire:livewire-line-chart key="{{ $lineChartModel->reactiveKey() }}"
                                     :line-chart-model="$lineChartModel" />
+                    </div> --}}
+                    <div class="relative">
+                        <img class="w-16 h-16 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="">
+                        {{-- <button type="button" class="bottom-0 left-7 bg-black    absolute  w-5.5 h-5.5  text-sm  text-center inline-flex items-center mr-2 ">
+                            <i class="fa-solid fa-camera-rotate bg-black text-gray-600 text-lg"></i>
+                        </button> --}}
+                        <button type="button" class="absolute  bottom-0 left-8 w-5.5 h-5.5 text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-lg p-1 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <i class="fa-solid fa-camera-rotate  text-l"></i>
+                          </button>
+
                     </div>
                 </div>
                 <div class="flex flex-col">
@@ -46,9 +90,9 @@
                     <div class="p-4 ml-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <div class="flex flex-col">
                             <div class="flex flex-row items-center  mb-8">
-                                <i class="fa-solid fa-list-check mr-2 ml-2 text-xs"></i>
-                                <h3>
-                                    Task in progress
+                                <i class="fa-solid fa-list-check mr-2 ml-2  text-secondary-500 "></i>
+                                <h3 class="text-sm text-secondary-500 font-semibold">
+                                    مهمة قيد التنفيذ
                                 </h3>
                             </div>
 
@@ -62,29 +106,31 @@
                         </div>
                     </div>
                     <div class="p-4 ml-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                        <div class="flex flex-row">
-                            <i class="fa-solid fa-clipboard-check"></i>
+                        <div class="flex flex-row justify-around items-center">
+                            <div class="flex items-center">
+                                <i class="fa-solid fa-calendar-check p-3 text-secondary-500"></i>
+                                <h3 class="text-sm text-secondary-500 font-semibold">
+                                    المهام المكتملة
+                                </h3>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fa-solid fa-calendar-xmark p-2 text-secondary-500"></i>
+                                <h3 class="text-sm text-secondary-500 font-semibold">
+                                    المهام الغير مكتملة
+                                </h3>
+                            </div>
                         </div>
                         <div class="flex justify-between mt-4 text-sm text-center text-gray-500">
                             <div @class([
-                                'px-4 py-2 basis-1/3 flex items-center justify-center gap-2',
+                                'px- py-2 basis-1/2 flex items-center justify-center gap-2',
                                 'border-r' => en(),
                                 'border-l' => ar(),
                             ]) class="">
-                                <i class="fa-solid fa-clipboard-check"></i>
                                 <span class="text-2xl">45</span>
                             </div>
-                            <div @class([
-                                'px-4 py-2 basis-1/3 flex items-center justify-center gap-2',
-                                'border-r' => en(),
-                                'border-l' => ar(),
-                            ]) class="">
-                                <i class="ri-attachment-line"></i>
-                                <span>dfgdf</span>
-                            </div>
-                            <div @class(['px-4 py-2 basis-1/3 flex items-center justify-center gap-2']) class="">
-                                <i class="fa-solid fa-list-check"></i>
-                                <span>jghj</span>
+
+                            <div @class(['px-4 py-2 basis-1/2 flex items-center justify-center gap-2']) class="">
+                                <span class="text-2xl">45</span>
                             </div>
                         </div>
                     </div>
@@ -152,10 +198,8 @@
                                         even as we update the project.</p>
                                 </li>
                             </div>
-
-                    </div>
+                        </div>
                     </ol>
-
                 </div>
             </div>
         </div>
