@@ -117,6 +117,7 @@ return [
     'overview' => 'Overview',
     'profile' => 'Your Profile',
     'logout' => 'Logout',
+    'no_tasks' => 'No tasks',
 
 
 

@@ -24,10 +24,6 @@ class Card extends Component
     public $task, $ID;
     public $files = [] , $file_id;
 
-    public function mount($task){
-        $this->task = $task;
-    }
-
     public function confirmed($id, $function){
         $this->ID = $id;
         $this->confirm(__('ui.are_you_sure'), [
@@ -118,6 +114,10 @@ class Card extends Component
     //         'toast' => true,
     //     ]);
     // }
+
+    public function mount($task){
+        $this->task = $task;
+    }
 
     public function render(){
 
