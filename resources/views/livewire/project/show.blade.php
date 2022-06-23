@@ -1,4 +1,3 @@
-
 <div class="flex h-full gap-8" x-data="{expandComments: false}" x-cloak>
     {{-- Right Side --}}
     @livewire('project.show.side-details' , ['project' => $project])
@@ -12,7 +11,7 @@
 
 
             {{-- Left --}}
-            @livewire('project.show.comments')
+            @livewire('project.show.comments', ['project' => $project])
         </div>
 
         {{-- Bottom --}}

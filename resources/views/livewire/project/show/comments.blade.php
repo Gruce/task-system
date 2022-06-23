@@ -15,30 +15,41 @@
     </div>
     <div class="flex flex-col w-full gap-2 pl-2 overflow-y-auto text-sm" :class="expandComments ? 'grow' : 'h-44'">
         {{-- Loop Item Below --}}
-        @for ($i = 0; $i < 2; $i++)
-            <div class="flex flex-col justify-between w-full px-4 py-1 border-r-4 hover:bg-secondary-50 text-secondary-500">
-                <div class="flex justify-between gap-4">
-                    <div class="text-sm font-normal" :class="expandComments ? 'w-full' : ' w-80'">
-                        Text
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="flex flex-col items-end">
-                            <span class="text-xs font-normal text-secondary-700">Username</span>
-                            <span class="font-normal text-2xs text-secondary-400">since time</span>
-                        </div>
-                        <img class="rounded-lg w-7 h-7" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Bordered avatar">
-                    </div>
-                    {{-- <div class="flex gap-2">
-                        <button class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div> --}}
-                    
+        @forelse ($comments as $item)
+        <div class="flex flex-col justify-between w-full px-4 py-1 border-r-4 hover:bg-secondary-50 text-secondary-500">
+            <div class="flex justify-between gap-4">
+                <div class="text-sm font-normal" :class="expandComments ? 'w-full' : ' w-80'">
+                    {{$item->body}}
                 </div>
+                <div class="flex items-start gap-4">
+                    <div class="flex flex-col items-end">
+                        <span class="text-xs font-normal text-secondary-700"> {{ $item->user->name }}</span>
+                        <span class="font-normal text-2xs text-secondary-400">{{ $item->created_at->diffForHumans() }}</span>
+                    </div>
+                    @if ($item->user->profile_photo)
+                    <img class="rounded-lg w-7 h-7" src="{{ asset($item->user->profile_photo) }}" alt="Bordered avatar">
+                    @else
+                    <img class="rounded-lg w-7 h-7" src="https://ccemdata.mcmaster.ca/media/avatars/default.png" alt="Bordered avatar">
+                    @endif
+                </div>
+                {{-- <div class="flex gap-2">
+                    <button class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div> --}}
+
             </div>
-        @endfor
+        </div>
+        @empty
+        <div class="text-center text-gray-500">
+            <span class="text-xl">{{__('ui.no_comment')}}</span>
+        </div>
+        @endforelse
     </div>
+    {{ $comments->links() }}
     <div class="justify-self-end">
-        <input wire:keydown.enter="" wire:model="search" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.comment')}}" required>
+        <input wire:keydown.enter="add_comment" wire:model.defer="comment" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.comment')}}" required>
+        @error('comment')<span class="text-red-500">{{ $message }}</span> @enderror
     </div>
+
 </div>

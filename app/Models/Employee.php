@@ -12,11 +12,11 @@ class Employee extends Model
 {
     use HasFactory, SoftDeletes;
     use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
-    
 
-    protected $fillable = ['user_id', 'state', 'job', 'profile_photo'];
 
-    protected $appends = ['name'];
+    protected $fillable = ['user_id', 'state', 'job'];
+
+    protected $appends = ['photo'];
     // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
@@ -24,11 +24,13 @@ class Employee extends Model
     /******************* RELATIONSHIPS ******************/
     /****************************************************/
 
-    public function tasks(){
+    public function tasks()
+    {
         return $this->belongsToMany(Task::class);
     }
 
-    public function projects(){
+    public function projects()
+    {
         return $this->belongsToMany(Project::class)->withTimestamps();
     }
 
@@ -52,12 +54,13 @@ class Employee extends Model
         $this->save();
     }
 
-    
-    
+
+
     /****************************************************/
     /************** ACCESSORS & MUTATORS ****************/
     /****************************************************/
-    protected function name(): Attribute {
+    protected function name(): Attribute
+    {
         return Attribute::make(
             get: function () {
                 return $this->user->name;
@@ -65,4 +68,12 @@ class Employee extends Model
         );
     }
 
+    protected function photo(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                return $this->user->profile_photo;
+            },
+        );
+    }
 }

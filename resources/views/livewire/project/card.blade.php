@@ -53,15 +53,15 @@
 
 
         <div class="flex my-4 -space-x-4 rtl:space-x-reverse">
-            @foreach ($project->employees as  $employee)
-                <a href="https://github.com/Gruce/task-system/issues/2" target="_blank">
-                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="">
-                </a>
+            @foreach ($project->employees as $employee)
+            <a href="https://github.com/Gruce/task-system/issues/2" target="_blank">
+                <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="">
+            </a>
             @endforeach
             @if($project->employees_count > 3)
-                <a href="#" class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800" >
-                    + {{$project->employees_count - 3}}
-                </a>
+            <a href="#" class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800">
+                + {{$project->employees_count - 3}}
+            </a>
             @endif
         </div>
 
@@ -79,7 +79,7 @@
                 'border-l' => ar(),
                 ]) class="">
                 <i class="ri-chat-1-line"></i>
-                <span>3</span>
+                <span>{{$project->comments->count()}}</span>
             </div>
             <div @class([ 'px-4 py-2 basis-1/3 flex items-center justify-center gap-2' , 'border-r'=> en(),
                 'border-l' => ar(),

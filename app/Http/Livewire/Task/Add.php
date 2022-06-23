@@ -11,38 +11,46 @@ use App\Models\Project;
 
 class Add extends Component
 {
-    use  LivewireAlert , WithFileUploads;
+    use  LivewireAlert, WithFileUploads;
 
-    public $task, $title , $description , $importance , $project_id,$start_at,$end_at;
+    // public $task, $title , $description , $importance , $project_id,$start_at,$end_at;
+    public $task;
     public $files = [];
 
     protected $rules = [
-        'title' => 'required',
-        //'project_id' => 'required',
-        'importance' => 'required',
-        'start_at' => 'required',
-        'end_at' => 'required',
+        'task.title' => 'required',
+        'task.project_id' => 'required',
+        'task.importance' => 'required',
+        'task.start_at' => 'required',
+        'task.end_at' => 'required',
     ];
 
+    public function mount()
+    {
+        $this->task['start_at'] = date('Y-m-d');
+        $this->task['end_at'] = date('Y-m-d');
+        $this->projects = Project::get(['id', 'title']);
+    }
 
-
-
-    public function removeFile($index){
+    public function removeFile($index)
+    {
         unset($this->files[$index]);
     }
 
-    public function add( Task $task ){
+    public function add(Task $task)
+    {
+        dg($this->task);
         $this->validate();
 
-        $data = [
-            'title' => $this->title,
-            'project_id' => $this->project_id,
-            'description' => $this->description,
-            'importance' => $this->importance,
-            'start_at' => $this->start_at,
-            'end_at' => $this->end_at,
-        ];
-        $task = Task::create($data);
+        // $data = [
+        //     'title' => $this->title,
+        //     'project_id' => $this->project_id,
+        //     'description' => $this->description,
+        //     'importance' => $this->importance,
+        //     'start_at' => $this->start_at,
+        //     'end_at' => $this->end_at,
+        // ];
+        $task->create($this->task);
 
         if (count($this->files) > 0)
             foreach ($this->files as $file) {
@@ -61,11 +69,10 @@ class Add extends Component
             'width' => '400',
         ]);
     }
-    public function mount(){
-        $this->projects = Project::get(['id','title']);
-    }
 
-    public function render(){
+
+    public function render()
+    {
 
         return view('livewire.task.add');
     }

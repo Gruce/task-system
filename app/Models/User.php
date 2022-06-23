@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 
 class User extends Authenticatable implements JWTSubject
@@ -49,7 +50,8 @@ class User extends Authenticatable implements JWTSubject
         'email',
         'password',
         'phonenumber',
-        'is_admin'
+        'is_admin',
+        'profile_photo_path'
     ];
 
     /**
@@ -73,17 +75,7 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-    public function add($data)
-    {
-        $this->create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'phonenumber' => $data['phonenumber'],
-            'is_admin' => $data['is_admin'] ?? false,
-            'gender'   => $data['gender']
-        ]);
-    }
+
 
     /**
      * The accessors to append to the model's array form.
@@ -92,6 +84,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $appends = [
         'profile_photo_url',
+        'profile_photo',
     ];
 
     public function comments()
@@ -102,5 +95,18 @@ class User extends Authenticatable implements JWTSubject
     public function employee()
     {
         return $this->hasOne(Employee::class);
+    }
+
+
+    protected function profilePhoto(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                if ($this->profile_photo_path)
+                    return 'storage/users/' . $this->id . '/profile_photo/' . $this->profile_photo_path;
+                else
+                    return null;
+            },
+        );
     }
 }
