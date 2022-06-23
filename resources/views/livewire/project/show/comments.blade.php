@@ -23,7 +23,7 @@
                 </div>
                 <div class="flex items-start gap-4">
                     <div class="flex flex-col items-end">
-                        <span class="text-xs font-normal text-secondary-700"> {{ $item->user->name }}</span>
+                        <span class="text-xs font-normal {{$item->user->is_admin ? 'text-red-400' : 'text-secondary-700'}}"> {{ $item->user->name }}</span>
                         <span class="font-normal text-2xs text-secondary-400">{{ $item->created_at->diffForHumans() }}</span>
                     </div>
                     @if ($item->user->profile_photo)
