@@ -15,8 +15,20 @@ class Show extends Component
 
     public function render()
     {
-         $employee = auth()->user()->employee()->with('tasks')->first();
-        dd($employee->toArray());
-        return view('livewire.employee.profile.show');
+        $employee = auth()->user()->employee()->with('tasks')->first();
+        $tasks = $employee->tasks;
+
+        $lineChartModel = LivewireCharts::lineChartModel()
+            ->setTitle('Tasks ' . $tasks)
+            ->setAnimated(true)
+            // ->sparklined()
+            ->multiLine();
+
+        foreach($tasks as $data){
+            $lineChartModel->addSeriesPoint('somthing' , $data->start_at, $data->state);
+        }
+
+        // dd($lineChartModel);
+        return view('livewire.employee.profile.show' , ['lineChartModel' => $lineChartModel]);
     }
 }
