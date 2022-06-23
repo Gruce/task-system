@@ -62,22 +62,12 @@
                             {{-- Group Items --}}
                             <div class="flex flex-col gap-1 text-sm">
                                 {{-- Items --}}
-                                <span @click="selected = 0" :class="selected == 0 ? 'bg-secondary-100 font-semibold' : 'bg-secondary-50'" class="flex items-center justify-between px-4 py-2 capitalize rounded cursor-pointer hover:bg-secondary-100 w-44">
-                                    <span class="text-sm">{{__('ui.overview')}}</span>
-                                    <i class="text-xs fa-solid fa-home"></i>
-                                </span>
-                                <span @click="selected = 1" :class="selected == 1 ? 'bg-secondary-100 font-semibold' : 'bg-secondary-50'" class="flex items-center justify-between px-4 py-2 capitalize rounded cursor-pointer hover:bg-secondary-100 w-44">
-                                    <span class="text-sm">{{__('ui.files')}}</span>
-                                    <i class="text-xs fa-solid fa-paperclip"></i>
-                                </span>
-                                <span @click="selected = 2" :class="selected == 2 ? 'bg-secondary-100 font-semibold' : 'bg-secondary-50'" class="flex items-center justify-between px-4 py-2 capitalize rounded cursor-pointer hover:bg-secondary-100 w-44">
-                                    <span class="text-sm">{{__('ui.comments')}}</span>
-                                    <i class="text-xs fa-solid fa-comments"></i>
-                                </span>
-                                <span @click="selected = 3" :class="selected == 3 ? 'bg-secondary-100 font-semibold' : 'bg-secondary-50'" class="flex items-center justify-between px-4 py-2 capitalize rounded cursor-pointer hover:bg-secondary-100 w-44">
-                                    <span class="text-sm">{{__('ui.users')}}</span>
-                                    <i class="text-xs fa-solid fa-users"></i>
-                                </span>
+                                <template x-for="(tab, index) in $wire.tabs" :key="index">
+                                    <span @click="selected = index" :class="selected == index ? 'bg-secondary-100 font-semibold' : 'bg-secondary-50'" class="flex items-center justify-between px-4 py-2 capitalize rounded cursor-pointer hover:bg-secondary-100 w-44">
+                                        <span class="text-sm" x-text="tab[0]"></span>
+                                        <i class="text-xs" :class="tab[2]"></i>
+                                    </span>
+                                </template>
                             </div>
 
                             {{-- Group Items --}}
@@ -99,159 +89,11 @@
 
 
 
-
-
-
-
                     {{-- Task Content --}}
                     <div class="flex flex-col gap-4 basis-3/4">
-                        {{-- Overview --}}
-                        <div x-show="selected == 0" class="flex flex-col gap-6">
-                            <div x-data="{ title: false, project: false }" class="flex items-center justify-between pb-2 border-b-2 border-secondary-50">
-                                <div @click.outside="title = false" class="flex items-center gap-4 cursor-pointer group">
-                                    <h4 @click="title=!title" x-show="!title" class="text-xl font-semibold">{{$task->title}}</h4>
-                                    <a @click="title=!title" x-show="!title" href="#" class="invisible group-hover:visible"><i class="fas fa-pen"></i></a>
-                                    <input x-show="title" type="text" class="block w-full p-1 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500" required>
-                                </div>
-                                <div @click.outside="project = false" class="flex items-center gap-4 cursor-pointer group">
-                                    <h4 @click="project=!project" x-show="!project" class="text-sm font-semibold text-secondary-400">{{$task->project->title}}</h4>
-                                    <a @click="project=!project" x-show="!project" href="#" class="invisible group-hover:visible"><i class="fas fa-pen"></i></a>
-                                    <select x-show="project" class="block w-full px-4 py-1 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                        <option>United States</option>
-                                        </select>
-                                </div>
-                            </div>
-                            {{-- Description --}}
-                            <div @click.outside="description = false" x-data="{description: false}">
-                                <div x-show="!description" @click="description=!description" class="px-4 py-3 border rounded cursor-pointer hover:bg-secondary-50">
-                                    {{$task->description}}
-                                </div>
-                                <textarea x-show="description" id="message" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Description"></textarea>
-                            </div>
-                        </div>
-
-                        {{-- Files --}}
-                        <div x-show="selected == 1" class="flex flex-col gap-2">
-                            <div class="relative flex items-center justify-center h-10 border rounded-lg hover:bg-secondary-50 border-secondary-100">
-                                <div class="absolute w-full px-4">
-                                    <div class="flex items-center justify-between cursor-pointer">
-                                        <span class="text-secondary-400">{{__('ui.upload_files')}}</span>
-
-                                        <div wire:loading wire:target="files">
-                                            <i class="text-xl fas fa-spin fa-spinner text-secondary-600"></i>
-                                        </div>
-                                        <div wire:loading.remove wire:target="files">
-                                            <i class="text-xl ri-upload-line text-secondary-600"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input wire:model="files" type="file" class="w-full h-full opacity-0 cursor-pointer" name="" multiple>
-                            </div>
-                            {{-- <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
-                                <span class="text-sm font-semibold">{{__('ui.file')}} 1</span>
-                                <div class="flex gap-2 text-sm">
-                                    <a href="#" class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
-                                        <i class="fas fa-download"></i>
-                                    </a>
-                                    <button class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div> --}}
-                            @forelse ($task->files as $key => $file)
-                            <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
-                                <span>{{__('ui.file')}} {{$key + 1}}</span>
-                                <div class="flex gap-2">
-                                    <a href="{{$file->file_path}}" download class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
-                                        <i class="fas fa-download"></i>
-                                    </a>
-                                    {{-- <button class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
-                                        <i class="fas fa-download"></i>
-                                    </button> --}}
-                                    <button wire:click="confirmedFile({{ $file->id }} , 'deleteFile')" class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        @empty
-                            {{__('ui.no_data')}}
-                        @endforelse
-                        </div>
-
-                        {{-- Comments --}}
-                        <div x-show="selected == 2" class="flex flex-col gap-2">
-                            <div class="flex flex-col w-full gap-2 pl-2 overflow-y-auto text-sm">
-                                {{-- Loop Item Below --}}
-                                @for ($i = 0; $i < 2; $i++)
-                                    <div class="flex flex-col justify-between w-full px-4 py-1 border-r-4 hover:bg-secondary-50 text-secondary-500">
-                                        <div class="flex justify-between gap-4">
-                                            <div class="text-sm font-normal">
-                                                Text
-                                            </div>
-                                            <div class="flex items-start gap-4">
-                                                <div class="flex flex-col items-end">
-                                                    <span class="text-xs font-normal text-secondary-700">Username</span>
-                                                    <span class="font-normal text-2xs text-secondary-400">since time</span>
-                                                </div>
-                                                <img class="rounded-lg w-7 h-7" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Bordered avatar">
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                @endfor
-                            </div>
-                            <div class="justify-self-end">
-                                <input wire:keydown.enter="" wire:model="search" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.comment')}}" required>
-                            </div>
-                        </div>
-
-
-
-                        {{-- Users --}}
-                        <div x-show="selected == 3" class="flex flex-col">
-                            <div class="flex flex-col w-full gap-2 pl-2 overflow-y-auto text-sm">
-                                <div class="flex justify-between w-full px-4 py-2 rounded-lg text-secondary-500">
-                                    <div class="flex w-full gap-2">
-                                        <input wire:model="search" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.name')}}" required>
-                                        @if ($search)
-                                            <select wire:model="userId" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                                <option value="" selected>{{__('ui.select_employee')}}</option>
-                                                <option value="1">Employer Name</option>
-                                            </select>
-                                            <button wire:click="add" class="px-4 py-1 duration-150 ease-in-out delay-75 border rounded-lg hover:text-success-800 hover:bg-success-100">
-                                                <i class="fas fa-check"></i>
-                                            </button>
-                                        @endif
-                                    </div>
-                                </div>
-                                
-                                {{-- Loop Item Below --}}
-                                @for ($i = 0; $i < 2; $i++)
-                                <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
-                                    <div class="flex items-center gap-4">
-                                        <img class="w-10 h-10 rounded-lg" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Bordered avatar">
-                                        <div class="flex flex-col">
-                                            <span class="text-base font-normal text-secondary-700">
-                                                Name
-                                            </span>
-                                            <span class="text-xs font-normal text-secondary-400">
-                                                Joined Time
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="flex gap-2">
-                                        <button class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                @endfor
-                            </div>
-                        </div>
-
-
-
-
+                        @foreach ($tabs as $tab)
+                            @livewire('task.modal.' . $tab[1], ['task' => $task], key('tab-' . $tab[0]))
+                        @endforeach
                     </div>
                 </div>
             </div>

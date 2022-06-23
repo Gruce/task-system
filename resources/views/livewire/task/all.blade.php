@@ -7,9 +7,9 @@
             </div>
 
             <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
-                    @forelse ( $tasks as $item)
+                    @forelse ($tasks as $item)
                         @if($item->state == 1)
-                            <div>@livewire('task.card', ['task'=>$item])</div>
+                            <div>@livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))</div>
                         @endif
                     @empty
 
@@ -25,7 +25,7 @@
             <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
                 @forelse ( $tasks as $item)
                         @if($item->state == 2)
-                            <div>@livewire('task.card', ['task'=>$item])</div>
+                            <div>@livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))</div>
                         @endif
                     @empty
 
@@ -41,7 +41,7 @@
             <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
                 @forelse ( $tasks as $item)
                     @if($item->state == 3)
-                        <div>@livewire('task.card', ['task'=>$item])</div>
+                        <div>@livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))</div>
                     @endif
                 @empty
 
