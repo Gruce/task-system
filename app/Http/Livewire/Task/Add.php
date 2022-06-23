@@ -36,11 +36,10 @@ class Add extends Component
         unset($this->files[$index]);
     }
 
-    public function add(Task $task)
+    public function add()
     {
-        dg($this->task);
         $this->validate();
-        $task->create($this->task);
+        $task = Task::create($this->task);
 
         if (count($this->files) > 0)
             foreach ($this->files as $file) {

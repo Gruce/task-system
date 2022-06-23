@@ -132,7 +132,7 @@
                                 <div x-show="!description" @click="description=!description" class="px-4 py-3 border rounded cursor-pointer hover:bg-secondary-50">
                                     {{$task->description}}
                                 </div>
-                                <textarea   wire:model.defer="task.description" wire:keydown.enter="edit_name" x-show="description" id="message" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Description"></textarea>
+                                <textarea   wire:model="task.description" wire:click="edit_name" x-show="description" id="message" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Description"></textarea>
                             </div>
                         </div>
 
