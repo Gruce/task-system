@@ -24,8 +24,10 @@
                             salem.cf11@gmail.com
                         </h6>
                     </div>
-                    <img class="w-20 h-29 rounded-full"
-                        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Rounded avatar">
+                    <div>
+                        <livewire:livewire-line-chart key="{{ $lineChartModel->reactiveKey() }}"
+                                    :line-chart-model="$lineChartModel" />
+                    </div>
                 </div>
                 <div class="flex flex-col">
                     <div>
@@ -38,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="basis-3/4 ml-5">
+        <div class="basis-3/4 ml-5 mr-5">
             <div class="flex flex-col">
                 <div class="flex flex-row justify-between">
                     <div class="p-4 ml-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
@@ -60,7 +62,31 @@
                         </div>
                     </div>
                     <div class="p-4 ml-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                        dfdsf
+                        <div class="flex flex-row">
+                            <i class="fa-solid fa-clipboard-check"></i>
+                        </div>
+                        <div class="flex justify-between mt-4 text-sm text-center text-gray-500">
+                            <div @class([
+                                'px-4 py-2 basis-1/3 flex items-center justify-center gap-2',
+                                'border-r' => en(),
+                                'border-l' => ar(),
+                            ]) class="">
+                                <i class="fa-solid fa-clipboard-check"></i>
+                                <span class="text-2xl">45</span>
+                            </div>
+                            <div @class([
+                                'px-4 py-2 basis-1/3 flex items-center justify-center gap-2',
+                                'border-r' => en(),
+                                'border-l' => ar(),
+                            ]) class="">
+                                <i class="ri-attachment-line"></i>
+                                <span>dfgdf</span>
+                            </div>
+                            <div @class(['px-4 py-2 basis-1/3 flex items-center justify-center gap-2']) class="">
+                                <i class="fa-solid fa-list-check"></i>
+                                <span>jghj</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="p-4 ml-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         asdas
@@ -87,41 +113,47 @@
 
                     </div>
                     <div class="flex flex-col  px-2 m-1 overflow-y-auto h-tasklist">
-                    <ol class="relative border-l border-gray-300 ">
-                        <div class="p-4 w-full mb-5  bg-gray-100 rounded-lg  sm:p-4 dark:bg-gray-800 dark:border-gray-700">
-                            <li class="mb-10 ml-4">
-                                <div
-                                    class="absolute w-3 h-3 bg-black rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
-                                </div>
-                                <time
-                                    class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">March
-                                    2022</time>
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Marketing UI design in
-                                    Figma
-                                </h3>
-                                <p class="text-base font-normal  mb-5 text-gray-500 dark:text-gray-400">All of the pages and
-                                    components are first designed in Figma and we keep a parity between the two versions
-                                    even as we update the project.</p>
-                            </li>
-                        </div>
-                        <div class="p-4 w-full bg-red-400 mb-5 rounded-lg sm:p-4 dark:bg-gray-800 dark:border-gray-700">
-                            <li class="mb-10 ml-4">
-                                <div
-                                    class="absolute w-3 h-3 bg-red-500 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
-                                </div>
-                                <time
-                                    class="mb-1 text-sm font-normal leading-none text-white dark:text-gray-500">March
-                                    2022</time>
-                                <h3 class="text-lg font-semibold text-gray-900 ">Marketing UI design in
-                                    Figma
-                                </h3>
-                                <p class="text-base font-normal text-white ">All of the pages and
-                                    components are first designed in Figma and we keep a parity between the two versions
-                                    even as we update the project.</p>
-                            </li>
-                        </div>
+                        <ol class="relative border-l border-gray-300 ">
+                            <div
+                                class="p-4 w-full mb-5  bg-gray-100 rounded-lg  sm:p-4 dark:bg-gray-800 dark:border-gray-700">
+                                <li class="mb-10 ml-4">
+                                    <div
+                                        class="absolute w-3 h-3 bg-black rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+                                    </div>
+                                    <time
+                                        class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">March
+                                        2022</time>
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Marketing UI design
+                                        in
+                                        Figma
+                                    </h3>
+                                    <p class="text-base font-normal  mb-5 text-gray-500 dark:text-gray-400">All of the
+                                        pages and
+                                        components are first designed in Figma and we keep a parity between the two
+                                        versions
+                                        even as we update the project.</p>
+                                </li>
+                            </div>
+                            <div
+                                class="p-4 w-full bg-red-400 mb-5 rounded-lg sm:p-4 dark:bg-gray-800 dark:border-gray-700">
+                                <li class="mb-10 ml-4">
+                                    <div
+                                        class="absolute w-3 h-3 bg-red-500 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
+                                    </div>
+                                    <time
+                                        class="mb-1 text-sm font-normal leading-none text-white dark:text-gray-500">March
+                                        2022</time>
+                                    <h3 class="text-lg font-semibold text-gray-900 ">Marketing UI design in
+                                        Figma
+                                    </h3>
+                                    <p class="text-base font-normal text-white ">All of the pages and
+                                        components are first designed in Figma and we keep a parity between the two
+                                        versions
+                                        even as we update the project.</p>
+                                </li>
+                            </div>
 
-                        </div>
+                    </div>
                     </ol>
 
                 </div>
