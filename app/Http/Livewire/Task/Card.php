@@ -12,7 +12,7 @@ class Card extends Component
     use LivewireAlert;
     use WithFileUploads;
 
-    protected $listeners = ['$refresh' , 'delete' ,'deleteFile'];
+    protected $listeners = ['$refresh' , 'delete' ,'deletee'];
 
     protected $rules = [
         'title' => 'required',
@@ -21,15 +21,19 @@ class Card extends Component
         'end_at' => 'required',
     ];
 
-    public $task, $ID;
+    public $task, $ID, $search, $userId, $modal = false;
     public $files = [] , $file_id;
 
     public function mount($task){
         $this->task = $task;
     }
 
-    public function confirmed($id , $function){
-        dd('ll');
+    public function toggleModal(){
+        $this->modal = !$this->modal;
+    }
+
+
+    public function confirmed($id, $function){
         $this->ID = $id;
         $this->confirm(__('ui.are_you_sure'), [
             'toast' => false,
@@ -42,7 +46,6 @@ class Card extends Component
     }
 
     public function delete(){
-        dd('k');
         Task::findOrFail($this->ID)->delete();
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',
@@ -76,30 +79,31 @@ class Card extends Component
         ]);
     }
 
-    // public function confirmedFile($id, $function){
-    //     $this->file_id = $id;
-    //     $this->confirm(__('ui.are_you_sure'), [
-    //         'toast' => false,
-    //         'position' => 'center',
-    //         'showConfirmButton' => "true",
-    //         'cancelButtonText' => (__('ui.cancel')),
-    //         'confirmButtonText' => (__('ui.confirm')),
-    //         'onConfirmed' => $function,
-    //     ]);
-    // }
+    public function confirmedFile($id, $function){
+        dd('k');
+        $this->file_id = $id;
+        $this->confirm(__('ui.are_you_sure'), [
+            'toast' => false,
+            'position' => 'center',
+            'showConfirmButton' => "true",
+            'cancelButtonText' => (__('ui.cancel')),
+            'confirmButtonText' => (__('ui.confirm')),
+            'onConfirmed' => $function,
+        ]);
+    }
 
-    // public function deleteFile(){
-    //     $this->task->files()->findOrFail($this->file_id)->delete();
-    //     $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
-    //         'position' => 'top',
-    //         'timer' => 3000,
-    //         'toast' => true,
-    //         'timerProgressBar' => true,
-    //         'width' => '400',
-    //     ]);
+    public function deleteFile(){
+        $this->task->files()->findOrFail($this->file_id)->delete();
+        $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
 
-    //     $this->emitSelf('$refresh');
-    // }
+        $this->emitSelf('$refresh');
+    }
 
 
     // public function edit(){
