@@ -21,7 +21,7 @@ class Add extends Component
         'employee.user.password' => 'required',
         'employee.user.gender' => 'required',
         'employee.user.phonenumber' => 'required',
-        'employee.user.profile_photo_path' => 'image|max:1024',
+        'employee.user.profile_photo_path' => '',
         'employee.state' => 'required',
         'employee.job' => 'required',
     ];
@@ -36,12 +36,12 @@ class Add extends Component
 
     public function save()
     {
-
-        $this->validate();
+        dg($this->employee);
+        // $this->validate();
         $this->employee['user']['password'] = bcrypt($this->employee['user']['password']);
         $user = User::create($this->employee['user']);
-
-        $user->add_file('profile_photo_path', $this->employee['user']['profile_photo_path'], 'users/' . $user->id . '/profile_photo/');
+        if ($this->employee['user']['profile_photo_path'])
+            $user->add_file('profile_photo_path', $this->employee['user']['profile_photo_path'], 'users/' . $user->id . '/profile_photo/');
 
         $employee = $user->employee()->create([
             'state' => $this->employee['state'] ?? 1,
