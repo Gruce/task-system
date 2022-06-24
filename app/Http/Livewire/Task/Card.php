@@ -28,13 +28,6 @@ class Card extends Component
 
     public function mount($task){
         $this->task = $task;
-
-        $this->tabs = [
-            [__('ui.overview'), 'overview', 'fa-solid fa-home'],
-            [__('ui.files'), 'files', 'fa-solid fa-paperclip'],
-            [__('ui.comments'), 'comments', 'fa-solid fa-comments'],
-            [__('ui.users'), 'users', 'fa-solid fa-users'],
-        ];
     }
 
     public function edit_name(){
@@ -47,13 +40,6 @@ class Card extends Component
             'width' => '400',
         ]);
     }
-
-    public function toggleModal(){
-        $this->modal = !$this->modal;
-    }
-
-
-
 
     public function confirmed($id, $function){
         $this->ID = $id;
