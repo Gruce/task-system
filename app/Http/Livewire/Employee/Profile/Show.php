@@ -15,6 +15,7 @@ class Show extends Component
     protected $rules = [
         'employee.user.name' => 'required',
         'employee.job' => 'required',
+        'employee.user.gender' => 'required',
         'employee.user.phonenumber' => 'required',
         'employee.user.email' => 'required',
 
@@ -35,7 +36,18 @@ class Show extends Component
         ]);
     }
 
+    public function changeGander(Employee $employee)
+    {
+        dg($employee->user->gender);
+        if($employee->user->gender == 1){
+            $employee->user->gender = 2;
+            $employee->save();
+        }else{
+            $employee->user->gender = 1;
+            $employee->save();
+        }
 
+    }
     public function mount($id)
     {
         $this->employee = Employee::with(['tasks', 'files'])
@@ -56,7 +68,7 @@ class Show extends Component
            $t1 = strtotime($end_at)- strtotime(now());
            $t2 = strtotime($end_at)- strtotime($start_at);
            $res = 100 - ($t1/$t2)*100;
-           
+
         return (int)$res;
         }
 

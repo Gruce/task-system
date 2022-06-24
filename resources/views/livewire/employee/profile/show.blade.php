@@ -95,6 +95,15 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="flex justify-center rounded-md shadow-sm gap-2 w-full" role="group">
+                           <button wire:click="changeGander({{$employee->id}})">
+                            @if($employee->user->gender==1)
+                            <i class="fas fa-2x fa-male"></i>
+                            @else
+                            <i class="fas fa-2x fa-female"></i>
+                            @endif
+                           </button>
+                        </div>
                     </div>
                     {{-- <div>
                         <livewire:livewire-line-chart key="{{ $lineChartModel->reactiveKey() }}" :line-chart-model="$lineChartModel" />
@@ -103,8 +112,12 @@
                         <img class="w-20 h-20 mb-3 rounded-full" src="{{ $employee->user->profile_photo }}"
                             alt="">
                             <button wire:click="state({{$employee->id}})"
-                            class="top-0 left-13 absolute  w-3.5 h-3.5 @if($employee->state) bg-green-400  border-2 border-white dark:border-gray-800 rounded-full @else bg-red-600 border-2 border-white dark:border-gray-800 rounded-full @endif">
-                            </button>
+                            @if($employee->state)
+                            <i class="fa-solid fa-lock-open top-0 left-13 absolute text-green-700"></i>
+                            @else
+                            <i class="fa-solid fa-lock top-0 left-13 absolute text-red-600"></i>
+                            @endif
+                        </button>
 
                         {{-- <button type="button" class="bottom-0 left-7 bg-black    absolute  w-5.5 h-5.5  text-sm  text-center inline-flex items-center mr-2 ">
                             <i class="fa-solid fa-camera-rotate bg-black text-gray-600 text-lg"></i>
