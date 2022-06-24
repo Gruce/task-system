@@ -5,10 +5,11 @@ namespace App\Http\Livewire\Task\Modal;
 use Livewire\Component;
 use App\Models\Task;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use App\Traits\Livewire\DeleteTrait;
 
 class View extends Component
 {
-    use LivewireAlert;
+    use LivewireAlert ,DeleteTrait;
 
     protected $listeners = ['$refresh' , 'delete'];
 
@@ -22,28 +23,9 @@ class View extends Component
         ];
     }
 
-    public function confirmed($id, $function){
-        $this->ID = $id;
-        $this->confirm(__('ui.are_you_sure'), [
-            'toast' => false,
-            'position' => 'center',
-            'showConfirmButton' => "true",
-            'cancelButtonText' => (__('ui.cancel')),
-            'confirmButtonText' => (__('ui.confirm')),
-            'onConfirmed' => $function,
-        ]);
-    }
-
-    public function delete(){
-        Task::findOrFail($this->ID)->delete();
-        $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
-            'position' => 'top',
-            'timer' => 3000,
-            'toast' => true,
-            'timerProgressBar' => true,
-            'width' => '400',
-        ]);
-        $this->emitTo( 'task.all' ,'$refresh');
+    public function confirmed($id){
+        // make sure add 'delete' to listeners
+        $this->confirmedDelete(new Task , $id , ['task.all']);
     }
 
     public function render(){

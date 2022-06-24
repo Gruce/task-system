@@ -74,7 +74,7 @@
 
                             {{-- Force Delete Button --}}
                             <div>
-                                <button wire:click="confirmed({{ $task->id }}, 'delete') " class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-error-100 w-44 text-secondary-700 bg-secondary-50 hover:text-error-600">
+                                <button wire:click="confirmed({{ $task->id }}) " class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-error-100 w-44 text-secondary-700 bg-secondary-50 hover:text-error-600">
                                     <span class="text-sm">{{__('ui.delete')}}</span>
                                     <i class="fas fa-trash"></i>
                                 </button>

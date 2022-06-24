@@ -6,9 +6,11 @@
                 @if ($search)
                     <select wire:model="userId" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         <option value="" selected>{{__('ui.select_employee')}}</option>
-                        <option value="1">Employer Name</option>
+                        @foreach ($employees as $employee)
+                            <option value="{{$employee->id}}">{{$employee->name}}</option>
+                        @endforeach
                     </select>
-                    <button wire:click="add" class="px-4 py-1 duration-150 ease-in-out delay-75 border rounded-lg hover:text-success-800 hover:bg-success-100">
+                    <button wire:click="add" @click="add=!add" class="px-4 py-1 duration-150 ease-in-out delay-75 border rounded-lg hover:text-success-800 hover:bg-success-100">
                         <i class="fas fa-check"></i>
                     </button>
                 @endif
@@ -16,7 +18,7 @@
         </div>
 
         {{-- Loop Item Below --}}
-        @forelse ($employees as $employee)
+        @forelse ($task_employees as $employee)
         <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
             <div class="flex items-center gap-4">
                 <img class="w-10 h-10 rounded-lg" src="{{$employee->photo}}" alt="Bordered avatar">
@@ -30,7 +32,7 @@
                 </div>
             </div>
             <div class="flex gap-2">
-                <button class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
+                <button wire:click="confirmed({{ $employee->id }} , 'delete')" class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
                     <i class="fas fa-trash"></i>
                 </button>
             </div>
