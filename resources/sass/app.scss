@@ -33,3 +33,28 @@
 [x-cloak] {
     display: none !important;
 }
+
+
+span {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.dragging{
+    opacity: 0.5;
+    &:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: #4f46e533;
+        top: 0;
+        right: 0;
+        position: absolute;
+        display: inline-block;
+    }
+}

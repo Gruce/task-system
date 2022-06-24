@@ -38,7 +38,7 @@
                             </a>
                         </li>
                         <li>
-                            <a wire:click="confirmed({{ $project->id }} , 'delete')" href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
+                            <a wire:click="confirmed({{ $project->id }})" href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
                                 {{__('ui.delete')}}
                             </a>
                         </li>
@@ -55,23 +55,23 @@
         <div class="flex my-4 -space-x-4 rtl:space-x-reverse">
             @foreach ($project->employees as $employee)
                 <a href="https://github.com/Gruce/task-system/issues/2">
-                    <img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="">
+                    <img src="{{$employee->photo}}" class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"  alt="">
                 </a>
             @endforeach
-            @if($project->employees_count > 3)
+            @if($project->employees_count > 2)
             <a href="#" class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800">
-                + {{$project->employees_count - 3}}
+                + {{$project->employees_count - 2}}
             </a>
             @endif
         </div>
 
 
         <div class="flex justify-between mb-1">
-            <span class="text-xs font-medium text-secondary-500">{{intval($project->completed_tasks / $project->tasks_count * 100)}}%</span>
+            <span class="text-xs font-medium text-secondary-500">{{$project->percentage_completed_tasks}}%</span>
             <span class="text-xs font-medium text-secondary-500">{{$project->created_at->diffForHumans()}}</span>
         </div>
         <div class="w-full bg-gray-200 rounded-full h-1.5">
-            <div class="bg-secondary-600 h-1.5 rounded-full" style="width: {{intval($project->completed_tasks / $project->tasks_count * 100)}}%"></div>
+            <div class="bg-secondary-600 h-1.5 rounded-full" style="width: {{$project->percentage_completed_tasks}}%"></div>
         </div>
 
         <div class="flex justify-between mt-4 text-sm text-center text-gray-500">
