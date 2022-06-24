@@ -34,16 +34,51 @@
                         {{-- Group Items --}}
                         <div class="flex flex-col gap-1 text-sm">
                             {{-- Items --}}
-                            <span class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-secondary-100 w-44 text-secondary-700 {{ true ? 'bg-secondary-100' : 'bg-secondary-50' }}">
+
+                            {{-- State Drop Down --}}
+                            <div class="relative w-44" x-data="{stateDropDown: false}">
+                                <div x-show="stateDropDown" x-transition class="flex gap-1 flex-col justify-center absolute w-full p-1 bg-opacity-75 bottom-10 left-0 rounded bg-white border">
+                                    <div class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-secondary-50 text-secondary-700">
+                                        <span class="text-xs">{{__('ui.to_do')}}</span>
+                                        <i class="text-2xs fa-solid fa-circle"></i>
+                                    </div>
+                                    <div class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-warning-100 text-warning-800">
+                                        <span class="text-xs">{{__('ui.in_progress')}}</span>
+                                        <i class="text-2xs fa-solid fa-circle"></i>
+                                    </div>
+                                    <div class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-success-100 text-success-900">
+                                        <span class="text-xs">{{__('ui.done')}}</span>
+                                        <i class="text-2xs fa-solid fa-circle"></i>
+                                    </div>
+                                </div>
+                                <div @click="stateDropDown = !stateDropDown" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer {{ $task->state == 1 ? 'bg-secondary-50 text-secondary-700' : ( $task->state == 2 ? 'bg-warning-100 text-warning-800' : 'bg-success-100 text-success-900') }}">
+                                    {{-- Dropdown --}}
+                                    <span class="text-sm">
+                                        @if ($task->state == 1)
+                                            {{__('ui.to_do')}}
+                                        @elseif ($task->state == 2)
+                                            {{__('ui.in_progress')}}
+                                        @else
+                                            {{__('ui.done')}}
+                                        @endif
+                                    </span>
+                                    <i class="text-xs fa-solid fa-circle"></i>
+                                </div>
+                            </div>
+
+                            {{-- Archive Button --}}
+                            <div class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-secondary-100 w-44 text-secondary-700 {{ true ? 'bg-secondary-100' : 'bg-secondary-50' }}">
                                 <span class="text-sm">{{__('ui.archive')}}</span>
                                 <i class="text-xs fa-solid fa-box-archive"></i>
-                            </span>
-                            <span>
+                            </div>
+
+                            {{-- Force Delete Button --}}
+                            <div>
                                 <button wire:click="confirmed({{ $task->id }}, 'delete') " class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-error-100 w-44 text-secondary-700 bg-secondary-50 hover:text-error-600">
                                     <span class="text-sm">{{__('ui.delete')}}</span>
                                     <i class="fas fa-trash"></i>
                                 </button>
-                            </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -59,4 +94,5 @@
             </div>
         </div>
     </div>
+
 </div>

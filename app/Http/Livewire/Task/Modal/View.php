@@ -17,8 +17,7 @@ class View extends Component
         ];
     }
 
-    public function render()
-    {
+    public function render(){
         return view('livewire.task.modal.view');
     }
 }
