@@ -17,7 +17,7 @@ class ProjectSeeder extends Seeder
     public function run()
     {
         // ids from 1 to 10
-        for($i = 1 ; $i <= 100 ; $i++){
+        for($i = 1 ; $i <= 10 ; $i++){
             Project::create([
                 'title' => 'Project ' . $i,
                 'description' => 'Project ' . $i . ' description',
