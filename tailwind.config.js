@@ -15,7 +15,7 @@ module.exports = {
                 'content': 'calc(100vh - 8rem)',
                 'tasklist': 'calc(100vh - 23.5rem)',
                 'projectfiles': 'calc(100vh - 25rem)',
-                // 'profile': 'calc(100vh - 7rem)'
+                 'profile': 'calc(100vh - 6rem)'
             },
             fontFamily: {
                 sans: ['Cairo', ...defaultTheme.fontFamily.sans],

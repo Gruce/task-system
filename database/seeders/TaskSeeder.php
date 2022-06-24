@@ -28,7 +28,71 @@ class TaskSeeder extends Seeder
             ]);
 
             $project->tasks()->create([
-                'title' => 'title ' . $key,
+                'title' => 'title ' . $key++,
+                'description' => 'description',
+                'start_at' => date('Y-m-d'),
+                'state' => rand(1,6),
+                'end_at' => date('Y-m-d'),
+            ]);
+
+            $project->tasks()->create([
+                'title' => 'title ' . $key++,
+                'description' => 'description',
+                'start_at' => date('Y-m-d'),
+                'state' => rand(1,6),
+                'end_at' => date('Y-m-d'),
+            ]);
+
+            $project->tasks()->create([
+                'title' => 'title ' . $key++,
+                'description' => 'description',
+                'start_at' => date('Y-m-d'),
+                'state' => rand(1,6),
+                'end_at' => date('Y-m-d'),
+            ]);
+
+            $project->tasks()->create([
+                'title' => 'title ' . $key++,
+                'description' => 'description',
+                'start_at' => date('Y-m-d'),
+                'state' => rand(1,6),
+                'end_at' => date('Y-m-d'),
+            ]);
+
+            $project->tasks()->create([
+                'title' => 'title ' . $key++,
+                'description' => 'description',
+                'start_at' => date('Y-m-d'),
+                'state' => rand(1,6),
+                'end_at' => date('Y-m-d'),
+            ]);
+
+            $project->tasks()->create([
+                'title' => 'title ' . $key++,
+                'description' => 'description',
+                'start_at' => date('Y-m-d'),
+                'state' => rand(1,6),
+                'end_at' => date('Y-m-d'),
+            ]);
+
+            $project->tasks()->create([
+                'title' => 'title ' . $key++,
+                'description' => 'description',
+                'start_at' => date('Y-m-d'),
+                'state' => rand(1,6),
+                'end_at' => date('Y-m-d'),
+            ]);
+
+            $project->tasks()->create([
+                'title' => 'title ' . $key++,
+                'description' => 'description',
+                'start_at' => date('Y-m-d'),
+                'state' => rand(1,6),
+                'end_at' => date('Y-m-d'),
+            ]);
+
+            $project->tasks()->create([
+                'title' => 'title ' . $key++,
                 'description' => 'description',
                 'start_at' => date('Y-m-d'),
                 'state' => rand(1,6),

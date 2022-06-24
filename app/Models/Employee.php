@@ -16,7 +16,7 @@ class Employee extends Model
 
     protected $fillable = ['user_id', 'state', 'job'];
 
-    protected $appends = ['photo'];
+    // protected $appends = ['photo'];
     // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
@@ -51,6 +51,12 @@ class Employee extends Model
         $this->password = bcrypt($data['password']);
         $this->is_admin = $data['is_admin'];
         $this->phonenumber = $data['phonenumber'];
+        $this->save();
+    }
+
+    public function state($state)
+    {
+        $this->state = !$state;
         $this->save();
     }
 

@@ -118,4 +118,6 @@ return [
     'profile' => 'الملف الشخصي',
     'logout' => 'تسجيل الخروج',
     'no_tasks' => 'لا توجد مهام',
+    'the_account_has_been_activated'=>'تم تفعيل الحساب',
+    'the_account_has_been_disabled'=>'تم تعطيل الحساب',
 ];

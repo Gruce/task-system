@@ -1,7 +1,7 @@
 <div>
 
     <div class="grid gap-8 lg:grid-cols-3 sm:grid-cols-1">
-        {{-- @for ($i = 0; $i < 23; $i++)
+        {{-- @for ($i = 0; $i <div 23; $i++)
             @livewire('project.card')
         @endfor --}}
         @forelse ($projects as $project )
@@ -13,6 +13,9 @@
                 </div>
             </div>
         @endforelse
+    </div>
+    <div class="grid gap-1 lg:grid-cols-1 sm:grid-cols-1 pt-3" dir="ltr">
+        {{ $projects->links() }}
     </div>
 
 </div>
