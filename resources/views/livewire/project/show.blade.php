@@ -5,7 +5,7 @@
     {{-- Left Side --}}
     <div class="flex flex-col gap-8 basis-3/4">
         {{-- Top --}}
-        <div :class="expandComments ? 'grow' : 'basis-1/3'" class="flex gap-8">
+        <div :class="expandComments ? 'h-full' : 'basis-1/3'" class="flex gap-8">
             {{-- Right : Users --}}
             @livewire('project.show.users' , ['project_employees' => $project->employees, 'project' => $project])
 
@@ -24,7 +24,7 @@
                 <div class="w-full border rounded-lg grow">
                     @forelse ($project->tasks as $task )
                         @if($task->state == 1)
-                            <div class="pt-2 px-1"> @livewire('task.card', ['task' => $task]) </div>
+                            <div class="px-1 pt-2"> @livewire('task.card', ['task' => $task]) </div>
                         @endif
                     @empty
                         {{__('ui.no_tasks')}}
@@ -39,7 +39,7 @@
                 <div class="w-full border rounded-lg grow">
                     @forelse ($project->tasks as $task )
                         @if($task->state == 2)
-                            <div class="pt-2 px-1"> @livewire('task.card', ['task' => $task]) </div>
+                            <div class="px-1 pt-2"> @livewire('task.card', ['task' => $task]) </div>
                         @endif
                     @empty
                         {{__('ui.no_tasks')}}
@@ -54,7 +54,7 @@
                 <div class="w-full border rounded-lg grow">
                     @forelse ($project->tasks as $task )
                         @if($task->state == 3)
-                            <div class="pt-2 px-1"> @livewire('task.card', ['task' => $task]) </div>
+                            <div class="px-1 pt-2"> @livewire('task.card', ['task' => $task]) </div>
                         @endif
                     @empty
                         {{__('ui.no_tasks')}}

@@ -10,11 +10,20 @@ class All extends Component
 {
     public $search;
 
-    protected $listeners = ['$refresh', 'search'];
+    protected $listeners = ['$refresh', 'search', 'taskMoved'];
 
     public function search($search)
     {
         $this->search = $search;
+    }
+
+    public function taskMoved($value){
+        $type = $value['type'];
+        $id = $value['id'];
+        Task::findOrFail($id)->update([
+            'state' => $type
+        ]);
+        
     }
 
     public function render()
