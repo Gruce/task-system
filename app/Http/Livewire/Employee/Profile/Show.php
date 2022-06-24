@@ -5,7 +5,8 @@ namespace App\Http\Livewire\Employee\Profile;
 use App\Models\Employee;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-
+use App\Models\Task;
+use Carbon\Carbon;
 class Show extends Component
 {
     use LivewireAlert;
@@ -40,8 +41,25 @@ class Show extends Component
         $this->employee = Employee::with(['tasks', 'files'])
             ->withCount(['tasks', 'files'])
             ->findOrFail($id);
-        // dd($this->employee->name);
+        //  dd($this->employee);
+            // dd($res);
     }
+    public function calctimeprogress()
+    {
+        $this->task = Task::get()->last();
+        $task=$this->task;
+        $start_at = $task->start_at;
+
+           $s = strtotime($start_at) ;
+           $end_at = $task->end_at;
+           $e = strtotime($end_at);
+           $t1 = strtotime($end_at)- strtotime(now());
+           $t2 = strtotime($end_at)- strtotime($start_at);
+           $res = 100 - ($t1/$t2)*100;
+           
+        return (int)$res;
+        }
+
     public function edit_name(){
         $this->employee->save();
         $this->alert('success', __('ui.data_has_been_edited_successfully'), [
@@ -54,6 +72,7 @@ class Show extends Component
     }
     public function render()
     {
+        $this->progress=$this->calctimeprogress();
         return view('livewire.employee.profile.show');
     }
 }

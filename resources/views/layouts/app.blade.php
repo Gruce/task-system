@@ -46,7 +46,7 @@
                         </div>
 
                         <!-- Profile dropdown -->
-                        <div x-data="{dropdown: false}" class=" ml-3 relative">
+                        <div x-data="{dropdown: false}" class=" ml-3 relative mr-3">
                             <div>
                                 <button @click.stop="dropdown = !dropdown" type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                     <span class="sr-only">Open user menu</span>

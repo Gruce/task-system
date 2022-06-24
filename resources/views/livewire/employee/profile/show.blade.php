@@ -140,11 +140,11 @@
                             </div>
 
                             <div class="flex justify-between mb-1">
-                                <span class="text-xs font-medium text-secondary-500">45%</span>
+                                <span class="text-xs font-medium text-secondary-500">{{$progress}}%</span>
                                 <span class="text-xs font-medium text-secondary-500">545</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-1.5">
-                                <div class="bg-secondary-600 h-1.5 rounded-full" style="width: 45%"></div>
+                                <div class="bg-secondary-600 h-1.5 rounded-full" style="width: {{$progress}}%"></div>
                             </div>
                         </div>
                     </div>
