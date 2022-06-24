@@ -13,10 +13,6 @@ class Comments extends Component
     public $project, $comment;
     public $limitPerPage = 10;
 
-    protected $listeners = [
-        'load-more' => 'loadMore'
-    ];
-
     protected $rules = [
         'comment' => 'required',
     ];

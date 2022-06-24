@@ -1,4 +1,4 @@
-<div wire:poll :class="expandComments ? 'grow' : 'basis-1/2'" class="flex flex-col gap-4 p-8 text-lg font-semibold capitalize bg-white rounded-lg text-secondary-600">
+<div wire:poll :class="expandComments ? 'w-full' : 'basis-1/2'" class="flex flex-col gap-4 p-8 text-lg font-semibold capitalize bg-white rounded-lg text-secondary-600">
     <div class="flex justify-between">
         <div class="flex items-center gap-4">
             <span class="relative flex w-3 h-3">
@@ -7,8 +7,8 @@
             </span>
             <span>
                 {{__('ui.comments')}}
-                <div wire:loading wire:target="comments">
-                    Processing Payment...
+                <div class="w-4 h-4" wire:loading wire:target="loadMore">
+                    <x-spinner />
                 </div>
             </span>
         </div>
@@ -18,7 +18,7 @@
             </button>
         </div>
     </div>
-    <div id="loadmore" class="flex flex-col w-full gap-2 px-2 overflow-y-auto text-sm" :class="expandComments ? 'grow' : 'h-44'">
+    <div @scroll="Math.round($el.scrollTop) === Math.round($el.scrollHeight - $el.offsetHeight) && $wire.loadMore()" class="flex flex-col w-full gap-2 px-2 overflow-y-auto text-sm" :class="expandComments ? 'h-full' : 'h-44'">
         {{-- Loop Item Below --}}
         @forelse ($comments as $item)
         <div class="flex flex-col justify-between w-full px-4 py-1 border-r-4 hover:bg-secondary-50 text-secondary-500">
@@ -53,16 +53,4 @@
         <input wire:keydown.enter="add_comment" wire:model.defer="comment" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.comment')}}" required>
         @error('comment')<span class="text-red-500">{{ $message }}</span> @enderror
     </div>
-
-    <script type="text/javascript">
-
-        let obj = document.getElementById("loadmore");
-
-        obj.onscroll = function (ev) {
-            if ( obj.scrollTop === (obj.scrollHeight - obj.offsetHeight)){
-                window.livewire.emit('load-more');
-            }
-
-        };
-    </script>
 </div>
