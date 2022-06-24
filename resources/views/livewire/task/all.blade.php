@@ -6,17 +6,12 @@
                 <span>{{__('ui.to_do')}}</span>
             </div>
 
-            <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
+            <div id="todo-1" class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist" ondrop="drop(event)" ondragover="allowDrop(event)">
                 @forelse ($tasks as $item )
                 @if($item->state == 1)
                 @livewire('task.card' , ['task' => $item] , key($item->id . "-" . now()))
                 @endif
                 @empty
-                <div class="flex items-center justify-center">
-                    <div class="text-center">
-                        <h1 class="text-lg text-center text-gray-500">{{ __('ui.no_data') }}</h1>
-                    </div>
-                </div>
                 @endforelse
             </div>
         </div>
@@ -26,10 +21,10 @@
                 <span>{{__('ui.in_progress')}}</span>
             </div>
 
-            <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
+            <div id="progress-2" class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist" ondrop="drop(event)" ondragover="allowDrop(event)">
                 @forelse ( $tasks as $item)
                 @if($item->state == 2)
-                <div>@livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))</div>
+                @livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))
                 @endif
                 @empty
 
@@ -42,19 +37,48 @@
                 <span>{{__('ui.done')}}</span>
             </div>
 
-            <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
+            <div id="done-3" class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist" ondrop="drop(event)" ondragover="allowDrop(event)">
                 @forelse ($tasks as $item )
                 @if($item->state == 3)
-                <div>@livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))</div>
+                @livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))
                 @endif
                 @empty
-                <div class="flex items-center justify-center">
-                    <div class="text-center">
-                        <h1 class="text-lg text-center text-gray-500">{{ __('ui.no_data') }}</h1>
-                    </div>
-                </div>
                 @endforelse
             </div>
         </div>
     </div>
+
+    <script>
+        function allowDrop(ev) {
+            var dropID = ev.currentTarget.id;
+            ev.preventDefault();
+        }
+
+        function drag(ev){
+            ev.dataTransfer.setData("dragEventID", ev.currentTarget.id);
+        }
+
+        function drop(ev, type) {
+            ev.preventDefault();
+            var dragID = ev.dataTransfer.getData("dragEventID");
+            var dropID =  ev.currentTarget.id;
+            var dropClass =  ev.currentTarget.getAttribute("class");
+
+            let taskID = dragID.split('-');
+            taskID = taskID[taskID.length - 1];
+
+            let typeID = dropID.split('-');
+            typeID = typeID[typeID.length - 1];
+            
+            // Task Drop Item
+            if (dropClass.includes("h-tasklist")) {
+                document.getElementById(dropID).appendChild(document.getElementById(dragID));
+                Livewire.emit('taskMoved', {
+                    type: typeID,
+                    id: taskID,
+                })
+            }
+        }
+
+    </script>
 </div>
