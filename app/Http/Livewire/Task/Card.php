@@ -12,13 +12,15 @@ class Card extends Component
     use LivewireAlert;
     use WithFileUploads;
 
-    protected $listeners = ['$refresh' , 'delete' ,'deletee'];
+    protected $listeners = ['$refresh' , 'delete' , 'deleteFile'];
 
     protected $rules = [
-        'title' => 'required',
-        'importance' => 'required',
-        'start_at' => 'required',
-        'end_at' => 'required',
+        'task.title' => 'required',
+        'task.project_id' => 'required',
+        'task.importance' => 'required',
+        'task.start_at' => 'required',
+        'task.end_at' => 'required',
+        'task.description' => 'required',
     ];
 
     public $task, $ID, $search, $userId, $modal = false, $tabs;
@@ -35,9 +37,22 @@ class Card extends Component
         ];
     }
 
+    public function edit_name(){
+        $this->task->save();
+        $this->alert('success', __('ui.data_has_been_edited_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
+    }
+
     public function toggleModal(){
         $this->modal = !$this->modal;
     }
+
+
 
 
     public function confirmed($id, $function){
@@ -87,7 +102,6 @@ class Card extends Component
     }
 
     public function confirmedFile($id, $function){
-        dd('k');
         $this->file_id = $id;
         $this->confirm(__('ui.are_you_sure'), [
             'toast' => false,

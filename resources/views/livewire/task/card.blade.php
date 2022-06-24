@@ -32,10 +32,10 @@
     </div>
     <!-- Main modal -->
     {{--
-        Selections:
-            0. Overview
-            1. Files
-            2. Comments
+    Selections:
+    0. Overview
+    1. Files
+    2. Comments
     --}}
     <div x-show="show" class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-full h-full overflow-x-hidden overflow-y-auto bg-black bg-opacity-50 md:inset-0" x-cloak x-data="{ selected: 0 }">
         <div class="relative w-full max-w-4xl p-4">
@@ -77,9 +77,9 @@
                                     <span class="text-sm">{{__('ui.archive')}}</span>
                                     <i class="text-xs fa-solid fa-box-archive"></i>
                                 </span>
-                                <span class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-error-100 w-44 bg-secondary-50 hover:text-error-600">
-                                    <span class="text-sm">{{__('ui.delete')}}</span>
-                                    <button wire:click="confirmed({{ $task->id }} , 'delete')" >
+                                <span>
+                                    <button wire:click="confirmed({{ $task->id }}, 'delete') " class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-error-100 w-44 bg-secondary-50 hover:text-error-600">
+                                        <span class="text-sm">{{__('ui.delete')}}</span>
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </span>
@@ -92,7 +92,7 @@
                     {{-- Task Content --}}
                     <div class="flex flex-col gap-4 basis-3/4">
                         @foreach ($tabs as $tab)
-                            @livewire('task.modal.' . $tab[1], ['task' => $task], key('tab-' . $tab[0]))
+                        @livewire('task.modal.' . $tab[1], ['task' => $task], key('tab-' . $tab[0]))
                         @endforeach
                     </div>
                 </div>
