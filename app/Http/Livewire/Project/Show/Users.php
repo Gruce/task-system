@@ -5,15 +5,16 @@ namespace App\Http\Livewire\Project\Show;
 use App\Models\Employee;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Livewire\WithPagination;
 
 
 class Users extends Component
 {
-    use LivewireAlert;
+    use LivewireAlert , WithPagination;
 
-    protected $listeners = ['$refresh' , 'delete'];
+    protected $listeners = ['$refresh' , 'delete' ,'load-more' => 'loadMore'];
 
-    public $userId , $employee_id, $project_employees;
+    public $userId , $employee_id, $limitPerPage = 10;
     public $search;
 
 
@@ -76,6 +77,10 @@ class Users extends Component
         ]);
     }
 
+    public function loadMore(){
+        $this->limitPerPage = $this->limitPerPage + 10;
+    }
+
     public function mount($project){
         $this->project = $project;
     }
@@ -83,10 +88,13 @@ class Users extends Component
     public function render(){
         $search = '%' . $this->search . '%';
 
-        $employees = Employee::whereRelation('user' , 'name' , 'LIKE' , $search)->get();
+        $employees = Employee::whereRelation('user' , 'name' , 'LIKE' , $search)->paginate(10);
 
-        $this->project_employees = $this->project->employees()->get();
+        $project_employees = $this->project->employees()->paginate($this->limitPerPage);
 
-        return view('livewire.project.show.users' , compact('employees'));
+        return view('livewire.project.show.users' , [
+            'employees' => $employees,
+            'project_employees' => $project_employees,
+        ]);
     }
 }
