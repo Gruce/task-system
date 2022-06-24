@@ -28,14 +28,24 @@
                 {{-- Addition --}}
 
                     <div >
-                        <label for="countries" class=" mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">ارسال الى</label>
-                        <select id="countries" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                          <option selected="">Choose a country</option>
-                          <option value="US">United States</option>
-                          <option value="CA">Canada</option>
-                          <option value="FR">France</option>
-                          <option value="DE">Germany</option>
-                        </select>
+                        <div class="ml-8 mt-8">
+                            <div x-data="{show: true}">
+                              <a href="#" x-on:click.prevent="show = !show" class="relative z-10 border border-gray-600 rounded px-4 py-2 bg-white">
+                                <span class="inline-block">Select Vehicle Type</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current inline-block w-4 h-4 transform transition duration-150" x-bind:class="{ 'rotate-180': show }">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                              </a>
+                              <div x-show.transition="show" class="relative z-20 mt-1 flex w-64 flex-col px-4 py-3 whitespace-nowrap border border-gray-600 rounded bg-white overflow-auto h-40">
+                                <div>
+                                  <input type="checkbox" name="type[]" value="all" class="inline-block mr-2" />All vehicles
+                                </div>
+                                @for ($i=0;$i<20;$i++)
+                                <div><input type="checkbox" name="type[]" value="4x4" class="inline-block mr-2 ml-2" />4x4</div>
+                                @endfor
+                              </div>
+                            </div>
+                          </div>
                     </div>
 
                 {{-- Loop Item Below --}}

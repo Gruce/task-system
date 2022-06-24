@@ -118,6 +118,8 @@ return [
     'profile' => 'Your Profile',
     'logout' => 'Logout',
     'no_tasks' => 'No tasks',
+    'the_account_has_been_activated' => 'The account has been activated',
+    'the_account_has_been_disabled' => 'The account has been disabled',
 
 
 
