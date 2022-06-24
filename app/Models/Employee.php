@@ -16,7 +16,7 @@ class Employee extends Model
 
     protected $fillable = ['user_id', 'state', 'job'];
 
-    protected $appends = ['photo'];
+    // protected $appends = ['photo'];
     // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 

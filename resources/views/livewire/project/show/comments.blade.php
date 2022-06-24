@@ -5,7 +5,12 @@
                 <span class="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-sky-400"></span>
                 <span class="relative inline-flex w-3 h-3 rounded-full bg-sky-500"></span>
             </span>
-            <span>{{__('ui.comments')}}</span>
+            <span>
+                {{__('ui.comments')}}
+                <div wire:loading wire:target="comments">
+                    Processing Payment...
+                </div>
+            </span>
         </div>
         <div>
             <button @click="expandComments=!expandComments" class="px-2 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
@@ -13,24 +18,20 @@
             </button>
         </div>
     </div>
-    <div class="flex flex-col w-full gap-2 pl-2 overflow-y-auto text-sm" :class="expandComments ? 'grow' : 'h-44'">
+    <div id="loadmore" class="flex flex-col w-full gap-2 px-2 overflow-y-auto text-sm" :class="expandComments ? 'grow' : 'h-44'">
         {{-- Loop Item Below --}}
         @forelse ($comments as $item)
         <div class="flex flex-col justify-between w-full px-4 py-1 border-r-4 hover:bg-secondary-50 text-secondary-500">
             <div class="flex justify-between gap-4">
                 <div class="text-sm font-normal" :class="expandComments ? 'w-full' : ' w-80'">
-                    {{$item->body}}
+                    {!! $item->body !!}
                 </div>
-                <div class="flex items-start gap-4">
+                <div class="flex items-start justify-end w-40 gap-4">
                     <div class="flex flex-col items-end">
                         <span class="text-xs font-normal {{$item->user->is_admin ? 'text-red-400' : 'text-secondary-700'}}"> {{ $item->user->name }}</span>
                         <span class="font-normal text-2xs text-secondary-400">{{ $item->created_at->diffForHumans() }}</span>
                     </div>
-                    @if ($item->user->profile_photo)
-                    <img class="rounded-lg w-7 h-7" src="{{ asset($item->user->profile_photo) }}" alt="Bordered avatar">
-                    @else
-                    <img class="rounded-lg w-7 h-7" src="https://ccemdata.mcmaster.ca/media/avatars/default.png" alt="Bordered avatar">
-                    @endif
+                    <img class="rounded-lg w-7 h-7" src="{{$item->user->profile_photo}}" alt="Bordered avatar">
                 </div>
                 {{-- <div class="flex gap-2">
                     <button class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
@@ -39,6 +40,7 @@
                 </div> --}}
 
             </div>
+
         </div>
         @empty
         <div class="text-center text-gray-500">
@@ -46,10 +48,21 @@
         </div>
         @endforelse
     </div>
-    {{ $comments->links() }}
+    {{-- {{ $comments->links() }} --}}
     <div class="justify-self-end">
         <input wire:keydown.enter="add_comment" wire:model.defer="comment" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.comment')}}" required>
         @error('comment')<span class="text-red-500">{{ $message }}</span> @enderror
     </div>
 
+    <script type="text/javascript">
+
+        let obj = document.getElementById("loadmore");
+
+        obj.onscroll = function (ev) {
+            if ( obj.scrollTop === (obj.scrollHeight - obj.offsetHeight)){
+                window.livewire.emit('load-more');
+            }
+
+        };
+    </script>
 </div>

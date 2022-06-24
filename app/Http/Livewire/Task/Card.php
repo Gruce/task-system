@@ -12,17 +12,48 @@ class Card extends Component
     use LivewireAlert;
     use WithFileUploads;
 
-    protected $listeners = ['$refresh' , 'delete' ,'deletee'];
+    protected $listeners = ['$refresh' , 'delete' , 'deleteFile'];
 
     protected $rules = [
-        'title' => 'required',
-        'importance' => 'required',
-        'start_at' => 'required',
-        'end_at' => 'required',
+        'task.title' => 'required',
+        'task.project_id' => 'required',
+        'task.importance' => 'required',
+        'task.start_at' => 'required',
+        'task.end_at' => 'required',
+        'task.description' => 'required',
     ];
 
-    public $task, $ID;
+    public $task, $ID, $search, $userId, $modal = false, $tabs;
     public $files = [] , $file_id;
+
+    public function mount($task){
+        $this->task = $task;
+
+        $this->tabs = [
+            [__('ui.overview'), 'overview', 'fa-solid fa-home'],
+            [__('ui.files'), 'files', 'fa-solid fa-paperclip'],
+            [__('ui.comments'), 'comments', 'fa-solid fa-comments'],
+            [__('ui.users'), 'users', 'fa-solid fa-users'],
+        ];
+    }
+
+    public function edit_name(){
+        $this->task->save();
+        $this->alert('success', __('ui.data_has_been_edited_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
+    }
+
+    public function toggleModal(){
+        $this->modal = !$this->modal;
+    }
+
+
+
 
     public function confirmed($id, $function){
         $this->ID = $id;
@@ -71,7 +102,6 @@ class Card extends Component
     }
 
     public function confirmedFile($id, $function){
-        dd('k');
         $this->file_id = $id;
         $this->confirm(__('ui.are_you_sure'), [
             'toast' => false,
@@ -115,9 +145,6 @@ class Card extends Component
     //     ]);
     // }
 
-    public function mount($task){
-        $this->task = $task;
-    }
 
     public function render(){
 

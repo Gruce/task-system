@@ -10,7 +10,7 @@
             </button>
         </div>
     </div>
-    <div class="flex flex-col w-full gap-2 pl-2 overflow-y-auto text-sm h-44">
+    <div id="loadmoreuser" class="flex flex-col w-full gap-2 pl-2 overflow-y-auto text-sm h-44">
         {{-- Addition --}}
         <div class="flex justify-between w-full px-4 py-2 rounded-lg text-secondary-500" x-show="add">
             <div class="flex w-full gap-2">
@@ -34,7 +34,7 @@
         @forelse ($project_employees as $employee)
             <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
                 <div class="flex items-center gap-4">
-                    <img class="w-10 h-10 rounded-lg" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Bordered avatar">
+                    <img src="{{$employee->photo}}" class="w-10 h-10 rounded-lg"  alt="Bordered avatar">
                     <div class="flex flex-col">
                         <span class="text-base font-normal text-secondary-700">
                             {{$employee->name}}
@@ -55,4 +55,16 @@
         @endforelse
 
     </div>
+
+    {{-- <script type="text/javascript">
+
+        let obj = document.getElementById("loadmoreuser");
+
+        obj.onscroll = function (ev) {
+            if ( obj.scrollTop === (obj.scrollHeight - obj.offsetHeight)){
+                window.livewire.emit('load-more');
+            }
+
+        };
+    </script> --}}
 </div>

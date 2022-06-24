@@ -12,11 +12,11 @@
 
     <div class="w-full mt-5">
         <div class="flex justify-between mb-1">
-            <span class="text-xs font-medium text-secondary-500">{{intval($project->completed_tasks / $project->tasks_count * 100)}}%</span>
+            <span class="text-xs font-medium text-secondary-500">{{$project->percentage_completed_tasks }}%</span>
             <span class="text-xs font-medium text-secondary-500">{{$project->completed_tasks}}/{{$project->tasks_count}} {{__('ui.completed_tasks')}}</span>
         </div>
         <div class="w-full bg-gray-200 rounded-full h-1.5">
-            <div class="bg-secondary-600 h-1.5 rounded-full" style="width: {{intval($project->completed_tasks / $project->tasks_count * 100)}}%"></div>
+            <div class="bg-secondary-600 h-1.5 rounded-full" style="width: {{$project->percentage_completed_tasks}}%"></div>
         </div>
     </div>
 

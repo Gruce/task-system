@@ -6,6 +6,7 @@ use App\Traits\HelperTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Task extends Model
@@ -18,7 +19,7 @@ class Task extends Model
         'importance', 'start_at', 'end_at'
     ];
 
-    protected $appends = ['project_title'];
+    //protected $appends = ['project_title'];
     //protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
@@ -27,11 +28,13 @@ class Task extends Model
     /******************* RELATIONSHIPS ******************/
     /****************************************************/
 
-    public function project(){
+    public function project()
+    {
         return $this->belongsTo(Project::class);
     }
 
-    public function employees(){
+    public function employees()
+    {
         return $this->belongsToMany(Employee::class);
     }
 
@@ -51,13 +54,11 @@ class Task extends Model
     /******************* END RELATIONSHIPS **************/
     /****************************************************/
 
-
-    protected function projectTitle(): Attribute{
-        return Attribute::make(
-            get: function () {
-                return $this->project->title;
-            },
-        );
+    public function comment($body)
+    {
+        $comment = new Comment;
+        $comment->body = $body;
+        $comment->user_id = auth()->id();
+        $this->comments()->save($comment);
     }
 }
-
