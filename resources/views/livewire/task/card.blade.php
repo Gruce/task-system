@@ -1,4 +1,4 @@
-<div draggable="true" ondragstart="drag(event)" id="task-id-{{$task->id}}" x-cloak class="flex flex-col p-3 border-2 rounded-lg hover:bg-secondary-50 text-secondary-600">
+<div x-data="{isMoving: false}" draggable="true" @dragstart="drag($event)" @dragend="dragend($event)" id="task-id-{{$task->id}}" x-cloak class="relative flex flex-col p-3 border-2 rounded-lg hover:bg-secondary-50 text-secondary-600">
     <div @click="() => {showModal=!showModal, $wire.emit('toggleModal', {{$task->id}})}" class="flex flex-col gap-2 cursor-pointer">
         <div class="flex justify-between w-full">
             <div class="flex flex-col">

@@ -49,6 +49,8 @@
     </div>
 
     <script>
+        var dragID = null;
+
         function allowDrop(ev) {
             var dropID = ev.currentTarget.id;
             ev.preventDefault();
@@ -56,6 +58,14 @@
 
         function drag(ev){
             ev.dataTransfer.setData("dragEventID", ev.currentTarget.id);
+            dragID = ev.currentTarget.id;
+            dragEl = document.getElementById(dragID)
+            dragEl.classList.add("dragging");
+        }
+
+        function dragend(ev){
+            dragEl = document.getElementById(dragID)
+            dragEl.classList.remove("dragging");
         }
 
         function drop(ev, type) {
@@ -79,6 +89,5 @@
                 })
             }
         }
-
     </script>
 </div>
