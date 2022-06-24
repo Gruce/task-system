@@ -4,10 +4,13 @@ namespace App\Http\Livewire\Task;
 
 use Livewire\Component;
 use App\Models\Task;
+use Livewire\WithPagination;
+
 use App\Models\Project;
 
 class All extends Component
 {
+    use WithPagination;
     public $search;
 
     protected $listeners = ['$refresh', 'search', 'taskMoved'];
@@ -23,7 +26,7 @@ class All extends Component
         Task::findOrFail($id)->update([
             'state' => $type
         ]);
-        
+
     }
 
     public function render()
@@ -32,7 +35,7 @@ class All extends Component
         $tasks  = Task::withCount('files')
             ->where('title', 'like', $search)
             ->orderByDesc('id')
-            ->get();
+            ->paginate(25);
 
         return view('livewire.task.all', compact('tasks'));
     }

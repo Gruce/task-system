@@ -11,8 +11,13 @@ use App\Models\Project;
 class Main extends Component
 {
 
-    protected $listeners = ['updatedSelectedTab'];
+    public $taskID;
+    protected $listeners = ['updatedSelectedTab', 'toggleModal'];
     public function updatedSelectedTab($value){ $this->selectedTab = $value; }
+
+    public function toggleModal($task_id){
+        $this->taskID = $task_id;
+    }
 
     public function mount(){
         $this->tabs = [__('ui.tasks'), __('ui.incomplete')];

@@ -1,6 +1,6 @@
 <div x-show="selected == 0" class="flex flex-col gap-6">
     <div x-data="{ title: false, project: false }" class="flex items-center justify-between pb-2 border-b-2 border-secondary-50">
-        <div @click.outside="title = false" class="flex items-center gap-4 cursor-pointer group">
+        <div @click.outside="title = false" class="flex items-center gap-4 cursor-pointer group text-secondary-700">
             <h4 @click="title=!title" x-show="!title" class="text-xl font-semibold">{{$task->title}}</h4>
             <a @click="title=!title" x-show="!title" href="#" class="invisible group-hover:visible"><i class="fas fa-pen"></i></a>
             <input x-show="title" type="text" class="block w-full p-1 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500" required>
