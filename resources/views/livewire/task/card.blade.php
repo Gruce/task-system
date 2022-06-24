@@ -87,8 +87,6 @@
                         </div>
                     </div>
 
-
-
                     {{-- Task Content --}}
                     <div class="flex flex-col gap-4 basis-3/4">
                         @foreach ($tabs as $tab)
