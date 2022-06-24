@@ -1,4 +1,4 @@
-<div wire:poll :class="expandComments ? 'w-full' : 'basis-1/2'" class="flex flex-col gap-4 p-8 text-lg font-semibold capitalize bg-white rounded-lg text-secondary-600">
+<div :class="expandComments ? 'w-full' : 'basis-1/2'" class="flex flex-col gap-4 p-8 text-lg font-semibold capitalize bg-white rounded-lg text-secondary-600" x-data="{commentInput:false}">
     <div class="flex justify-between">
         <div class="flex items-center gap-4">
             <span class="relative flex w-3 h-3">
@@ -13,6 +13,9 @@
             </span>
         </div>
         <div>
+            <button @click="commentInput=!commentInput" class="px-2 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
+                <i class="fa-solid fa-plus"></i>
+            </button>
             <button @click="expandComments=!expandComments" class="px-2 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
                 <i class="fa-solid fa-expand"></i>
             </button>
@@ -49,7 +52,7 @@
         @endforelse
     </div>
     {{-- {{ $comments->links() }} --}}
-    <div class="justify-self-end">
+    <div x-show="commentInput" x-transition class="justify-self-end">
         <input wire:keydown.enter="add_comment" wire:model.defer="comment" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.comment')}}" required>
         @error('comment')<span class="text-red-500">{{ $message }}</span> @enderror
     </div>

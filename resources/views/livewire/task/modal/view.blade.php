@@ -1,13 +1,16 @@
 <div x-show="showModal" x-transition.opacity.duration.250ms class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-full h-full overflow-x-hidden overflow-y-auto bg-black bg-opacity-50 md:inset-0" x-cloak x-data="{ selected: 0 }">
     <div class="relative w-full max-w-4xl p-4">
         <!-- Modal content -->
-        <div class="relative bg-white border rounded-lg" wire:loading.class="bg-opacity-50" wire:target="task">
+        <div class="relative bg-white border rounded-lg">
             <!-- Modal header -->
             <div class="flex justify-between p-4 border-b rounded-t">
                 <span class="text-xl font-semibold text-secondary-700">
                     <i class="mx-2 fa-solid fa-list-check"></i>
                     {{-- {{$task->title}} - {{$task->project->title }} --}}
                     {{__('ui.task')}}
+                    <div wire:loading>
+                       asdasdasd
+                    </div>
                 </span>
                 <button @click="showModal=!showModal" type="button" class="inline-flex items-center px-4 py-2 text-lg text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ">
                     <i class="fas fa-times"></i>
@@ -37,7 +40,7 @@
 
                             {{-- State Drop Down --}}
                             <div class="relative w-44" x-data="{stateDropDown: false}">
-                                <div x-show="stateDropDown" x-transition class="flex gap-1 flex-col justify-center absolute w-full p-1 bg-opacity-75 bottom-10 left-0 rounded bg-white border">
+                                <div x-show="stateDropDown" x-transition class="absolute left-0 flex flex-col justify-center w-full gap-1 p-1 bg-white bg-opacity-75 border rounded bottom-10">
                                     <div class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-secondary-50 text-secondary-700">
                                         <span class="text-xs">{{__('ui.to_do')}}</span>
                                         <i class="text-2xs fa-solid fa-circle"></i>

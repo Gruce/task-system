@@ -11,7 +11,7 @@ use App\Models\Project;
 class All extends Component
 {
     use WithPagination;
-    public $search;
+    public $search, $project;
 
     protected $listeners = ['$refresh', 'search', 'taskMoved'];
 
@@ -34,8 +34,11 @@ class All extends Component
         $search = '%' . $this->search . '%';
         $tasks  = Task::withCount('files')
             ->where('title', 'like', $search)
-            ->orderByDesc('id')
-            ->paginate(25);
+            ->orderByDesc('id');
+
+        if ($this->project) $tasks->where('project_id', $this->project->id);
+            
+        $tasks = $tasks->paginate(25);
 
         return view('livewire.task.all', compact('tasks'));
     }
