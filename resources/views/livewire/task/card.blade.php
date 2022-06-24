@@ -8,15 +8,15 @@
                     <span class="text-xs text-secondary-500">{{$task->project->title}}</span>
                 </div>
             </div>
-            <div class="flex items-center justify-end gap-2">
+        </div>
+        <div class="flex items-center justify-between w-full">
+            <span class="text-xs">{{$task->end_at}}</span>
+            <div class="flex gap-2">
                 <span class="bg-secondary-50 text-secondary-600 text-2xs font-semibold px-2.5 py-0.5 rounded uppercase">low</span>
                 <span class="bg-primary-50 text-primary-600 text-2xs font-semibold px-2.5 py-0.5 rounded uppercase">medium</span>
                 <span class="bg-error-50 text-error-600 text-2xs font-semibold px-2.5 py-0.5 rounded uppercase">high</span>
                 <span class="bg-gray-600 text-gray-50 text-2xs font-semibold px-2.5 py-0.5 rounded uppercase">hold</span>
             </div>
-        </div>
-        <div class="flex items-center justify-between w-full">
-            <span class="text-xs">{{$task->end_at}}</span>
         </div>
     </div>
 </div>

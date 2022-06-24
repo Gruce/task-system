@@ -22,8 +22,8 @@
 
     {{-- Files --}}
     <div class="relative w-full px-3 pt-5 pb-3 mt-5 border rounded-lg">
-        <div class="flex justify-between absolute -top-2 w-full left-0 ">
-            <span class="px-2 mx-4 text-xs bg-white text-secondary-500 capitalize">{{__('ui.files')}}</span>
+        <div class="absolute left-0 flex justify-between w-full -top-2 ">
+            <span class="px-2 mx-4 text-xs capitalize bg-white text-secondary-500">{{__('ui.files')}}</span>
             <span class="px-2 mx-4 text-xs bg-white text-secondary-500">{{$project->files_count}}</span>
         </div>
 
