@@ -15,6 +15,7 @@ class Add extends Component
 
     public $task;
     public $files = [];
+    protected $listeners = ['$refresh' ];
 
     protected $rules = [
         'task.title' => 'required',
@@ -25,8 +26,7 @@ class Add extends Component
         'task.description' => 'required',
     ];
 
-    public function mount()
-    {
+    public function mount(){
         $this->task['start_at'] = date('Y-m-d');
         $this->task['end_at'] = date('Y-m-d');
         $this->projects = Project::get(['id' , 'title']);
@@ -36,8 +36,7 @@ class Add extends Component
         unset($this->files[$index]);
     }
 
-    public function add()
-    {
+    public function add(){
         $this->validate();
         $task = Task::create($this->task);
 
@@ -48,8 +47,7 @@ class Add extends Component
                 ]);
                 $new_file->add_file('name', $file, 'tasks/' . $task->id . '/files/' . $new_file->id);
             }
-
-        $this->emitTo('task.main', '$refresh');
+            $this->emitTo( 'task.all' ,'$refresh');
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
             'timer' => 3000,
