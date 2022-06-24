@@ -3,10 +3,12 @@
 namespace App\Http\Livewire\Project;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 use App\Models\Project;
 
 class All extends Component
 {
+    use WithPagination;
     protected $listeners = ['$refresh' , 'search'];
     public $search;
 
@@ -22,12 +24,12 @@ class All extends Component
                     ->with(
                         [
                             'employees'=> function($employee){
-                                $employee->limit(3);
+                                $employee->limit(2);
                             }
                         ])
                     ->where('title' , 'LIKE' , $search)
                     ->orderByDesc('id')
-                    ->get();
+                    ->paginate(24);
 
         return view('livewire.project.all', compact('projects'));
     }
