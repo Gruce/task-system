@@ -14,16 +14,13 @@ class Card extends Component
 
     protected $listeners = ['$refresh'];
 
-    
+
 
     public $task, $userId, $modal = false, $tabs;
 
     public function mount($task){
         $this->task = $task;
     }
-
-
-
 
     public function render(){
 

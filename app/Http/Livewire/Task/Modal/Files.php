@@ -39,7 +39,16 @@ class Files extends Component
 
     public function confirmed($id){
         // make sure add 'delete' to listeners
-        $this->confirmedDelete(new File , $id , ['task.file']);
+        if($this->task->files()->where('id' , $id)->exists())
+            $this->confirmedDelete(new File , $id , 'delete' , ['task.modal.files']);
+
+        else $this->alert('error', __('ui.data_has_been_deleted_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
     }
 
     public function render()

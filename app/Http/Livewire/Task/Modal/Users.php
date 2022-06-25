@@ -62,8 +62,10 @@ class Users extends Component
             return;
         }
 
-        $this->task->employees()
-        ->attach($this->userId);
+        $this->task->employees()->attach($this->userId);
+
+        if(!$this->task->project->employees()->wherePivot('employee_id' , $this->userId)->exists())
+            $this->task->project->employees()->attach($this->userId);
 
         $this->emitSelf('$refresh');
 
