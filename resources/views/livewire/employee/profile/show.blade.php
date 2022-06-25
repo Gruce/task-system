@@ -86,7 +86,8 @@
                     </div> --}}
                     <div class="relative">
                         <img class="w-20 h-20 mb-3 rounded-full" src="{{ $employee->user->profile_photo }}" alt="">
-                        <button wire:click="state({{$employee->id}})" @if($employee->state)
+                        <button wire:click="state({{$employee->id}})">
+                            @if($employee->state)
                             <i class="fa-solid fa-lock-open top-0 left-13 absolute text-green-700"></i>
                             @else
                             <i class="fa-solid fa-lock top-0 left-13 absolute text-red-600"></i>
