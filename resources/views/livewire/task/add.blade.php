@@ -109,7 +109,6 @@
                             <option value="1">{{ __('ui.importance_low') }}</option>
                             <option value="2">{{ __('ui.importance_medium') }}</option>
                             <option value="3">{{ __('ui.importance_high') }}</option>
-                            <option value="4">{{ __('ui.importance_very_high') }}</option>
                         </select>
                     </div>
 
