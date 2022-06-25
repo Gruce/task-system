@@ -18,13 +18,13 @@ class TaskSeeder extends Seeder
     {
         $projects = Project::get();
 
-        foreach($projects as $project)
-            for($i = 1 ; $i <= 20 ; $i++)
+        foreach ($projects as $project)
+            for ($i = 1; $i <= 20; $i++)
                 Task::create([
                     'title' => 'title ' . $i . ' - ' . $project->title,
                     'project_id' => $project->id,
                     'description' => 'description',
-                    'state' => rand(1,3),
+                    'state' => rand(1, 3),
                     'start_at' => date('Y-m-d'),
                     'end_at' => date('Y-m-d'),
                 ]);
