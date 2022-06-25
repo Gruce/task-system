@@ -20,7 +20,7 @@ class Main extends Component
     }
 
     public function mount(){
-        $this->tabs = [__('ui.tasks'), __('ui.incomplete')];
+        $this->tabs = [__('ui.tasks'), __('ui.archived')];
         $this->selectedTab = 0;}
 
     public function render(){
