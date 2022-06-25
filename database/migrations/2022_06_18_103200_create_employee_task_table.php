@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('employee_id')->nullable()->constrained('employees')->onDelete('cascade');
             $table->foreignId('task_id')->nullable()->constrained('tasks')->onDelete('cascade');
             $table->boolean('state')->default(true);
-            $table->string('profile_photo')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

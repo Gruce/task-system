@@ -41,15 +41,15 @@
                             {{-- State Drop Down --}}
                             <div class="relative w-44" x-data="{stateDropDown: false}">
                                 <div x-show="stateDropDown" x-transition class="absolute left-0 flex flex-col justify-center w-full gap-1 p-1 bg-white bg-opacity-75 border rounded bottom-10">
-                                    <div class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-secondary-50 text-secondary-700">
+                                    <div wire:click="state(1)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-secondary-50 text-secondary-700">
                                         <span class="text-xs">{{__('ui.to_do')}}</span>
                                         <i class="text-2xs fa-solid fa-circle"></i>
                                     </div>
-                                    <div class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-warning-100 text-warning-800">
+                                    <div wire:click="state(2)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-warning-100 text-warning-800">
                                         <span class="text-xs">{{__('ui.in_progress')}}</span>
                                         <i class="text-2xs fa-solid fa-circle"></i>
                                     </div>
-                                    <div class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-success-100 text-success-900">
+                                    <div wire:click="state(3)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-success-100 text-success-900">
                                         <span class="text-xs">{{__('ui.done')}}</span>
                                         <i class="text-2xs fa-solid fa-circle"></i>
                                     </div>
@@ -70,7 +70,7 @@
                             </div>
 
                             {{-- Archive Button --}}
-                            <div class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-secondary-100 w-44 text-secondary-700 {{ true ? 'bg-secondary-100' : 'bg-secondary-50' }}">
+                            <div wire:click="archive" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-secondary-100 w-44 text-secondary-700 {{ true ? 'bg-secondary-100' : 'bg-secondary-50' }}">
                                 <span class="text-sm">{{__('ui.archive')}}</span>
                                 <i class="text-xs fa-solid fa-box-archive"></i>
                             </div>

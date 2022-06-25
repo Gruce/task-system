@@ -8,10 +8,15 @@
 
             <div id="todo-1" class="flex flex-col gap-4 px-2 m-1 overflow-y-auto drag {{$project ? 'h-minitasklist' : 'h-tasklist'}}" ondrop="drop(event)" ondragover="allowDrop(event)">
                 @forelse ($tasks as $item )
-                @if($item->state == 1)
-                @livewire('task.card' , ['task' => $item] , key($item->id . "-" . now()))
-                @endif
+                    @if($item->state == 1)
+                        @livewire('task.card' , ['task' => $item] , key($item->id . "-" . now()))
+                    @endif
                 @empty
+                    <div class="flex items-center justify-center">
+                        <div class="text-center">
+                            <h1 class="text-lg text-center text-gray-500">{{ __('ui.no_data') }}</h1>
+                        </div>
+                    </div>
                 @endforelse
             </div>
         </div>
@@ -23,11 +28,15 @@
 
             <div id="progress-2" class="flex flex-col gap-4 px-2 m-1 overflow-y-auto drag {{$project ? 'h-minitasklist' : 'h-tasklist'}}" ondrop="drop(event)" ondragover="allowDrop(event)">
                 @forelse ( $tasks as $item)
-                @if($item->state == 2)
-                @livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))
-                @endif
+                    @if($item->state == 2)
+                        @livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))
+                    @endif
                 @empty
-
+                    <div class="flex items-center justify-center">
+                        <div class="text-center">
+                            <h1 class="text-lg text-center text-gray-500">{{ __('ui.no_data') }}</h1>
+                        </div>
+                    </div>
                 @endforelse
             </div>
         </div>
@@ -39,10 +48,15 @@
 
             <div id="done-3" class="flex flex-col gap-4 px-2 m-1 overflow-y-auto drag {{$project ? 'h-minitasklist' : 'h-tasklist'}}" ondrop="drop(event)" ondragover="allowDrop(event)">
                 @forelse ($tasks as $item )
-                @if($item->state == 3)
-                @livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))
-                @endif
+                    @if($item->state == 3)
+                        @livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))
+                    @endif
                 @empty
+                    <div class="flex items-center justify-center">
+                        <div class="text-center">
+                            <h1 class="text-lg text-center text-gray-500">{{ __('ui.no_data') }}</h1>
+                        </div>
+                    </div>
                 @endforelse
             </div>
         </div>
@@ -79,7 +93,7 @@
 
             let typeID = dropID.split('-');
             typeID = typeID[typeID.length - 1];
-            
+
             // Task Drop Item
             if (dropClass.includes("drag")) {
                 document.getElementById(dropID).appendChild(document.getElementById(dragID));

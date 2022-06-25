@@ -70,14 +70,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex justify-center rounded-md shadow-sm gap-2 w-full" role="group">
-                            <button wire:click="change_gender({{ $employee->user->id }})">
-
-                                @if($employee->user->gender == 2)
-                                <i class="fas fa-2x fa-female"></i>
-                                @else
-                                <i class="fas fa-2x fa-male"></i>
-                                @endif
+                        <div class="flex justify-center rounded-lg  gap-2 w-10" role="group">
+                            <button wire:click="change_gender({{ $employee->user->gender }})">
+                                <i class="fas fa-2x {{$employee->user->gender == 2 ? 'text-pink-400 fa-female' : 'text-blue-500 fa-male'}}"></i>
                             </button>
                         </div>
                     </div>
@@ -90,7 +85,7 @@
                             @if($employee->state)
                             <i class="fa-solid fa-lock-open top-0 left-13 absolute text-green-700"></i>
                             @else
-                            <i class="fa-solid fa-lock top-0 left-13 absolute text-red-600"></i>
+                            <i class="fa-solid fa-lock top-0 left-13 absolute text-red-400"></i>
                             @endif
                         </button>
 
@@ -139,15 +134,15 @@
                             <div class="flex flex-col">
 
                                 <div class="flex items-center">
-                                    <i class="fa-solid fa-calendar-check p-3 text-secondary-500"></i>
-                                    <h3 class="text-sm text-secondary-500 font-semibold">
+                                    <i class="fa-solid fa-calendar-check p-3 text-green-400"></i>
+                                    <h3 class="text-sm text-green-400 font-semibold">
                                         المهام المكتملة
                                     </h3>
                                 </div>
                             </div>
                             <div class="flex items-center">
-                                <i class="fa-solid fa-calendar-xmark p-2 text-secondary-500"></i>
-                                <h3 class="text-sm text-secondary-500 font-semibold">
+                                <i class="fa-solid fa-calendar-xmark p-2 text-red-400"></i>
+                                <h3 class="text-sm text-red-400 font-semibold">
                                     المهام الغير مكتملة
                                 </h3>
                             </div>

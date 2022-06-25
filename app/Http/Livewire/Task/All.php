@@ -6,8 +6,6 @@ use Livewire\Component;
 use App\Models\Task;
 use Livewire\WithPagination;
 
-use App\Models\Project;
-
 class All extends Component
 {
     use WithPagination;
@@ -32,13 +30,24 @@ class All extends Component
     public function render()
     {
         $search = '%' . $this->search . '%';
+
         $tasks  = Task::withCount('files')
-            ->where('title', 'like', $search)
-            ->orderByDesc('id');
+            ->with(
+                [
+                    'project:id,title',
+                    'employees' => fn($employee) => $employee->with('user:id,name'),
+                    'files'
+                ]
+            )
+            ->where('title', 'LIKE', $search)
+            ->orderByDesc('updated_at');
+
+        if (!$this->project) $tasks->orWhereRelation('project', 'title', 'LIKE', $search);
 
         if ($this->project) $tasks->where('project_id', $this->project->id);
-            
-        $tasks = $tasks->paginate(25);
+
+        // dd($tasks->get()->toArray());
+        $tasks = $tasks->paginate(24);
 
         return view('livewire.task.all', compact('tasks'));
     }

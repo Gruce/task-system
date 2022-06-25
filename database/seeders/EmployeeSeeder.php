@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,9 +16,12 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 2 ; $i <= 6 ; $i++)
+        $users = User::where('is_admin' , false)->get();
+
+        foreach($users as $user)
             Employee::create([
-                'user_id' => $i,
-            ]);
+                    'user_id' => $user->id,
+                ]);
+
     }
 }
