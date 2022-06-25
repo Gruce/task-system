@@ -15,7 +15,7 @@ class Project extends Model
     use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
     protected $fillable = ['title', 'description'];
-    protected $appends = ['completed_tasks' , 'percentage_completed_tasks'];
+    // protected $appends = ['completed_tasks' , 'percentage_completed_tasks'];
     // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 

@@ -24,6 +24,7 @@ class User extends Authenticatable implements JWTSubject
     use HelperTrait;
 
 
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

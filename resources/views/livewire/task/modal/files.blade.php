@@ -27,7 +27,7 @@
     </div> --}}
     @forelse ($task->files as $key => $file)
     <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
-        <span>{{__('ui.file')}} {{$key + 1}}</span>
+        <span>{{__('ui.file')}} {{$key + 1}} {{$file->id}}</span>
         <div class="flex gap-2">
             <a href="{{$file->file_path}}" download class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
                 <i class="fas fa-download"></i>

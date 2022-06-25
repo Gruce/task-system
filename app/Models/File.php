@@ -15,7 +15,7 @@ class File extends Model
     protected $fillable = ['name' , 'fileable_id' , 'fileable_type'];
 
     protected $appends = ['file_path'];
-    // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
+    // protected $hidden = ['name' , 'created_at', 'updated_at', 'delete_at'];
 
     /****************************************************/
     /******************* RELATIONSHIPS ******************/

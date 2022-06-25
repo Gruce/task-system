@@ -31,7 +31,7 @@ class Card extends Component
 
     public function confirmed($id){
         // make sure add 'delete' to listeners
-        $this->confirmedDelete(new Project , $id , ['project.all']);
+        $this->confirmedDelete(new Project , $id , 'delete' ,['project.all']);
     }
 
     public function mount($project){
