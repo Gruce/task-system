@@ -21,6 +21,36 @@
         </div>
     </div>
 
+    <div class="relative w-44" x-data="{stateDropDown: false}">
+        <div x-show="stateDropDown" x-transition class="absolute left-0 flex flex-col justify-center w-full gap-1 p-1 bg-white bg-opacity-75 border rounded bottom-10">
+            <div wire:click="importance(1)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-secondary-50 text-secondary-700">
+                <span class="text-xs">{{__('ui.importance_low')}}</span>
+                <i class="text-2xs fa-solid fa-circle"></i>
+            </div>
+            <div wire:click="importance(2)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-warning-100 text-warning-800">
+                <span class="text-xs">{{__('ui.importance_medium')}}</span>
+                <i class="text-2xs fa-solid fa-circle"></i>
+            </div>
+            <div wire:click="importance(3)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-success-100 text-success-900">
+                <span class="text-xs">{{__('ui.importance_high')}}</span>
+                <i class="text-2xs fa-solid fa-circle"></i>
+            </div>
+        </div>
+        <div @click="stateDropDown = !stateDropDown" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer {{ $task->state == 1 ? 'bg-secondary-50 text-secondary-700' : ( $task->state == 2 ? 'bg-warning-100 text-warning-800' : 'bg-success-100 text-success-900') }}">
+            {{-- Dropdown --}}
+            <span class="text-sm">
+                @if ($task->importance == 1)
+                    {{__('ui.importance_low')}}
+                @elseif ($task->importance == 2)
+                    {{__('ui.importance_medium')}}
+                @else
+                    {{__('ui.importance_high')}}
+                @endif
+            </span>
+            <i class="text-xs fa-solid fa-circle"></i>
+        </div>
+    </div>
+
     {{-- Date --}}
     <div class="flex flex-col gap-2">
         <div @click.outside="description = false" x-data="{description: false}">
