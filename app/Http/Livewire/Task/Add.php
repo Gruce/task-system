@@ -37,31 +37,31 @@ class Add extends Component
         $this->validate();
         $task = Task::create($this->task);
 
-        if($this->task->employees()->wherePivot('employee_id' , $this->userId)->exists()){
-            $this->alert('error', __('ui.data_already_exists'), [
-                'position' => 'top',
-                'timer' => 3000,
-                'toast' => true,
-                'timerProgressBar' => true,
-                'width' => '400',
-            ]);
-            return;
-        }
+        // if($this->task->employees()->wherePivot('employee_id' , $this->userId)->exists()){
+        //     $this->alert('error', __('ui.data_already_exists'), [
+        //         'position' => 'top',
+        //         'timer' => 3000,
+        //         'toast' => true,
+        //         'timerProgressBar' => true,
+        //         'width' => '400',
+        //     ]);
+        //     return;
+        // }
 
-        $this->task->employees()->attach($this->userId);
+        // $this->task->employees()->attach($this->userId);
 
-        if(!$this->task->project->employees()->wherePivot('employee_id' , $this->userId)->exists())
-            $this->task->project->employees()->attach($this->userId);
+        // if(!$this->task->project->employees()->wherePivot('employee_id' , $this->userId)->exists())
+        //     $this->task->project->employees()->attach($this->userId);
 
-        $this->emitSelf('$refresh');
+        // $this->emitSelf('$refresh');
 
-        $this->alert('success', __('ui.data_has_been_add_successfully'), [
-            'position' => 'top',
-            'timer' => 3000,
-            'toast' => true,
-            'timerProgressBar' => true,
-            'width' => '400',
-        ]);
+        // $this->alert('success', __('ui.data_has_been_add_successfully'), [
+        //     'position' => 'top',
+        //     'timer' => 3000,
+        //     'toast' => true,
+        //     'timerProgressBar' => true,
+        //     'width' => '400',
+        // ]);
 
         if (count($this->files) > 0)
             foreach ($this->files as $file) {
@@ -115,19 +115,15 @@ class Add extends Component
 
     public function render()
     {
-        $projects = [];
+        $projects = []; $employees = []; $task_employees = [];
         if($this->search){
             $search = '%' . $this->search . '%';
             $projects = Project::where('title' , 'LIKE' , $search)->paginate(24);
+            $employees = Employee::whereRelation('user' , 'name' , 'LIKE' , $search)->paginate(10);
+            // dd($employees);
+            $task_employees = $this->task->employees()->paginate($this->limitPerPage);
         }
 
-        $task_employees = [] ;
-        $employees = [];
-        if($this->search){
-            $search = '%' . $this->search . '%';
-            $employees = Employee::whereRelation('user' , 'name' , 'LIKE' , $search)->paginate(10);
-            $task_employees = $this->task->employees()->paginate($this->limitPerPage);
-    }
         return view('livewire.task.add' , [
             'projects' => $projects,
             'employees' => $employees,
