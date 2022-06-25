@@ -53,5 +53,13 @@ class UserSeeder extends Seeder
             'password' => bcrypt('123456'),
             'gender' => 2
         ]);
+
+        for($i = 1 ; $i <= 20 ; $i++)
+            User::create([
+                'name' => 'user ' . $i,
+                'email' => $i . '@gmail.com',
+                'password' => bcrypt('123456'),
+                'gender' => rand(1,2),
+            ]);
     }
 }

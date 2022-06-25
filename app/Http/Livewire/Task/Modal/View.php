@@ -11,7 +11,7 @@ class View extends Component
 {
     use LivewireAlert ,DeleteTrait;
 
-    protected $listeners = ['$refresh' , 'delete'];
+    protected $listeners = ['$refresh' , 'delete' , 'forceDelete'];
 
     public function mount(Task $task){
         $this->task = $task;
@@ -23,9 +23,28 @@ class View extends Component
         ];
     }
 
+    public function state($state){
+        $this->task->state = $state;
+        $this->task->save();
+
+        $this->alert('success', __('ui.data_has_been_edited_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
+
+        $this->emitSelf('$refresh');
+        $this->emitTo('task.all' , '$refresh');
+    }
+
+    public function archive(){
+        $this->confirmedDelete(new Task , $this->task->id , 'delete' , ['task.all' , 'task.modal.view']);
+    }
+
     public function confirmed($id){
-        // make sure add 'delete' to listeners
-        $this->confirmedDelete(new Task , $id , ['task.all']);
+        $this->confirmedDelete(new Task , $id , 'forceDelete' , ['task.all' , 'task.modal.view']);
     }
 
     public function render(){

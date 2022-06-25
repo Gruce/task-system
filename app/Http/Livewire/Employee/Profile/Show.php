@@ -14,6 +14,8 @@ class Show extends Component
     use LivewireAlert;
     public $state;
 
+    protected $listeners = ['$refresh'];
+
     protected $rules = [
         'employee.user.name' => 'required',
         'employee.job' => 'required',
@@ -27,7 +29,7 @@ class Show extends Component
     {
         $employee->state = !$employee->state;
         $employee->save();
-        $msg = $employee->state ? 'ui.the_account_has_been_disabled' : 'ui.the_account_has_been_activated';
+        $msg = !$employee->state ? 'ui.the_account_has_been_disabled' : 'ui.the_account_has_been_activated';
         $this->alert(
             'success',
             __($msg),
@@ -39,20 +41,20 @@ class Show extends Component
                 'width' => '400',
             ]
         );
+
+        $this->emitSelf('$refresh');
     }
 
-    public function change_gender(User $user)
-    {
-        $user->gender == 1 ? $user->gender = 2 : $user->gender = 1;
-        $user->save();
+    public function change_gender($gender){
+        $this->employee->user->gender = $gender == 1 ? 2 : 1;
+        $this->employee->user->save();
     }
+
     public function mount($id)
     {
-        $this->employee = Employee::with(['tasks', 'files'])
+        $this->employee = Employee::with(['tasks', 'files' , 'user'])
             ->withCount(['tasks', 'files'])
             ->findOrFail($id);
-        //  dd($this->employee);
-        // dd($res);
     }
     // public function calctimeprogress()
     // {

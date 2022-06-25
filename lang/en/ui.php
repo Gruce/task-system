@@ -120,6 +120,8 @@ return [
     'no_tasks' => 'No tasks',
     'the_account_has_been_activated' => 'The account has been activated',
     'the_account_has_been_disabled' => 'The account has been disabled',
+    'select_project' => 'Select project',
+    'start_data_more_than_end_data' => 'Start date more than end date',
 
 
 
