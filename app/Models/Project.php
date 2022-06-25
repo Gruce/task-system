@@ -40,7 +40,7 @@ class Project extends Model
 
     public function labels()
     {
-        return $this->morphMany(Label::class, 'labelable_id');
+        return $this->morphMany(Label::class, 'labelable');
     }
 
     public function comments()

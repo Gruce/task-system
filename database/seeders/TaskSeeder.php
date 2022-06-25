@@ -19,8 +19,8 @@ class TaskSeeder extends Seeder
         $projects = Project::get();
 
         foreach ($projects as $project)
-            for ($i = 1; $i <= 20; $i++)
-                Task::create([
+            for ($i = 1; $i <= 20; $i++) {
+                $task = Task::create([
                     'title' => 'title ' . $i . ' - ' . $project->title,
                     'project_id' => $project->id,
                     'description' => 'description',
@@ -28,5 +28,13 @@ class TaskSeeder extends Seeder
                     'start_at' => date('Y-m-d'),
                     'end_at' => date('Y-m-d'),
                 ]);
+
+                $task->labels()->createMany([
+                    [
+                        'name' => 'label ' . $i,
+                        'color' => '#ff000' . $i,
+                    ],
+                ]);
+            }
     }
 }
