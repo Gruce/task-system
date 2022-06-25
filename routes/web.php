@@ -5,6 +5,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Livewire\Home\Home;
 use App\Http\Livewire\{
     Task\Main as TaskMain,
+    Task\Archived as TaskArchived,
     Employee\Main as EmployeeMain,
     Employee\Profile\Show as EmployeeProfile,
     Project\Main as ProjectMain,
@@ -43,12 +44,12 @@ Route::get('change-language/{locale}', [MainController::class, 'changeLanguage']
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/', Home::class)->name('dashboard');
+    Route::get('/', Home::class)->name('home');
 
-    Route::prefix('home')->group(function () {
-        Route::get('/', Home::class)->name('home');
+    // Route::prefix('home')->group(function () {
+    //     Route::get('/', Home::class)->name('home');
 
-    });
+    // });
 
     Route::prefix('employees')->group(function () {
         Route::get('/', EmployeeMain::class)->name('employees');
@@ -61,7 +62,8 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::prefix('task')->group(function () {
-        Route::get('/', TaskMain::class)->name('task');
+        Route::get('/', TaskMain::class)->name('tasks');
+        Route::get('/archived', TaskArchived::class)->name('tasks.archive');
     });
 
     Route::prefix('notifications')->group(function () {
