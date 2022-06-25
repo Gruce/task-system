@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex justify-center rounded-md shadow-sm gap-2 w-full" role="group">
+                        <div class="flex justify-center rounded-lg bg-red-600 gap-2 w-10" role="group">
                             <button wire:click="change_gender({{ $employee->user->gender }})">
                                 <i class="fas fa-2x {{$employee->user->gender == 2 ? 'text-pink-400 fa-female' : 'text-blue-500 fa-male'}}"></i>
                             </button>

@@ -4,6 +4,7 @@
 @section('title', __('ui.tasks'))
 
 
+@if ($selectedTab == 0)
 <div x-cloak class="p-8" x-data="{ add: false, showModal: false }">
     <div class="flex items-center justify-between mb-4">
         <div>
@@ -21,10 +22,9 @@
         @livewire('task.add')
     </div>
 
-    @if ($selectedTab == 0)
         @livewire('task.all')
     @elseif ($selectedTab == 1)
-        @livewire('task.incomplete')
+        @livewire('task.archived')
     @endif
 
     @if ($taskID)
