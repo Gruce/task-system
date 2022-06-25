@@ -5,15 +5,16 @@ namespace App\Http\Livewire\Task;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 use App\Models\Task;
 use App\Models\Project;
 
 
 class Add extends Component
 {
-    use  LivewireAlert, WithFileUploads;
+    use  LivewireAlert, WithFileUploads , WithPagination;
 
-    public $task;
+    public $task , $search;
     public $files = [];
     protected $listeners = ['$refresh' ];
 
@@ -29,7 +30,6 @@ class Add extends Component
     public function mount(){
         $this->task['start_at'] = date('Y-m-d');
         $this->task['end_at'] = date('Y-m-d');
-        $this->projects = Project::get(['id' , 'title']);
     }
 
     public function removeFile($index){
@@ -60,6 +60,13 @@ class Add extends Component
 
     public function render()
     {
-        return view('livewire.task.add');
+        $projects = [];
+        if($this->search){
+            $search = '%' . $this->search . '%';
+            $projects = Project::where('title' , 'LIKE' , $search)->paginate(24);
+        }
+        return view('livewire.task.add' , [
+            'projects' => $projects,
+        ]);
     }
 }
