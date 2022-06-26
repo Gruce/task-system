@@ -4,12 +4,11 @@
         <div class="relative bg-white border rounded-lg">
             <!-- Modal header -->
             <div class="flex justify-between p-4 border-b rounded-t">
-                <span class="text-xl font-semibold text-secondary-700">
+                <span class="flex items-center gap-1 text-xl font-semibold text-secondary-700">
                     <i class="mx-2 fa-solid fa-list-check"></i>
-                    {{-- {{$task->title}} - {{$task->project->title }} --}}
                     {{__('ui.task')}}
-                    <div wire:loading>
-                       asdasdasd
+                    <div class="w-5 h-5" wire:loading>
+                        <x-spinner />
                     </div>
                 </span>
                 <button @click="showModal=!showModal" type="button" class="inline-flex items-center px-4 py-2 text-lg text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ">
@@ -38,18 +37,23 @@
                         <div class="flex flex-col gap-1 text-sm">
                             {{-- Items --}}
 
+
+                            {{-- Date --}}
+                            <input wire:model="task.start_at" type="date" class="w-44 bg-gray-100 border-0 text-secondary-700 text-sm rounded p-2.5">
+                            <input wire:model="task.end_at" type="date" class="w-44 bg-gray-100 border-0 text-secondary-700 text-sm rounded p-2.5">
+
                             {{-- State Drop Down --}}
                             <div class="relative w-44" x-data="{stateDropDown: false}">
                                 <div x-show="stateDropDown" x-transition class="absolute left-0 flex flex-col justify-center w-full gap-1 p-1 bg-white bg-opacity-75 border rounded bottom-10">
-                                    <div wire:click="state(1)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-secondary-50 text-secondary-700">
+                                    <div @click="stateDropDown = !stateDropDown" wire:click="state(1)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-secondary-50 text-secondary-700">
                                         <span class="text-xs">{{__('ui.to_do')}}</span>
                                         <i class="text-2xs fa-solid fa-circle"></i>
                                     </div>
-                                    <div wire:click="state(2)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-warning-100 text-warning-800">
+                                    <div @click="stateDropDown = !stateDropDown" wire:click="state(2)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-warning-100 text-warning-800">
                                         <span class="text-xs">{{__('ui.in_progress')}}</span>
                                         <i class="text-2xs fa-solid fa-circle"></i>
                                     </div>
-                                    <div wire:click="state(3)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-success-100 text-success-900">
+                                    <div @click="stateDropDown = !stateDropDown" wire:click="state(3)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-success-100 text-success-900">
                                         <span class="text-xs">{{__('ui.done')}}</span>
                                         <i class="text-2xs fa-solid fa-circle"></i>
                                     </div>
@@ -58,16 +62,48 @@
                                     {{-- Dropdown --}}
                                     <span class="text-sm">
                                         @if ($task->state == 1)
-                                            {{__('ui.to_do')}}
+                                        {{__('ui.to_do')}}
                                         @elseif ($task->state == 2)
-                                            {{__('ui.in_progress')}}
+                                        {{__('ui.in_progress')}}
                                         @else
-                                            {{__('ui.done')}}
+                                        {{__('ui.done')}}
                                         @endif
                                     </span>
                                     <i class="text-xs fa-solid fa-circle"></i>
                                 </div>
                             </div>
+
+                            {{-- Priority Drop Down --}}
+                            <div class="relative w-44" x-data="{priorityDropDown: false}">
+                                <div x-show="priorityDropDown" x-transition class="absolute left-0 flex flex-col justify-center w-full gap-1 p-1 bg-white bg-opacity-75 border rounded bottom-10">
+                                    <div @click="priorityDropDown = !priorityDropDown" wire:click="importance(1)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-secondary-50 text-secondary-700">
+                                        <span class="text-xs">{{__('ui.importance_low')}}</span>
+                                        <i class="text-2xs fa-solid fa-circle"></i>
+                                    </div>
+                                    <div @click="priorityDropDown = !priorityDropDown" wire:click="importance(2)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-primary-100 text-primary-800">
+                                        <span class="text-xs">{{__('ui.importance_medium')}}</span>
+                                        <i class="text-2xs fa-solid fa-circle"></i>
+                                    </div>
+                                    <div @click="priorityDropDown = !priorityDropDown" wire:click="importance(3)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-error-100 text-error-900">
+                                        <span class="text-xs">{{__('ui.importance_high')}}</span>
+                                        <i class="text-2xs fa-solid fa-circle"></i>
+                                    </div>
+                                </div>
+                                <div @click="priorityDropDown = !priorityDropDown" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer {{ $task->importance == 1 ? 'bg-secondary-50 text-secondary-700' : ( $task->importance == 2 ? 'bg-primary-100 text-primary-800' : 'bg-error-100 text-error-900') }}">
+                                    {{-- Dropdown --}}
+                                    <span class="text-sm">
+                                        @if ($task->importance == 1)
+                                        {{__('ui.importance_low')}}
+                                        @elseif ($task->importance == 2)
+                                        {{__('ui.importance_medium')}}
+                                        @else
+                                        {{__('ui.importance_high')}}
+                                        @endif
+                                    </span>
+                                    <i class="text-xs fa-solid fa-circle"></i>
+                                </div>
+                            </div>
+                            
 
                             {{-- Archive Button --}}
                             <div wire:click="archive" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-secondary-100 w-44 text-secondary-700 {{ true ? 'bg-secondary-100' : 'bg-secondary-50' }}">
@@ -77,7 +113,7 @@
 
                             {{-- Force Delete Button --}}
                             <div>
-                                <button wire:click="confirmed({{ $task->id }}) " class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-error-100 w-44 text-secondary-700 bg-secondary-50 hover:text-error-600">
+                                <button @click="showModal=!showModal" wire:click="confirmed({{ $task->id }}) " class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-error-100 w-44 text-secondary-700 bg-secondary-50 hover:text-error-600">
                                     <span class="text-sm">{{__('ui.delete')}}</span>
                                     <i class="fas fa-trash"></i>
                                 </button>
