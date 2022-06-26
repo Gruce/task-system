@@ -28,7 +28,6 @@ class All extends Component
                     ->where('title' , 'LIKE' , $search)
                     ->orderByDesc('id')
                     ->paginate(24);
-
         return view('livewire.project.all', compact('projects'));
     }
 }
