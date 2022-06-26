@@ -74,10 +74,11 @@
                             <i class="fa-solid fa-lock top-0 left-13 absolute text-red-400"></i>
                             @endif
                         </button>
-                        <div class="relative ">
-                            <div class="image-upload ">
+
+                        <div class="relative">
+                            <div class="image-upload  ">
                                 <label for="file-input">
-                                    <i class="fa-solid fa-camera text-gray-600 text-lg bottom-10 left-7 absolute  w-3.5 h-3.5 hover:text-gray-800"></i>
+                                        <i class="fa-solid fa-camera inline-flex items-center justify-center  mr-2 text-pink-100 transition-colors  duration-150 bg-black rounded-full focus:shadow-outline   text-lg bottom-8 left-7 absolute  w-6.9 h-6.7 p-0.5 hover:text-white"></i>
                                 </label>
                                 <input wire:model="photo" id="file-input" type="file" onchange="previewFile(this);" style="display: none;" />
                             </div>
