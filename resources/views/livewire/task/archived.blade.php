@@ -1,6 +1,6 @@
 <div>
-    <div class="bg-white rounded-lg">
-        <div class="grid grid-cols-4 gap-4 p-10">
+    <div class="bg-white rounded-lg ">
+        <div class="grid grid-cols-4 gap-4 p-10 px-2 m-1">
             @forelse ($tasks as $task)
                 @livewire('task.card', ['task' => $task], key('task-id-' . $task->id ))
             @empty

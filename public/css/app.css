@@ -1142,6 +1142,9 @@ select {
 .-left-2 {
   left: -0.5rem;
 }
+.bottom-8 {
+  bottom: 2rem;
+}
 .z-0 {
   z-index: 0;
 }
@@ -2210,6 +2213,9 @@ select {
 .p-10 {
   padding: 2.5rem;
 }
+.p-0\.5 {
+  padding: 0.125rem;
+}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -2618,6 +2624,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(134 21 13 / var(--tw-text-opacity));
 }
+.text-pink-100 {
+  --tw-text-opacity: 1;
+  color: rgb(252 231 243 / var(--tw-text-opacity));
+}
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -2704,6 +2714,13 @@ select {
 }
 .transition-opacity {
   transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-colors {
+  transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -2885,6 +2902,10 @@ select {
 .hover\:text-gray-600:hover {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .hover\:shadow-xl:hover {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
