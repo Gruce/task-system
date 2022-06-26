@@ -3277,6 +3277,10 @@ select {
 }
 @media (min-width: 640px) {
 
+  .sm\:relative {
+    position: relative;
+  }
+
   .sm\:col-span-4 {
     grid-column: span 4 / span 4;
   }
@@ -3406,6 +3410,18 @@ select {
 
   .sm\:w-4 {
     width: 1rem;
+  }
+
+  .sm\:w-fit {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
+  .sm\:w-min {
+    width: -webkit-min-content;
+    width: -moz-min-content;
+    width: min-content;
   }
 
   .sm\:max-w-md {

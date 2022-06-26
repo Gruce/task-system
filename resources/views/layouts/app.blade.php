@@ -31,14 +31,19 @@
     
 <body class="font-sans antialiased bg-secondary-100" dir="{{ config('app.locale') == 'en' ? 'ltr' : 'rtl' }}">
     <div class="p-0 mx-auto sm:p-6">
-        <div class="flex flex-row h-screen bg-white rounded-lg sm:h-main" x-data="{ sidebar_extended: false }" x-cloak>
+        <div class="flex flex-row h-screen bg-white rounded-lg sm:h-main" x-data="{ sidebar_extended: false, showSideBar: false }" x-cloak>
             {{-- Left Sidebar --}}
             <x-sidebar />
 
             {{-- Content --}}
             <div class="w-full pb-0 sm:pb-10 sm:w-8/12 sm:basis-8/12 sm:grow">
-                <div class="flex items-center justify-between h-20 p-5 border-b">
-                    <span class="text-2xl font-semibold text-secondary-700">@yield('title')</span>
+                <div class="flex flex-col items-center justify-between p-5 border-b sm:h-20 sm:flex-row">
+                    <div class="flex justify-between">
+                        <span class="text-2xl font-semibold text-secondary-700">@yield('title')</span>
+                        <button @click="showSideBar=!showSideBar" type="button" class="inline-flex items-center px-4 py-2 text-lg text-gray-400 bg-transparent rounded-lg sm:hidden hover:bg-gray-200 hover:text-gray-900 ">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
                     @yield('header-actions')
                     <div class="flex flex-row items-center">
                         <div class="m-5">
