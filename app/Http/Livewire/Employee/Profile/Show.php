@@ -8,11 +8,12 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
+use Livewire\WithFileUploads;
 
 class Show extends Component
 {
-    use LivewireAlert;
-    public $state;
+    use LivewireAlert, WithFileUploads;
+    public $state, $photo;
 
     protected $listeners = ['$refresh'];
 
@@ -24,6 +25,21 @@ class Show extends Component
         'employee.user.email' => 'required',
 
     ];
+
+
+    public function updatedPhoto($photo)
+    {
+        $this->employee['user']->add_file('profile_photo_path', $photo, 'users/' . $this->employee['user']->id . '/profile_photo/');
+        $this->emitSelf('$refresh');
+
+        $this->alert('success', __('ui.data_has_been_add_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
+    }
 
     public function state(Employee $employee)
     {
@@ -45,14 +61,15 @@ class Show extends Component
         $this->emitSelf('$refresh');
     }
 
-    public function change_gender($gender){
+    public function change_gender($gender)
+    {
         $this->employee->user->gender = $gender == 1 ? 2 : 1;
         $this->employee->user->save();
     }
 
     public function mount($id)
     {
-        $this->employee = Employee::with(['tasks', 'files' , 'user'])
+        $this->employee = Employee::with(['tasks', 'files', 'user'])
             ->withCount(['tasks', 'files'])
             ->findOrFail($id);
     }
