@@ -23,9 +23,7 @@ class All extends Component
         $projects = Project::withCount(['tasks', 'files' , 'employees'])
                     ->with(
                         [
-                            'employees'=> function($employee){
-                                $employee->limit(2);
-                            }
+                            'employees'=> fn($employee) => $employee->limit(2),
                         ])
                     ->where('title' , 'LIKE' , $search)
                     ->orderByDesc('id')

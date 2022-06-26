@@ -1,17 +1,17 @@
 <div>
-    <div class="flex flex-row" x-data="{name:false}">
+    <div class="flex flex-row " x-data="{ name: false ,job: false ,phone: false ,email: false,password: false}">
         <div class="basis-1/4">
             <div class="p-4 h-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                 <div class="flex justify-between items-center mb-4">
                     <div class="flex flex-col">
                         <div class="flex items-center justify-between mt-3">
-                            <div class="flex items-center gap-4 mb-3 text-secondary-600 group">
+                            <div class="flex items-center gap-4  text-secondary-600 group">
 
                                 <h5 x-show="!name" class="text-xl font-bold tracking-tight text-secondary-700">
-                                    Hassan Hazim
+                                    {{$employee->name}}
                                 </h5>
                                 <div class="flex items-center gap-4" @click.stop="" @click.outside="name = false">
-                                    <input wire:keydown.enter="edit_name" wire:model="project.title" type="text" x-show="name" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
+                                    <input wire:keydown.enter="edit_name" wire:model="employee.user.name" type="text" x-show="name" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
 
                                     <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-secondary-800 bg-secondary-50">
                                         <a @click="name = !name" x-show="!name" href="#"><i class="fas fa-pen"></i></a>
@@ -30,45 +30,75 @@
 
                         </div>
                         <div class="flex items-center gap-4  text-secondary-600 group">
-                            <h6 x-show="!name" class="text-sm font-bold tracking-tight text-secondary-700">
-                                salem.cf11@gmail.com
+                            <h6 x-show="!job" class="text-sm  font-bold tracking-tight text-secondary-700">
+                                {{$employee->job}}
                             </h6>
-                            <div class="flex items-center gap-4" @click.stop="" @click.outside="name = false">
-                                <input wire:keydown.enter="edit_name" wire:model="project.title" type="text" x-show="name" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
+                            <div class="flex items-center gap-4" @click.stop="" @click.outside="job = false">
+                                <input wire:keydown.enter="edit_name" wire:model="employee.job" type="text" x-show="job" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
 
                                 <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-secondary-800 bg-secondary-50">
-                                    <a @click="name = !name" x-show="!name" href="#"><i class="fas fa-pen"></i></a>
-                                    <a wire:click="edit_name" @click="name = !name" x-show="name" href="#"><i class="fas fa-check"></i></a>
+                                    <a @click="job = !job" x-show="!job" href="#"><i class="fas fa-pen"></i></a>
+                                    <a wire:click="edit_name" @click="job = !job" x-show="job" href="#"><i class="fas fa-check"></i></a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="flex items-center gap-4  text-secondary-600 group">
-                            <h6 x-show="!name" class="text-xs font-bold tracking-tight text-secondary-700">
-                                077343423423
+                            <h6 x-show="!email" class="text-sm tracking-tight text-secondary-700">
+                                {{$employee->email}}
                             </h6>
-                            <div class="flex items-center gap-4" @click.stop="" @click.outside="name = false">
-                                <input wire:keydown.enter="edit_name" wire:model="project.title" type="text" x-show="name" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
+                            <div class="flex items-center gap-4" @click.stop="" @click.outside="email = false">
+                                <input wire:keydown.enter="edit_name" wire:model="employee.user.email" type="text" x-show="email" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
 
                                 <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-secondary-800 bg-secondary-50">
-                                    <a @click="name = !name" x-show="!name" href="#"><i class="fas fa-pen"></i></a>
-                                    <a wire:click="edit_name" @click="name = !name" x-show="name" href="#"><i class="fas fa-check"></i></a>
+                                    <a @click="email = !email" x-show="!email" href="#"><i class="fas fa-pen"></i></a>
+                                    <a wire:click="edit_name" @click="email = !email" x-show="email" href="#"><i class="fas fa-check"></i></a>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="flex items-center gap-4  text-secondary-600 group">
+                            <h6 x-show="!phone" class="text-sm tracking-tight text-secondary-700">
+                                {{$employee->user->phonenumber}}
+                            </h6>
+                            <div class="flex items-center gap-4" @click.stop="" @click.outside="phone = false">
+                                <input wire:keydown.enter="edit_name" wire:model="employee.user.phonenumber" type="text" x-show="phone" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
+
+                                <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-secondary-800 bg-secondary-50">
+                                    <a @click="phone = !phone" x-show="!phone" href="#"><i class="fas fa-pen"></i></a>
+                                    <a wire:click="edit_name" @click="phone = !phone" x-show="phone" href="#"><i class="fas fa-check"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center rounded-lg  gap-2 w-10" role="group">
+                            <button wire:click="change_gender({{ $employee->user->gender }})">
+                                <i class="fas fa-2x {{$employee->user->gender == 2 ? 'text-pink-400 fa-female' : 'text-blue-500 fa-male'}}"></i>
+                            </button>
+                        </div>
                     </div>
                     {{-- <div>
                         <livewire:livewire-line-chart key="{{ $lineChartModel->reactiveKey() }}" :line-chart-model="$lineChartModel" />
                     </div> --}}
                     <div class="relative">
-                        <img class="w-16 h-16 rounded-full" src="{{$employee->user->profile_photo}}" alt="">
+                        <img class="w-20 h-20 mb-3 rounded-full" src="{{ $employee->user->profile_photo }}" alt="">
+                        <button wire:click="state({{$employee->id}})">
+                            @if($employee->state)
+                            <i class="fa-solid fa-lock-open top-0 left-13 absolute text-green-700"></i>
+                            @else
+                            <i class="fa-solid fa-lock top-0 left-13 absolute text-red-400"></i>
+                            @endif
+                        </button>
+
                         {{-- <button type="button" class="bottom-0 left-7 bg-black    absolute  w-5.5 h-5.5  text-sm  text-center inline-flex items-center mr-2 ">
                             <i class="fa-solid fa-camera-rotate bg-black text-gray-600 text-lg"></i>
                         </button> --}}
-                        <button type="button" class="absolute  -bottom-2 left-8  w-5.5 h-5.5 text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-lg p-1 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <i class="fa-solid fa-camera-rotate  text-l"></i>
-                        </button>
+
+                        <div class="absolute bottom-1  left-9 text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-lg p-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <div class="relative">
+                                <i class=" fa-solid fa-camera-rotate  text-l"></i>
+                                <input type="file" class="absolute top-0 left-0 invisible w-full h-full ">
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -95,25 +125,28 @@
                             </div>
 
                             <div class="flex justify-between mb-1">
-                                <span class="text-xs font-medium text-secondary-500">45%</span>
+                                <span class="text-xs font-medium text-secondary-500">234234%</span>
                                 <span class="text-xs font-medium text-secondary-500">545</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-1.5">
-                                <div class="bg-secondary-600 h-1.5 rounded-full" style="width: 45%"></div>
+                                <div class="bg-secondary-600 h-1.5 rounded-full" style="width: 23%"></div>
                             </div>
                         </div>
                     </div>
                     <div class="p-4 ml-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <div class="flex flex-row justify-around items-center">
-                            <div class="flex items-center">
-                                <i class="fa-solid fa-calendar-check p-3 text-secondary-500"></i>
-                                <h3 class="text-sm text-secondary-500 font-semibold">
-                                    المهام المكتملة
-                                </h3>
+                            <div class="flex flex-col">
+
+                                <div class="flex items-center">
+                                    <i class="fa-solid fa-calendar-check p-3 text-green-400"></i>
+                                    <h3 class="text-sm text-green-400 font-semibold">
+                                        المهام المكتملة
+                                    </h3>
+                                </div>
                             </div>
                             <div class="flex items-center">
-                                <i class="fa-solid fa-calendar-xmark p-2 text-secondary-500"></i>
-                                <h3 class="text-sm text-secondary-500 font-semibold">
+                                <i class="fa-solid fa-calendar-xmark p-2 text-red-400"></i>
+                                <h3 class="text-sm text-red-400 font-semibold">
                                     المهام الغير مكتملة
                                 </h3>
                             </div>
@@ -183,4 +216,11 @@
                                         even as we update the project.</p>
                                 </li>
                             </div>
+                        </ol>
                     </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

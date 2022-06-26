@@ -19,8 +19,9 @@ class Show extends Component
         $this->project = Project::with(['tasks' , 'files' , 'employees'])
                         ->withCount(['tasks' , 'files', 'employees'])
                         ->findOrFail($id);
-    }
 
+    }
+        
     public function render()
     {
         return view('livewire.project.show');

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
+use App\Models\Task;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,88 +18,23 @@ class TaskSeeder extends Seeder
     {
         $projects = Project::get();
 
-        $projects->reduce(function($key , $project){
-            $key = 1;
-            $project->tasks()->create([
-                'title' => 'title ' . $key++,
-                'description' => 'description',
-                'state' => rand(1,6),
-                'start_at' => date('Y-m-d'),
-                'end_at' => date('Y-m-d'),
-            ]);
+        foreach ($projects as $project)
+            for ($i = 1; $i <= 20; $i++) {
+                $task = Task::create([
+                    'title' => 'title ' . $i . ' - ' . $project->title,
+                    'project_id' => $project->id,
+                    'description' => 'description',
+                    'state' => rand(1, 3),
+                    'start_at' => date('Y-m-d'),
+                    'end_at' => date('Y-m-d'),
+                ]);
 
-            $project->tasks()->create([
-                'title' => 'title ' . $key++,
-                'description' => 'description',
-                'start_at' => date('Y-m-d'),
-                'state' => rand(1,6),
-                'end_at' => date('Y-m-d'),
-            ]);
-
-            $project->tasks()->create([
-                'title' => 'title ' . $key++,
-                'description' => 'description',
-                'start_at' => date('Y-m-d'),
-                'state' => rand(1,6),
-                'end_at' => date('Y-m-d'),
-            ]);
-
-            $project->tasks()->create([
-                'title' => 'title ' . $key++,
-                'description' => 'description',
-                'start_at' => date('Y-m-d'),
-                'state' => rand(1,6),
-                'end_at' => date('Y-m-d'),
-            ]);
-
-            $project->tasks()->create([
-                'title' => 'title ' . $key++,
-                'description' => 'description',
-                'start_at' => date('Y-m-d'),
-                'state' => rand(1,6),
-                'end_at' => date('Y-m-d'),
-            ]);
-
-            $project->tasks()->create([
-                'title' => 'title ' . $key++,
-                'description' => 'description',
-                'start_at' => date('Y-m-d'),
-                'state' => rand(1,6),
-                'end_at' => date('Y-m-d'),
-            ]);
-
-            $project->tasks()->create([
-                'title' => 'title ' . $key++,
-                'description' => 'description',
-                'start_at' => date('Y-m-d'),
-                'state' => rand(1,6),
-                'end_at' => date('Y-m-d'),
-            ]);
-
-            $project->tasks()->create([
-                'title' => 'title ' . $key++,
-                'description' => 'description',
-                'start_at' => date('Y-m-d'),
-                'state' => rand(1,6),
-                'end_at' => date('Y-m-d'),
-            ]);
-
-            $project->tasks()->create([
-                'title' => 'title ' . $key++,
-                'description' => 'description',
-                'start_at' => date('Y-m-d'),
-                'state' => rand(1,6),
-                'end_at' => date('Y-m-d'),
-            ]);
-
-            $project->tasks()->create([
-                'title' => 'title ' . $key++,
-                'description' => 'description',
-                'start_at' => date('Y-m-d'),
-                'state' => rand(1,6),
-                'end_at' => date('Y-m-d'),
-            ]);
-        });
-
+                $task->labels()->createMany([
+                    [
+                        'name' => 'label ' . $i,
+                        'color' => '#ff000' . $i,
+                    ],
+                ]);
+            }
     }
 }

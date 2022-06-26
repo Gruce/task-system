@@ -15,7 +15,7 @@ class Project extends Model
     use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
     protected $fillable = ['title', 'description'];
-    protected $appends = ['completed_tasks' , 'percentage_completed_tasks'];
+    // protected $appends = ['completed_tasks' , 'percentage_completed_tasks'];
     // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
@@ -23,7 +23,8 @@ class Project extends Model
     /******************* RELATIONSHIPS ******************/
     /****************************************************/
 
-    public function employees(){
+    public function employees()
+    {
         return $this->belongsToMany(Employee::class)->withTimestamps();
     }
 
@@ -37,6 +38,11 @@ class Project extends Model
         return $this->morphMany(File::class, 'fileable');
     }
 
+    public function labels()
+    {
+        return $this->morphMany(Label::class, 'labelable');
+    }
+
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
@@ -47,15 +53,17 @@ class Project extends Model
     /******************* END RELATIONSHIPS **************/
     /****************************************************/
 
-    protected function completedTasks(): Attribute{
+    protected function completedTasks(): Attribute
+    {
         return Attribute::make(
             get: function () {
-                return $this->tasks()->where('state' , 1)->count();
+                return $this->tasks()->where('state', 1)->count();
             },
         );
     }
 
-    protected function percentageCompletedTasks(): Attribute{
+    protected function percentageCompletedTasks(): Attribute
+    {
         return Attribute::make(
             get: function () {
                 return $this->tasks()->count() ? intval($this->completed_tasks / $this->tasks()->count() * 100) : 0;
@@ -64,7 +72,8 @@ class Project extends Model
     }
 
 
-    public function comment($body){
+    public function comment($body)
+    {
         $comment = new Comment;
         $comment->body = $body;
         $comment->user_id = auth()->id();
