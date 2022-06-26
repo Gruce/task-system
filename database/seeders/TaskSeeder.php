@@ -21,7 +21,8 @@ class TaskSeeder extends Seeder
         foreach ($projects as $project)
             for ($i = 1; $i <= 20; $i++) {
                 $task = Task::create([
-                    'title' => 'title ' . $i . ' - ' . $project->title,
+                    'title' => 'title ' . $i ,
+                    //. ' - ' . $project->title,
                     'project_id' => $project->id,
                     'description' => 'description',
                     'state' => rand(1, 3),

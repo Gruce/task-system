@@ -27,7 +27,11 @@
         <div class="flex flex-col justify-between w-full px-4 py-1 border-r-4 hover:bg-secondary-50 text-secondary-500">
             <div class="flex justify-between gap-4">
                 <div class="text-sm font-normal" :class="expandComments ? 'w-full' : ' w-80'">
-                    {!! $item->body !!}
+
+                    <x-markdown>
+                        {{$item->body}}
+                    </x-markdown>
+
                 </div>
                 <div class="flex items-start justify-end w-40 gap-4">
                     <div class="flex flex-col items-end">
@@ -53,7 +57,8 @@
     </div>
     {{-- {{ $comments->links() }} --}}
     <div x-show="commentInput" x-transition class="justify-self-end">
-        <input wire:keydown.enter="add_comment" wire:model.defer="comment" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.comment')}}" required>
+        {{-- <input wire:keydown.enter="add_comment" wire:model.defer="comment" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.comment')}}" required> --}}
+        <textarea  wire:keydown.enter="add_comment" wire:model.defer="comment" cols="3" rows="3" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.comment')}}" required></textarea>
         @error('comment')<span class="text-red-500">{{ $message }}</span> @enderror
     </div>
 </div>

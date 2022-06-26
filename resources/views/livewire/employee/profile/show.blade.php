@@ -18,16 +18,7 @@
                                         <a wire:click="edit_name" @click="name = !name" x-show="name" href="#"><i class="fas fa-check"></i></a>
                                     </div>
                                 </div>
-                                {{-- <div class="flex items-center gap-4" @click.stop="" @click.outside="name = false">
-                                    <input wire:keydown.enter="edit_name" wire:model="project.title" type="text" x-show="name" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
-
-                                    <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-secondary-800 bg-secondary-50">
-                                        <a @click="name = !name" x-show="!name" href="#"><i class="fas fa-pen"></i></a>
-                                        <a wire:click="edit_name" @click="name = !name" x-show="name" href="#"><i class="fas fa-check"></i></a>
-                                    </div>
-                                </div> --}}
                             </div>
-
                         </div>
                         <div class="flex items-center gap-4  text-secondary-600 group">
                             <h6 x-show="!job" class="text-sm  font-bold tracking-tight text-secondary-700">
@@ -35,7 +26,6 @@
                             </h6>
                             <div class="flex items-center gap-4" @click.stop="" @click.outside="job = false">
                                 <input wire:keydown.enter="edit_name" wire:model="employee.job" type="text" x-show="job" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
-
                                 <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-secondary-800 bg-secondary-50">
                                     <a @click="job = !job" x-show="!job" href="#"><i class="fas fa-pen"></i></a>
                                     <a wire:click="edit_name" @click="job = !job" x-show="job" href="#"><i class="fas fa-check"></i></a>
@@ -63,7 +53,6 @@
                             </h6>
                             <div class="flex items-center gap-4" @click.stop="" @click.outside="phone = false">
                                 <input wire:keydown.enter="edit_name" wire:model="employee.user.phonenumber" type="text" x-show="phone" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
-
                                 <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-secondary-800 bg-secondary-50">
                                     <a @click="phone = !phone" x-show="!phone" href="#"><i class="fas fa-pen"></i></a>
                                     <a wire:click="edit_name" @click="phone = !phone" x-show="phone" href="#"><i class="fas fa-check"></i></a>
@@ -76,9 +65,6 @@
                             </button>
                         </div>
                     </div>
-                    {{-- <div>
-                        <livewire:livewire-line-chart key="{{ $lineChartModel->reactiveKey() }}" :line-chart-model="$lineChartModel" />
-                    </div> --}}
                     <div class="relative">
                         <img class="w-20 h-20 mb-3 rounded-full" src="{{ $employee->user->profile_photo }}" alt="">
                         <button wire:click="state({{$employee->id}})">
@@ -93,9 +79,8 @@
                                 <label for="file-input">
                                     <i class="fa-solid fa-camera text-gray-600 text-lg bottom-10 left-7 absolute  w-3.5 h-3.5 hover:text-gray-800"></i>
                                 </label>
-                                
-                                <input id="file-input" type="file" onchange="previewFile(this);" style="display: none;" />
-                              </div>
+                                <input wire:model="photo" id="file-input" type="file" onchange="previewFile(this);" style="display: none;" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -120,7 +105,6 @@
                                     مهمة قيد التنفيذ
                                 </h3>
                             </div>
-
                             <div class="flex justify-between mb-1">
                                 <span class="text-xs font-medium text-secondary-500">234234%</span>
                                 <span class="text-xs font-medium text-secondary-500">545</span>
@@ -133,7 +117,6 @@
                     <div class="p-4 ml-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <div class="flex flex-row justify-around items-center">
                             <div class="flex flex-col">
-
                                 <div class="flex items-center">
                                     <i class="fa-solid fa-calendar-check p-3 text-green-400"></i>
                                     <h3 class="text-sm text-green-400 font-semibold">
@@ -164,9 +147,7 @@
                         asdas
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
 </div>

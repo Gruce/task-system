@@ -64,7 +64,11 @@
     {{-- Description --}}
     <div @click.outside="description = false" x-data="{description: false}">
         <div x-show="!description" @click="description=!description" class="px-4 py-3 border rounded cursor-pointer hover:bg-secondary-50">
-            {{$task->description}}
+            <x-markdown>
+                {{$task->description}}
+            </x-markdown>
+
+
         </div>
         <textarea wire:model="task.description" wire:keydown.enter="edit"  x-show="description" id="message" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="{{__('ui.description')}}"></textarea>
     </div>

@@ -120,9 +120,9 @@ class Add extends Component
             $search = '%' . $this->search . '%';
             $projects = Project::where('title' , 'LIKE' , $search)->paginate(24);
             $employees = Employee::whereRelation('user' , 'name' , 'LIKE' , $search)->paginate(10);
-            // dd($employees);
             $task_employees = $this->task->employees()->paginate($this->limitPerPage);
         }
+
 
         return view('livewire.task.add' , [
             'projects' => $projects,
