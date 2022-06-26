@@ -30,13 +30,13 @@
 </head>
     
 <body class="font-sans antialiased bg-secondary-100" dir="{{ config('app.locale') == 'en' ? 'ltr' : 'rtl' }}">
-    <div class="p-6 mx-auto">
-        <div class="flex flex-row bg-white rounded-lg h-main" x-data="{ sidebar_extended: false }" x-cloak>
+    <div class="p-0 mx-auto sm:p-6">
+        <div class="flex flex-row h-screen bg-white rounded-lg sm:h-main" x-data="{ sidebar_extended: false }" x-cloak>
             {{-- Left Sidebar --}}
             <x-sidebar />
 
             {{-- Content --}}
-            <div class="w-8/12 pb-10 basis-8/12 grow">
+            <div class="w-full pb-0 sm:pb-10 sm:w-8/12 sm:basis-8/12 sm:grow">
                 <div class="flex items-center justify-between h-20 p-5 border-b">
                     <span class="text-2xl font-semibold text-secondary-700">@yield('title')</span>
                     @yield('header-actions')
@@ -74,7 +74,7 @@
 
                     </div>
                 </div>
-                <div class="p-5 overflow-y-auto h-content bg-secondary-50">
+                <div class="p-1 overflow-y-auto sm:p-5 h-content bg-secondary-50">
                     @isset($slot)
                     {{ $slot }}
                     @endisset

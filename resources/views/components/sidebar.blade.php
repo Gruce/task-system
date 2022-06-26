@@ -1,4 +1,4 @@
-<div class="relative h-full px-2 py-6 border-x" :class="sidebar_extended ? 'basis-2/12 w-2/12' : 'basis-1/12 w-1/12'">
+<div class="relative items-center justify-center hidden h-full px-2 py-6 sm:flex border-x" :class="sidebar_extended ? 'basis-2/12 w-2/12' : 'basis-1/12 w-1/12'">
     <aside class="h-full" aria-label="Sidebar ">
         <div class="flex flex-col items-center justify-center h-full" :class="sidebar_extended ? 'pr-9 pl-3' : ''">
             <div class="flex-none pb-5 mb-5 basis-96">

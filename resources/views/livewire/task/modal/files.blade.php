@@ -1,7 +1,7 @@
 <div x-show="selected == 1" class="flex flex-col gap-2">
     <div class="flex items-center justify-between pb-2 mb-4 border-b-2 border-secondary-50 text-secondary-600">
-        <h4 class="text-xl font-semibold capitalize basis-3/4">{{__('ui.files')}}</h4>
-        <div class="relative flex items-center justify-center h-10 rounded-lg hover:bg-secondary-50 basis-1/4">
+        <h4 class="text-xl font-semibold capitalize basis-1/2 sm:basis-3/4">{{__('ui.files')}}</h4>
+        <div class="relative flex items-center justify-center h-10 rounded-lg hover:bg-secondary-50 basis-1/2 sm:basis-1/4">
             <div class="absolute w-full px-4">
                 <div class="flex items-center justify-between cursor-pointer">
                     <span class="text-secondary-600">{{__('ui.upload_files')}}</span>

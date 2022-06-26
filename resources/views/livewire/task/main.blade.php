@@ -5,7 +5,7 @@
 
 
 @if ($selectedTab == 0)
-    <div x-cloak class="p-8" x-data="{ add: false, showModal: false }">
+    <div x-cloak class="p-4 sm:p-8" x-data="{ add: false, showModal: false }">
         <div class="flex items-center justify-between mb-4">
             <div>
                 <button @click="add = !add" type="button"

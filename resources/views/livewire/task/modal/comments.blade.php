@@ -8,7 +8,7 @@
         @forelse ($comments as $comment)
         <div class="flex flex-col justify-between w-full px-4 py-1 border-r-4 hover:bg-secondary-50 text-secondary-500">
             <div class="flex justify-between gap-4">
-                <div class="text-sm font-normal">
+                <div class="w-24 text-sm font-normal break-all">
                     <x-markdown>
                         {{$comment->body}}
                     </x-markdown>

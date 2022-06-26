@@ -1,4 +1,4 @@
-<div x-show="showModal" x-transition.opacity.duration.250ms class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-full h-full overflow-x-hidden overflow-y-auto bg-black bg-opacity-50 md:inset-0" x-cloak x-data="{ selected: 0 }">
+<div x-show="showModal" x-transition.opacity.duration.250ms class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-full h-full overflow-x-hidden overflow-y-auto bg-black bg-opacity-50 md:inset-0" x-cloak x-data="{ selected: 0, tabs: false }">
     <div class="relative w-full max-w-4xl p-4">
         <!-- Modal content -->
         <div class="relative bg-white border rounded-lg">
@@ -11,22 +11,27 @@
                         <x-spinner />
                     </div>
                 </span>
-                <button @click="showModal=!showModal" type="button" class="inline-flex items-center px-4 py-2 text-lg text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ">
-                    <i class="fas fa-times"></i>
-                </button>
+                <div class="flex">
+                    <button @click="tabs=!tabs" type="button" class="inline-flex items-center px-4 py-2 text-lg text-gray-400 bg-transparent rounded-lg sm:hidden hover:bg-gray-200 hover:text-gray-900 ">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <button @click="showModal=!showModal" type="button" class="inline-flex items-center px-4 py-2 text-lg text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </div>
             <!-- Modal body -->
-            <div class="flex gap-2 p-6">
+            <div class="flex flex-col gap-6 p-6 sm:flex-row">
 
                 {{-- Options / Controllers --}}
-                <div class="flex flex-col basis-1/4">
+                <div :class="tabs ? 'flex' : 'sm:flex hidden'" class="flex-col basis-1/4">
                     <div class="flex flex-col gap-6">
 
                         {{-- Group Items --}}
                         <div class="flex flex-col gap-1 text-sm">
                             {{-- Items --}}
                             <template x-for="(tab, index) in $wire.tabs" :key="index">
-                                <span @click="selected = index" :class="selected == index ? 'bg-secondary-100 font-semibold' : 'bg-secondary-50'" class="flex items-center justify-between px-4 py-2 capitalize rounded cursor-pointer hover:bg-secondary-100 w-44 text-secondary-700">
+                                <span @click="selected = index; tabs = false" :class="selected == index ? 'bg-secondary-100 font-semibold' : 'bg-secondary-50'" class="flex items-center justify-between w-full px-4 py-2 capitalize rounded cursor-pointer hover:bg-secondary-100 sm:w-44 text-secondary-700">
                                     <span class="text-sm" x-text="tab[0]"></span>
                                     <i class="text-xs" :class="tab[2]"></i>
                                 </span>
@@ -39,11 +44,11 @@
 
 
                             {{-- Date --}}
-                            <input wire:model="task.start_at" type="date" class="w-44 bg-gray-100 border-0 text-secondary-700 text-sm rounded p-2.5">
-                            <input wire:model="task.end_at" type="date" class="w-44 bg-gray-100 border-0 text-secondary-700 text-sm rounded p-2.5">
+                            <input wire:model="task.start_at" type="date" class="sm:w-44 w-full bg-gray-100 border-0 text-secondary-700 text-sm rounded p-2.5">
+                            <input wire:model="task.end_at" type="date" class="sm:w-44 w-full bg-gray-100 border-0 text-secondary-700 text-sm rounded p-2.5">
 
                             {{-- State Drop Down --}}
-                            <div class="relative w-44" x-data="{stateDropDown: false}">
+                            <div class="relative w-full sm:w-44" x-data="{stateDropDown: false}">
                                 <div x-show="stateDropDown" x-transition class="absolute left-0 flex flex-col justify-center w-full gap-1 p-1 bg-white bg-opacity-75 border rounded bottom-10">
                                     <div @click="stateDropDown = !stateDropDown" wire:click="state(1)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-secondary-50 text-secondary-700">
                                         <span class="text-xs">{{__('ui.to_do')}}</span>
@@ -74,7 +79,7 @@
                             </div>
 
                             {{-- Priority Drop Down --}}
-                            <div class="relative w-44" x-data="{priorityDropDown: false}">
+                            <div class="relative w-full sm:w-44" x-data="{priorityDropDown: false}">
                                 <div x-show="priorityDropDown" x-transition class="absolute left-0 flex flex-col justify-center w-full gap-1 p-1 bg-white bg-opacity-75 border rounded bottom-10">
                                     <div @click="priorityDropDown = !priorityDropDown" wire:click="importance(1)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-secondary-50 text-secondary-700">
                                         <span class="text-xs">{{__('ui.importance_low')}}</span>
@@ -106,14 +111,14 @@
                             
 
                             {{-- Archive Button --}}
-                            <div wire:click="archive" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-secondary-100 w-44 text-secondary-700 {{ true ? 'bg-secondary-100' : 'bg-secondary-50' }}">
+                            <div wire:click="archive" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-secondary-100 w-full sm:w-44 text-secondary-700 {{ true ? 'bg-secondary-100' : 'bg-secondary-50' }}">
                                 <span class="text-sm">{{__('ui.archive')}}</span>
                                 <i class="text-xs fa-solid fa-box-archive"></i>
                             </div>
 
                             {{-- Force Delete Button --}}
                             <div>
-                                <button @click="showModal=!showModal" wire:click="confirmed({{ $task->id }}) " class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-error-100 w-44 text-secondary-700 bg-secondary-50 hover:text-error-600">
+                                <button @click="showModal=!showModal" wire:click="confirmed({{ $task->id }}) " class="flex items-center justify-between w-full px-4 py-2 rounded cursor-pointer hover:bg-error-100 sm:w-44 text-secondary-700 bg-secondary-50 hover:text-error-600">
                                     <span class="text-sm">{{__('ui.delete')}}</span>
                                     <i class="fas fa-trash"></i>
                                 </button>
