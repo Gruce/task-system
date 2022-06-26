@@ -24,7 +24,6 @@ class Main extends Component
         $this->selectedTab = 0;}
 
     public function render(){
-
         return view('livewire.task.main');
     }
 }

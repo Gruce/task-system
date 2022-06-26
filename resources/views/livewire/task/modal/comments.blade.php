@@ -1,11 +1,17 @@
 <div x-show="selected == 2" class="flex flex-col gap-2">
-    <div class="flex flex-col w-full gap-2 px-2 overflow-y-auto text-sm">
+    <div class="flex items-center justify-between pb-2 mb-4 border-b-2 border-secondary-50 text-secondary-600">
+        <h4 class="text-xl font-semibold capitalize">{{__('ui.comments')}}</h4>
+        <h4 class="text-sm capitalize"> {{$comments->count()}} {{__('ui.comment')}}</h4>
+    </div>
+    <div class="flex flex-col w-full gap-2 px-2 overflow-y-auto text-sm h-72">
         {{-- Loop Item Below --}}
         @forelse ($comments as $comment)
         <div class="flex flex-col justify-between w-full px-4 py-1 border-r-4 hover:bg-secondary-50 text-secondary-500">
             <div class="flex justify-between gap-4">
-                <div class="text-sm font-normal">
-                    {!!$comment->body!!}
+                <div class="w-24 text-sm font-normal break-all">
+                    <x-markdown>
+                        {{$comment->body}}
+                    </x-markdown>
                 </div>
                 <div class="flex items-start gap-4">
                     <div class="flex flex-col items-end">
