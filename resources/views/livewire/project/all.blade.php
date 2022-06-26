@@ -17,7 +17,6 @@
     <div class="grid gap-1 lg:grid-cols-1 sm:grid-cols-1 pt-3" dir="ltr">
         {{ $projects->links() }}
     </div>
-
 </div>
 
         {{-- <div>
