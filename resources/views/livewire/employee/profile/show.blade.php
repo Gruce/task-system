@@ -93,6 +93,7 @@
                                 <label for="file-input">
                                     <i class="fa-solid fa-camera text-gray-600 text-lg bottom-10 left-7 absolute  w-3.5 h-3.5 hover:text-gray-800"></i>
                                 </label>
+                                
                                 <input id="file-input" type="file" onchange="previewFile(this);" style="display: none;" />
                               </div>
                         </div>
