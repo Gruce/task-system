@@ -48,6 +48,11 @@ class Task extends Model
         return $this->morphMany(Comment::class, 'commentable');
     }
 
+    public function labels()
+    {
+        return $this->morphMany(Label::class, 'labelable');
+    }
+
 
 
     /****************************************************/

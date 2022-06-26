@@ -81,19 +81,24 @@
                     </div> --}}
                     <div class="relative">
                         <img class="w-20 h-20 mb-3 rounded-full" src="{{ $employee->user->profile_photo }}" alt="">
-                        <button wire:click="state({{$employee->id}})" @if($employee->state)
+                        <button wire:click="state({{$employee->id}})">
+                            @if($employee->state)
                             <i class="fa-solid fa-lock-open top-0 left-13 absolute text-green-700"></i>
                             @else
-                            <i class="fa-solid fa-lock top-0 left-13 absolute text-red-600"></i>
+                            <i class="fa-solid fa-lock top-0 left-13 absolute text-red-400"></i>
                             @endif
                         </button>
 
                         {{-- <button type="button" class="bottom-0 left-7 bg-black    absolute  w-5.5 h-5.5  text-sm  text-center inline-flex items-center mr-2 ">
                             <i class="fa-solid fa-camera-rotate bg-black text-gray-600 text-lg"></i>
                         </button> --}}
-                        <button type="button" class="absolute  bottom-1  left-9  w-5.5 h-5.5 text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-lg p-1 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <i class="fa-solid fa-camera-rotate  text-l"></i>
-                        </button>
+
+                        <div class="absolute bottom-1  left-9 text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-lg p-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <div class="relative">
+                                <i class=" fa-solid fa-camera-rotate  text-l"></i>
+                                <input type="file" class="absolute top-0 left-0 invisible w-full h-full ">
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -133,15 +138,15 @@
                             <div class="flex flex-col">
 
                                 <div class="flex items-center">
-                                    <i class="fa-solid fa-calendar-check p-3 text-secondary-500"></i>
-                                    <h3 class="text-sm text-secondary-500 font-semibold">
+                                    <i class="fa-solid fa-calendar-check p-3 text-green-400"></i>
+                                    <h3 class="text-sm text-green-400 font-semibold">
                                         المهام المكتملة
                                     </h3>
                                 </div>
                             </div>
                             <div class="flex items-center">
-                                <i class="fa-solid fa-calendar-xmark p-2 text-secondary-500"></i>
-                                <h3 class="text-sm text-secondary-500 font-semibold">
+                                <i class="fa-solid fa-calendar-xmark p-2 text-red-400"></i>
+                                <h3 class="text-sm text-red-400 font-semibold">
                                     المهام الغير مكتملة
                                 </h3>
                             </div>

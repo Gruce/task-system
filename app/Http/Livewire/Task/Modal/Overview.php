@@ -48,6 +48,22 @@ class Overview extends Component
         $this->emitTo( 'task.all' ,'$refresh');
     }
 
+    public function importance($importance){
+        $this->task->importance = $importance;
+        $this->task->save();
+
+        $this->alert('success', __('ui.data_has_been_edited_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
+
+        $this->emitSelf('$refresh');
+        $this->emitTo('task.all' , '$refresh');
+    }
+
     public function render()
     {
 

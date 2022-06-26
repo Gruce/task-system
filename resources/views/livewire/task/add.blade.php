@@ -1,7 +1,7 @@
-<div class="p-8 bg-white rounded-lg">
+<div class="p-4 bg-white rounded-lg sm:p-8">
     <form wire:submit.prevent="add">
-        <div class="flex gap-10">
-            <div class="flex flex-col gap-4 basis-3/4">
+        <div class="flex flex-col gap-10 sm:flex-row">
+            <div class="flex flex-col gap-4 sm:basis-3/4">
                 <label class="block mb-2 text-sm font-medium text-gray-500">
                     {{ __('ui.basicinfo') }}
                 </label>
@@ -16,14 +16,28 @@
                         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
                             {{ __('ui.choose_project') }}</label>
                         </label>
-                        <select id="countries" wire:model.defer="task.project_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        {{-- <select id="countries" wire:model.defer="task.project_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected="">{{ __('ui.choose_project') }}</option>
                             @forelse( $projects as $item )
                             <option value="{{ $item->id }}">{{ $item->title }}</option>
                             @empty
                             <option value="id">{{ __('ui.no_projects') }}</option>
                             @endforelse
-                        </select>
+                        </select> --}}
+                        <div class="flex w-full gap-2">
+                            <input wire:model="search" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.project_title')}}" required>
+                            @if ($search)
+                                <select wire:model="task.project_id" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                    <option value="" selected>{{__('ui.select_project')}}</option>
+                                    @foreach ($projects as $project)
+                                        <option value="{{$project->id}}">{{$project->title}}</option>
+                                    @endforeach
+                                </select>
+                                <button wire:click="add" @click="add=!add" class="px-4 py-1 duration-150 ease-in-out delay-75 border rounded-lg hover:text-success-800 hover:bg-success-100">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            @endif
+                        </div>
                     </div>
                     {{-- <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -95,9 +109,54 @@
                             <option value="1">{{ __('ui.importance_low') }}</option>
                             <option value="2">{{ __('ui.importance_medium') }}</option>
                             <option value="3">{{ __('ui.importance_high') }}</option>
-                            <option value="4">{{ __('ui.importance_very_high') }}</option>
                         </select>
                     </div>
+
+                    <div  class="flex flex-col">
+                        <div class="flex flex-col w-full gap-2 overflow-y-auto text-sm">
+                            <div class="flex justify-between w-full px-4 py-2 rounded-lg text-secondary-500">
+                                <div class="flex w-full gap-2">
+                                    <input wire:model="search" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.name')}}" required>
+                                    @if ($search)
+                                        <select wire:model="userId" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                            <option value="" selected>{{__('ui.select_employee')}}</option>
+                                            @foreach ($employees as $employee)
+                                                <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <button wire:click="add" @click="add=!add" class="px-4 py-1 duration-150 ease-in-out delay-75 border rounded-lg hover:text-success-800 hover:bg-success-100">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    @endif
+                                </div>
+                            </div>
+
+                            {{-- Loop Item Below --}}
+                            @forelse ($task_employees as $employee)
+                            <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
+                                <div class="flex items-center gap-4">
+                                    <img class="w-10 h-10 rounded-lg" src="{{$employee->photo}}" alt="Bordered avatar">
+                                    <div class="flex flex-col">
+                                        <span class="text-base font-normal text-secondary-700">
+                                            {{$employee->name}}
+                                        </span>
+                                        <span class="text-xs font-normal text-secondary-400">
+                                            {{-- {{$employee->pivot->created_at->diffForHumans()}} --}}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button wire:click="confirmed({{ $employee->id }} , 'delete')" class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            @empty
+                                {{__('ui.no_data')}}
+                            @endforelse
+                        </div>
+                    </div>
+
                     {{-- <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.estimated_time') }}
@@ -124,7 +183,7 @@
             </div>
 
             {{-- Attachments --}}
-            <div class="flex flex-col gap-4 basis-1/4">
+            <div class="flex flex-col gap-4 sm:basis-1/4">
                 {{-- Label --}}
                 <label class="flex items-center justify-between mb-2 text-sm font-medium text-gray-500">
                     <span>{{ __('ui.addattachments') }}</span>

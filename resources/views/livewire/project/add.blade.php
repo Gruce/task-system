@@ -1,8 +1,8 @@
-<div class="p-8 bg-white rounded-lg">
+<div class="p-4 bg-white rounded-lg sm:p-8">
     <form wire:submit.prevent="add">
-        <div class="flex gap-10">
+        <div class="flex flex-col gap-10 sm:flex-row">
             {{-- Basic Inputs --}}
-            <div class="flex flex-col gap-4 basis-3/4">
+            <div class="flex flex-col gap-4 sm:basis-3/4">
                 <label class="block mb-2 text-sm font-medium text-gray-500">
                     {{ __('ui.basicinfo') }}
                 </label>
@@ -27,7 +27,7 @@
             </div>
 
             {{-- Attachments --}}
-            <div class="flex flex-col gap-4 basis-1/4">
+            <div class="flex flex-col gap-4 sm:basis-1/4">
                 {{-- Label --}}
                 <label class="block mb-2 text-sm font-medium text-gray-500">
                     {{ __('ui.addattachments') }}
