@@ -88,18 +88,14 @@
                             <i class="fa-solid fa-lock top-0 left-13 absolute text-red-400"></i>
                             @endif
                         </button>
-
-                        {{-- <button type="button" class="bottom-0 left-7 bg-black    absolute  w-5.5 h-5.5  text-sm  text-center inline-flex items-center mr-2 ">
-                            <i class="fa-solid fa-camera-rotate bg-black text-gray-600 text-lg"></i>
-                        </button> --}}
-
-                        <div class="absolute bottom-1  left-9 text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-lg p-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <div class="relative">
-                                <i class=" fa-solid fa-camera-rotate  text-l"></i>
-                                <input type="file" class="absolute top-0 left-0 invisible w-full h-full ">
-                            </div>
+                        <div class="relative ">
+                            <div class="image-upload ">
+                                <label for="file-input">
+                                    <i class="fa-solid fa-camera text-gray-600 text-lg bottom-10 left-7 absolute  w-3.5 h-3.5 hover:text-gray-800"></i>
+                                </label>
+                                <input id="file-input" type="file" onchange="previewFile(this);" style="display: none;" />
+                              </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="flex flex-col">
@@ -167,58 +163,7 @@
                         asdas
                     </div>
                 </div>
-                <div class="ml-3 w-full mt-6 bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                    <div class="flex flex-row justify-center items-center">
-                        <h1 class="font-semibold text-secondary-700 m-5 ">
-                            2020 Nov
-                        </h1>
-                        <div class="relative ">
-                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <input datepicker="" datepicker-autohide="" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select date">
-                        </div>
 
-                    </div>
-                    <div class="flex flex-col  px-2 m-1 overflow-y-auto h-tasklist">
-                        <ol class="relative border-l border-gray-300 ">
-                            <div class="p-4 w-full mb-5  bg-gray-100 rounded-lg  sm:p-4 dark:bg-gray-800 dark:border-gray-700">
-                                <li class="mb-10 ml-4">
-                                    <div class="absolute w-3 h-3 bg-black rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
-                                    </div>
-                                    <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">March
-                                        2022</time>
-                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Marketing UI design
-                                        in
-                                        Figma
-                                    </h3>
-                                    <p class="text-base font-normal  mb-5 text-gray-500 dark:text-gray-400">All of the
-                                        pages and
-                                        components are first designed in Figma and we keep a parity between the two
-                                        versions
-                                        even as we update the project.</p>
-                                </li>
-                            </div>
-                            <div class="p-4 w-full bg-red-400 mb-5 rounded-lg sm:p-4 dark:bg-gray-800 dark:border-gray-700">
-                                <li class="mb-10 ml-4">
-                                    <div class="absolute w-3 h-3 bg-red-500 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700">
-                                    </div>
-                                    <time class="mb-1 text-sm font-normal leading-none text-white dark:text-gray-500">March
-                                        2022</time>
-                                    <h3 class="text-lg font-semibold text-gray-900 ">Marketing UI design in
-                                        Figma
-                                    </h3>
-                                    <p class="text-base font-normal text-white ">All of the pages and
-                                        components are first designed in Figma and we keep a parity between the two
-                                        versions
-                                        even as we update the project.</p>
-                                </li>
-                            </div>
-                        </ol>
-                    </div>
-                </div>
             </div>
 
         </div>
