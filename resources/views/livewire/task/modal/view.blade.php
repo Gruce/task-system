@@ -44,8 +44,8 @@
 
 
                             {{-- Date --}}
-                            <input wire:model="task.start_at" type="date" class="sm:w-44 w-full bg-gray-100 border-0 text-secondary-700 text-sm rounded p-2.5">
-                            <input wire:model="task.end_at" type="date" class="sm:w-44 w-full bg-gray-100 border-0 text-secondary-700 text-sm rounded p-2.5">
+                            <input wire:model="task.start_at" wire:click="edit" type="date" class="sm:w-44 w-full bg-gray-100 border-0 text-secondary-700 text-sm rounded p-2.5">
+                            <input wire:model="task.end_at" wire:click="edit" type="date" class="sm:w-44 w-full bg-gray-100 border-0 text-secondary-700 text-sm rounded p-2.5">
 
                             {{-- State Drop Down --}}
                             <div class="relative w-full sm:w-44" x-data="{stateDropDown: false}">
@@ -108,7 +108,7 @@
                                     <i class="text-xs fa-solid fa-circle"></i>
                                 </div>
                             </div>
-                            
+
 
                             {{-- Archive Button --}}
                             <div wire:click="archive" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-secondary-100 w-full sm:w-44 text-secondary-700 {{ true ? 'bg-secondary-100' : 'bg-secondary-50' }}">
