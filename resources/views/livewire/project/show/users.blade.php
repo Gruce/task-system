@@ -1,4 +1,4 @@
-<div x-show="!expandComments" class="flex flex-col gap-4 p-8 text-lg font-semibold capitalize bg-white rounded-lg basis-1/2 text-secondary-600"  x-data="{add:false}" x-cloak>
+<div x-show="!expandComments" class="flex flex-col gap-4 p-4 text-lg font-semibold capitalize bg-white rounded-lg sm:p-8 basis-1/2 text-secondary-600"  x-data="{add:false}" x-cloak>
     <div class="flex justify-between">
         <div class="flex items-center gap-4">
             <span class="w-3.5 h-3.5 bg-primary-400 border-2 border-white rounded-full"></span>
@@ -10,7 +10,7 @@
             </button>
         </div>
     </div>
-    <div id="loadmoreuser" class="flex flex-col w-full gap-2 pl-2 overflow-y-auto text-sm h-44">
+    <div id="loadmoreuser" class="flex flex-col w-full gap-2 pl-2 overflow-y-auto text-sm h-44 sm:h-96">
         {{-- Addition --}}
         <div class="flex justify-between w-full px-4 py-2 rounded-lg text-secondary-500" x-show="add">
             <div class="flex w-full gap-2">

@@ -44,7 +44,7 @@ class View extends Component
     }
 
     public function confirmed($id){
-        $this->confirmedDelete(new Task , $id , 'forceDelete' , ['task.all' , 'task.modal.view']);
+        $this->confirmedDelete(new Task , $id , 'forceDelete' , ['task.all']);
     }
 
     public function render(){

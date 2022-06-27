@@ -23,47 +23,52 @@
     <script src="https://cdn.jsdelivr.net/gh/tvdr/alpine-draganddrop@0.x.x/dist/index.min.js" defer></script>
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://unpkg.com/flowbite@1.4.6/dist/flowbite.js"></script>
-    <script src="https://kit.fontawesome.com/4e8940f861.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
     <script src="https://unpkg.com/flowbite@1.4.7/dist/datepicker.js"></script>
+    <script src="https://kit.fontawesome.com/4e8940f861.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
-
+    
 <body class="font-sans antialiased bg-secondary-100" dir="{{ config('app.locale') == 'en' ? 'ltr' : 'rtl' }}">
-    <div class="p-6 mx-auto">
-        <div class="flex flex-row bg-white rounded-lg h-main" x-data="{ sidebar_extended: false }" x-cloak>
+    <div class="p-0 mx-auto sm:p-6">
+        <div class="flex flex-row h-screen bg-white rounded-lg sm:h-main" x-data="{ sidebar_extended: false, showSideBar: false }" x-cloak>
             {{-- Left Sidebar --}}
             <x-sidebar />
 
             {{-- Content --}}
-            <div class="w-8/12 pb-10 basis-8/12 grow">
-                <div class="flex items-center justify-between h-20 p-5 border-b">
-                    <span class="text-2xl font-semibold text-secondary-700">@yield('title')</span>
+            <div class="w-full pb-0 sm:pb-10 sm:w-8/12 sm:basis-8/12 sm:grow">
+                <div class="flex flex-col items-center justify-between p-5 border-b sm:h-20 sm:flex-row">
+                    <div class="flex justify-between">
+                        <span class="text-2xl font-semibold text-secondary-700">@yield('title')</span>
+                        <button @click="showSideBar=!showSideBar" type="button" class="inline-flex items-center px-4 py-2 text-lg text-gray-400 bg-transparent rounded-lg sm:hidden hover:bg-gray-200 hover:text-gray-900 ">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
                     @yield('header-actions')
                     <div class="flex flex-row items-center">
-                        <div >
+                        <div class="m-5">
                             @livewire('notification.card')
                         </div>
 
                         <!-- Profile dropdown -->
-                        <div x-data="{dropdown: false}" class=" ml-10 relative mr-10">
+                        <div x-data="{dropdown: false}" class="relative ml-3 mr-3 ">
                             <div>
-                                <button @click.stop="dropdown = !dropdown" type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <button @click.stop="dropdown = !dropdown" type="button" class="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                     <span class="sr-only">Open user menu</span>
                                     @if (auth()->user()->profile_photo)
-                                    <img class="h-8 w-8 rounded-full" src="{{auth()->user()->profile_photo}}" alt="profile image">
+                                    <img class="w-8 h-8 rounded-full" src="{{auth()->user()->profile_photo}}" alt="profile image">
                                     @else
-                                    <img class="h-8 w-8 rounded-full" src="https://ccemdata.mcmaster.ca/media/avatars/default.png" alt="profile image">
+                                    <img class="w-8 h-8 rounded-full" src="https://ccemdata.mcmaster.ca/media/avatars/default.png" alt="profile image">
                                     @endif
                                 </button>
                             </div>
-                            <div @click.outside="dropdown = false" @click.stop="" x-show="dropdown" class="origin-top-right  absolute right-0 mt-2 w-48 rounded-lg  bg-white ring-1  ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                            <div @click.outside="dropdown = false" @click.stop="" x-show="dropdown" class="absolute right-0 w-48 mt-2 origin-top-right bg-white rounded-lg ring-1 ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                                 <!-- Active: "bg-gray-100", Not Active: "" -->
-                                <a href="{{route('employees.profile',['id' => auth()->id() ])}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 rounded-lg" role="menuitem" tabindex="-1" id="user-menu-item-0">{{__('ui.profile')}}</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 rounded-lg" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                                <a href="{{route('employees.profile',['id' => auth()->id() ])}}" class="block px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-200" role="menuitem" tabindex="-1" id="user-menu-item-0">{{__('ui.profile')}}</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-200" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
-                                    <a href="{{ route('logout') }}" @click.prevent="$root.submit();" class="hover:bg-gray-200 block px-4 py-2 text-sm text-gray-700 rounded-lg" role="menuitem" tabindex="-1" id="user-menu-item-2">{{__('ui.logout')}}</a>
+                                    <a href="{{ route('logout') }}" @click.prevent="$root.submit();" class="block px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-200" role="menuitem" tabindex="-1" id="user-menu-item-2">{{__('ui.logout')}}</a>
                                 </form>
                             </div>
                         </div>
@@ -74,7 +79,7 @@
 
                     </div>
                 </div>
-                <div class="p-5 overflow-y-auto h-content bg-secondary-50">
+                <div class="p-1 overflow-y-auto sm:p-5 h-content bg-secondary-50">
                     @isset($slot)
                     {{ $slot }}
                     @endisset

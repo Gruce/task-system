@@ -1,4 +1,4 @@
-<div :class="expandComments ? 'w-full' : 'basis-1/2'" class="flex flex-col gap-4 p-8 text-lg font-semibold capitalize bg-white rounded-lg text-secondary-600" x-data="{commentInput:false}">
+<div :class="expandComments ? 'w-full' : 'sm:basis-1/2'" class="flex flex-col gap-4 p-4 text-lg font-semibold capitalize bg-white rounded-lg sm:p-8 text-secondary-600" x-data="{commentInput:false}">
     <div class="flex justify-between">
         <div class="flex items-center gap-4">
             <span class="relative flex w-3 h-3">
