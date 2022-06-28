@@ -28,7 +28,7 @@
     <script src="https://kit.fontawesome.com/4e8940f861.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
-    
+
 <body class="font-sans antialiased bg-secondary-100" dir="{{ config('app.locale') == 'en' ? 'ltr' : 'rtl' }}">
     <div class="p-0 mx-auto sm:p-6">
         <div class="flex flex-row h-screen bg-white rounded-lg sm:h-main" x-data="{ sidebar_extended: false, showSideBar: false }" x-cloak>
@@ -46,12 +46,12 @@
                     </div>
                     @yield('header-actions')
                     <div class="flex flex-row items-center">
-                        <div class="m-5">
+                        <div>
                             @livewire('notification.card')
                         </div>
 
                         <!-- Profile dropdown -->
-                        <div x-data="{dropdown: false}" class="relative ml-3 mr-3 ">
+                        <div x-data="{dropdown: false}" class=" ml-10 relative mr-10">
                             <div>
                                 <button @click.stop="dropdown = !dropdown" type="button" class="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                     <span class="sr-only">Open user menu</span>

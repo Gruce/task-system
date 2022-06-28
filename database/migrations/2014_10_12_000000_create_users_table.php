@@ -24,6 +24,7 @@ return new class extends Migration
             $table->boolean('is_admin')->default(false);
             $table->string('phonenumber')->nullable();
             $table->integer('gender')->default(1); // 1: male  2: female
+            $table->integer('receive_email')->default(1); // 1: disable  2: enable
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();

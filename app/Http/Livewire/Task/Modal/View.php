@@ -13,6 +13,11 @@ class View extends Component
 
     protected $listeners = ['$refresh' , 'delete' , 'forceDelete'];
 
+    protected $rules = [
+        'task.start_at' => 'required',
+        'task.end_at' => 'required',
+    ];
+
     public function mount(Task $task){
         $this->task = $task;
         $this->tabs = [
@@ -37,6 +42,45 @@ class View extends Component
 
         $this->emitSelf('$refresh');
         $this->emitTo('task.all' , '$refresh');
+    }
+
+    public function importance($importance){
+        $this->task->importance = $importance;
+        $this->task->save();
+
+        $this->alert('success', __('ui.data_has_been_edited_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
+
+        $this->emitSelf('$refresh');
+        $this->emitTo('task.all' , '$refresh');
+    }
+
+    public function edit(){
+        if($this->task->start_at < $this->task->end_at){
+            $this->alert('warning', __('ui.start_data_more_than_end_data'), [
+                'position' => 'top',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+                'width' => '400',
+            ]);
+
+            return ;
+        }
+        $this->task->save();
+        $this->alert('success', __('ui.data_has_been_edited_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
+        $this->emitTo( 'task.all' ,'$refresh');
     }
 
     public function archive(){
