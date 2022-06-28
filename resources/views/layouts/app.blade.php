@@ -46,12 +46,12 @@
                     </div>
                     @yield('header-actions')
                     <div class="flex flex-row items-center">
-                        <div>
+                        <div class="m-5">
                             @livewire('notification.card')
                         </div>
 
                         <!-- Profile dropdown -->
-                        <div x-data="{dropdown: false}" class=" ml-10 relative mr-10">
+                        <div x-data="{dropdown: false}" class="relative ml-3 mr-3 ">
                             <div>
                                 <button @click.stop="dropdown = !dropdown" type="button" class="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                     <span class="sr-only">Open user menu</span>
