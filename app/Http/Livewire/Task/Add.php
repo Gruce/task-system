@@ -12,9 +12,10 @@ class Add extends Component
 {
     use  LivewireAlert, WithFileUploads, WithPagination;
 
-    public $task, $search, $userId, $employee_id, $limitPerPage = 10, $files = [];
+    public $task, $search;
+    public $files = [];
 
-    protected $listeners = ['$refresh', 'delete', 'load-more' => 'loadMore'];
+    protected $listeners = ['$refresh',];
 
     protected $rules = [
         'task.title' => 'required',
@@ -41,33 +42,7 @@ class Add extends Component
         $this->validate();
         $task = Task::create($this->task);
 
-        auth()->user()->notify(new NewTask($task));
-
-        // if($this->task->employees()->wherePivot('employee_id' , $this->userId)->exists()){
-        //     $this->alert('error', __('ui.data_already_exists'), [
-        //         'position' => 'top',
-        //         'timer' => 3000,
-        //         'toast' => true,
-        //         'timerProgressBar' => true,
-        //         'width' => '400',
-        //     ]);
-        //     return;
-        // }
-
-        // $this->task->employees()->attach($this->userId);
-
-        // if(!$this->task->project->employees()->wherePivot('employee_id' , $this->userId)->exists())
-        //     $this->task->project->employees()->attach($this->userId);
-
-        // $this->emitSelf('$refresh');
-
-        // $this->alert('success', __('ui.data_has_been_add_successfully'), [
-        //     'position' => 'top',
-        //     'timer' => 3000,
-        //     'toast' => true,
-        //     'timerProgressBar' => true,
-        //     'width' => '400',
-        // ]);
+        //auth()->user()->notify(new NewTask($task));
 
         if (count($this->files) > 0)
             foreach ($this->files as $file) {
@@ -86,57 +61,18 @@ class Add extends Component
         ]);
     }
 
-    public function confirmed($id, $function)
-    {
-        $this->employee_id = $id;
-        $this->confirm(__('ui.are_you_sure'), [
-            'toast' => false,
-            'position' => 'center',
-            'showConfirmButton' => "true",
-            'cancelButtonText' => (__('ui.cancel')),
-            'confirmButtonText' => (__('ui.confirm')),
-            'onConfirmed' => $function,
-        ]);
-    }
 
-    public function delete()
-    {
-        $this->task->employees()
-            ->wherePivot('employee_id', $this->employee_id)
-            ->detach();
-
-        $this->emitSelf('$refresh');
-
-        $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
-            'position' => 'top',
-            'timer' => 3000,
-            'toast' => true,
-            'timerProgressBar' => true,
-            'width' => '400',
-        ]);
-    }
-    public function loadMore()
-    {
-        $this->limitPerPage = $this->limitPerPage + 10;
-    }
 
     public function render()
     {
         $projects = [];
-        $employees = [];
-        $task_employees = [];
+        $search = '%' . $this->search . '%';
         if ($this->search) {
-            $search = '%' . $this->search . '%';
             $projects = Project::where('title', 'LIKE', $search)->paginate(24);
-            $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->paginate(10);
-            $task_employees = $this->task->employees()->paginate($this->limitPerPage);
         }
-
 
         return view('livewire.task.add', [
             'projects' => $projects,
-            'employees' => $employees,
-            'task_employees' => $task_employees,
         ]);
     }
 }
