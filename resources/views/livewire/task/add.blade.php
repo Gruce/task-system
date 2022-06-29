@@ -33,9 +33,6 @@
                                         <option value="{{$project->id}}">{{$project->title}}</option>
                                     @endforeach
                                 </select>
-                                <button wire:click="add" @click="add=!add" class="px-4 py-1 duration-150 ease-in-out delay-75 border rounded-lg hover:text-success-800 hover:bg-success-100">
-                                    <i class="fas fa-check"></i>
-                                </button>
                             @endif
                         </div>
                     </div>
@@ -88,95 +85,53 @@
                 </div>
 
                 <div class="grid xl:grid-cols-2 xl:gap-6">
-                    {{-- <div>
-                        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
-                            {{ __('ui.assign_task') }}</label>
-                        </label>
-                        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected="">Choose a country</option>
-                            <option value="US">United States</option>
-                            <option value="CA">Canada</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
-                        </select>
-                    </div> --}}
                     <div>
-                        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
+                        <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
                             {{ __('ui.importance') }}</label>
                         </label>
-                        <select id="countries" wire:model.defer="task.importance" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select  wire:model.defer="task.importance" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected="">{{ __('ui.importance') }}</option>
                             <option value="1">{{ __('ui.importance_low') }}</option>
                             <option value="2">{{ __('ui.importance_medium') }}</option>
                             <option value="3">{{ __('ui.importance_high') }}</option>
                         </select>
                     </div>
-
-                    <div  class="flex flex-col">
-                        <div class="flex flex-col w-full gap-2 overflow-y-auto text-sm">
-                            <div class="flex justify-between w-full px-4 py-2 rounded-lg text-secondary-500">
-                                <div class="flex w-full gap-2">
-                                    <input wire:model="search" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.name')}}" required>
-                                    @if ($search)
-                                        <select wire:model="userId" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                            <option value="" selected>{{__('ui.select_employee')}}</option>
-                                            @foreach ($employees as $employee)
-                                                <option value="{{$employee->id}}">{{$employee->name}}</option>
-                                            @endforeach
-                                        </select>
+                    <div>
+                        <div class="grid xl:grid-cols-2 xl:gap-6">
+                            <div>
+                                <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
+                                    {{ __('ui.employees') }}</label>
+                                </label>
+                                <input wire:model="employeesSearch" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.name')}}" >
+                                @if($employeesSearch)
+                                    <select wire:model="employee_id" wire:change="addEmployee" class="my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option selected="">{{ __('ui.select_employee') }}</option>
+                                        @foreach($employees as $employee)
+                                            <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                        @endforeach
                                         <button wire:click="add" @click="add=!add" class="px-4 py-1 duration-150 ease-in-out delay-75 border rounded-lg hover:text-success-800 hover:bg-success-100">
                                             <i class="fas fa-check"></i>
                                         </button>
-                                    @endif
-                                </div>
+                                    </select>
+                                @endif
                             </div>
-
-                            {{-- Loop Item Below --}}
-                            @forelse ($task_employees as $employee)
-                            <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
-                                <div class="flex items-center gap-4">
-                                    <img class="w-10 h-10 rounded-lg" src="{{$employee->photo}}" alt="Bordered avatar">
-                                    <div class="flex flex-col">
-                                        <span class="text-base font-normal text-secondary-700">
-                                            {{$employee->name}}
-                                        </span>
-                                        <span class="text-xs font-normal text-secondary-400">
-                                            {{-- {{$employee->pivot->created_at->diffForHumans()}} --}}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="flex gap-2">
-                                    <button wire:click="confirmed({{ $employee->id }} , 'delete')" class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
+                            <div>
+                                <ul>
+                                    @forelse ($taskEmployees as $employee )
+                                        <li>
+                                            {{$loop->iteration}} : {{$employee['name']}}
+                                            <button wire:click="removeEmployee({{$employee['id']}})">
+                                                <i class="mx-4 my-2 fas fa-times text-red-500" ></i>
+                                            </button>
+                                        </li>
+                                    @empty
+                                        <li>{{ __('ui.no_data') }}</li>
+                                    @endforelse
+                                </ul>
                             </div>
-                            @empty
-                                {{__('ui.no_data')}}
-                            @endforelse
                         </div>
                     </div>
-
-                    {{-- <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                            {{ __('ui.estimated_time') }}
-                        </label>
-                        <input wire:model.defer="" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.estimated_time') }} required>
-                    </div>
-                    <div>
-                        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
-                            {{ __('ui.estimated_time_unit') }}</label>
-                        </label>
-                        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected="">{{__('ui.choose_estimated_time')}}</option>
-                            <option value="US">United States</option>
-                            <option value="CA">Canada</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
-                        </select>
-                    </div> --}}
                 </div>
-
                 <button type="submit" class="text-white hover:bg-blue-700 bg-blue-600 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                     {{ __('ui.add') }}
                 </button>
