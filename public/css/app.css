@@ -3495,6 +3495,10 @@ select {
     width: 66.666667%;
   }
 
+  .sm\:w-3\/4 {
+    width: 75%;
+  }
+
   .sm\:max-w-md {
     max-width: 28rem;
   }
@@ -3632,6 +3636,10 @@ select {
     padding: 0.5rem;
   }
 
+  .sm\:p-3 {
+    padding: 0.75rem;
+  }
+
   .sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -3657,6 +3665,14 @@ select {
 
   .sm\:pb-10 {
     padding-bottom: 2.5rem;
+  }
+
+  .sm\:pl-20 {
+    padding-left: 5rem;
+  }
+
+  .sm\:pr-20 {
+    padding-right: 5rem;
   }
 
   .sm\:text-left {
@@ -3770,9 +3786,21 @@ select {
     padding: 0.5rem;
   }
 
+  .lg\:p-5 {
+    padding: 1.25rem;
+  }
+
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .lg\:pl-4 {
+    padding-left: 1rem;
+  }
+
+  .lg\:pr-4 {
+    padding-right: 1rem;
   }
 }
 @media (min-width: 1280px) {
