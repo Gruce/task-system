@@ -7,6 +7,7 @@ use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
 use App\Models\Project;
+use App\Notifications\NewTask;
 
 
 class Add extends Component
@@ -31,6 +32,7 @@ class Add extends Component
     {
         $this->validate();
         $project = Project::create($this->project);
+        auth()->user()->notify(new NewTask($project));
 
         if (count($this->files) > 0)
             foreach ($this->files as $file) {

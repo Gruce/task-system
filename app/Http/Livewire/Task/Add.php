@@ -4,16 +4,17 @@ namespace App\Http\Livewire\Task;
 
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\{WithFileUploads , WithPagination};
-use App\Models\{Task , Project , Employee};
+use Livewire\{WithFileUploads, WithPagination};
+use App\Models\{Task, Project, Employee};
+use App\Notifications\NewTask;
 
 class Add extends Component
 {
-    use  LivewireAlert, WithFileUploads , WithPagination;
+    use  LivewireAlert, WithFileUploads, WithPagination;
 
-    public $task , $search , $userId , $employee_id, $limitPerPage = 10 , $files = [];
+    public $task, $search, $userId, $employee_id, $limitPerPage = 10, $files = [];
 
-    protected $listeners = ['$refresh' , 'delete' ,'load-more' => 'loadMore'];
+    protected $listeners = ['$refresh', 'delete', 'load-more' => 'loadMore'];
 
     protected $rules = [
         'task.title' => 'required',
@@ -24,18 +25,23 @@ class Add extends Component
         'task.description' => 'required',
     ];
 
-    public function mount(){
+    public function mount()
+    {
         $this->task['start_at'] = date('Y-m-d');
         $this->task['end_at'] = date('Y-m-d');
     }
 
-    public function removeFile($index){
+    public function removeFile($index)
+    {
         unset($this->files[$index]);
     }
 
-    public function add(){
+    public function add()
+    {
         $this->validate();
         $task = Task::create($this->task);
+
+        auth()->user()->notify(new NewTask($task));
 
         // if($this->task->employees()->wherePivot('employee_id' , $this->userId)->exists()){
         //     $this->alert('error', __('ui.data_already_exists'), [
@@ -70,7 +76,7 @@ class Add extends Component
                 ]);
                 $new_file->add_file('name', $file, 'tasks/' . $task->id . '/files/' . $new_file->id);
             }
-            $this->emitTo( 'task.all' ,'$refresh');
+        $this->emitTo('task.all', '$refresh');
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
             'timer' => 3000,
@@ -78,11 +84,10 @@ class Add extends Component
             'timerProgressBar' => true,
             'width' => '400',
         ]);
-
-
     }
 
-    public function confirmed($id, $function){
+    public function confirmed($id, $function)
+    {
         $this->employee_id = $id;
         $this->confirm(__('ui.are_you_sure'), [
             'toast' => false,
@@ -94,10 +99,11 @@ class Add extends Component
         ]);
     }
 
-    public function delete(){
+    public function delete()
+    {
         $this->task->employees()
-                        ->wherePivot('employee_id' , $this->employee_id)
-                        ->detach();
+            ->wherePivot('employee_id', $this->employee_id)
+            ->detach();
 
         $this->emitSelf('$refresh');
 
@@ -109,22 +115,25 @@ class Add extends Component
             'width' => '400',
         ]);
     }
-    public function loadMore(){
+    public function loadMore()
+    {
         $this->limitPerPage = $this->limitPerPage + 10;
     }
 
     public function render()
     {
-        $projects = []; $employees = []; $task_employees = [];
-        if($this->search){
+        $projects = [];
+        $employees = [];
+        $task_employees = [];
+        if ($this->search) {
             $search = '%' . $this->search . '%';
-            $projects = Project::where('title' , 'LIKE' , $search)->paginate(24);
-            $employees = Employee::whereRelation('user' , 'name' , 'LIKE' , $search)->paginate(10);
+            $projects = Project::where('title', 'LIKE', $search)->paginate(24);
+            $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->paginate(10);
             $task_employees = $this->task->employees()->paginate($this->limitPerPage);
         }
 
 
-        return view('livewire.task.add' , [
+        return view('livewire.task.add', [
             'projects' => $projects,
             'employees' => $employees,
             'task_employees' => $task_employees,
