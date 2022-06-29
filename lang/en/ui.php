@@ -123,6 +123,8 @@ return [
     'select_project' => 'Select project',
     'start_data_more_than_end_data' => 'Start date more than end date',
     'archived'  => 'Archived',
+    'male' => 'Male',
+    'female' => 'Female',
 
 
 

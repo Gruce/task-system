@@ -118,9 +118,11 @@ return [
     'profile' => 'الملف الشخصي',
     'logout' => 'تسجيل الخروج',
     'no_tasks' => 'لا توجد مهام',
-    'the_account_has_been_activated'=>'تم تفعيل الحساب',
-    'the_account_has_been_disabled'=>'تم تعطيل الحساب',
+    'the_account_has_been_activated' => 'تم تفعيل الحساب',
+    'the_account_has_been_disabled' => 'تم تعطيل الحساب',
     'select_project' => 'اختر مشروع',
     'start_data_more_than_end_data' => 'تاريخ البدء يجب ان يكون اكبر من تاريخ الانتهاء',
     'archived' => 'الارشيف',
+    'male' => 'ذكر',
+    'female' => 'انثى',
 ];
