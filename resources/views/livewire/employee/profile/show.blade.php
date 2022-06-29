@@ -1,72 +1,10 @@
 <div>
-    <div class="flex flex-row " x-data="{ name: false ,job: false ,phone: false ,email: false,password: false}">
+    <div class="flex flex-row" x-data="{ edit: false }" x-cloak>
         <div class="basis-1/4">
-            <div class="p-4 h-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                <div class="flex justify-between items-center mb-4">
-                    <div class="flex flex-col">
-                        <div class="flex items-center justify-between mt-3">
-                            <div class="flex items-center gap-4  text-secondary-600 group">
-
-                                <h5 x-show="!name" class="text-xl font-bold tracking-tight text-secondary-700">
-                                    {{$employee->name}}
-                                </h5>
-                                <div class="flex items-center gap-4" @click.stop="" @click.outside="name = false">
-                                    <input wire:keydown.enter="edit_name" wire:model="employee.user.name" type="text" x-show="name" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
-
-                                    <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-secondary-800 bg-secondary-50">
-                                        <a @click="name = !name" x-show="!name" href="#"><i class="fas fa-pen"></i></a>
-                                        <a wire:click="edit_name" @click="name = !name" x-show="name" href="#"><i class="fas fa-check"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4  text-secondary-600 group">
-                            <h6 x-show="!job" class="text-sm  font-bold tracking-tight text-secondary-700">
-                                {{$employee->job}}
-                            </h6>
-                            <div class="flex items-center gap-4" @click.stop="" @click.outside="job = false">
-                                <input wire:keydown.enter="edit_name" wire:model="employee.job" type="text" x-show="job" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
-                                <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-secondary-800 bg-secondary-50">
-                                    <a @click="job = !job" x-show="!job" href="#"><i class="fas fa-pen"></i></a>
-                                    <a wire:click="edit_name" @click="job = !job" x-show="job" href="#"><i class="fas fa-check"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4  text-secondary-600 group">
-                            <h6 x-show="!email" class="text-sm tracking-tight text-secondary-700">
-                                {{$employee->email}}
-                            </h6>
-                            <div class="flex items-center gap-4" @click.stop="" @click.outside="email = false">
-                                <input wire:keydown.enter="edit_name" wire:model="employee.user.email" type="text" x-show="email" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
-
-                                <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-secondary-800 bg-secondary-50">
-                                    <a @click="email = !email" x-show="!email" href="#"><i class="fas fa-pen"></i></a>
-                                    <a wire:click="edit_name" @click="email = !email" x-show="email" href="#"><i class="fas fa-check"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4  text-secondary-600 group">
-                            <h6 x-show="!phone" class="text-sm tracking-tight text-secondary-700">
-                                {{$employee->user->phonenumber}}
-                            </h6>
-                            <div class="flex items-center gap-4" @click.stop="" @click.outside="phone = false">
-                                <input wire:keydown.enter="edit_name" wire:model="employee.user.phonenumber" type="text" x-show="phone" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
-                                <div class="px-2 py-1 duration-200 ease-in-out delay-100 rounded-lg opacity-0 group-hover:opacity-100 hover:text-secondary-800 bg-secondary-50">
-                                    <a @click="phone = !phone" x-show="!phone" href="#"><i class="fas fa-pen"></i></a>
-                                    <a wire:click="edit_name" @click="phone = !phone" x-show="phone" href="#"><i class="fas fa-check"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex justify-center rounded-lg  gap-2 w-10" role="group">
-                            <button wire:click="change_gender({{ $employee->user->gender }})">
-                                <i class="fas fa-2x {{$employee->user->gender == 2 ? 'text-pink-400 fa-female' : 'text-blue-500 fa-male'}}"></i>
-                            </button>
-                        </div>
-                    </div>
+            <div class="flex flex-col items-center gap-2 p-8 text-center bg-white rounded-lg basis-1/4">
+                <div class="flex items-center gap-2">
                     <div class="relative">
-                        <img class="w-20 h-20 mb-3 rounded-full" src="{{ $employee->user->profile_photo }}" alt="">
+                        <img class="w-40 h-40 mb-3 rounded-full" src="{{ $employee->user->profile_photo }}" alt="">
                         <button wire:click="state({{$employee->id}})">
                             @if($employee->state)
                             <i class="fa-solid fa-lock-open top-0 left-13 absolute text-green-700"></i>
@@ -74,23 +12,120 @@
                             <i class="fa-solid fa-lock top-0 left-13 absolute text-red-400"></i>
                             @endif
                         </button>
-
                         <div class="relative">
                             <div class="image-upload  ">
                                 <label for="file-input">
-                                        <i class="fa-solid fa-camera inline-flex items-center justify-center  mr-2 text-pink-100 transition-colors  duration-150 bg-black rounded-full focus:shadow-outline   text-lg bottom-8 left-7 absolute  w-6.9 h-6.7 p-0.5 hover:text-white"></i>
+                                    <i class="fa-solid fa-camera inline-flex items-center justify-center  mr-2 text-pink-100 transition-colors  duration-150 bg-black rounded-full focus:shadow-outline   text-lg bottom-8 left-7 absolute  w-6.9 h-6.7 p-0.5 hover:text-white"></i>
                                 </label>
                                 <input wire:model="photo" id="file-input" type="file" onchange="previewFile(this);" style="display: none;" />
                             </div>
                         </div>
                     </div>
+
                 </div>
-                <div class="flex flex-col">
+                <span x-show="!edit" class="text-2xl font-bold text-secondary-600">
+                    {{ $employee->name }}
+                </span>
+                <p x-show="!edit" class="text-sm tracking-tighter text-secondary-500">
+                    {{ $employee->user->username }}
+                </p>
+                <button x-show="!edit" @click="edit = !edit" type="button" class="w-full flex justify-center text-secondary-600 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center    mr-2 mb-2">
+                    <i class="fa-solid fa-pen-to-square mx-2"></i>
+                    <span>Edit Profile</span>
+                </button>
+                <div x-show="!edit" class="w-full flex justify-start">
                     <div>
-                        <img src="https://www.microsoft.com/en-us/microsoft-365/blog/uploads/sites/2/2012/06/Excel-charts-11.png" alt="">
+                        <i class="fa-regular fa-at mx-2"></i>
+                        <span class="text-sm tracking-tighter text-secondary-500">
+                            {{ $employee->user->email }}
+                        </span>
+                    </div>
+                </div>
+                <div x-show="!edit" class="w-full flex justify-start">
+                    <div>
+                        <i class="fa-solid fa-phone mx-2"></i>
+                        <span class="text-sm tracking-tighter text-secondary-500">
+                            {{ $employee->phonenumber ?? 'No Phone Number' }}
+                        </span>
+                    </div>
+                </div>
+                <div x-show="!edit" class="w-full flex justify-start">
+                    <div>
+                        <i class="fa-solid fa-mars-and-venus mx-2"></i>
+                        <span class="text-sm tracking-tighter text-secondary-500">
+                            {{ $employee->user->gender == 1 ? __('male') : __('ui.female') }}
+                        </span>
+                    </div>
+                </div>
+                <div x-show="edit" class="w-full flex-col">
+                    <div>
+                        <input wire:keydown.enter="updatePofile" wire:model.defer="employee.user.name" type="text" class="mt-2 bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.name') }} required>
+                        @error('employee.user.name')<span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                     <div>
-                        <img src="https://i.stack.imgur.com/aQMp3.png" alt="">
+                        <input wire:keydown.enter="updatePofile" wire:model.defer="employee.user.username" type="text" class="mt-2 bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.username') }} required>
+                        @error('employee.user.username')<span class="text-red-500">{{ $message }}</span> @enderror
+                    </div>
+                    <hr class="my-2">
+                    <div>
+                        <div class="flex mt-2">
+                            <span class=" inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                <i class="fa-regular fa-at mx-2"></i>
+                            </span>
+                            <input wire:keydown.enter="updatePofile" wire:model.defer="employee.user.email" type="email" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{__('ui.email')}}">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex mt-2">
+                            <span class=" inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                <i class="fa-solid fa-phone mx-2"></i>
+                            </span>
+                            <input wire:keydown.enter="updatePofile" wire:model.defer="employee.user.phonenumber" type="text" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{__('ui.phonenumber')}}">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex mt-2">
+                            <span class=" inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                <i class="fa-solid fa-bullhorn mx-2"></i>
+                            </span>
+                            <input wire:keydown.enter="updatePofile" wire:model.defer="employee.job" type="text" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{__('ui.job')}}">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex mt-2">
+                            <span class=" inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                <i class="fa-solid fa-key"></i>
+                            </span>
+                            <input wire:keydown.enter="updatePofile" wire:model.defer="employee.user.password" type="text" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{__('ui.new_password')}}">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex mt-2">
+                            <span class=" inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                <i class="fa-solid fa-key"></i>
+                            </span>
+                            <input wire:model.defer="employee.user.password_confirmation" type="text" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{__('ui.confirm_password')}}">
+                        </div>
+                    </div>
+                    <div class="flex justify-center rounded-md shadow-sm gap-2 w-full mt-2" role="group">
+                        <label class="@if ($employee['user']['gender'] == 2) text-rose-500 @else  text-gray-900 @endif basis-1/2 flex justify-center items-center py-2 px-4 text-sm font-medium  bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-rose-700 focus:text-rose-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-rose-500 dark:focus:text-white">
+                            <span>
+                                <i class="fas fa-2x fa-female"></i>
+                            </span>
+                            <input class="hidden" type="radio" name="gender" value="2" autocomplete="off" wire:model="employee.user.gender">
+                        </label>
+                        <label class="@if ($employee['user']['gender'] == 1) text-blue-500 @else text-gray-900 @endif basis-1/2 flex justify-center items-center py-2 px-4 text-sm font-medium  bg-white rounded-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                            <span>
+                                <i class="fas fa-2x fa-male"></i>
+                            </span>
+                            <input class="hidden" type="radio" name="gender" value="1" wire:model="employee.user.gender">
+                        </label>
+                    </div>
+                    <div class="mt-4">
+                        <button wire:keydown.enter="updatePofile" wire:click="updatePofile" @click="edit = !edit" type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">{{__('ui.save')}}</button>
+
+                        <button @click="edit = !edit" type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">{{__('ui.cancel')}}</button>
                     </div>
                 </div>
             </div>
