@@ -8,7 +8,7 @@
                             <div class="flex items-center gap-4  text-secondary-600 group">
 
                                 <h5 x-show="!name" class="text-xl font-bold tracking-tight text-secondary-700">
-                                    {{$employee->name}}
+                                    {{$employee->name}} // {{auth()->user()->name}}
                                 </h5>
                                 <div class="flex items-center gap-4" @click.stop="" @click.outside="name = false">
                                     <input wire:keydown.enter="edit_name" wire:model="employee.user.name" type="text" x-show="name" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
