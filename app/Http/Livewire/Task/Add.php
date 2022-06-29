@@ -12,10 +12,9 @@ class Add extends Component
 {
     use  LivewireAlert, WithFileUploads, WithPagination;
 
-    public $task, $search;
-    public $files = [];
+    public $task, $search,$employeesSearch ,$employee_id, $taskEmployees = [] , $files = [];
 
-    protected $listeners = ['$refresh',];
+    protected $listeners = ['$refresh'];
 
     protected $rules = [
         'task.title' => 'required',
@@ -26,23 +25,25 @@ class Add extends Component
         'task.description' => 'required',
     ];
 
-    public function mount()
-    {
-        $this->task['start_at'] = date('Y-m-d');
-        $this->task['end_at'] = date('Y-m-d');
-    }
 
-    public function removeFile($index)
-    {
+
+    public function removeFile($index){
         unset($this->files[$index]);
     }
 
-    public function add()
-    {
+    public function add(){
         $this->validate();
         $task = Task::create($this->task);
 
-        //auth()->user()->notify(new NewTask($task));
+        // auth()->user()->notify(new NewTask($task));
+
+        $task->employees()->attach(array_keys($this->taskEmployees));
+
+        foreach($this->taskEmployees as $employee){
+            if(!$task->project->employees()->wherePivot('employee_id' , $employee['id'])->exists())
+                $task->project->employees()->attach($employee['id']);
+
+        }
 
         if (count($this->files) > 0)
             foreach ($this->files as $file) {
@@ -51,6 +52,7 @@ class Add extends Component
                 ]);
                 $new_file->add_file('name', $file, 'tasks/' . $task->id . '/files/' . $new_file->id);
             }
+
         $this->emitTo('task.all', '$refresh');
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
@@ -61,18 +63,47 @@ class Add extends Component
         ]);
     }
 
+    public function addEmployee(){
+        $employee = Employee::with('user:id,name')->findOrFail($this->employee_id);
 
+        $array = [
+            'id' => $employee->id,
+            'name' => $employee->user->name,
+        ];
+
+        $this->taskEmployees[$array['id']] = $array;
+    }
+
+    public function removeEmployee($id){
+        unset($this->taskEmployees[$id]);
+    }
+
+    public function mount(){
+        $this->task['start_at'] = date('Y-m-d');
+        $this->task['end_at'] = date('Y-m-d');
+        $this->task['importance'] = 1;
+    }
 
     public function render()
     {
         $projects = [];
-        $search = '%' . $this->search . '%';
+        $employees = [];
+        $task_employees = [];
+
         if ($this->search) {
+            $search = '%' . $this->search . '%';
             $projects = Project::where('title', 'LIKE', $search)->paginate(24);
+        }
+
+        if ($this->employeesSearch) {
+            $search = '%' . $this->employeesSearch . '%';
+            $employees = Employee::whereNotIn('id' , array_keys($this->taskEmployees))->whereRelation('user', 'name', 'LIKE', $search)->paginate(10);
         }
 
         return view('livewire.task.add', [
             'projects' => $projects,
+            'employees' => $employees,
+            'task_employees' => $task_employees,
         ]);
     }
 }

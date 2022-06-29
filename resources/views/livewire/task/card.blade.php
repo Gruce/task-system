@@ -13,13 +13,13 @@
             <span class="text-xs">{{$task->end_at}}</span>
             <div class="flex gap-2">
                 @if($task->importance == 1)
-                <span class="bg-secondary-50 text-secondary-600 text-2xs font-semibold px-2.5 py-0.5 rounded uppercase">{{ __('ui.importance_low') }}</span>
+                    <span class="bg-secondary-50 text-secondary-600 text-2xs font-semibold px-2.5 py-0.5 rounded uppercase">{{ __('ui.importance_low') }}</span>
                 @endif
                 @if($task->importance == 2)
-                <span class="bg-primary-50 text-primary-600 text-2xs font-semibold px-2.5 py-0.5 rounded uppercase">{{ __('ui.importance_medium') }}</span>
+                    <span class="bg-primary-50 text-primary-600 text-2xs font-semibold px-2.5 py-0.5 rounded uppercase">{{ __('ui.importance_medium') }}</span>
                 @endif
                 @if($task->importance == 3)
-                <span class="bg-error-50 text-error-600 text-2xs font-semibold px-2.5 py-0.5 rounded uppercase">{{ __('ui.importance_high') }}</span>
+                    <span class="bg-error-50 text-error-600 text-2xs font-semibold px-2.5 py-0.5 rounded uppercase">{{ __('ui.importance_high') }}</span>
                 @endif
                 <span class="bg-gray-600 text-gray-50 text-2xs font-semibold px-2.5 py-0.5 rounded uppercase">hold</span>
             </div>
