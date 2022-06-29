@@ -1,5 +1,5 @@
 <div>
-    <div class="flex flex-row" x-data="{ name: false }">
+    <div class="flex flex-row" x-data="{ edit: false }" x-cloak>
         <div class="basis-1/4">
             <div class="flex flex-col items-center gap-2 p-8 text-center bg-white rounded-lg basis-1/4">
                 <div class="flex items-center gap-2">
@@ -23,17 +23,17 @@
                     </div>
 
                 </div>
-                <span class="text-2xl font-bold text-secondary-600">
+                <span x-show="!edit" class="text-2xl font-bold text-secondary-600">
                     {{ $employee->name }}
                 </span>
-                <p class="text-sm tracking-tighter text-secondary-500">
-                    username
+                <p x-show="!edit" class="text-sm tracking-tighter text-secondary-500">
+                    {{ $employee->user->username }}
                 </p>
-                <button type="button" class="w-full flex justify-center text-secondary-600 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center    mr-2 mb-2">
+                <button x-show="!edit" @click="edit = !edit" type="button" class="w-full flex justify-center text-secondary-600 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center    mr-2 mb-2">
                     <i class="fa-solid fa-pen-to-square mx-2"></i>
                     <span>Edit Profile</span>
                 </button>
-                <div class="w-full flex justify-start">
+                <div x-show="!edit" class="w-full flex justify-start">
                     <div>
                         <i class="fa-regular fa-at mx-2"></i>
                         <span class="text-sm tracking-tighter text-secondary-500">
@@ -41,15 +41,15 @@
                         </span>
                     </div>
                 </div>
-                <div class="w-full flex justify-start">
+                <div x-show="!edit" class="w-full flex justify-start">
                     <div>
                         <i class="fa-solid fa-phone mx-2"></i>
                         <span class="text-sm tracking-tighter text-secondary-500">
-                            {{ $employee->phonenumber ??'No Phone Number' }}
+                            {{ $employee->phonenumber ?? 'No Phone Number' }}
                         </span>
                     </div>
                 </div>
-                <div class="w-full flex justify-start">
+                <div x-show="!edit" class="w-full flex justify-start">
                     <div>
                         <i class="fa-solid fa-mars-and-venus mx-2"></i>
                         <span class="text-sm tracking-tighter text-secondary-500">
@@ -57,25 +57,78 @@
                         </span>
                     </div>
                 </div>
-
-
-
-                {{-- <div class="relative w-full px-3 pt-5 pb-3 mt-5 border rounded-lg">
-                    <div class="absolute left-0 flex justify-between w-full -top-2 ">
-                        <span class="px-2 mx-4 text-xs capitalize bg-white text-secondary-500"></span>
-                        <span class="px-2 mx-4 text-xs bg-white text-secondary-500">شسي</span>
+                <div x-show="edit" class="w-full flex-col">
+                    <div>
+                        <input wire:keydown.enter="updatePofile" wire:model.defer="employee.user.name" type="text" class="mt-2 bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.name') }} required>
+                        @error('employee.user.name')<span class="text-red-500">{{ $message }}</span> @enderror
+                    </div>
+                    <div>
+                        <input wire:keydown.enter="updatePofile" wire:model.defer="employee.user.username" type="text" class="mt-2 bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.username') }} required>
+                        @error('employee.user.username')<span class="text-red-500">{{ $message }}</span> @enderror
+                    </div>
+                    <hr class="my-2">
+                    <div>
+                        <div class="flex mt-2">
+                            <span class=" inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                <i class="fa-regular fa-at mx-2"></i>
+                            </span>
+                            <input wire:keydown.enter="updatePofile" wire:model.defer="employee.user.email" type="email" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{__('ui.email')}}">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex mt-2">
+                            <span class=" inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                <i class="fa-solid fa-phone mx-2"></i>
+                            </span>
+                            <input wire:keydown.enter="updatePofile" wire:model.defer="employee.user.phonenumber" type="text" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{__('ui.phonenumber')}}">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex mt-2">
+                            <span class=" inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                <i class="fa-solid fa-bullhorn mx-2"></i>
+                            </span>
+                            <input wire:keydown.enter="updatePofile" wire:model.defer="employee.job" type="text" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{__('ui.job')}}">
+                        </div>
                     </div>
 
-                    <div class="flex flex-col w-full gap-2 pl-2 overflow-y-auto h-projectfiles">
-
-
-
-
+                    <div>
+                        <div class="flex mt-2">
+                            <span class=" inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                <i class="fa-solid fa-key"></i>
+                            </span>
+                            <input wire:keydown.enter="updatePofile" wire:model.defer="employee.user.password" type="text" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{__('ui.new_password')}}">
+                        </div>
                     </div>
-                </div> --}}
+                    <div>
+                        <div class="flex mt-2">
+                            <span class=" inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                <i class="fa-solid fa-key"></i>
+                            </span>
+                            <input wire:model.defer="employee.user.password_confirmation" type="text" class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{__('ui.confirm_password')}}">
+                        </div>
+                    </div>
+                    <div class="flex justify-center rounded-md shadow-sm gap-2 w-full mt-2" role="group">
+                        <label class="@if ($employee['user']['gender'] == 2) text-rose-500 @else  text-gray-900 @endif basis-1/2 flex justify-center items-center py-2 px-4 text-sm font-medium  bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-rose-700 focus:text-rose-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-rose-500 dark:focus:text-white">
+                            <span>
+                                <i class="fas fa-2x fa-female"></i>
+                            </span>
+                            <input class="hidden" type="radio" name="gender" value="2" autocomplete="off" wire:model="employee.user.gender">
+                        </label>
+                        <label class="@if ($employee['user']['gender'] == 1) text-blue-500 @else text-gray-900 @endif basis-1/2 flex justify-center items-center py-2 px-4 text-sm font-medium  bg-white rounded-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                            <span>
+                                <i class="fas fa-2x fa-male"></i>
+                            </span>
+                            <input class="hidden" type="radio" name="gender" value="1" wire:model="employee.user.gender">
+                        </label>
+                    </div>
+                    <div class="mt-4">
+                        <button wire:keydown.enter="updatePofile" wire:click="updatePofile" @click="edit = !edit" type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">{{__('ui.save')}}</button>
+
+                        <button @click="edit = !edit" type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">{{__('ui.cancel')}}</button>
+                    </div>
+                </div>
             </div>
-
-
         </div>
         <div class="basis-3/4 ml-5 mr-5">
             <div class="flex flex-col">

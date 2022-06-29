@@ -125,6 +125,9 @@ return [
     'archived'  => 'Archived',
     'male' => 'Male',
     'female' => 'Female',
+    'save' => 'Save',
+    'new_password' => 'New Password',
+    'username' => 'Username',
 
 
 

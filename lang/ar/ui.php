@@ -125,4 +125,7 @@ return [
     'archived' => 'الارشيف',
     'male' => 'ذكر',
     'female' => 'انثى',
+    'save' => 'حفظ',
+    'new_password' => 'كلمة مرور جديدة',
+    'username' => 'اسم المستخدم',
 ];
