@@ -1220,6 +1220,14 @@ select {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
 }
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -2279,13 +2287,13 @@ select {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
 }
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
 .py-2\.5 {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
+}
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 .py-0\.5 {
   padding-top: 0.125rem;
@@ -2531,14 +2539,6 @@ select {
   --tw-text-opacity: 1;
   color: rgb(34 197 94 / var(--tw-text-opacity));
 }
-.text-secondary-500 {
-  --tw-text-opacity: 1;
-  color: rgb(123 143 182 / var(--tw-text-opacity));
-}
-.text-secondary-700 {
-  --tw-text-opacity: 1;
-  color: rgb(86 105 144 / var(--tw-text-opacity));
-}
 .text-secondary-400 {
   --tw-text-opacity: 1;
   color: rgb(146 163 197 / var(--tw-text-opacity));
@@ -2547,6 +2547,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(101 123 166 / var(--tw-text-opacity));
 }
+.text-secondary-500 {
+  --tw-text-opacity: 1;
+  color: rgb(123 143 182 / var(--tw-text-opacity));
+}
 .text-error-600 {
   --tw-text-opacity: 1;
   color: rgb(240 35 20 / var(--tw-text-opacity));
@@ -2554,6 +2558,10 @@ select {
 .text-primary-600 {
   --tw-text-opacity: 1;
   color: rgb(50 39 222 / var(--tw-text-opacity));
+}
+.text-secondary-700 {
+  --tw-text-opacity: 1;
+  color: rgb(86 105 144 / var(--tw-text-opacity));
 }
 .text-warning-800 {
   --tw-text-opacity: 1;
@@ -2815,17 +2823,13 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(209 255 228 / var(--tw-bg-opacity));
 }
-.hover\:bg-secondary-50:hover {
+.hover\:bg-blue-700:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(244 246 250 / var(--tw-bg-opacity));
+  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 .hover\:bg-error-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(254 199 195 / var(--tw-bg-opacity));
-}
-.hover\:bg-blue-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 .hover\:bg-gray-200:hover {
   --tw-bg-opacity: 1;
@@ -2834,6 +2838,10 @@ select {
 .hover\:bg-secondary-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(219 225 238 / var(--tw-bg-opacity));
+}
+.hover\:bg-secondary-50:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 246 250 / var(--tw-bg-opacity));
 }
 .hover\:bg-gray-800:hover {
   --tw-bg-opacity: 1;
@@ -2886,13 +2894,13 @@ select {
   --tw-text-opacity: 1;
   color: rgb(0 200 83 / var(--tw-text-opacity));
 }
-.hover\:text-error-600:hover {
-  --tw-text-opacity: 1;
-  color: rgb(240 35 20 / var(--tw-text-opacity));
-}
 .hover\:text-primary-600:hover {
   --tw-text-opacity: 1;
   color: rgb(50 39 222 / var(--tw-text-opacity));
+}
+.hover\:text-error-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(240 35 20 / var(--tw-text-opacity));
 }
 .hover\:text-secondary-800:hover {
   --tw-text-opacity: 1;

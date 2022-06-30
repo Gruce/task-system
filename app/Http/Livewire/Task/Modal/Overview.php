@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Task\Modal;
 
 use Livewire\Component;
-use App\Models\Project;
+use App\Models\{Project,Task , Employee};
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithPagination;
 
@@ -13,7 +13,7 @@ class Overview extends Component
 
     protected $listeners = ['$refresh'];
 
-    public $task , $search;
+    public $task , $search ,$taskEmployees = [] , $employee_id;
 
     protected $rules = [
         'task.title' => 'required',
@@ -23,6 +23,22 @@ class Overview extends Component
 
     public function edit(){
         $this->task->save();
+
+        //$this->task->employees()->sync(array_keys($this->taskEmployees));
+        // foreach($this->taskEmployees as $employee){
+        //     dd($this->taskEmployees );
+        //     if(!$task->project->employees()->wherePivot('employee_id' , $employee['id'])->exists())
+        //         $task->project->employees()->attach($employee['id']);
+
+        // }
+
+        // foreach($this->task->employees as $employee){
+        //     if(!$task->project->employees()->wherePivot('employee_id' , $employee->id)->exists())
+        //     $task->project->employees()->attach($employee->id);
+        // }
+
+
+
         $this->alert('success', __('ui.data_has_been_edited_successfully'), [
             'position' => 'top',
             'timer' => 3000,
