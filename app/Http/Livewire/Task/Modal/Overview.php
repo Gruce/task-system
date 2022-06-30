@@ -13,7 +13,7 @@ class Overview extends Component
 
     protected $listeners = ['$refresh'];
 
-    public $task , $search ,$taskEmployees = [] , $employee_id;
+    public $task , $search , $employee_id , $taskEmployees=[];
 
     protected $rules = [
         'task.title' => 'required',
@@ -24,19 +24,17 @@ class Overview extends Component
     public function edit(){
         $this->task->save();
 
-        //$this->task->employees()->sync(array_keys($this->taskEmployees));
+        $this->task->employees->pluck(array_keys($this->taskEmployees));
+        foreach($this->taskEmployees as $employee){
+            if(!$this->task->project->employees()->wherePivot('employee_id' , 'id')->exists())
+                $this->task->project->employees()->attach('id');
+        }
+
         // foreach($this->taskEmployees as $employee){
-        //     dd($this->taskEmployees );
         //     if(!$task->project->employees()->wherePivot('employee_id' , $employee['id'])->exists())
         //         $task->project->employees()->attach($employee['id']);
 
         // }
-
-        // foreach($this->task->employees as $employee){
-        //     if(!$task->project->employees()->wherePivot('employee_id' , $employee->id)->exists())
-        //     $task->project->employees()->attach($employee->id);
-        // }
-
 
 
         $this->alert('success', __('ui.data_has_been_edited_successfully'), [
@@ -57,9 +55,11 @@ class Overview extends Component
             $search = '%' . $this->search . '%';
             $projects = Project::where('title' , 'LIKE' , $search)->paginate(24);
         }
-
+        $this->taskEmployees = $this->task->employees->pluck('id');
+        //dd($this->taskEmployees);
         return view('livewire.task.modal.overview' , [
             'projects' => $projects,
+
         ]);
     }
 }
