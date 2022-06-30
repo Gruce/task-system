@@ -4,18 +4,31 @@
             <div class="flex flex-col items-center gap-2 p-8 text-center bg-white rounded-lg basis-1/4">
                 <div class="flex items-center gap-2">
                     <div class="relative">
-                        <img class="w-40 h-40 mb-3 rounded-full" src="{{ $employee->user->profile_photo }}" alt="">
-                        <button wire:click="state({{$employee->id}})">
-                            @if($employee->state)
-                            <i class="fa-solid fa-lock-open top-0 left-13 absolute text-green-700"></i>
+
+                        <button data-tooltip-target="tooltip-default" wire:click="state({{$employee->id}})">
+                            @if(!$employee->state)
+                            <div class="ring-4 ring-red-500 opacity-100 rounded-full">
+
+                                <div class=" blur-sm opacity-90 rounded-full ">
+                                    <img class="w-40 h-40 p-1  mb-3 rounded-full" src="{{ $employee->user->profile_photo }}" alt="">
+                                </div>
+                            </div>
+                            <div id="tooltip-default" role="tooltip" class="inline-block absolute invisible z-10  py-2 px-3 text-sm font-medium text-white bg-green-700 rounded-lg  opacity-0 transition-opacity duration-300 tooltip">
+                                 تفعيل
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
                             @else
-                            <i class="fa-solid fa-lock top-0 left-13 absolute text-red-400"></i>
+                            <img class="w-40 h-40 p-1 mb-3 ring-4 ring-green-600 rounded-full" src="{{ $employee->user->profile_photo }}" alt="">
+                            <div id="tooltip-default" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-red-600 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                                تعطيل
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
                             @endif
                         </button>
                         <div class="relative">
                             <div class="image-upload  ">
                                 <label for="file-input">
-                                    <i class="fa-solid fa-camera inline-flex items-center justify-center  mr-2 text-pink-100 transition-colors  duration-150 bg-black rounded-full focus:shadow-outline   text-lg bottom-8 left-7 absolute  w-6.9 h-6.7 p-0.5 hover:text-white"></i>
+                                    <i class="fa-solid fa-camera inline-flex items-center justify-center  mr-2 text-pink-100 transition-colors  duration-150 bg-black rounded-full focus:shadow-outline cursor-pointer text-lg bottom-5 left-7 absolute  w-6.9 h-6.7 p-0.5 hover:text-white"></i>
                                 </label>
                                 <input wire:model="photo" id="file-input" type="file" onchange="previewFile(this);" style="display: none;" />
                             </div>
@@ -57,6 +70,10 @@
                         </span>
                     </div>
                 </div>
+                {{-- <div class="h-40">
+                    <livewire:livewire-radar-chart key="{{ $columnChartModel->reactiveKey() }}" :radar-chart-model="$columnChartModel" />
+                </div> --}}
+                {{-- edit --}}
                 <div x-show="edit" class="w-full flex-col">
                     <div>
                         <input wire:keydown.enter="updatePofile" wire:model.defer="employee.user.name" type="text" class="mt-2 bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.name') }} required>
