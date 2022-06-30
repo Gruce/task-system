@@ -5,11 +5,11 @@
 <div>
     <div class="flex flex-col ">
 
-        <div class="flex flex-row bg-white pl-20 pr-20 pt-3 rounded-lg">
+        <div class="sm:flex flex-row bg-white  sm:pl-20 sm:pr-20 pt-3 rounded-lg ">
             <div class="basis-3/4">
-                <div class="bg-white w-3/4 border rounded-lg p-5">
+                <div class="bg-white w-full sm:w-3/4 border rounded-lg lg:p-5 sm:p-3  mb-5">
                     <div class="flex flex-row justify-between">
-                        <div class="flex flex-col">
+                        <div class="flex flex-col ">
                             <h6 class="text-xs font-semibold text-gray-400">
                                 Tasks To Do
                             </h6>
@@ -20,13 +20,17 @@
                                 Current Month
                             </h5>
                         </div>
-                        <img class="w-40 h-20" src="https://pbs.twimg.com/media/FWHXePoUAAA0sZZ?format=jpg&name=240x240"
-                            alt="">
+                        <div class=" rounded p-3  bg-white flex-1" style="height: 12rem;">
+                            <livewire:livewire-column-chart
+                                key="{{ $columnChartModel->reactiveKey() }}"
+                                :column-chart-model="$columnChartModel"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="basis-3/4">
-                <div class="bg-white w-3/4 border rounded-lg p-5">
+            <div class="basis-3/4 lg:pl-4 lg:pr-4">
+                <div class="bg-white w-full sm:w-3/4 border rounded-lg lg:p-5 sm:p-3  mb-5">
                     <div class="flex flex-row justify-between">
                         <div class="flex flex-col">
                             <h6 class="text-xs font-semibold text-gray-400">
@@ -39,13 +43,17 @@
                                 Current Month
                             </h5>
                         </div>
-                        <img class="w-40 h-20" src="https://pbs.twimg.com/media/FWHXWpMVEAA1hKP?format=jpg&name=240x240"
-                            alt="">
+                        <div class=" rounded p-2  bg-white flex-1" style="height: 12rem;">
+                            <livewire:livewire-column-chart
+                                key="{{ $columnChartModel->reactiveKey() }}"
+                                :column-chart-model="$columnChartModel"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="basis-3/4">
-                <div class="bg-white w-3/4 border rounded-lg p-5">
+                <div class="bg-white w-full sm:w-3/4 border rounded-lg lg:p-5 sm:p-3  mb-5">
                     <div class="flex flex-row justify-between">
                         <div class="flex flex-col">
                             <h6 class="text-xs font-semibold text-gray-400">
@@ -58,14 +66,18 @@
                                 Current Month
                             </h5>
                         </div>
-                        <img class="w-40 h-20" src="https://pbs.twimg.com/media/FWHXgVWUUAA1pZq?format=jpg&name=240x240"
-                            alt="">
+                        <div class=" rounded p-3  bg-white flex-1" style="height: 12rem;">
+                            <livewire:livewire-column-chart
+                                key="{{ $columnChartModel->reactiveKey() }}"
+                                :column-chart-model="$columnChartModel"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="flex flex-row bg-white pt-10 pl-20 pr-20 justify-between">
+        <div class="flex flex-row bg-white pt-5 sm:pl-20 sm:pr-20 sm:justify-between justify-center">
             <div class="flex flex-col ">
                 <div class="flex flex-col mb-2 ">
                     <div @class([

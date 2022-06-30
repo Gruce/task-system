@@ -16,23 +16,15 @@
                         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
                             {{ __('ui.choose_project') }}</label>
                         </label>
-                        {{-- <select id="countries" wire:model.defer="task.project_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected="">{{ __('ui.choose_project') }}</option>
-                            @forelse( $projects as $item )
-                            <option value="{{ $item->id }}">{{ $item->title }}</option>
-                            @empty
-                            <option value="id">{{ __('ui.no_projects') }}</option>
-                            @endforelse
-                        </select> --}}
                         <div class="flex w-full gap-2">
                             <input wire:model="search" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.project_title')}}" required>
                             @if ($search)
-                                <select wire:model="task.project_id" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                    <option value="" selected>{{__('ui.select_project')}}</option>
-                                    @foreach ($projects as $project)
-                                        <option value="{{$project->id}}">{{$project->title}}</option>
-                                    @endforeach
-                                </select>
+                            <select wire:model="task.project_id" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <option value="" selected>{{__('ui.select_project')}}</option>
+                                @foreach ($projects as $project)
+                                <option value="{{$project->id}}">{{$project->title}}</option>
+                                @endforeach
+                            </select>
                             @endif
                         </div>
                     </div>
@@ -85,11 +77,12 @@
                 </div>
 
                 <div class="grid xl:grid-cols-2 xl:gap-6">
+
                     <div>
-                        <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
                             {{ __('ui.importance') }}</label>
                         </label>
-                        <select  wire:model.defer="task.importance" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select wire:model.defer="task.importance" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected="">{{ __('ui.importance') }}</option>
                             <option value="1">{{ __('ui.importance_low') }}</option>
                             <option value="2">{{ __('ui.importance_medium') }}</option>
@@ -99,33 +92,33 @@
                     <div>
                         <div class="grid xl:grid-cols-2 xl:gap-6">
                             <div>
-                                <label  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
                                     {{ __('ui.employees') }}</label>
                                 </label>
-                                <input wire:model="employeesSearch" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.name')}}" >
+                                <input wire:model="employeesSearch" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.name')}}">
                                 @if($employeesSearch)
-                                    <select wire:model="employee_id" wire:change="addEmployee" class="my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        <option selected="">{{ __('ui.select_employee') }}</option>
-                                        @foreach($employees as $employee)
-                                            <option value="{{$employee->id}}">{{$employee->name}}</option>
-                                        @endforeach
-                                        <button wire:click="add" @click="add=!add" class="px-4 py-1 duration-150 ease-in-out delay-75 border rounded-lg hover:text-success-800 hover:bg-success-100">
-                                            <i class="fas fa-check"></i>
-                                        </button>
-                                    </select>
+                                <select wire:model="employee_id" wire:change="addEmployee" class="my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected="">{{ __('ui.select_employee') }}</option>
+                                    @foreach($employees as $employee)
+                                    <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                    @endforeach
+                                    <button wire:click="add" @click="add=!add" class="px-4 py-1 duration-150 ease-in-out delay-75 border rounded-lg hover:text-success-800 hover:bg-success-100">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </select>
                                 @endif
                             </div>
                             <div>
                                 <ul>
                                     @forelse ($taskEmployees as $employee )
-                                        <li>
-                                            {{$loop->iteration}} : {{$employee['name']}}
-                                            <button wire:click="removeEmployee({{$employee['id']}})">
-                                                <i class="mx-4 my-2 fas fa-times text-red-500" ></i>
-                                            </button>
-                                        </li>
+                                    <li>
+                                        {{$loop->iteration}} : {{$employee['name']}}
+                                        <button wire:click="removeEmployee({{$employee['id']}})">
+                                            <i class="mx-4 my-2 fas fa-times text-red-500"></i>
+                                        </button>
+                                    </li>
                                     @empty
-                                        <li>{{ __('ui.no_data') }}</li>
+                                    <li>{{ __('ui.no_data') }}</li>
                                     @endforelse
                                 </ul>
                             </div>

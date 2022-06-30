@@ -19,6 +19,9 @@ class Show extends Component
 
     protected $rules = [
         'employee.user.name' => 'required',
+        'employee.user.username' => 'required',
+        'employee.user.password' => 'min:6',
+        'password_confirmation' => 'min:6|same:employee.user.password',
         'employee.job' => 'required',
         'employee.user.gender' => 'required',
         'employee.user.phonenumber' => 'required',
@@ -29,7 +32,7 @@ class Show extends Component
 
     public function updatedPhoto($photo)
     {
-        $this->employee['user']->add_file('profile_photo_path', $photo, 'users/' . $this->employee['user']->id . '/profile_photo/');
+        $this->employee->user->add_file('profile_photo_path', $photo, 'users/' . $this->employee->user->id . '/profile_photo/');
         $this->emitSelf('$refresh');
 
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
@@ -41,11 +44,11 @@ class Show extends Component
         ]);
     }
 
-    public function state(Employee $employee)
+    public function state()
     {
-        $employee->state = !$employee->state;
-        $employee->save();
-        $msg = !$employee->state ? 'ui.the_account_has_been_disabled' : 'ui.the_account_has_been_activated';
+        $this->employee->state = !$this->employee->state;
+        $this->employee->save();
+        $msg = !$this->employee->state ? 'ui.the_account_has_been_disabled' : 'ui.the_account_has_been_activated';
         $this->alert(
             'success',
             __($msg),
@@ -72,6 +75,8 @@ class Show extends Component
         $this->employee = Employee::with(['tasks', 'files', 'user'])
             ->withCount(['tasks', 'files'])
             ->findOrFail($id);
+
+        // $this->employee->user->password = null;
     }
     // public function calctimeprogress()
     // {
@@ -89,8 +94,9 @@ class Show extends Component
     //     return (int)$res;
     //     }
 
-    public function edit_name()
+    public function updatePofile()
     {
+
         $this->employee->save();
         $this->alert('success', __('ui.data_has_been_edited_successfully'), [
             'position' => 'top',
