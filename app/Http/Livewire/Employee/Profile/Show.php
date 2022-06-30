@@ -4,11 +4,13 @@ namespace App\Http\Livewire\Employee\Profile;
 
 use App\Models\Employee;
 use Livewire\Component;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
 use Livewire\WithFileUploads;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Asantibanez\LivewireCharts\Models\ColumnChartModel;
+use Asantibanez\LivewireCharts\Facades\LivewireCharts;
 
 class Show extends Component
 {
@@ -108,7 +110,22 @@ class Show extends Component
     }
     public function render()
     {
+
+        // $columnChartModel = LivewireCharts::radarChartModel()->addSeries(
+        //     'series1'
+        //     [
+        //         'name' => 'series1',
+        //         'data' => [
+        //             ['x' => 'A', 'y' => 10],
+        //             ['x' => 'B', 'y' => 20],
+        //             ['x' => 'C', 'y' => 30],
+        //             ['x' => 'D', 'y' => 40],
+        //             ['x' => 'E', 'y' => 50],
+        //         ],
+        //     ]
+        // );
+
         // $this->progress = $this->calctimeprogress();
-        return view('livewire.employee.profile.show');
+        return view('livewire.employee.profile.show',);
     }
 }
