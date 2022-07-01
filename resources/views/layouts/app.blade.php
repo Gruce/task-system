@@ -115,11 +115,7 @@
                             <div>
                                 <button @click.stop="dropdown = !dropdown" type="button" class="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                     <span class="sr-only">Open user menu</span>
-                                    @if (auth()->user()->profile_photo)
                                     <img class="w-8 h-8 rounded-full" src="{{auth()->user()->profile_photo}}" alt="profile image">
-                                    @else
-                                    <img class="w-8 h-8 rounded-full" src="https://ccemdata.mcmaster.ca/media/avatars/default.png" alt="profile image">
-                                    @endif
                                 </button>
                             </div>
                             <div @click.outside="dropdown = false" @click.stop="" x-show="dropdown" class="absolute right-0 w-48 mt-2 origin-top-right bg-white rounded-lg ring-1 ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
