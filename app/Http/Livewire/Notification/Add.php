@@ -32,7 +32,6 @@ class Add extends Component
             'livewire.notification.add',
             [
                 'employees' => $employees,
-
             ]
         );
     }
