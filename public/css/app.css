@@ -1157,17 +1157,14 @@ select {
 .-top-2 {
   top: -0.5rem;
 }
-.bottom-8 {
-  bottom: 2rem;
+.bottom-5 {
+  bottom: 1.25rem;
 }
 .left-7 {
   left: 1.75rem;
 }
 .-left-2 {
   left: -0.5rem;
-}
-.bottom-5 {
-  bottom: 1.25rem;
 }
 .z-0 {
   z-index: 0;
@@ -1204,6 +1201,18 @@ select {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
 .mx-3 {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
@@ -1211,10 +1220,6 @@ select {
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 .my-1 {
   margin-top: 0.25rem;
@@ -1235,14 +1240,6 @@ select {
 .-my-1 {
   margin-top: -0.25rem;
   margin-bottom: -0.25rem;
-}
-.mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-.my-3 {
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
 }
 .ml-3 {
   margin-left: 0.75rem;
@@ -2580,13 +2577,13 @@ select {
   --tw-text-opacity: 1;
   color: rgb(240 35 20 / var(--tw-text-opacity));
 }
-.text-secondary-700 {
-  --tw-text-opacity: 1;
-  color: rgb(86 105 144 / var(--tw-text-opacity));
-}
 .text-red-700 {
   --tw-text-opacity: 1;
   color: rgb(185 28 28 / var(--tw-text-opacity));
+}
+.text-secondary-700 {
+  --tw-text-opacity: 1;
+  color: rgb(86 105 144 / var(--tw-text-opacity));
 }
 .text-warning-800 {
   --tw-text-opacity: 1;
@@ -2608,17 +2605,13 @@ select {
   --tw-text-opacity: 1;
   color: rgb(50 39 222 / var(--tw-text-opacity));
 }
-.text-green-700 {
+.text-pink-100 {
   --tw-text-opacity: 1;
-  color: rgb(21 128 61 / var(--tw-text-opacity));
+  color: rgb(252 231 243 / var(--tw-text-opacity));
 }
 .text-red-400 {
   --tw-text-opacity: 1;
   color: rgb(248 113 113 / var(--tw-text-opacity));
-}
-.text-pink-100 {
-  --tw-text-opacity: 1;
-  color: rgb(252 231 243 / var(--tw-text-opacity));
 }
 .text-secondary-300 {
   --tw-text-opacity: 1;
@@ -2752,15 +2745,15 @@ select {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
 .transition-colors {
   transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-.transition-opacity {
-  transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
