@@ -2,12 +2,11 @@
 
 namespace App\Http\Livewire\Home;
 
-use Asantibanez\LivewireCharts\Facades\LivewireCharts;
 use Livewire\Component;
+use Asantibanez\LivewireCharts\Facades\LivewireCharts;
 use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 
-class Home extends Component
-
+class Main extends Component
 {
     public function render()
     {
@@ -17,10 +16,8 @@ class Home extends Component
             ->addColumn('Week 2', 200, '#fc8181')
             ->addColumn('Week 3', 300, '#90cdf4')
             ->addColumn('Week 4', 300, '#566342');
-
-        return view('livewire.Home.Home')
-            ->with([
-                'columnChartModel' => $columnChartModel,
-            ]);
+        return view('livewire.home.main')->with([
+            'columnChartModel' => $columnChartModel,
+        ]);
     }
 }

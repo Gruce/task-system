@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-use App\Http\Livewire\Home\Home;
 use App\Http\Livewire\{
+    Home\Main as HomeMain,
     Task\Main as TaskMain,
     Task\Archived as TaskArchived,
     Employee\Main as EmployeeMain,
@@ -11,7 +11,6 @@ use App\Http\Livewire\{
     Project\Main as ProjectMain,
     Project\Show as ProjectShow,
     Notification\Main as NotificationMain,
-
 };
 
 /*
@@ -44,7 +43,7 @@ Route::get('change-language/{locale}', [MainController::class, 'changeLanguage']
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/', Home::class)->name('home');
+    Route::get('/', HomeMain::class)->name('home');
 
     // Route::prefix('home')->group(function () {
     //     Route::get('/', Home::class)->name('home');
@@ -58,7 +57,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('projects')->group(function () {
         Route::get('/', ProjectMain::class)->name('projects');
-        Route::get('/{id}' , ProjectShow::class)->name('projects.show');
+        Route::get('/{id}', ProjectShow::class)->name('projects.show');
     });
 
     Route::prefix('task')->group(function () {

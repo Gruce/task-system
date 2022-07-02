@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(LoginController::class)->middleware(['api'])->prefix('auth')->group(function () {
-    Route::post('/login', 'login');
-    Route::post('/logout', 'logout');
-    Route::post('/refresh', 'refresh');
-    Route::get('/user', 'me');
-});
+// Route::controller(LoginController::class)->middleware(['api'])->prefix('auth')->group(function () {
+//     Route::post('/login', 'login');
+//     Route::post('/logout', 'logout');
+//     Route::post('/refresh', 'refresh');
+//     Route::get('/user', 'me');
+// });
