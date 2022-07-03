@@ -69,7 +69,7 @@
                     </div>
 
                 </div>
-                <div class="rounded mt-4 p-4 flex-1 " style="height: 35rem;">
+                <div x-show="!edit" class="mt-4 h-96">
                     <livewire:livewire-pie-chart key="{{ $pieChartModel->reactiveKey() }}" :pie-chart-model="$pieChartModel" />
                 </div>
 

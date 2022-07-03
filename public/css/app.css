@@ -1466,6 +1466,17 @@ select {
 .h-32 {
   height: 8rem;
 }
+.h-fit {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.h-60 {
+  height: 15rem;
+}
+.h-2\/6 {
+  height: 33.333333%;
+}
 .min-h-screen {
   min-height: 100vh;
 }

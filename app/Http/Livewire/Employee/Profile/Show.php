@@ -150,21 +150,23 @@ class Show extends Component
         $pieChartModel = new LivewireCharts();
 
         $pieChartModel = collect($tasks)
-        ->reduce(function ($pieChartModel, $data) {
-            $type = $data['type'];
-            $value = $data['value'];
+            ->reduce(
+                function ($pieChartModel, $data) {
+                    $type = $data['type'];
+                    $value = $data['value'];
 
-            return $pieChartModel->addSlice($type, $value, '#aaa');
-        }, LivewireCharts::pieChartModel()
-            //->setTitle('Expenses by Type')
-            ->setAnimated(true)
-            ->setType('donut')
-            // ->withoutLegend()
-            ->legendPositionBottom()
-            ->legendHorizontallyAlignedCenter()
-            ->setDataLabelsEnabled(true)
-            ->setColors(['#92a3c5', '#ffc94b', '#00EE63', '#f66665'])
-        );
+                    return $pieChartModel->addSlice($type, $value, '#aaa');
+                },
+                LivewireCharts::pieChartModel()
+                    //->setTitle('Expenses by Type')
+                    ->setAnimated(true)
+                    ->setType('donut')
+                    // ->withoutLegend()
+                    ->legendPositionBottom()
+                    ->legendHorizontallyAlignedCenter()
+                    ->setDataLabelsEnabled(true)
+                    ->setColors(['#92a3c5', '#ffc94b', '#00EE63', '#f66665'])
+            );
 
         // $this->progress = $this->calctimeprogress();
         return view('livewire.employee.profile.show', [
