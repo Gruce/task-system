@@ -197,6 +197,15 @@
                     <div class="p-4 ml-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         asdas
                     </div>
+
+                </div>
+                <div class="ml-3 w-full mt-6 bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    {{-- Bottom --}}
+                    <span class="block sm:hidden">{{__('ui.tasks')}}</span>
+                    @livewire('task.all', ['employee' => $employee])
+                    @if ($taskID)
+                    @livewire('task.modal.view', ['task' => $taskID], key('taskModal-' . $taskID))
+                    @endif
                 </div>
             </div>
         </div>
