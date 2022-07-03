@@ -15,9 +15,14 @@ use Asantibanez\LivewireCharts\Facades\LivewireCharts;
 class Show extends Component
 {
     use LivewireAlert, WithFileUploads;
-    public $state, $photo;
+    public $state, $photo, $taskID;
 
-    protected $listeners = ['$refresh'];
+    protected $listeners = ['$refresh', 'toggleModal'];
+
+    public function toggleModal($task_id)
+    {
+        $this->taskID = $task_id;
+    }
 
     protected $rules = [
         'employee.user.name' => 'required',
