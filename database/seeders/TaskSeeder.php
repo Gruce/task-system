@@ -20,7 +20,7 @@ class TaskSeeder extends Seeder
         $projects = Project::get();
 
         foreach ($projects as $project)
-            for ($i = 1; $i <= 20; $i++) {
+            for ($i = 1; $i <= 10; $i++) {
                 $task = Task::create([
                     'title' => 'title ' . $i ,
                     'project_id' => $project->id,
@@ -41,11 +41,11 @@ class TaskSeeder extends Seeder
 
         $tasks = Task::get();
         $employees = Employee::get();
-        // foreach ($tasks as $task)
-        //     foreach ($employees as $employee)
-        //         if (array_rand([true, false]))
-        //             $task->employees()->attach([
-        //                 'employee_id' => $employee->id
-        //             ]);
+        foreach ($tasks as $task)
+            foreach ($employees as $employee)
+                if (array_rand([true, false]) && array_rand([true, false]))
+                    $task->employees()->attach([
+                        'employee_id' => $employee->id
+                    ]);
     }
 }
