@@ -60,17 +60,19 @@
                         </span>
                     </div>
                 </div>
-                <div x-show="!edit" class="w-full flex justify-start">
+                <div x-show="!edit" class="w-full flex justify-items-start">
                     <div>
                         <i class="fa-solid fa-mars-and-venus mx-2"></i>
                         <span class="text-sm tracking-tighter text-secondary-500">
                             {{ $employee->user->gender == 1 ? __('male') : __('ui.female') }}
                         </span>
                     </div>
+
                 </div>
-                <div class="rounded p-4 flex-1" style="height: 32rem;">
+                <div class="rounded mt-4 p-4 flex-1 " style="height: 35rem;">
                     <livewire:livewire-pie-chart key="{{ $pieChartModel->reactiveKey() }}" :pie-chart-model="$pieChartModel" />
                 </div>
+
 
                 {{-- edit --}}
                 <div x-show="edit" class="w-full flex-col">

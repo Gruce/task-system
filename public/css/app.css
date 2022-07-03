@@ -1463,6 +1463,9 @@ select {
 .h-projectfiles {
   height: calc(100vh - 25rem);
 }
+.h-32 {
+  height: 8rem;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1741,6 +1744,9 @@ select {
 }
 .justify-around {
   justify-content: space-around;
+}
+.justify-items-start {
+  justify-items: start;
 }
 .justify-items-center {
   justify-items: center;
