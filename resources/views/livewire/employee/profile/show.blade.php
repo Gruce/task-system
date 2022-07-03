@@ -67,6 +67,19 @@
                             {{ $employee->user->gender == 1 ? __('male') : __('ui.female') }}
                         </span>
                     </div>
+
+                    {{-- <div class="shadow rounded p-4 mt-5  " style="height: 32rem;">
+                        <livewire:livewire-radar-chart
+                            key="{{ $radarChartModel->reactiveKey() }}"
+                            :radar-chart-model="$radarChartModel"
+                        />
+                    </div> --}}
+                    <div class="rounded p-4 flex-1" style="height: 32rem;">
+                        <livewire:livewire-pie-chart
+                            key="{{ $pieChartModel->reactiveKey() }}"
+                            :pie-chart-model="$pieChartModel"
+                        />
+                    </div>
                 </div>
                 {{-- <div class="h-40">
                     <livewire:livewire-radar-chart key="{{ $columnChartModel->reactiveKey() }}" :radar-chart-model="$columnChartModel" />
