@@ -19,7 +19,7 @@ class Task extends Model
         'importance', 'start_at', 'end_at'
     ];
 
-    //protected $appends = ['project_title'];
+    protected $appends = ['state_title'];
     //protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
@@ -65,5 +65,20 @@ class Task extends Model
         $comment->body = $body;
         $comment->user_id = auth()->id();
         $this->comments()->save($comment);
+    }
+
+    protected function stateTitle(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                switch ($this->state) {
+                    case 1: return __('ui.tasks'); break;
+                    case 2: return __('ui.in_progress'); break;
+                    case 3: return __('ui.completed_tasks'); break;
+
+                    default: return __('ui.unknown'); break;
+                }
+            },
+        );
     }
 }

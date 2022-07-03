@@ -11,13 +11,19 @@ use Livewire\WithFileUploads;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Asantibanez\LivewireCharts\Facades\LivewireCharts;
+use Asantibanez\LivewireCharts\Models\RadarChartModel;
 
 class Show extends Component
 {
     use LivewireAlert, WithFileUploads;
-    public $state, $photo;
+    public $state, $photo, $taskID;
 
-    protected $listeners = ['$refresh'];
+    protected $listeners = ['$refresh', 'toggleModal'];
+
+    public function toggleModal($task_id)
+    {
+        $this->taskID = $task_id;
+    }
 
     protected $rules = [
         'employee.user.name' => 'required',
@@ -111,21 +117,61 @@ class Show extends Component
     public function render()
     {
 
-        // $columnChartModel = LivewireCharts::radarChartModel()->addSeries(
-        //     'series1'
-        //     [
-        //         'name' => 'series1',
-        //         'data' => [
-        //             ['x' => 'A', 'y' => 10],
-        //             ['x' => 'B', 'y' => 20],
-        //             ['x' => 'C', 'y' => 30],
-        //             ['x' => 'D', 'y' => 40],
-        //             ['x' => 'E', 'y' => 50],
-        //         ],
-        //     ]
-        // );
+        $tasks = $this->employee->tasks()->get();
+
+        $todo_tasks = $tasks->where('state', 1)->count();
+        $in_progress_tasks = $tasks->where('state', 2)->count();
+        $done_tasks = $tasks->where('state', 3)->count();
+
+        $tasks = [
+            [
+                'type' => __('ui.tasks'),
+                'value' => $todo_tasks
+            ],
+            [
+                'type' => __('ui.in_progress'),
+                'value' => $in_progress_tasks
+            ],
+            [
+                'type' => __('ui.completed_tasks'),
+                'value' => $done_tasks
+            ],
+        ];
+
+        // $radarChartModel = new RadarChartModel;
+
+        // $radarChartModel->setAnimated(true);
+
+        // $radarChartModel = $radarChartModel->addSeries(__('ui.tasks'), __('ui.tasks'), $todo_tasks);
+        // $radarChartModel = $radarChartModel->addSeries(__('ui.in_progress'), __('ui.in_progress'), $in_progress_tasks);
+        // $radarChartModel = $radarChartModel->addSeries(__('ui.completed_tasks'), __('ui.completed_tasks'), $done_tasks);
+
+
+        $pieChartModel = new LivewireCharts();
+
+        $pieChartModel = collect($tasks)
+            ->reduce(
+                function ($pieChartModel, $data) {
+                    $type = $data['type'];
+                    $value = $data['value'];
+
+                    return $pieChartModel->addSlice($type, $value, '#aaa');
+                },
+                LivewireCharts::pieChartModel()
+                    //->setTitle('Expenses by Type')
+                    ->setAnimated(true)
+                    ->setType('donut')
+                    // ->withoutLegend()
+                    ->legendPositionBottom()
+                    ->legendHorizontallyAlignedCenter()
+                    ->setDataLabelsEnabled(true)
+                    ->setColors(['#92a3c5', '#ffc94b', '#00EE63', '#f66665'])
+            );
 
         // $this->progress = $this->calctimeprogress();
-        return view('livewire.employee.profile.show',);
+        return view('livewire.employee.profile.show', [
+            // 'radarChartModel' => $radarChartModel
+            'pieChartModel' => $pieChartModel
+        ]);
     }
 }

@@ -60,17 +60,20 @@
                         </span>
                     </div>
                 </div>
-                <div x-show="!edit" class="w-full flex justify-start">
+                <div x-show="!edit" class="w-full flex justify-items-start">
                     <div>
                         <i class="fa-solid fa-mars-and-venus mx-2"></i>
                         <span class="text-sm tracking-tighter text-secondary-500">
                             {{ $employee->user->gender == 1 ? __('male') : __('ui.female') }}
                         </span>
                     </div>
+
                 </div>
-                {{-- <div class="h-40">
-                    <livewire:livewire-radar-chart key="{{ $columnChartModel->reactiveKey() }}" :radar-chart-model="$columnChartModel" />
-                </div> --}}
+                <div x-show="!edit" class="mt-4 h-96">
+                    <livewire:livewire-pie-chart key="{{ $pieChartModel->reactiveKey() }}" :pie-chart-model="$pieChartModel" />
+                </div>
+
+
                 {{-- edit --}}
                 <div x-show="edit" class="w-full flex-col">
                     <div>
@@ -197,6 +200,15 @@
                     <div class="p-4 ml-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         asdas
                     </div>
+
+                </div>
+                <div class="ml-3 w-full mt-6 bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    {{-- Bottom --}}
+                    <span class="block sm:hidden">{{__('ui.tasks')}}</span>
+                    @livewire('task.all', ['employee' => $employee])
+                    @if ($taskID)
+                    @livewire('task.modal.view', ['task' => $taskID], key('taskModal-' . $taskID))
+                    @endif
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@ use Livewire\WithPagination;
 class All extends Component
 {
     use WithPagination;
-    public $search, $project;
+    public $search, $project, $employee;
 
     protected $listeners = ['$refresh', 'search', 'taskMoved'];
 
@@ -18,13 +18,13 @@ class All extends Component
         $this->search = $search;
     }
 
-    public function taskMoved($value){
+    public function taskMoved($value)
+    {
         $type = $value['type'];
         $id = $value['id'];
         Task::findOrFail($id)->update([
             'state' => $type
         ]);
-
     }
 
     public function render()
@@ -35,7 +35,7 @@ class All extends Component
             ->with(
                 [
                     'project:id,title',
-                    'employees' => fn($employee) => $employee->with('user:id,name'),
+                    'employees' => fn ($employee) => $employee->with('user:id,name'),
                     'files'
                 ]
             )
@@ -45,6 +45,8 @@ class All extends Component
         if (!$this->project) $tasks->orWhereRelation('project', 'title', 'LIKE', $search);
 
         if ($this->project) $tasks->where('project_id', $this->project->id);
+
+        if ($this->employee) $tasks = $this->employee->tasks();
 
         // dd($tasks->get()->toArray());
         $tasks = $tasks->paginate(24);
