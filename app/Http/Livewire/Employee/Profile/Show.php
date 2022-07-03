@@ -124,15 +124,15 @@ class Show extends Component
         $done_tasks = $tasks->where('state', 3)->count();
 
         $tasks = [
-            'todo_tasks' => [
+            [
                 'type' => __('ui.tasks'),
                 'value' => $todo_tasks
             ],
-            'in_progress_tasks' => [
+            [
                 'type' => __('ui.in_progress'),
                 'value' => $in_progress_tasks
             ],
-            'done_tasks' => [
+            [
                 'type' => __('ui.completed_tasks'),
                 'value' => $done_tasks
             ],
