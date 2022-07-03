@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Employee;
 use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -37,5 +38,14 @@ class TaskSeeder extends Seeder
                     ],
                 ]);
             }
+
+        $tasks = Task::get();
+        $employees = Employee::get();
+        // foreach ($tasks as $task)
+        //     foreach ($employees as $employee)
+        //         if (array_rand([true, false]))
+        //             $task->employees()->attach([
+        //                 'employee_id' => $employee->id
+        //             ]);
     }
 }
