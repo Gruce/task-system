@@ -1145,6 +1145,12 @@ select {
 .right-0 {
   right: 0px;
 }
+.bottom-5 {
+  bottom: 1.25rem;
+}
+.left-7 {
+  left: 1.75rem;
+}
 .top-0 {
   top: 0px;
 }
