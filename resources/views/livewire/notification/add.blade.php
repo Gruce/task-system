@@ -2,7 +2,7 @@
     <form wire:submit.prevent="add">
         <div class="flex gap-10">
             {{-- Basic Inputs --}}
-            <div class="flex flex-col gap-4 basis-3/4">
+            {{-- <div class="flex flex-col gap-4 basis-3/4">
                 <label class="block mb-2 text-sm font-medium text-gray-500">
                     {{ __('ui.basicinfo') }}
                 </label>
@@ -22,7 +22,7 @@
                 <button type="submit" class="text-white hover:bg-blue-700 bg-blue-600 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                     {{__('ui.add')}}
                 </button>
-            </div>
+            </div> --}}
 
             <div class="flex flex-col w-full gap-2 pl-2 overflow-y-auto h-projectfiles">
                 {{-- Addition --}}
@@ -69,7 +69,7 @@
 
                         {{-- Loop Item Below --}}
                         <div class="flex items-center gap-2">
-                        <input  id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <input   wire:model="employee_id"  type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <span class=" text-base  font-normal text-secondary-700">
                                 select all
                             </span>
@@ -77,44 +77,62 @@
                         @forelse ($employees as $employee)
                             <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
                                 <div class="flex items-center gap-4">
-                                    <input  id="checked-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <input  wire:model="selected"  type="checkbox" value="{{$employee->id}}" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <img src="{{$employee->photo}}" class="w-10 h-10 rounded-lg"  alt="Bordered avatar">
                                     <div class="flex flex-col">
                                         <span class="text-base font-normal text-secondary-700">
                                             {{$employee->name}}
                                         </span>
-
                                     </div>
                                 </div>
-                                <div class="flex gap-2">
+                                {{-- <div class="flex gap-2">
                                     <button wire:click="confirmed({{ $employee->id }} , 'delete')" class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
                                         <i class="fas fa-trash"></i>
                                     </button>
-                                </div>
+                                </div> --}}
                             </div>
                         @empty
                             {{__('ui.no_data')}}
                         @endforelse
-
                     </div>
-
                     {{-- <script type="text/javascript">
-
                         let obj = document.getElementById("loadmoreuser");
-
                         obj.onscroll = function (ev) {
                             if ( obj.scrollTop === (obj.scrollHeight - obj.offsetHeight)){
                                 window.livewire.emit('load-more');
                             }
-
                         };
                     </script> --}}
                 </div>
-
-
-
                 </div>
-            </div>
+                <div >
+                    <ul >
+                        @if ($employee_id)
+                        @forelse ($employees as $employee )
+                        <li class="m-6">
+                            {{$loop->iteration}} : {{$employee['name']}}
+                            <button wire:click="removeEmployee({{$employee['id']}})">
+                                <i class="mx-4 my-2 fas fa-times text-red-500"></i>
+                            </button>
+                        </li>
+                        @empty
+                        <li>{{ __('ui.no_data') }}</li>
+                        @endforelse
+                        @endif
+                    </ul>
+                </div>
+            </div><button type="submit" class="text-white hover:bg-blue-700 bg-blue-600 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                {{__('ui.add')}}
+            </button>
         </div>
+
+        {{-- <script>
+            $(function(e){
+                $("#chkall").click(function(){
+                    $("#chk").prop('checked', $(this).prop('checked'));
+                });
+            })
+        </script> --}}
     </form>
+
 </div>
