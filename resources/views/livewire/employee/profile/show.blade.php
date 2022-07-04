@@ -1,6 +1,6 @@
 <div>
-    <div class="flex flex-row" x-data="{ edit: false }" x-cloak>
-        <div class="basis-1/4">
+    <div class="sm:flex flex-row " x-data="{ edit: false }" x-cloak>
+        <div class="basis-1/4 mt-3">
             <div class="flex flex-col items-center gap-2 p-8 text-center bg-white rounded-lg basis-1/4">
                 <div class="flex items-center gap-2">
                     <div class="relative">
@@ -148,10 +148,10 @@
                 </div>
             </div>
         </div>
-        <div class="basis-3/4 ml-5 mr-5">
+        <div class="basis-3/4 sm:ml-5 sm:mr-5">
             <div class="flex flex-col">
-                <div class="flex flex-row justify-between">
-                    <div class="p-4 ml-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                <div class="sm:flex justify-between ">
+                    <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 ">
                         <div class="flex flex-col">
                             <div class="flex flex-row items-center  mb-8">
                                 <i class="fa-solid fa-list-check mr-2 ml-2  text-secondary-500 "></i>
@@ -168,7 +168,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="p-4 ml-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <div class="flex flex-row justify-around items-center">
                             <div class="flex flex-col">
                                 <div class="flex items-center">
@@ -197,14 +197,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="p-4 ml-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         asdas
                     </div>
 
                 </div>
-                <div class="ml-3 w-full mt-6 bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                    {{-- Bottom --}}
-                    <span class="block sm:hidden">{{__('ui.tasks')}}</span>
+                {{-- Bottom --}}
+                <div class="sm:ml-3  w-full mt-3 bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    <span class="block p-3 sm:hidden">{{__('ui.tasks')}}</span>
                     @livewire('task.all', ['employee' => $employee])
                     @if ($taskID)
                     @livewire('task.modal.view', ['task' => $taskID], key('taskModal-' . $taskID))
