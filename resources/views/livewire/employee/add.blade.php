@@ -6,7 +6,7 @@
                 <label class="block mb-2 text-sm font-medium text-gray-500">
                     {{ __('ui.basicinfo') }}
                 </label>
-                <div class="grid xl:grid-cols-2 xl:gap-6">
+                <div class="grid xl:grid-cols-2  xl:gap-6">
                     <div>
                         <label class="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.name') }}
