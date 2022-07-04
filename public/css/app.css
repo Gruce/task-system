@@ -1166,6 +1166,18 @@ select {
 .-left-2 {
   left: -0.5rem;
 }
+.left-\[-300px\] {
+  left: -300px;
+}
+.top-5 {
+  top: 1.25rem;
+}
+.left-4 {
+  left: 1rem;
+}
+.bottom-0 {
+  bottom: 0px;
+}
 .z-0 {
   z-index: 0;
 }
@@ -1352,6 +1364,9 @@ select {
 .mb-10 {
   margin-bottom: 2.5rem;
 }
+.ml-28 {
+  margin-left: 7rem;
+}
 .block {
   display: block;
 }
@@ -1457,6 +1472,9 @@ select {
 .h-projectfiles {
   height: calc(100vh - 25rem);
 }
+.h-\[1px\] {
+  height: 1px;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1540,6 +1558,12 @@ select {
   width: -moz-fit-content;
   width: fit-content;
 }
+.w-\[300px\] {
+  width: 300px;
+}
+.w-4\/5 {
+  width: 80%;
+}
 .min-w-0 {
   min-width: 0px;
 }
@@ -1615,6 +1639,14 @@ select {
 }
 .translate-y-0 {
   --tw-translate-y: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.rotate-0 {
+  --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.rotate-180 {
+  --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .scale-95 {
@@ -2420,6 +2452,13 @@ select {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+.text-\[15px\] {
+  font-size: 15px;
+}
 .font-medium {
   font-weight: 500;
 }
@@ -2620,6 +2659,10 @@ select {
 .text-gray-50 {
   --tw-text-opacity: 1;
   color: rgb(249 250 251 / var(--tw-text-opacity));
+}
+.text-gray-100 {
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;
@@ -2864,6 +2907,10 @@ select {
 .hover\:bg-slate-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+.hover\:bg-blue-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
 .hover\:bg-gradient-to-br:hover {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
@@ -3796,8 +3843,16 @@ select {
 }
 @media (min-width: 1024px) {
 
+  .lg\:left-0 {
+    left: 0px;
+  }
+
   .lg\:col-span-4 {
     grid-column: span 4 / span 4;
+  }
+
+  .lg\:hidden {
+    display: none;
   }
 
   .lg\:grid-cols-3 {
