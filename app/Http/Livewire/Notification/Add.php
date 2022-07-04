@@ -41,14 +41,11 @@ class Add extends Component
 
 
     public function addAllEmployee(){
-        $this->selectAll = !$this->selectAll;
-            if ($this->selectAll) {
-
-                $this->employees = Employee::all()->pluck('id')->toArray();
-            } else {
-                $this->employees = [];
-            }
-        dd($this->employees);
+            if ($this->selectAll)
+                $employees = Employee::all()->pluck('id')->toArray();
+            else
+                $employees = [];
+            dd($employees);
     }
 
     //remove employee from list
