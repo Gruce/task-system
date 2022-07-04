@@ -27,14 +27,13 @@ class Show extends Component
 
     protected $rules = [
         'employee.user.name' => 'required',
-        'employee.user.username' => 'required',
+        'employee.user.username' => 'required|unique:users,username',
         'employee.user.password' => 'min:6',
         'password_confirmation' => 'min:6|same:employee.user.password',
         'employee.job' => 'required',
         'employee.user.gender' => 'required',
         'employee.user.phonenumber' => 'required',
-        'employee.user.email' => 'required',
-
+        'employee.user.email' => 'required|email|unique:users,email',
     ];
 
 
@@ -102,10 +101,21 @@ class Show extends Component
     //     return (int)$res;
     //     }
 
-    public function updatePofile()
+    public function edit()
     {
+        dg($this->employee->toArray());
+        $this->employee->user->update([
+            'name' => $this->employee->user->name,
+            'username' => $this->employee->user->username,
+            'password' => $this->employee->user->password,
+            'email' => $this->employee->user->email,
+            'phonenumber' => $this->employee->user->phonenumber,
+        ]);
 
-        $this->employee->save();
+        $this->employee->update([
+            'job' => $this->employee->job,
+        ]);
+
         $this->alert('success', __('ui.data_has_been_edited_successfully'), [
             'position' => 'top',
             'timer' => 3000,

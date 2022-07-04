@@ -16,12 +16,11 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::where('is_admin' , false)->get();
+        $users = User::get();
 
-        foreach($users as $user)
+        foreach ($users as $user)
             Employee::create([
-                    'user_id' => $user->id,
-                ]);
-
+                'user_id' => $user->id,
+            ]);
     }
 }

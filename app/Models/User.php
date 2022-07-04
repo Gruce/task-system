@@ -84,7 +84,6 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $appends = [
-        'profile_photo_url',
         'profile_photo',
     ];
 
@@ -105,7 +104,7 @@ class User extends Authenticatable implements JWTSubject
             get: function () {
                 if ($this->profile_photo_path)
                     return asset('storage/users/' . $this->id . '/profile_photo/' . $this->profile_photo_path);
-                elseif($this->gender == 1)
+                elseif ($this->gender == 1)
                     return 'https://cdn2.iconfinder.com/data/icons/people-groups/512/Man_Avatar-512.png';
                 else return 'https://cdn2.iconfinder.com/data/icons/people-groups/512/Woman_Avatar-512.png';
             },
