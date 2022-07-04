@@ -60,13 +60,13 @@ class UserSeeder extends Seeder
             'gender' => 2
         ]);
 
-        for($i = 1 ; $i <= 20 ; $i++)
+        for ($i = 1; $i <= 200; $i++)
             User::create([
                 'name' => 'user ' . $i,
                 'email' => $i . '@gmail.com',
                 'username' => $i,
                 'password' => bcrypt('123456'),
-                'gender' => rand(1,2),
+                'gender' => rand(1, 2),
             ]);
     }
 }
