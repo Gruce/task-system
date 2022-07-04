@@ -35,41 +35,34 @@ class Add extends Component
         ]);
     }
 
-//add employee when select
 
-
-
-
-    public function addAllEmployee(){
-            if ($this->selectAll)
-                $employees = Employee::all()->pluck('id')->toArray();
-            else
-                $employees = [];
-            dd($employees);
+    //remove employee
+    public function remove($id){
+        $this->emitTo('notification.all', '$refresh');
+        $this->alert('success', __('ui.data_has_been_removed_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+        ]);
     }
-
-    //remove employee from list
-    // public function removeEmployee($id){
-    //     unset($this->employees[$id]);
-    // }
-
-    // public function x()
-    // {
-    //     $this->selectAll = !$this->selectAll;
-    //     if ($this->selectAll) {
-    //         $this->employeess = Employee::all()->pluck('id')->toArray();
-    //     } else {
-    //         $this->employeess = [];
-    //     }
-    //     //dd($this->employeess);
-    // }
+    
+    public function addAllEmployee()
+    {
+        $this->selectAll = !$this->selectAll;
+        if ($this->selectAll) {
+            $this->employeess = Employee::all()->pluck('id')->toArray();
+        } else {
+            $this->employeess = [];
+        }
+        //dd($this->employeess);
+    }
     public function render(){
         $search = '%' . $this->search . '%';
         $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
 
-        // if($this->employee_id){
-        //     $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
-        // }
+        if($this->employee_id){
+            $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
+        }
 
         return view('livewire.notification.add',[
                 'employees' => $employees,
