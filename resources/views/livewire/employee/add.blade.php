@@ -1,6 +1,6 @@
 <div class="p-8 bg-white rounded-lg">
     <form wire:submit.prevent="save">
-        <div class="flex gap-10">
+        <div class="sm:flex gap-10">
             {{-- Basic Inputs --}}
             <div class="flex flex-col gap-4 basis-3/4">
                 <label class="block mb-2 text-sm font-medium text-gray-500">
@@ -8,7 +8,7 @@
                 </label>
                 <div class="grid xl:grid-cols-2 xl:gap-6">
                     <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        <label class="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.name') }}
                         </label>
                         <input wire:model.defer="employee.user.name" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.name') }} required>
@@ -16,7 +16,7 @@
 
                     </div>
                     <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        <label class="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.email') }}
                         </label>
                         <input wire:model.defer="employee.user.email" type="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.email') }} required>
@@ -25,14 +25,14 @@
                 </div>
                 <div class="grid xl:grid-cols-2 xl:gap-6">
                     <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        <label class="block mt-1 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.password') }}
                         </label>
                         <input wire:model.defer="employee.user.password" type="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.password') }} required>
                         @error('employee.user.password')<span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                     <div>
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        <label class="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.phonenumber') }}
                         </label>
                         <input wire:model.defer="employee.user.phonenumber" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.phonenumber') }} required>
