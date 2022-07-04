@@ -3,8 +3,8 @@
 @section('title', __('ui.home'))
 
 <div>
+    
     <div class="flex flex-col ">
-
         <div class="sm:flex flex-row bg-white  sm:pl-20 sm:pr-20 pt-3 rounded-lg ">
             <div class="basis-3/4">
                 <div class="bg-white w-full sm:w-3/4 border rounded-lg lg:p-5 sm:p-3  mb-5">
