@@ -16,7 +16,7 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::get();
+        $users = User::where('is_admin', false)->get();
 
         foreach ($users as $user)
             Employee::create([
