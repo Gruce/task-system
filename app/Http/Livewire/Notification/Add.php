@@ -66,7 +66,7 @@ class Add extends Component
         $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
 
         if($this->employee_id){
-            $employees = Employee::get();
+            $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
         }
 
         return view('livewire.notification.add',[
