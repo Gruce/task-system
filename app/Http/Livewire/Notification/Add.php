@@ -17,7 +17,7 @@ class Add extends Component
 
     public $search ,$employee_id ,$select;
     public $selectAll = false;
-    public $selected = [];
+
     //public $employeess = [];
 
     public function search($search){
@@ -35,8 +35,13 @@ class Add extends Component
         ]);
     }
 
+//add employee when select
+
+
+
 
     public function addAllEmployee(){
+        $this->selectAll = !$this->selectAll;
             if ($this->selectAll) {
 
                 $this->employees = Employee::all()->pluck('id')->toArray();
@@ -47,9 +52,9 @@ class Add extends Component
     }
 
     //remove employee from list
-    public function removeEmployee($id){
-        unset($this->employees[$id]);
-    }
+    // public function removeEmployee($id){
+    //     unset($this->employees[$id]);
+    // }
 
     // public function x()
     // {
@@ -65,9 +70,9 @@ class Add extends Component
         $search = '%' . $this->search . '%';
         $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
 
-        if($this->employee_id){
-            $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
-        }
+        // if($this->employee_id){
+        //     $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
+        // }
 
         return view('livewire.notification.add',[
                 'employees' => $employees,

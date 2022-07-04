@@ -1,8 +1,8 @@
 <div class="p-8 bg-white rounded-lg">
-    <form wire:submit.prevent="add">
+    <form wire:submit.prevent="add" >
         <div class="flex gap-10">
             {{-- Basic Inputs --}}
-            {{-- <div class="flex flex-col gap-4 basis-3/4">
+            <div class="flex flex-col gap-4 basis-3/4">
                 <label class="block mb-2 text-sm font-medium text-gray-500">
                     {{ __('ui.basicinfo') }}
                 </label>
@@ -22,7 +22,7 @@
                 <button type="submit" class="text-white hover:bg-blue-700 bg-blue-600 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                     {{__('ui.add')}}
                 </button>
-            </div> --}}
+            </div>
 
             <div class="flex flex-col w-full gap-2 pl-2 overflow-y-auto h-projectfiles">
                 {{-- Addition --}}
@@ -69,7 +69,7 @@
 
                         {{-- Loop Item Below --}}
                         <div class="flex items-center gap-2">
-                        <input   wire:model="employee_id"  type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <input  wire:model="employee_id"  wire:click="addAllEmployee"  id="selectall" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <span class=" text-base  font-normal text-secondary-700">
                                 select all
                             </span>
@@ -77,7 +77,7 @@
                         @forelse ($employees as $employee)
                             <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
                                 <div class="flex items-center gap-4">
-                                    <input  wire:model="selected"  type="checkbox" value="{{$employee->id}}" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <input  type="checkbox" value="{{$employee->id}}" name="check" class="check" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <img src="{{$employee->photo}}" class="w-10 h-10 rounded-lg"  alt="Bordered avatar">
                                     <div class="flex flex-col">
                                         <span class="text-base font-normal text-secondary-700">
@@ -105,7 +105,7 @@
                     </script> --}}
                 </div>
                 </div>
-                <div >
+                {{-- <div >
                     <ul >
                         @if ($employee_id)
                         @forelse ($employees as $employee )
@@ -120,19 +120,23 @@
                         @endforelse
                         @endif
                     </ul>
-                </div>
-            </div><button type="submit" class="text-white hover:bg-blue-700 bg-blue-600 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
-                {{__('ui.add')}}
-            </button>
+                </div> --}}
+            </div>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            $("#selectall").click(function(){
+                if(this.checked){
+                    $(".check").prop("checked",true);
+                }
+                else{
+                    $(".check").prop("checked",false);
+                }
+            });
+        });
 
-        {{-- <script>
-            $(function(e){
-                $("#chkall").click(function(){
-                    $("#chk").prop('checked', $(this).prop('checked'));
-                });
-            })
-        </script> --}}
+        </script>
     </form>
 
 </div>
