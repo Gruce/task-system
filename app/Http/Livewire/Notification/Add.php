@@ -3,21 +3,22 @@
 namespace App\Http\Livewire\Notification;
 
 use Livewire\Component;
-use App\Models\Employee;
+use App\Models\{Employee , Notification};
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Add extends Component
 {
     use  LivewireAlert;
-    protected $listeners = [ 'search'];
+    protected $listeners = ['search'];
 
     protected $rules = [
+        'notification.title' => 'required',
+        'notification.description' => 'required',
         'employee_id' => 'required',
     ];
 
-    public $search ,$employee_id ,$select;
+    public $search ,$employee_id ,$select , $notification;
     public $selectAll = false;
-
     //public $employeess = [];
 
     public function search($search){
@@ -26,29 +27,20 @@ class Add extends Component
 
     public function add(){
         $this->validate();
-        $this->employee_id = $this->selected;
-        $this->emitTo('notification.all', '$refresh');
+        $notification = Notification::create($this->notification);
+        $this->resetInput();
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
             'timer' => 3000,
             'toast' => true,
         ]);
-    }
-
-
-    //remove employee
-    public function remove($id){
         $this->emitTo('notification.all', '$refresh');
-        $this->alert('success', __('ui.data_has_been_removed_successfully'), [
-            'position' => 'top',
-            'timer' => 3000,
-            'toast' => true,
-        ]);
     }
-    
+
+
     public function addAllEmployee()
     {
-        $this->selectAll = !$this->selectAll;
+
         if ($this->selectAll) {
             $this->employeess = Employee::all()->pluck('id')->toArray();
         } else {
@@ -56,6 +48,9 @@ class Add extends Component
         }
         //dd($this->employeess);
     }
+
+    //add one employee
+
     public function render(){
         $search = '%' . $this->search . '%';
         $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
