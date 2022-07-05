@@ -14,7 +14,7 @@
                             <option value="{{$employee->id}}">{{$employee->name}}</option>
                         @endforeach
                     </select>
-                    <button wire:click="add" @click="add=!add" class="px-4 py-1 duration-150 ease-in-out delay-75 border rounded-lg hover:text-success-800 hover:bg-success-100">
+                    <button wire:click="add" class="px-4 py-1 duration-150 ease-in-out delay-75 border rounded-lg hover:text-success-800 hover:bg-success-100">
                         <i class="fas fa-check"></i>
                     </button>
                 @endif
