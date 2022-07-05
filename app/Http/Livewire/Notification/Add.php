@@ -17,8 +17,9 @@ class Add extends Component
         'employee_id' => 'required',
     ];
 
-    public $search ,$employee_id ,$select , $notification;
+    public $search ,$employee_id , $notification;
     public $selectAll = false;
+    public $select = false;
     //public $employeess = [];
 
     public function search($search){
@@ -49,7 +50,6 @@ class Add extends Component
         //dd($this->employeess);
     }
 
-    //add one employee
 
     public function render(){
         $search = '%' . $this->search . '%';
