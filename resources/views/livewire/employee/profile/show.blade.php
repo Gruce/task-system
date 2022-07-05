@@ -67,7 +67,6 @@
                             {{ $employee->user->gender == 1 ? __('male') : __('ui.female') }}
                         </span>
                     </div>
-
                 </div>
                 <div x-show="!edit" class="mt-4 h-96">
                     <livewire:livewire-pie-chart key="{{ $pieChartModel->reactiveKey() }}" :pie-chart-model="$pieChartModel" />
