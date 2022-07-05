@@ -129,6 +129,7 @@ return [
     'new_password' => 'New Password',
     'username' => 'Username',
     'unknown' => 'UnKnown',
+    'export_reports'=> 'Export Reports'
 
 
 ];

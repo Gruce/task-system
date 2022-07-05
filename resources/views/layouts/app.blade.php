@@ -83,17 +83,6 @@
                                                 @endif
                                                 >{{__('ui.tasks')}}</a>
                                         </li>
-                                        {{-- <div class="flex flex-col items-center justify-center flex-none w-full basis-96">
-                                            @foreach ($langs as $locale => $name)
-                                            <a href="{{ route('change_locale', $locale) }}" class="w-full px-4 py-2 text-sm text-center rounded-lg hover:bg-gray-100">
-                                                @if(lang($locale))
-                                                <span class="font-semibold text-primary-500">{{$name}}</span>
-                                                @elseif (!lang($locale))
-                                                <span>{{$name}}</span>
-                                                @endif
-                                            </a>
-                                            @endforeach
-                                        </div> --}}
                                     </ul>
                                 </div>
                             </div>
