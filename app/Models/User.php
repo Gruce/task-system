@@ -97,6 +97,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasOne(Employee::class);
     }
 
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
 
     protected function profilePhoto(): Attribute
     {

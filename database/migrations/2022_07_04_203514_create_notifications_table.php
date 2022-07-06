@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('SET NULL');
             $table->string('title');
             $table->text('description')->nullable();
             $table->timestamps();
