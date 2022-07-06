@@ -1,5 +1,5 @@
 <div>
-    <div class="sm:flex flex-row " x-data="{ edit: false }" x-cloak>
+    <div class="sm:flex flex-row" x-data="{ edit: false }" x-cloak>
         <div class="basis-1/4 mt-3">
             <div class="flex flex-col items-center gap-2 p-8 text-center bg-white rounded-lg basis-1/4">
                 <div class="flex items-center gap-2">
@@ -41,12 +41,12 @@
                     {{ $employee->user->username }}
                 </p>
                 <button x-show="!edit" @click="edit = !edit" type="button" class="w-full flex justify-center text-secondary-600 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center    mr-2 mb-2">
-                    <i class="fa-solid fa-pen-to-square mx-2"></i>
+                    <i class="fa-solid fa-pen-to-square "></i>
                     <span>Edit Profile</span>
                 </button>
                 <div x-show="!edit" class="w-full flex justify-start">
                     <div>
-                        <i class="fa-regular fa-at mx-2"></i>
+                        <i class="fa-regular fa-at  text-secondary-500"></i>
                         <span class="text-sm tracking-tighter text-secondary-500">
                             {{ $employee->user->email }}
                         </span>
@@ -54,7 +54,7 @@
                 </div>
                 <div x-show="!edit" class="w-full flex justify-start">
                     <div>
-                        <i class="fa-solid fa-phone mx-2"></i>
+                        <i class="fa-solid fa-phone  text-secondary-500"></i>
                         <span class="text-sm tracking-tighter text-secondary-500">
                             {{ $employee->phonenumber ?? 'No Phone Number' }}
                         </span>
@@ -62,7 +62,7 @@
                 </div>
                 <div x-show="!edit" class="w-full flex justify-items-start">
                     <div>
-                        <i class="fa-solid fa-mars-and-venus mx-2"></i>
+                        <i class="fa-solid fa-mars-and-venus mx-2 text-secondary-500"></i>
                         <span class="text-sm tracking-tighter text-secondary-500">
                             {{ $employee->user->gender == 1 ? __('male') : __('ui.female') }}
                         </span>
@@ -76,18 +76,18 @@
                 {{-- edit --}}
                 <div x-show="edit" class="w-full flex-col">
                     <div>
-                        <input wire:keydown.enter="edit" wire:model.defer="employee.user.name" type="text" class="mt-2 bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.name') }} required>
+                        <input wire:keydown.enter="edit" wire:model.defer="employee.user.name" type="text" class="mt-2 bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-4 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder={{ __('ui.name') }} required>
                         @error('employee.user.name')<span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                     <div>
-                        <input wire:keydown.enter="edit" wire:model.defer="employee.user.username" type="text" class="mt-2 bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-10 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder={{ __('ui.username') }} required>
+                        <input wire:keydown.enter="edit" wire:model.defer="employee.user.username" type="text" class="mt-2 bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-4 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder={{ __('ui.username') }} required>
                         @error('employee.user.username')<span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                     <hr class="my-2">
                     <div class="flex mt-2">
                         <div class="relative w-full">
                             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                <i class="fa-regular fa-at mx-2 text-gray-500 dark:text-gray-400"></i>
+                                <i class="fa-regular fa-at  text-gray-500 dark:text-gray-400"></i>
                             </div>
                             <input type="text" wire:keydown.enter="edit" wire:model.defer="employee.user.email" class="bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-10 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder="{{__('ui.email')}}">
                             @error('employee.user.email')<span class="text-red-500">{{ $message }}</span> @enderror
@@ -96,7 +96,7 @@
                     <div class="flex mt-2">
                         <div class="relative w-full">
                             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                <i class="fa-solid fa-phone mx-2 text-gray-500 dark:text-gray-400"></i>
+                                <i class="fa-solid fa-phone  text-gray-400 dark:text-gray-400"></i>
                             </div>
                             <input type="text" wire:keydown.enter="edit" wire:model.defer="employee.user.phonenumber" class="bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-10 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder="{{__('ui.phonenumber')}}">
                             @error('employee.user.phonenumber')<span class="text-red-500">{{ $message }}</span> @enderror
@@ -105,7 +105,7 @@
                     <div class="flex mt-2">
                         <div class="relative w-full">
                             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                <i class="fa-solid fa-bullhorn mx-2 text-gray-500 dark:text-gray-400"></i>
+                                <i class="fa-solid fa-bullhorn  text-gray-400 dark:text-gray-400"></i>
                             </div>
                             <input wire:keydown.enter="edit" type="text" wire:model.defer="employee.job" class="bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-10 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder="{{__('ui.job')}}">
                             @error('employee.job')<span class="text-red-500">{{ $message }}</span> @enderror
@@ -114,7 +114,7 @@
                     <div class="flex mt-2">
                         <div class="relative w-full">
                             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                <i class="fa-solid fa-key mx-2 text-gray-100 dark:text-gray-400"></i>
+                                <i class="fa-solid fa-key  text-gray-400 dark:text-gray-400"></i>
                             </div>
                             <input wire:keydown.enter="edit" type="text" wire:model.defer="employee.user.password" class="bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-10 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder="{{__('ui.new_password')}}">
                             @error('employee.user.password')<span class="text-red-500">{{ $message }}</span> @enderror
@@ -123,9 +123,9 @@
                     <div class="flex mt-2">
                         <div class="relative w-full">
                             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                <i class="fa-solid fa-key mx-2 text-gray-500 dark:text-gray-400"></i>
+                                <i class="fa-solid fa-key  text-gray-400 dark:text-gray-400"></i>
                             </div>
-                            <input wire:keydown.enter="edit" type="text" wire:model.defer="employee.password_confirmation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{__('ui.confirm_password')}}">
+                            <input wire:keydown.enter="edit" type="text" wire:model.defer="employee.password_confirmation" class="bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-10 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder="{{__('ui.confirm_password')}}">
                             @error('employee.password_confirmation')<span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                         </label>
                     </div>
                     <div class="mt-4">
-                        <button wire:keydown.enter="edit" wire:click="edit" @click="edit = !edit" type="button" class="focus:outline-none  text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-primary-500 dark:hover:bg-primary-700 dark:focus:ring-primary-800">{{__('ui.save')}}</button>
+                        <button wire:keydown.enter="edit" wire:click="edit" @click="edit = !edit" type="button" class="text-white bg-primary-700 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">{{__('ui.save')}}</button>
                         <button @click="edit = !edit" type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">{{__('ui.cancel')}}</button>
                     </div>
                 </div>
