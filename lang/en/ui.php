@@ -129,7 +129,10 @@ return [
     'new_password' => 'New Password',
     'username' => 'Username',
     'unknown' => 'UnKnown',
-    'export_reports'=> 'Export Reports'
+    'export_reports' => 'Export Reports',
+    'select_all' => 'Select All',
+    'send' => 'Send',
+    'no_phone_number' => 'No Phone Number',
 
 
 ];

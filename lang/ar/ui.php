@@ -129,5 +129,8 @@ return [
     'new_password' => 'كلمة مرور جديدة',
     'username' => 'اسم المستخدم',
     'unknown' => 'غير معروف',
-    'export_reports'=>'تصدير التقارير',
+    'export_reports' => 'تصدير التقارير',
+    'select_all' => 'اختر الكل',
+    'send' => 'ارسال',
+    'no_phone_number' => 'لايوجد رقم هاتف',
 ];

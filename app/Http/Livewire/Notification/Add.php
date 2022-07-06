@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Notification;
 
 use Livewire\Component;
-use App\Models\{Employee , Notification};
+use App\Models\{Employee, Notification, User};
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Add extends Component
@@ -17,16 +17,19 @@ class Add extends Component
         'employee_id' => 'required',
     ];
 
-    public $search ,$employee_id , $notification ,$employee_all;
-    public $selectAll = false;
-    public $select ;
-    public $employeess = [];
+    public $search, $employee_id, $notification;
 
-    public function search($search){
+    public $selectAll = false;
+    public $selected = [];
+
+    public function search($search)
+    {
         $this->search = $search;
     }
 
-    public function add(){
+    public function add()
+    {
+        dd($this->selected);
         $this->validate();
         $notification = Notification::create($this->notification);
         $this->resetInput();
@@ -37,38 +40,29 @@ class Add extends Component
         ]);
         $this->emitTo('notification.all', '$refresh');
     }
+    public function updatingSelectAll($value)
+    {
 
-
-    public function addAllEmployee(){
-        if ($this->selectAll) {
-            $this->employeess = Employee::all()->pluck('id')->toArray();
+        if ($value) {
+            $this->selected = User::pluck('id');
         } else {
-            $this->employeess = [];
+            $this->selected = [];
         }
-        //dd($this->employeess);
-    }
-
-    public function addEmployee(){
-        if(!in_array($this->employee_id,$this->employeess)){
-            $this->employeess[] = $this->employee_id;
-        }else{
-            $this->employeess = array_diff($this->employeess,[$this->employee_id]);
-        }
-        dd($this->employeess);
     }
 
 
 
-    public function render(){
+    public function render()
+    {
         $search = '%' . $this->search . '%';
         $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
 
-        if($this->employee_id){
+        if ($this->employee_id) {
             $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
         }
 
-        return view('livewire.notification.add',[
-                'employees' => $employees,
-            ]);
+        return view('livewire.notification.add', [
+            'employees' => $employees,
+        ]);
     }
 }
