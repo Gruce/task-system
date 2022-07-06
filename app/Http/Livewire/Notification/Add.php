@@ -17,10 +17,10 @@ class Add extends Component
         'employee_id' => 'required',
     ];
 
-    public $search ,$employee_id , $notification;
+    public $search ,$employee_id , $notification ,$employee_all;
     public $selectAll = false;
-    public $select = false;
-    //public $employeess = [];
+    public $select ;
+    public $employeess = [];
 
     public function search($search){
         $this->search = $search;
@@ -39,9 +39,7 @@ class Add extends Component
     }
 
 
-    public function addAllEmployee()
-    {
-
+    public function addAllEmployee(){
         if ($this->selectAll) {
             $this->employeess = Employee::all()->pluck('id')->toArray();
         } else {
@@ -50,12 +48,22 @@ class Add extends Component
         //dd($this->employeess);
     }
 
+    public function addEmployee(){
+        if(!in_array($this->employee_id,$this->employeess)){
+            $this->employeess[] = $this->employee_id;
+        }else{
+            $this->employeess = array_diff($this->employeess,[$this->employee_id]);
+        }
+        dd($this->employeess);
+    }
+
+
 
     public function render(){
         $search = '%' . $this->search . '%';
         $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
 
-        if($this->employee_id){
+        if($this->employee_all){
             $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
         }
 

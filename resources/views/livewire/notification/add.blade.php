@@ -69,7 +69,7 @@
 
                         {{-- Loop Item Below --}}
                         <div class="flex items-center gap-2">
-                        <input  wire:model="employee_id"  wire:click="addAllEmployee"  id="selectall" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <input  wire:model="employee_all"  wire:click="addAllEmployee"  id="selectall" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <span class=" text-base  font-normal text-secondary-700">
                                 select all
                             </span>
@@ -77,7 +77,7 @@
                         @forelse ($employees as $employee)
                             <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
                                 <div class="flex items-center gap-4">
-                                    <input  type="checkbox" value="{{$employee->id}}" name="hob[]" class="check" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <input wire:model="employee_all" wire:change="addEmployee"  id="select"   type="checkbox" value="{{$employee->id}}" name="hob" class="check" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <img src="{{$employee->photo}}" class="w-10 h-10 rounded-lg"  alt="Bordered avatar">
                                     <div class="flex flex-col">
                                         <span class="text-base font-normal text-secondary-700">
@@ -107,7 +107,7 @@
                 </div>
                 <div >
                     <ul >
-                        @if ($employee_id)
+                        @if ($employee_all)
                         @forelse ($employees as $employee )
                         <li class="m-6">
                             {{$loop->iteration}} : {{$employee['name']}}
