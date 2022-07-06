@@ -35,11 +35,26 @@ class Users extends Component
     }
 
     public function delete(){
+        $project_id = $this->project->id;
+
+        $employee = Employee::with(
+            [
+                'tasks' => function($task) use($project_id){
+                    return $task->where('project_id' , $project_id);
+                }
+            ])->findOrFail($this->employee_id);
+
+        $task_ids = $employee->tasks->pluck('id')->toArray();
+
+        $employee->tasks()->wherePivotIn('task_id' , $task_ids)->detach();
+
+
         $this->project->employees()
                         ->wherePivot('employee_id' , $this->employee_id)
                         ->detach();
 
         $this->emitSelf('$refresh');
+        $this->emitTo('task.modal.users' , '$refresh');
 
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',

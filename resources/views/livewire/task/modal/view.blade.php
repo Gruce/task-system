@@ -111,7 +111,7 @@
 
 
                             {{-- Archive Button --}}
-                            <div wire:click="archive" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-secondary-100 w-full sm:w-44 text-secondary-700 {{ true ? 'bg-secondary-100' : 'bg-secondary-50' }}">
+                            <div wire:click="archive" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer hover:bg-secondary-100 w-full sm:w-44 text-secondary-700 {{ $task->trashed() ? 'bg-secondary-100' : 'bg-secondary-50' }}">
                                 <span class="text-sm">{{__('ui.archive')}}</span>
                                 <i class="text-xs fa-solid fa-box-archive"></i>
                             </div>
