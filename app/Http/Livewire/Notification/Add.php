@@ -63,7 +63,7 @@ class Add extends Component
         $search = '%' . $this->search . '%';
         $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
 
-        if($this->employee_all){
+        if($this->employee_id){
             $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
         }
 
