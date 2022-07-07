@@ -8,16 +8,10 @@ use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 
 class Main extends Component
 {
+    public $project;
     public function render()
     {
-        $columnChartModel = LivewireCharts::ColumnChartModel()
-            ->setTitle('')
-            ->addColumn('Week 1', 100, '#f6ad55')
-            ->addColumn('Week 2', 200, '#fc8181')
-            ->addColumn('Week 3', 300, '#90cdf4')
-            ->addColumn('Week 4', 300, '#566342');
-        return view('livewire.home.main')->with([
-            'columnChartModel' => $columnChartModel,
-        ]);
+
+        return view('livewire.home.main');
     }
 }
