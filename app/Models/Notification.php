@@ -10,12 +10,12 @@ class Notification extends Model
     use HasFactory;
     use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['title', 'description' , 'read'];
 
     ### RELATIONSHIPS ###
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function employees(){
+        return $this->belongsToMany(Employee::class)->withTimestamps()->withPivot(['read']);
     }
     ### END RELATIONSHIPS ###
 

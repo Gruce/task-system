@@ -22,23 +22,19 @@ class Overview extends Component
     ];
 
     public function edit(){
+        $project = Project::with('employees')->findOrFail($this->task['project_id']);
+
+        $task_employee_ids = $this->task->employees()->get()->pluck('id')->toArray();
+
+        $project_employee_ids = $project->employees->pluck('id')->toArray();
+
+        $employee_ids = array_diff($task_employee_ids , $project_employee_ids);
+
+        $project->employees()->attach($employee_ids);
         $this->task->save();
-        //$this->task->employees->pluck('id');
-       // dd($taskEmployees);
-    // add user to project if it is not exists
-        foreach ($this->task->employees as $employee) {
-            if(!in_array($employee->id,$this->task)){
-                $this->task->employees()->detach($employee->id);
-            }
-        }
 
-        // $this->task->employees()->attach(array_keys($this->taskEmployees));
-
-        // foreach($this->taskEmployees as $employee){
-        //     if(!$task->project->employees()->wherePivot('project_id' , $employee['id'])->exists())
-        //         $task->project->employees()->attach($employee['id']);
-        // }
-
+        $this->emitTo( 'task.all' , '$refresh');
+        $this->emitTo('project.show.users' , '$refresh');
 
         $this->alert('success', __('ui.data_has_been_edited_successfully'), [
             'position' => 'top',
@@ -47,7 +43,6 @@ class Overview extends Component
             'timerProgressBar' => true,
             'width' => '400',
         ]);
-        $this->emitTo( 'task.all' , '$refresh');
     }
 
 

@@ -39,6 +39,7 @@ class Users extends Component
                         ->detach();
 
         $this->emitSelf('$refresh');
+        $this->emitTo('project.show.users' , '$refresh');
 
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',

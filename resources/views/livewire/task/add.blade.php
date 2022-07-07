@@ -110,10 +110,10 @@
                             </div>
                             <div>
                                 <ul>
-                                    @forelse ($taskEmployees as $employee )
+                                    @forelse ($taskEmployees as $key => $employee )
                                     <li>
                                         {{$loop->iteration}} : {{$employee['name']}}
-                                        <button wire:click="removeEmployee({{$employee['id']}})">
+                                        <button type="button" wire:click="removeEmployee({{$key}})">
                                             <i class="mx-4 my-2 fas fa-times text-red-500"></i>
                                         </button>
                                     </li>
