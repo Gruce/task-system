@@ -12,9 +12,9 @@ class Add extends Component
 {
     use  LivewireAlert, WithFileUploads, WithPagination;
 
-    public $task, $search,$employeesSearch ,$employee_id, $taskEmployees = [] , $files = [];
+    public $task , $taskd, $search,$employeesSearch ,$employee_id, $taskEmployees = [] , $files = [];
 
-    protected $listeners = ['$refresh'];
+    protected $listeners = ['$refresh' , 'duplicatTask'];
 
     protected $rules = [
         'task.title' => 'required',
@@ -53,6 +53,7 @@ class Add extends Component
                 $new_file->add_file('name', $file, 'tasks/' . $task->id . '/files/' . $new_file->id);
             }
 
+        $this->reset();
         $this->emitTo('task.all', '$refresh');
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
@@ -76,6 +77,26 @@ class Add extends Component
 
     public function removeEmployee($id){
         unset($this->taskEmployees[$id]);
+    }
+
+    public function duplicatTask($task){
+        $this->task = $task;
+        $this->search = $task['project']['title'];
+
+
+        $employee_ids = collect($task['employees'])->pluck('id')->toArray();
+        $employee_names = collect($task['employees'])->pluck('user.name')->toArray();
+
+        $count = 0 ;
+        foreach($employee_ids as $employee_id){
+            $array = [
+                'id' => $employee_id,
+                'name' => $employee_names[$count++],
+            ];
+
+            $this->taskEmployees[$array['id']] = $array;
+        }
+
     }
 
     public function mount(){
