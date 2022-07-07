@@ -16,7 +16,7 @@ class Add extends Component
         'notification.description' => '',
     ];
 
-    public $search, $employee_id, $notification , $employees;
+    public $search, $employee_id, $notification, $employees;
 
     public $selectAll = false;
     public $selected = [];
@@ -30,14 +30,14 @@ class Add extends Component
     {
         $this->validate();
 
-        if(!$this->selected){
+        if (!$this->selected) {
             $this->alert('error', __('ui.no_tasks'), [
                 'position' => 'top',
                 'timer' => 3000,
                 'toast' => true,
             ]);
 
-            return ;
+            return;
         }
 
         $notification = Notification::create($this->notification);
@@ -45,14 +45,13 @@ class Add extends Component
         $notification->employees()->attach($this->selected);
 
         $this->reset();
-        $this->emitTo('notification.all', '$refresh');
+        $this->emitTo('notification.card', '$refresh');
 
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
             'timer' => 3000,
             'toast' => true,
         ]);
-
     }
 
     public function updatingSelectAll($value)
