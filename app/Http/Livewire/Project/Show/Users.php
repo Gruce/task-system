@@ -6,15 +6,15 @@ use App\Models\Employee;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithPagination;
-
+use App\Traits\Livewire\NotificationTrait;
 
 class Users extends Component
 {
-    use LivewireAlert , WithPagination;
+    use LivewireAlert, WithPagination, NotificationTrait;
 
-    protected $listeners = ['$refresh' , 'delete' ,'load-more' => 'loadMore'];
+    protected $listeners = ['$refresh', 'delete', 'load-more' => 'loadMore'];
 
-    public $userId , $employee_id, $limitPerPage = 10;
+    public $userId, $employee_id, $limitPerPage = 10;
     public $search;
 
 
@@ -22,7 +22,8 @@ class Users extends Component
         After addition reset $userId, $search to null
     */
 
-    public function confirmed($id, $function){
+    public function confirmed($id, $function)
+    {
         $this->employee_id = $id;
         $this->confirm(__('ui.are_you_sure'), [
             'toast' => false,
@@ -34,27 +35,35 @@ class Users extends Component
         ]);
     }
 
-    public function delete(){
+    public function delete()
+    {
         $project_id = $this->project->id;
 
         $employee = Employee::with(
             [
-                'tasks' => function($task) use($project_id){
-                    return $task->where('project_id' , $project_id);
+                'tasks' => function ($task) use ($project_id) {
+                    return $task->where('project_id', $project_id);
                 }
-            ])->findOrFail($this->employee_id);
+            ]
+        )->findOrFail($this->employee_id);
 
         $task_ids = $employee->tasks->pluck('id')->toArray();
 
-        $employee->tasks()->wherePivotIn('task_id' , $task_ids)->detach();
+        $employee->tasks()->wherePivotIn('task_id', $task_ids)->detach();
 
 
         $this->project->employees()
-                        ->wherePivot('employee_id' , $this->employee_id)
-                        ->detach();
+            ->wherePivot('employee_id', $this->employee_id)
+            ->detach();
+
+        $this->sendNotification(
+            __('ui.add_task') . " '" . $this->project->title . "'",
+            __('ui.addattachments'),
+            $this->employee_id
+        );
 
         $this->emitSelf('$refresh');
-        $this->emitTo('task.modal.users' , '$refresh');
+        $this->emitTo('task.modal.users', '$refresh');
 
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',
@@ -65,9 +74,10 @@ class Users extends Component
         ]);
     }
 
-    public function add(){
+    public function add()
+    {
 
-        if($this->project->employees()->wherePivot('employee_id' , $this->userId)->exists()){
+        if ($this->project->employees()->wherePivot('employee_id', $this->userId)->exists()) {
             $this->alert('error', __('ui.data_already_exists'), [
                 'position' => 'top',
                 'timer' => 3000,
@@ -79,7 +89,14 @@ class Users extends Component
         }
 
         $this->project->employees()
-        ->attach($this->userId);
+            ->attach($this->userId);
+
+        $this->sendNotification(
+            __('ui.add_task') . " '" . $this->project->title . "'",
+            __('ui.addattachments'),
+            $this->userId
+        );
+
 
         $this->emitSelf('$refresh');
 
@@ -92,22 +109,25 @@ class Users extends Component
         ]);
     }
 
-    public function loadMore(){
+    public function loadMore()
+    {
         $this->limitPerPage = $this->limitPerPage + 10;
     }
 
-    public function mount($project){
+    public function mount($project)
+    {
         $this->project = $project;
     }
 
-    public function render(){
+    public function render()
+    {
         $search = '%' . $this->search . '%';
 
-        $employees = Employee::whereRelation('user' , 'name' , 'LIKE' , $search)->paginate(10);
+        $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->paginate(10);
 
         $project_employees = $this->project->employees()->paginate($this->limitPerPage);
 
-        return view('livewire.project.show.users' , [
+        return view('livewire.project.show.users', [
             'employees' => $employees,
             'project_employees' => $project_employees,
         ]);

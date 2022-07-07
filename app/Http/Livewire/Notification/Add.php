@@ -3,12 +3,13 @@
 namespace App\Http\Livewire\Notification;
 
 use Livewire\Component;
-use App\Models\{Employee, Notification, User};
+use App\Models\{Employee};
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use App\Traits\Livewire\NotificationTrait;
 
 class Add extends Component
 {
-    use  LivewireAlert;
+    use  LivewireAlert, NotificationTrait;
     protected $listeners = ['search'];
 
     protected $rules = [
@@ -36,13 +37,14 @@ class Add extends Component
                 'timer' => 3000,
                 'toast' => true,
             ]);
-
             return;
         }
 
-        $notification = Notification::create($this->notification);
-
-        $notification->employees()->attach($this->selected);
+        $this->sendNotification(
+            $this->notification['title'],
+            $this->notification['description'],
+            $this->selected
+        );
 
         $this->reset();
         $this->emitTo('notification.card', '$refresh');

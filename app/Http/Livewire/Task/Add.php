@@ -6,15 +6,16 @@ use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\{WithFileUploads, WithPagination};
 use App\Models\{Task, Project, Employee};
-use App\Notifications\NewTask;
+use App\Http\Controllers\Notifications;
+use App\Traits\Livewire\NotificationTrait;
 
 class Add extends Component
 {
-    use  LivewireAlert, WithFileUploads, WithPagination;
+    use  LivewireAlert, WithFileUploads, WithPagination, NotificationTrait;
 
-    public $task , $taskd, $search,$employeesSearch ,$employee_id, $taskEmployees = [] , $files = [];
+    public $task, $taskd, $search, $employeesSearch, $employee_id, $taskEmployees = [], $files = [];
 
-    protected $listeners = ['$refresh' , 'duplicatTask'];
+    protected $listeners = ['$refresh', 'duplicatTask'];
 
     protected $rules = [
         'task.title' => 'required',
@@ -27,22 +28,25 @@ class Add extends Component
 
 
 
-    public function removeFile($index){
+    public function removeFile($index)
+    {
         unset($this->files[$index]);
     }
 
-    public function add(){
+    public function add()
+    {
         $this->validate();
         $task = Task::create($this->task);
 
-        // auth()->user()->notify(new NewTask($task));
-
         $task->employees()->attach(array_keys($this->taskEmployees));
 
-        foreach($this->taskEmployees as $employee){
-            if(!$task->project->employees()->wherePivot('employee_id' , $employee['id'])->exists())
-                $task->project->employees()->attach($employee['id']);
+        if ($this->taskEmployees)
+            $this->sendNotification(__('ui.add_task') . " '$task->title'", __('ui.addattachments'), array_keys($this->taskEmployees));
 
+
+        foreach ($this->taskEmployees as $employee) {
+            if (!$task->project->employees()->wherePivot('employee_id', $employee['id'])->exists())
+                $task->project->employees()->attach($employee['id']);
         }
 
         if (count($this->files) > 0)
@@ -64,7 +68,8 @@ class Add extends Component
         ]);
     }
 
-    public function addEmployee(){
+    public function addEmployee()
+    {
         $employee = Employee::with('user:id,name')->findOrFail($this->employee_id);
 
         $array = [
@@ -75,22 +80,24 @@ class Add extends Component
         $this->taskEmployees[$array['id']] = $array;
     }
 
-    public function removeEmployee($key){
+    public function removeEmployee($key)
+    {
         unset($this->taskEmployees[$key]);
     }
 
-    public function duplicatTask($task){
+    public function duplicatTask($task)
+    {
         $this->reset();
         $this->task = $task;
         $this->search = $task['project']['title'];
 
         $this->taskEmployees = collect($task['employees'])
-                                ->map(fn($item) => ['id' => $item['id'] , 'name' => $item['user']['name']])
-                                ->toArray();
-
+            ->map(fn ($item) => ['id' => $item['id'], 'name' => $item['user']['name']])
+            ->toArray();
     }
 
-    public function mount(){
+    public function mount()
+    {
         $this->task['start_at'] = date('Y-m-d');
         $this->task['end_at'] = date('Y-m-d');
         $this->task['importance'] = 1;
@@ -109,7 +116,7 @@ class Add extends Component
 
         if ($this->employeesSearch) {
             $search = '%' . $this->employeesSearch . '%';
-            $employees = Employee::whereNotIn('id' , collect($this->taskEmployees)->pluck('id')->toArray())->whereRelation('user', 'name', 'LIKE', $search)->paginate(10);
+            $employees = Employee::whereNotIn('id', collect($this->taskEmployees)->pluck('id')->toArray())->whereRelation('user', 'name', 'LIKE', $search)->paginate(10);
         }
 
         return view('livewire.task.add', [
