@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             ProjectSeeder::class,
             TaskSeeder::class,
             FileSeeder::class,
-            LabelSeeder::class
+            LabelSeeder::class,
+            NotificationSeeder::class
         ]);
     }
 }
