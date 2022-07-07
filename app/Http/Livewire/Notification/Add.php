@@ -13,11 +13,10 @@ class Add extends Component
 
     protected $rules = [
         'notification.title' => 'required',
-        'notification.description' => 'required',
-        'employee_id' => 'required',
+        'notification.description' => '',
     ];
 
-    public $search, $employee_id, $notification;
+    public $search, $employee_id, $notification , $employees;
 
     public $selectAll = false;
     public $selected = [];
@@ -29,22 +28,37 @@ class Add extends Component
 
     public function add()
     {
-        dd($this->selected);
         $this->validate();
+
+        if(!$this->selected){
+            $this->alert('error', __('ui.no_tasks'), [
+                'position' => 'top',
+                'timer' => 3000,
+                'toast' => true,
+            ]);
+
+            return ;
+        }
+
         $notification = Notification::create($this->notification);
-        $this->resetInput();
+
+        $notification->employees()->attach($this->selected);
+
+        $this->reset();
+        $this->emitTo('notification.all', '$refresh');
+
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
             'timer' => 3000,
             'toast' => true,
         ]);
-        $this->emitTo('notification.all', '$refresh');
+
     }
+
     public function updatingSelectAll($value)
     {
-
         if ($value) {
-            $this->selected = User::pluck('id');
+            $this->selected = $this->employees->pluck('id')->toArray();
         } else {
             $this->selected = [];
         }
@@ -55,14 +69,8 @@ class Add extends Component
     public function render()
     {
         $search = '%' . $this->search . '%';
-        $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
+        $this->employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
 
-        if ($this->employee_id) {
-            $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
-        }
-
-        return view('livewire.notification.add', [
-            'employees' => $employees,
-        ]);
+        return view('livewire.notification.add');
     }
 }

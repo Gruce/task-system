@@ -48,7 +48,6 @@ class All extends Component
 
         if ($this->employee) $tasks = $this->employee->tasks();
 
-        // dd($tasks->get()->toArray());
         $tasks = $tasks->paginate(24);
 
         return view('livewire.task.all', compact('tasks'));

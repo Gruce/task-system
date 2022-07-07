@@ -75,27 +75,18 @@ class Add extends Component
         $this->taskEmployees[$array['id']] = $array;
     }
 
-    public function removeEmployee($id){
-        unset($this->taskEmployees[$id]);
+    public function removeEmployee($key){
+        unset($this->taskEmployees[$key]);
     }
 
     public function duplicatTask($task){
+        $this->reset();
         $this->task = $task;
         $this->search = $task['project']['title'];
 
-
-        $employee_ids = collect($task['employees'])->pluck('id')->toArray();
-        $employee_names = collect($task['employees'])->pluck('user.name')->toArray();
-
-        $count = 0 ;
-        foreach($employee_ids as $employee_id){
-            $array = [
-                'id' => $employee_id,
-                'name' => $employee_names[$count++],
-            ];
-
-            $this->taskEmployees[$array['id']] = $array;
-        }
+        $this->taskEmployees = collect($task['employees'])
+                                ->map(fn($item) => ['id' => $item['id'] , 'name' => $item['user']['name']])
+                                ->toArray();
 
     }
 
@@ -118,7 +109,7 @@ class Add extends Component
 
         if ($this->employeesSearch) {
             $search = '%' . $this->employeesSearch . '%';
-            $employees = Employee::whereNotIn('id' , array_keys($this->taskEmployees))->whereRelation('user', 'name', 'LIKE', $search)->paginate(10);
+            $employees = Employee::whereNotIn('id' , collect($this->taskEmployees)->pluck('id')->toArray())->whereRelation('user', 'name', 'LIKE', $search)->paginate(10);
         }
 
         return view('livewire.task.add', [
