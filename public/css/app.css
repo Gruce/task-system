@@ -1540,6 +1540,9 @@ select {
   width: -moz-fit-content;
   width: fit-content;
 }
+.w-1 {
+  width: 0.25rem;
+}
 .min-w-0 {
   min-width: 0px;
 }
@@ -1811,6 +1814,9 @@ select {
 .justify-self-end {
   justify-self: end;
 }
+.overflow-auto {
+  overflow: auto;
+}
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1833,6 +1839,12 @@ select {
 }
 .whitespace-nowrap {
   white-space: nowrap;
+}
+.whitespace-pre-line {
+  white-space: pre-line;
+}
+.break-words {
+  overflow-wrap: break-word;
 }
 .break-all {
   word-break: break-all;
@@ -3401,6 +3413,11 @@ select {
   .dark\:focus\:ring-gray-600:focus {
     --tw-ring-opacity: 1;
     --tw-ring-color: rgb(75 85 99 / var(--tw-ring-opacity));
+  }
+
+  .dark\:focus\:ring-blue-600:focus {
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(37 99 235 / var(--tw-ring-opacity));
   }
 }
 @media (min-width: 640px) {
