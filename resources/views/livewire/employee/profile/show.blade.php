@@ -56,7 +56,7 @@
                     <div>
                         <i class="fa-solid fa-phone  text-secondary-500"></i>
                         <span class="text-sm tracking-tighter text-secondary-500">
-                            {{ $employee->phonenumber ?? 'No Phone Number' }}
+                            {{ $employee->phonenumber ?? __('ui.no_phone_number') }}
                         </span>
                     </div>
                 </div>
