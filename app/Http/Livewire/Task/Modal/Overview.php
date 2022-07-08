@@ -53,22 +53,15 @@ class Overview extends Component
             $search = '%' . $this->search . '%';
             $projects = Project::where('title' , 'LIKE' , $search)->paginate(24);
         }
+
         $employees = [];
-        //$taskEmployees = $this->task->employees->pluck('id');
-        //get employees that are not assigned to task
         if($this->task){
             $employees = Employee::whereNotIn('id' , $this->task->employees->pluck('id'))->get();
         }
-        
-         //$employees = Employee::whereIn('id', array_keys($this->taskEmployees))->paginate(10);
-        // $this->taskEmployees = $this->task->employees->pluck('id');
-        // //dd($employees->toArray());
-        //dd($taskEmployees);
 
         return view('livewire.task.modal.overview' , [
             'projects' => $projects,
             'employees' => $employees,
-
         ]);
     }
 }
