@@ -133,6 +133,10 @@ return [
     'select_all' => 'Select All',
     'send' => 'Send',
     'no_phone_number' => 'No Phone Number',
+    'add_in_project' => 'You have been added to a project',
+    'remove_in_project' => 'You have been removed from a project',
+    'add_in_task' => 'You have been added to a task',
+    'remove_in_task' => 'You have been removed from a task',
 
 
 ];

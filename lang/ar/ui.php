@@ -133,4 +133,8 @@ return [
     'select_all' => 'اختر الكل',
     'send' => 'ارسال',
     'no_phone_number' => 'لايوجد رقم هاتف',
+    'add_in_project' => 'تمت إضافتك إلى مشروع',
+    'remove_in_project' => 'تمت إزالتك من المشروع',
+    'add_in_task' => 'تمت إضافتك إلى مهمة',
+    'remove_in_task' => 'تمت إزالتك من المهمة',
 ];
