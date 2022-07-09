@@ -28,6 +28,27 @@
             aria-labelledby="profile-tab">
             <div class="flex flex-col p-5 bg-white">
                 <div class="flex flex-row justify-between">
+                    <div class="basis-1/8 mt-5">
+                        <div x-data="{ dropdown: false }" class=" ml-10 relative mr-10 flex flex-row  ">
+                            <div>
+                                <button @click.stop="dropdown = !dropdown" type="button"
+                                    class="flex text-sm mr-3 bg-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                                    id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                    <span class="sr-only">Open user menu</span>
+                                    <i class="fa-solid fa-filter text-2xl"></i>
+                                </button>
+                            </div>
+                            <select @click.outside="dropdown = false" @click.stop="" x-show="dropdown" id="countries"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected="">Choose a country</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="FR">France</option>
+                                <option value="DE">Germany</option>
+                            </select>
+
+                        </div>
+                    </div>
                     <div class="basis-1/4">
                         <div class="max-w-sm bg-white rounded-lg border border-gray-200">
                             <div class="grid grid-cols-2 divide-x ">
@@ -56,9 +77,10 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="basis-1/4">
                         <div class="max-w-sm bg-white rounded-lg border border-gray-200">
-                            <div class="grid grid-cols-2 divide-x ">
+                            <div @class(['grid grid-cols-2','divide-x' => en()])>
                                 <div class="flex flex-col p-4 text-center ">
                                     <h6 class="text-xs font-semibold text-gray-400">
                                         Tasks Completed
@@ -102,27 +124,7 @@
                         </div>
 
                     </div>
-                    <div class="basis-1/8 mt-5">
-                        <div x-data="{ dropdown: false }" class=" ml-10 relative mr-10 flex flex-row  ">
-                            <div>
-                                <button @click.stop="dropdown = !dropdown" type="button"
-                                    class="flex text-sm mr-3 bg-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                                    id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                                    <span class="sr-only">Open user menu</span>
-                                    <i class="fa-solid fa-filter text-2xl"></i>
-                                </button>
-                            </div>
-                            <select @click.outside="dropdown = false" @click.stop="" x-show="dropdown" id="countries"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option selected="">Choose a country</option>
-                                <option value="US">United States</option>
-                                <option value="CA">Canada</option>
-                                <option value="FR">France</option>
-                                <option value="DE">Germany</option>
-                            </select>
 
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="flex flex-col">
@@ -176,7 +178,7 @@
             @livewire('home.submain')
         </div>
     </div>
-   
+
 
 
 </div>
