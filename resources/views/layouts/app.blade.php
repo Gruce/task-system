@@ -95,14 +95,14 @@
                         </div>
 
                         <!-- Profile dropdown -->
-                        <div x-data="{dropdown: false}" class=" ml-10 relative mr-10">
+                        <div x-data="{dropdown: false}" class=" ml-10 relative mr-10 ">
                             <div>
                                 <button @click.stop="dropdown = !dropdown" type="button" class="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                     <span class="sr-only">Open user menu</span>
                                     <img class="w-8 h-8 rounded-full" src="{{auth()->user()->profile_photo}}" alt="profile image">
                                 </button>
                             </div>
-                            <div @click.outside="dropdown = false" @click.stop="" x-show="dropdown" class="absolute right-0 w-48 mt-2 origin-top-right bg-white rounded-lg ring-1 ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                            <div @click.outside="dropdown = false" @click.stop="" x-show="dropdown" class="absolute lg:right-0 left-1  w-48 mt-2 origin-top-right bg-white rounded-lg ring-1 ring-opacity-5 focus:outline-none " role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                                 <!-- Active: "bg-gray-100", Not Active: "" -->
                                 @if (!auth()->user()->is_admin)
                                 <a href="{{route('employees.profile',['id' => auth()->user()->id ])}}" class="block px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-200" role="menuitem" tabindex="-1" id="user-menu-item-0">{{__('ui.profile')}}</a>
