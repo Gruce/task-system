@@ -27,8 +27,8 @@
         <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="profile" role="tabpanel"
             aria-labelledby="profile-tab">
             <div class="flex flex-col p-5 bg-white">
-                <div class="flex flex-row justify-between">
-                    <div class="basis-1/8 mt-5">
+                <div class="flex lg:flex-row flex-col justify-between">
+                    <div class="basis-1/8 lg:mt-5 mb-5">
                         <div x-data="{ dropdown: false }" class=" ml-10 relative mr-10 flex flex-row  ">
                             <div>
                                 <button @click.stop="dropdown = !dropdown" type="button"
@@ -49,7 +49,7 @@
 
                         </div>
                     </div>
-                    <div class="basis-1/4">
+                    <div class="basis-1/4 lg:mb-0 mb-5">
                         <div class="max-w-sm bg-white rounded-lg border border-gray-200">
                             <div class="grid grid-cols-2 divide-x ">
                                 <div class="flex flex-col p-4 text-center ">
@@ -78,7 +78,7 @@
                         </div>
                     </div>
 
-                    <div class="basis-1/4">
+                    <div class="basis-1/4 lg:mb-0 mb-5">
                         <div class="max-w-sm bg-white rounded-lg border border-gray-200">
                             <div @class(['grid grid-cols-2','divide-x' => en()])>
                                 <div class="flex flex-col p-4 text-center ">
@@ -106,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="basis-1/4">
+                    <div class="basis-1/4 lg:mb-0 mb-5">
                         <div class="max-w-sm bg-white rounded-lg border border-gray-200">
                             <div class="grid grid-cols-1  ">
                                 <div class="flex flex-col p-4 text-center ">
@@ -128,7 +128,7 @@
                 </div>
             </div>
             <div class="flex flex-col">
-                <div class="flex flex-row justify-between">
+                <div class="flex lg:flex-row flex-col justify-between">
                     <div class="flex flex-col gap-2 bg-white basis-1/4">
                         <div class="flex items-center gap-2 p-3 m-1 text-lg rounded-lg text-secondary-600 bg-secondary-50">
                             <span class="w-3.5 h-3.5 bg-warning-400 border-2 border-white rounded-full"></span>
