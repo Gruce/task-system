@@ -56,7 +56,7 @@
                     <div>
                         <i class="fa-solid fa-phone  text-secondary-500"></i>
                         <span class="text-sm tracking-tighter text-secondary-500">
-                            {{ $employee->phonenumber ?? __('ui.no_phone_number') }}
+                            {{ $employee->user->phonenumber ?? __('ui.no_phone_number') }}
                         </span>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div x-show="!edit" class="mt-4 h-96">
-                    <livewire:livewire-pie-chart key="{{ $pieChartModel->reactiveKey() }}" :pie-chart-model="$pieChartModel" />
+                    <livewire:livewire-pie-chart key="{{ $this->pieChartModel->reactiveKey() }}" :pie-chart-model="$this->pieChartModel" />
                 </div>
 
 
