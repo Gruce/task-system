@@ -12,13 +12,13 @@
                     <button
                         class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 dark:border-transparent text-gray-500 dark:text-gray-400 border-gray-100 dark:border-gray-700"
                         id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab"
-                        aria-controls="dashboard" aria-selected="false">احصائيات خاصة</button>
+                        aria-controls="dashboard" aria-selected="false">{{__('ui.private_stats')}}</button>
                 </li>
                 <li class="mr-2" role="presentation">
                     <button
                         class="inline-block p-4 rounded-t-lg border-b-2 text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500"
                         id="profile-tab" data-tabs-target="#profile" type="button" role="tab"
-                        aria-controls="profile" aria-selected="true">احصائيات عامة</button>
+                        aria-controls="profile" aria-selected="true">{{__('ui.general_stats')}}</button>
                 </li>
             </ul>
         </div>
@@ -54,13 +54,13 @@
                             <div class="grid grid-cols-2 divide-x ">
                                 <div class="flex flex-col p-4 text-center ">
                                     <h6 class="text-xs font-semibold text-gray-400">
-                                        Projecrs Completed
+                                        {{__('ui.projects_completed')}}
                                     </h6>
                                     <h1 class="font-semibold text-green-600 text-2xl">
                                         42
                                     </h1>
                                     <h5 class="text-gray-400 text-sm">
-                                        Current Week
+                                        {{__('ui.current_week')}}
                                     </h5>
                                 </div>
                                 <div class="flex flex-col p-4 text-center ">
@@ -71,7 +71,7 @@
                                         42
                                     </h1>
                                     <h5 class="text-gray-400 text-sm">
-                                        Current Week
+                                        {{__('ui.current_week')}}
                                     </h5>
                                 </div>
                             </div>
@@ -83,24 +83,24 @@
                             <div @class(['grid grid-cols-2','divide-x' => en()])>
                                 <div class="flex flex-col p-4 text-center ">
                                     <h6 class="text-xs font-semibold text-gray-400">
-                                        Tasks Completed
+                                        {{__('ui.task_completed')}}
                                     </h6>
                                     <h1 class="font-semibold text-green-600 text-2xl">
                                         42
                                     </h1>
                                     <h5 class="text-gray-400 text-sm">
-                                        Current Week
+                                        {{__('ui.current_week')}}
                                     </h5>
                                 </div>
                                 <div class="flex flex-col p-4 text-center">
                                     <h6 class="text-xs font-semibold text-gray-400">
-                                        Tasks not complete
+                                        {{__('ui.task_not_completed')}}
                                     </h6>
                                     <h1 class="font-semibold text-red-600 text-2xl">
                                         42
                                     </h1>
                                     <h5 class="text-gray-400 text-sm">
-                                        Current Week
+                                        {{__('ui.current_week')}}
                                     </h5>
                                 </div>
                             </div>
@@ -111,13 +111,13 @@
                             <div class="grid grid-cols-1  ">
                                 <div class="flex flex-col p-4 text-center ">
                                     <h6 class="text-xs font-semibold text-gray-400">
-                                        Nomber Of Employees
+                                        {{__('ui.number_of_employees')}}
                                     </h6>
                                     <h1 class="font-semibold text-green-600 text-2xl">
                                         42
                                     </h1>
                                     <h5 class="text-gray-400 text-sm">
-                                        in this company
+                                        {{__('ui.in_this_company')}}
                                     </h5>
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
                     <div class="flex flex-col gap-2 bg-white basis-1/4">
                         <div class="flex items-center gap-2 p-3 m-1 text-lg rounded-lg text-secondary-600 bg-secondary-50">
                             <span class="w-3.5 h-3.5 bg-warning-400 border-2 border-white rounded-full"></span>
-                            <span>Projects in Progreses</span>
+                            <span>{{__('ui.projects_in_progress')}}</span>
                         </div>
 
                         <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
