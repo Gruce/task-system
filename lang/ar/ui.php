@@ -150,6 +150,7 @@ return [
     'projects_in_progress' => 'المشاريع القيد التنفيذ',
     'task_to_do' => 'المهام المطلوب تنفيذها ',
     'task_in_progress' => 'المهام القيد التنفيذ',
+    'task_in_progress_percentage' => ' المهمة القيد التنفيذ',
     'employees_of_the_week' => 'افضل موظفيين في هذا الاسبوع',
     'employees_of_the_month' => 'افضل موظفيين في هذا الشهر',
     'employees_of_the_year' => 'افضل موظفيين في هذه السنة',

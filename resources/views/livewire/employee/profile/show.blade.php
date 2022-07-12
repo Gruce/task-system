@@ -155,15 +155,18 @@
                 <div class="sm:flex justify-between ">
                     <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 ">
                         <div class="flex flex-col">
-                            <div class="flex flex-row items-center  mb-8">
-                                <i class="fa-solid fa-list-check mr-2 ml-2  text-secondary-500 "></i>
-                                <h3 class="text-sm text-secondary-500 font-semibold">
-                                    مهمة قيد التنفيذ
-                                </h3>
+                            <div class="flex flex-row items-center">
+                                <div class="w-10 h-10  bg-gray-400 rounded-full">
+                                    <i class="fa-solid fa-file-circle-exclamation p-3 "></i>                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-secondary-600 text-l p-1">
+                                        {{__('ui.task_in_progress_percentage')}}
+                                     </h3>
+                                </div>
                             </div>
-                            <div class="flex justify-between mb-1">
+                            <div class="flex justify-between mt-5">
                                 <span class="text-xs font-medium text-secondary-500">234234%</span>
-                                <span class="text-xs font-medium text-secondary-500">545</span>
+                                <span class="text-xs font-medium text-secondary-500">10/23</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-1.5">
                                 <div class="bg-secondary-600 h-1.5 rounded-full" style="width: 23%"></div>
@@ -171,36 +174,46 @@
                         </div>
                     </div>
                     <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                        <div class="flex flex-row justify-around items-center">
-                            <div class="flex flex-col">
-                                <div class="flex items-center">
-                                    <i class="fa-solid fa-calendar-check p-3 text-green-400"></i>
-                                    <h3 class="text-sm text-green-400 font-semibold">
-                                        المهام المكتملة
+                        <div class="flex flex-col">
+                            <div class="flex flex-row items-center">
+                                <div class="w-10 h-10  bg-gray-400 rounded-full">
+                                    <i class="fa-solid fa-list-check p-3"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-secondary-600 text-l p-1">
+                                        {{{__('ui.tasks_completed')}}}
                                     </h3>
                                 </div>
                             </div>
-                            <div class="flex items-center">
-                                <i class="fa-solid fa-calendar-xmark p-2 text-red-400"></i>
-                                <h3 class="text-sm text-red-400 font-semibold">
-                                    المهام الغير مكتملة
-                                </h3>
+                            <div class="flex justify-between mt-5">
+                                <span class="text-xs font-medium text-secondary-500">234234%</span>
+                                <span class="text-xs font-medium text-secondary-500">10/23</span>
                             </div>
-                        </div>
-                        <div class="flex justify-between mt-4 text-sm text-center text-gray-500">
-                            <div @class([ 'px- py-2 basis-1/2 flex items-center  justify-center gap-2' , 'border-r'=> en(),
-                                'border-l' => ar(),
-                                ]) class="">
-                                <span class="text-2xl">45</span>
-                            </div>
-
-                            <div @class(['px-4 py-2 basis-1/2 flex items-center justify-center gap-2']) class="">
-                                <span class="text-2xl">45</span>
+                            <div class="w-full bg-gray-200 rounded-full h-1.5">
+                                <div class="bg-secondary-600 h-1.5 rounded-full" style="width: 23%"></div>
                             </div>
                         </div>
                     </div>
                     <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                        asdas
+                        <div class="flex flex-col">
+                            <div class="flex flex-row items-center">
+                                <div class="w-10 h-10  bg-gray-400 rounded-full">
+                                    <i class="fa-solid fa-diagram-project  p-3"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-secondary-600 text-l p-1">
+                                        {{__('ui.projects_completed')}}
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="flex justify-between mt-5">
+                                <span class="text-xs font-medium text-secondary-500">234234%</span>
+                                <span class="text-xs font-medium text-secondary-500">10/23</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-1.5">
+                                <div class="bg-secondary-600 h-1.5 rounded-full" style="width: 23%"></div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

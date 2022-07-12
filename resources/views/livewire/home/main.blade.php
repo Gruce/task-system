@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="flex flex-col p-4 text-center ">
                                     <h6 class="text-xs font-semibold text-gray-400">
-                                        Projecrs not complete
+                                        {{__('ui.projects_not_completed')}}
                                     </h6>
                                     <h1 class="font-semibold text-red-600 text-2xl">
                                         42
@@ -83,7 +83,7 @@
                             <div @class(['grid grid-cols-2','divide-x' => en()])>
                                 <div class="flex flex-col p-4 text-center ">
                                     <h6 class="text-xs font-semibold text-gray-400">
-                                        {{__('ui.task_completed')}}
+                                        {{__('ui.tasks_completed')}}
                                     </h6>
                                     <h1 class="font-semibold text-green-600 text-2xl">
                                         42

@@ -150,6 +150,7 @@ return [
     'projects_in_progress' => 'Projects In Progress',
     'task_to_do' => 'Task To Do',
     'task_in_progress' => 'Task In Progress',
+    'task_in_progress_percentage' => 'Task In Progress',
     'employees_of_the_week' => 'Employees Of The Week',
     'employees_of_the_month' => 'Employees Of The Month',
     'employees_of_the_year' => 'Employees Of The Year',
