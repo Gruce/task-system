@@ -1,8 +1,7 @@
-@section('header-actions')
+{{-- @section('header-actions')
 @endsection
 @section('title', __('ui.home'))
 <div>
-
     <div class="flex flex-col ">
         <div class="sm:flex flex-row bg-white  sm:pl-4 sm:pr-4 pt-3 rounded-lg ">
             <div class="basis-3/4">
@@ -222,4 +221,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}

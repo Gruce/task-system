@@ -3,26 +3,18 @@
 @section('title', __('ui.home'))
 
 <div>
-    <div class="flex flex-row justify-center">
-
+    {{-- <div class="flex flex-row justify-center">
         <div class="mb-4 border-b border-gray-200 dark:border-gray-700 ">
-            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab"
-                data-tabs-toggle="#myTabContent" role="tablist">
+            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
                 <li class="mr-2" role="presentation">
-                    <button
-                        class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 dark:border-transparent text-gray-500 dark:text-gray-400 border-gray-100 dark:border-gray-700"
-                        id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab"
-                        aria-controls="dashboard" aria-selected="false">{{__('ui.private_stats')}}</button>
+                    <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 dark:border-transparent text-gray-500 dark:text-gray-400 border-gray-100 dark:border-gray-700" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">{{__('ui.private_stats')}}</button>
                 </li>
                 <li class="mr-2" role="presentation">
-                    <button
-                        class="inline-block p-4 rounded-t-lg border-b-2 text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500"
-                        id="profile-tab" data-tabs-target="#profile" type="button" role="tab"
-                        aria-controls="profile" aria-selected="true">{{__('ui.general_stats')}}</button>
+                    <button class="inline-block p-4 rounded-t-lg border-b-2 text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-500 border-blue-600 dark:border-blue-500" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="true">{{__('ui.general_stats')}}</button>
                 </li>
             </ul>
         </div>
-    </div>
+    </div> --}}
     <div id="myTabContent">
         <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="profile" role="tabpanel"
             aria-labelledby="profile-tab">
@@ -38,13 +30,13 @@
                                     <i class="fa-solid fa-filter text-2xl"></i>
                                 </button>
                             </div>
-                            <select @click.outside="dropdown = false" @click.stop="" x-show="dropdown" id="countries"
+                            <select wire:model="select" @click.outside="dropdown = false" @click.stop="" x-show="dropdown"
+                                id="countries"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option selected="">Choose a country</option>
-                                <option value="US">United States</option>
-                                <option value="CA">Canada</option>
-                                <option value="FR">France</option>
-                                <option value="DE">Germany</option>
+                                <option value="1">سنوي</option>
+                                <option value="2">شهري</option>
+                                <option value="3">اسبوعي</option>
+                                <option value="4">يومي</option>
                             </select>
 
                         </div>
@@ -54,24 +46,24 @@
                             <div class="grid grid-cols-2 divide-x ">
                                 <div class="flex flex-col p-4 text-center ">
                                     <h6 class="text-xs font-semibold text-gray-400">
-                                        {{__('ui.projects_completed')}}
+                                        {{ __('ui.projects_completed') }}
                                     </h6>
                                     <h1 class="font-semibold text-green-600 text-2xl">
-                                        42
+                                        {{ $projects_done_count }}
                                     </h1>
                                     <h5 class="text-gray-400 text-sm">
-                                        {{__('ui.current_week')}}
+                                        {{ __('ui.current_week') }}
                                     </h5>
                                 </div>
                                 <div class="flex flex-col p-4 text-center ">
                                     <h6 class="text-xs font-semibold text-gray-400">
-                                        {{__('ui.projects_not_completed')}}
+                                        {{ __('ui.projects_not_completed') }}
                                     </h6>
                                     <h1 class="font-semibold text-red-600 text-2xl">
-                                        42
+                                        {{ $projects_not_done_count }}
                                     </h1>
                                     <h5 class="text-gray-400 text-sm">
-                                        {{__('ui.current_week')}}
+                                        {{ __('ui.current_week') }}
                                     </h5>
                                 </div>
                             </div>
@@ -80,27 +72,27 @@
 
                     <div class="basis-1/4 lg:mb-0 mb-5">
                         <div class="max-w-sm bg-white rounded-lg border border-gray-200">
-                            <div @class(['grid grid-cols-2','divide-x' => en()])>
+                            <div @class(['grid grid-cols-2', 'divide-x' => en()])>
                                 <div class="flex flex-col p-4 text-center ">
                                     <h6 class="text-xs font-semibold text-gray-400">
-                                        {{__('ui.tasks_completed')}}
+                                        {{ __('ui.tasks_completed') }}
                                     </h6>
                                     <h1 class="font-semibold text-green-600 text-2xl">
-                                        42
+                                        {{ $tasks_done_count }}
                                     </h1>
                                     <h5 class="text-gray-400 text-sm">
-                                        {{__('ui.current_week')}}
+                                        {{ __('ui.current_week') }}
                                     </h5>
                                 </div>
                                 <div class="flex flex-col p-4 text-center">
                                     <h6 class="text-xs font-semibold text-gray-400">
-                                        {{__('ui.task_not_completed')}}
+                                        {{ __('ui.task_not_completed') }}
                                     </h6>
                                     <h1 class="font-semibold text-red-600 text-2xl">
-                                        42
+                                        {{ $tasks_in_progress_count }}
                                     </h1>
                                     <h5 class="text-gray-400 text-sm">
-                                        {{__('ui.current_week')}}
+                                        {{ __('ui.current_week') }}
                                     </h5>
                                 </div>
                             </div>
@@ -111,13 +103,13 @@
                             <div class="grid grid-cols-1  ">
                                 <div class="flex flex-col p-4 text-center ">
                                     <h6 class="text-xs font-semibold text-gray-400">
-                                        {{__('ui.number_of_employees')}}
+                                        {{ __('ui.number_of_employees') }}
                                     </h6>
                                     <h1 class="font-semibold text-green-600 text-2xl">
-                                        42
+                                        {{ $employees_count }}
                                     </h1>
                                     <h5 class="text-gray-400 text-sm">
-                                        {{__('ui.in_this_company')}}
+                                        {{ __('ui.in_this_company') }}
                                     </h5>
                                 </div>
                             </div>
@@ -130,14 +122,15 @@
             <div class="flex flex-col">
                 <div class="flex lg:flex-row flex-col justify-between">
                     <div class="flex flex-col gap-2 bg-white basis-1/4">
-                        <div class="flex items-center gap-2 p-3 m-1 text-lg rounded-lg text-secondary-600 bg-secondary-50">
+                        <div
+                            class="flex items-center gap-2 p-3 m-1 text-lg rounded-lg text-secondary-600 bg-secondary-50">
                             <span class="w-3.5 h-3.5 bg-warning-400 border-2 border-white rounded-full"></span>
-                            <span>{{__('ui.projects_in_progress')}}</span>
+                            <span>{{ __('ui.projects_in_progress') }}</span>
                         </div>
 
                         <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
-                            @for ($i = 0; $i < 10; $i++)
-                                <a href="www.google.com">
+                            @forelse ($projects as $item )
+                                <a href="{{route('projects.show' , ['id' => $item->id])}}">
                                     <div class="flex flex-col gap-4 px-2 m-1  ">
                                         <div
                                             class="relative flex flex-col p-3 border-2 rounded-lg hover:bg-secondary-50 text-secondary-600">
@@ -145,20 +138,20 @@
                                                 <div class="flex justify-between w-full">
                                                     <div class="flex flex-col">
                                                         <div class="flex items-center gap-2">
-                                                            <span class="font-semibold">Shop</span>
+                                                            <span class="font-semibold">{{$item->title}}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="flex items-center justify-between w-full">
-                                                    <span class="text-xs">2022-01-10</span>
+                                                    <span class="text-xs">{{date('Y-m-d' , $item->created_at)}}</span>
                                                     <div class="flex flex-col gap-2 w-1/2 ">
                                                         <div class="flex justify-between mb-1">
                                                             <span
-                                                                class="text-xs font-medium text-secondary-500 ">34%</span>
+                                                                class="text-xs font-medium text-secondary-500 ">{{$item->percentage_completed_tasks}}%</span>
                                                         </div>
                                                         <div class="w-full bg-gray-200 rounded-full h-1.5">
                                                             <div class="bg-secondary-600 h-1.5 rounded-full"
-                                                                style="width: 23%">
+                                                                style="width: {{$item->percentage_completed_tasks}}%">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -167,16 +160,19 @@
                                         </div>
                                     </div>
                                 </a>
-                            @endfor
+                            @empty
+                                <div class="flex flex-col gap-4 px-2 m-1  ">
+                                    {{ __('ui.no_projects_in_progress') }} خلوها بالنص
+                                </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="dashboard" role="tabpanel"
-            aria-labelledby="dashboard-tab">
+        {{-- <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
             @livewire('home.submain')
-        </div>
+        </div> --}}
     </div>
 
 

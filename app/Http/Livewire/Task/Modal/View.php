@@ -30,6 +30,7 @@ class View extends Component
 
     public function state($state){
         $this->task->state = $state;
+        $this->task->change_at = date('Y-m-d');
         $this->task->save();
 
         $this->alert('success', __('ui.data_has_been_edited_successfully'), [
