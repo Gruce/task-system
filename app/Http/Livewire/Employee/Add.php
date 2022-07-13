@@ -37,7 +37,6 @@ class Add extends Component
 
     public function save()
     {
-        dg($this->user);
         $this->validate();
         $this->user['password'] = bcrypt($this->user['password']);
 
