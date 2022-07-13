@@ -34,6 +34,22 @@ class Card extends Component
         $this->confirmedDelete(new Project , $id , 'delete' ,['project.all']);
     }
 
+    public function chnageDone(Project $project){
+        $project->done = !$project->done;
+        $project->change_at = date('Y-m-d');
+        $project->save();
+
+        $this->emitSelf('$refresh');
+
+        $this->alert('success', __('ui.data_has_been_edited_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
+    }
+
     public function mount($project){
         $this->project = $project;
     }
