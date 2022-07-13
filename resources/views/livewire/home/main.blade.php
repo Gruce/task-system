@@ -16,23 +16,18 @@
         </div>
     </div> --}}
     <div id="myTabContent">
-        <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="profile" role="tabpanel"
-            aria-labelledby="profile-tab">
+        <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="flex flex-col p-5 bg-white">
                 <div class="flex lg:flex-row flex-col justify-between">
                     <div class="basis-1/8 lg:mt-5 mb-5">
                         <div x-data="{ dropdown: false }" class=" ml-10 relative mr-10 flex flex-row  ">
                             <div>
-                                <button @click.stop="dropdown = !dropdown" type="button"
-                                    class="flex text-sm mr-3 bg-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                                    id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <button @click.stop="dropdown = !dropdown" type="button" class="flex text-sm mr-3 bg-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                     <span class="sr-only">Open user menu</span>
                                     <i class="fa-solid fa-filter text-2xl"></i>
                                 </button>
                             </div>
-                            <select wire:model="select" @click.outside="dropdown = false" @click.stop="" x-show="dropdown"
-                                id="countries"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <select wire:model="select" @click.outside="dropdown = false" @click.stop="" x-show="dropdown" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option value="1">سنوي</option>
                                 <option value="2">شهري</option>
                                 <option value="3">اسبوعي</option>
@@ -72,7 +67,7 @@
 
                     <div class="basis-1/4 lg:mb-0 mb-5">
                         <div class="max-w-sm bg-white rounded-lg border border-gray-200">
-                            <div @class(['grid grid-cols-2', 'divide-x' => en()])>
+                            <div @class(['grid grid-cols-2', 'divide-x'=> en()])>
                                 <div class="flex flex-col p-4 text-center ">
                                     <h6 class="text-xs font-semibold text-gray-400">
                                         {{ __('ui.tasks_completed') }}
@@ -114,56 +109,50 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
             <div class="flex flex-col">
                 <div class="flex lg:flex-row flex-col justify-between">
                     <div class="flex flex-col gap-2 bg-white basis-1/4">
-                        <div
-                            class="flex items-center gap-2 p-3 m-1 text-lg rounded-lg text-secondary-600 bg-secondary-50">
+                        <div class="flex items-center gap-2 p-3 m-1 text-lg rounded-lg text-secondary-600 bg-secondary-50">
                             <span class="w-3.5 h-3.5 bg-warning-400 border-2 border-white rounded-full"></span>
                             <span>{{ __('ui.projects_in_progress') }}</span>
                         </div>
 
                         <div class="flex flex-col gap-4 px-2 m-1 overflow-y-auto h-tasklist">
                             @forelse ($projects as $item )
-                                <a href="{{route('projects.show' , ['id' => $item->id])}}">
-                                    <div class="flex flex-col gap-4 px-2 m-1  ">
-                                        <div
-                                            class="relative flex flex-col p-3 border-2 rounded-lg hover:bg-secondary-50 text-secondary-600">
-                                            <div class="flex flex-col gap-2 cursor-pointer">
-                                                <div class="flex justify-between w-full">
-                                                    <div class="flex flex-col">
-                                                        <div class="flex items-center gap-2">
-                                                            <span class="font-semibold">{{$item->title}}</span>
-                                                        </div>
+                            <a href="{{route('projects.show' , ['id' => $item->id])}}">
+                                <div class="flex flex-col gap-4 px-2 m-1  ">
+                                    <div class="relative flex flex-col p-3 border-2 rounded-lg hover:bg-secondary-50 text-secondary-600">
+                                        <div class="flex flex-col gap-2 cursor-pointer">
+                                            <div class="flex justify-between w-full">
+                                                <div class="flex flex-col">
+                                                    <div class="flex items-center gap-2">
+                                                        <span class="font-semibold">{{$item->title}}</span>
                                                     </div>
                                                 </div>
-                                                <div class="flex items-center justify-between w-full">
-                                                    <span class="text-xs">{{date('Y-m-d' , $item->created_at)}}</span>
-                                                    <div class="flex flex-col gap-2 w-1/2 ">
-                                                        <div class="flex justify-between mb-1">
-                                                            <span
-                                                                class="text-xs font-medium text-secondary-500 ">{{$item->percentage_completed_tasks}}%</span>
-                                                        </div>
-                                                        <div class="w-full bg-gray-200 rounded-full h-1.5">
-                                                            <div class="bg-secondary-600 h-1.5 rounded-full"
-                                                                style="width: {{$item->percentage_completed_tasks}}%">
-                                                            </div>
+                                            </div>
+                                            <div class="flex items-center justify-between w-full">
+                                                <span class="text-xs">{{date('Y-m-d' , $item->created_at)}}</span>
+                                                <div class="flex flex-col gap-2 w-1/2 ">
+                                                    <div class="flex justify-between mb-1">
+                                                        <span class="text-xs font-medium text-secondary-500 ">{{$item->percentage_completed_tasks}}%</span>
+                                                    </div>
+                                                    <div class="w-full bg-gray-200 rounded-full h-1.5">
+                                                        <div class="bg-secondary-600 h-1.5 rounded-full" style="width: {{$item->percentage_completed_tasks}}%">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
-                            @empty
-                                <div class="flex flex-col gap-4 px-2 m-1  ">
-                                    {{ __('ui.no_projects_in_progress') }} خلوها بالنص
                                 </div>
+                            </a>
+                            @empty
+                            <div class="flex flex-col gap-4 px-2 m-1  ">
+                                {{ __('ui.no_projects_in_progress') }} خلوها بالنص
+                            </div>
                             @endforelse
                         </div>
                     </div>

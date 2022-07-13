@@ -39,7 +39,7 @@ class Show extends Component
     public function mount($id)
     {
         $this->employee = Employee::with(['tasks', 'files', 'user'])
-            ->withCount(['tasks', 'files'])
+            ->withCount(['tasks', 'files', 'projects'])
             ->findOrFail($id);
         // $this->employee->user->password = null;
         $this->tasks = $this->employee->tasks()->get();
@@ -48,7 +48,8 @@ class Show extends Component
         $this->in_progress_tasks = $this->tasks->where('state', 2)->count();
         $this->done_tasks = $this->tasks->where('state', 3)->count();
 
-        dg($this->employee['user']);
+        //
+        $this->projects = $this->employee->projects()->get();
     }
 
 
