@@ -1,5 +1,5 @@
 <div>
-    <div class="sm:flex flex-row" x-data="{ edit: false }" x-cloak>
+    <div class="sm:flex flex-row" x-data="{ edit: false , showModal: false }" x-cloak>
         <div class="basis-1/4 mt-3">
             <div class="flex flex-col items-center gap-2 p-8 text-center bg-white rounded-lg basis-1/4">
                 <div class="flex items-center gap-2">
@@ -157,19 +157,20 @@
                         <div class="flex flex-col">
                             <div class="flex flex-row items-center">
                                 <div class="w-10 h-10  bg-gray-400 rounded-full">
-                                    <i class="fa-solid fa-file-circle-exclamation p-3 "></i>                                </div>
+                                    <i class="fa-solid fa-file-circle-exclamation p-3 "></i>
+                                </div>
                                 <div>
                                     <h3 class="font-semibold text-secondary-600 text-l p-1">
                                         {{__('ui.task_in_progress_percentage')}}
-                                     </h3>
+                                    </h3>
                                 </div>
                             </div>
                             <div class="flex justify-between mt-5">
                                 <span class="text-xs font-medium text-secondary-500">234234%</span>
-                                <span class="text-xs font-medium text-secondary-500">10/23</span>
+                                <span class="text-xs font-medium text-secondary-500">{{$employee->tasks_count}}/{{$in_progress_tasks}}</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-1.5">
-                                <div class="bg-secondary-600 h-1.5 rounded-full" style="width: 23%"></div>
+                                <div class="bg-secondary-600 h-1.5 rounded-full" style="width: 50%"></div>
                             </div>
                         </div>
                     </div>
@@ -187,7 +188,7 @@
                             </div>
                             <div class="flex justify-between mt-5">
                                 <span class="text-xs font-medium text-secondary-500">234234%</span>
-                                <span class="text-xs font-medium text-secondary-500">10/23</span>
+                                <span class="text-xs font-medium text-secondary-500">{{$employee->tasks_count}}/{{$done_tasks}}</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-1.5">
                                 <div class="bg-secondary-600 h-1.5 rounded-full" style="width: 23%"></div>
@@ -208,7 +209,7 @@
                             </div>
                             <div class="flex justify-between mt-5">
                                 <span class="text-xs font-medium text-secondary-500">234234%</span>
-                                <span class="text-xs font-medium text-secondary-500">10/23</span>
+                                <span class="text-xs font-medium text-secondary-500">{{$employee->tasks_count}}/23</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-1.5">
                                 <div class="bg-secondary-600 h-1.5 rounded-full" style="width: 23%"></div>

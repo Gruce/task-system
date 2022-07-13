@@ -16,7 +16,7 @@ use Asantibanez\LivewireCharts\Models\RadarChartModel;
 class Show extends Component
 {
     use LivewireAlert, WithFileUploads;
-    public $state, $photo, $taskID;
+    public $state, $photo, $tasks, $taskID, $todo_tasks, $in_progress_tasks, $done_tasks;
 
     protected $listeners = ['$refresh', 'toggleModal'];
 
@@ -42,6 +42,11 @@ class Show extends Component
             ->withCount(['tasks', 'files'])
             ->findOrFail($id);
         // $this->employee->user->password = null;
+        $this->tasks = $this->employee->tasks()->get();
+
+        $this->todo_tasks = $this->tasks->where('state', 1)->count();
+        $this->in_progress_tasks = $this->tasks->where('state', 2)->count();
+        $this->done_tasks = $this->tasks->where('state', 3)->count();
 
         dg($this->employee['user']);
     }
@@ -134,24 +139,20 @@ class Show extends Component
 
     public function getPieChartModelProperty()
     {
-        $tasks = $this->employee->tasks()->get();
 
-        $todo_tasks = $tasks->where('state', 1)->count();
-        $in_progress_tasks = $tasks->where('state', 2)->count();
-        $done_tasks = $tasks->where('state', 3)->count();
 
         $tasks = [
             [
                 'type' => __('ui.tasks'),
-                'value' => $todo_tasks
+                'value' => $this->todo_tasks
             ],
             [
                 'type' => __('ui.in_progress'),
-                'value' => $in_progress_tasks
+                'value' => $this->in_progress_tasks
             ],
             [
                 'type' => __('ui.completed_tasks'),
-                'value' => $done_tasks
+                'value' => $this->done_tasks
             ],
         ];
 
