@@ -158,5 +158,6 @@ return [
     'best_employee' => 'The emploeyee who has the most tasks completed ',
     'in_this_year' => 'In This Year',
     'show_profile' => 'Show Profile',
-
+    'mark_as_done' => 'Mark As Done',
+    'mark_as_in_progress' => 'Mark As In Progress',
 ];
