@@ -48,8 +48,10 @@ class Show extends Component
         $this->in_progress_tasks = $this->tasks->where('state', 2)->count();
         $this->done_tasks = $this->tasks->where('state', 3)->count();
 
-        //
+        //projects count
         $this->projects = $this->employee->projects()->get();
+        $this->projects_done_count = $this->projects->where('done', true)->count();
+        $this->projects_not_done_count = $this->projects->where('done', false)->count();
     }
 
 

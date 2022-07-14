@@ -1178,6 +1178,9 @@ select {
 .z-10 {
   z-index: 10;
 }
+.z-20 {
+  z-index: 20;
+}
 .col-span-6 {
   grid-column: span 6 / span 6;
 }
@@ -1330,6 +1333,9 @@ select {
 }
 .ml-0 {
   margin-left: 0px;
+}
+.mt-24 {
+  margin-top: 6rem;
 }
 .ml-10 {
   margin-left: 2.5rem;
@@ -2059,10 +2065,6 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(109 102 235 / var(--tw-bg-opacity));
 }
-.bg-secondary-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(123 143 182 / var(--tw-bg-opacity));
-}
 .bg-gray-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
@@ -2615,6 +2617,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity));
 }
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
 .text-secondary-300 {
   --tw-text-opacity: 1;
   color: rgb(170 184 211 / var(--tw-text-opacity));
@@ -2630,10 +2636,6 @@ select {
 .text-orange-400 {
   --tw-text-opacity: 1;
   color: rgb(251 146 60 / var(--tw-text-opacity));
-}
-.text-black {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 .text-gray-50 {
   --tw-text-opacity: 1;
@@ -3167,10 +3169,6 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(109 102 235 / var(--tw-border-opacity));
 }
-.group:hover .group-hover\:border-secondary-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(123 143 182 / var(--tw-border-opacity));
-}
 .group:hover .group-hover\:bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -3179,13 +3177,13 @@ select {
   --tw-text-opacity: 1;
   color: rgb(50 39 222 / var(--tw-text-opacity));
 }
-.group:hover .group-hover\:text-secondary-600 {
-  --tw-text-opacity: 1;
-  color: rgb(101 123 166 / var(--tw-text-opacity));
-}
 .group:hover .group-hover\:text-primary-500 {
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity));
+}
+.group:hover .group-hover\:text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 .group:hover .group-hover\:text-gray-900 {
   --tw-text-opacity: 1;
@@ -3673,11 +3671,6 @@ select {
     padding-right: 5rem;
   }
 
-  .sm\:px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
   .sm\:pt-0 {
     padding-top: 0px;
   }
@@ -3688,6 +3681,14 @@ select {
 
   .sm\:pb-10 {
     padding-bottom: 2.5rem;
+  }
+
+  .sm\:pl-10 {
+    padding-left: 2.5rem;
+  }
+
+  .sm\:pr-10 {
+    padding-right: 2.5rem;
   }
 
   .sm\:pl-20 {

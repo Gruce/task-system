@@ -157,20 +157,20 @@
                         <div class="flex flex-col">
                             <div class="flex flex-row items-center">
                                 <div class="w-10 h-10  bg-gray-400 rounded-full">
-                                    <i class="fa-solid fa-file-circle-exclamation p-3 "></i>
+                                    <i class="fa-solid fa-list-check p-3"></i>
                                 </div>
                                 <div>
                                     <h3 class="font-semibold text-secondary-600 text-l p-1">
-                                        {{__('ui.task_in_progress_percentage')}}
+                                        {{__('ui.projects_completed')}}
                                     </h3>
                                 </div>
                             </div>
                             <div class="flex justify-between mt-5">
-                                <span class="text-xs font-medium text-secondary-500">234234%</span>
-                                <span class="text-xs font-medium text-secondary-500">{{$employee->tasks_count}}/{{$in_progress_tasks}}</span>
+                                <span class="text-xs font-medium text-secondary-500">{{$employee->percentage_completed_projects}}%</span>
+                                <span class="text-xs font-medium text-secondary-500">{{$employee->projects_count}}/{{$projects_done_count}}</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-1.5">
-                                <div class="bg-secondary-600 h-1.5 rounded-full" style="width: 50%"></div>
+                                <div class="bg-secondary-600 h-1.5 rounded-full" style="width: {{$employee->percentage_completed_projects}}%"></div>
                             </div>
                         </div>
                     </div>
@@ -178,20 +178,22 @@
                         <div class="flex flex-col">
                             <div class="flex flex-row items-center">
                                 <div class="w-10 h-10  bg-gray-400 rounded-full">
-                                    <i class="fa-solid fa-list-check p-3"></i>
+                                    <i class="fa-solid fa-file-circle-exclamation p-3 "></i>
                                 </div>
                                 <div>
                                     <h3 class="font-semibold text-secondary-600 text-l p-1">
-                                        {{{__('ui.tasks_completed')}}}
+                                        {{__('ui.projects_in_progress')}}
                                     </h3>
                                 </div>
                             </div>
+
+
                             <div class="flex justify-between mt-5">
-                                <span class="text-xs font-medium text-secondary-500">234234%</span>
-                                <span class="text-xs font-medium text-secondary-500">{{$employee->tasks_count}}/{{$done_tasks}}</span>
+                                <span class="text-xs font-medium text-secondary-500">{{$employee->percentage_not_completed_projects}}%</span>
+                                <span class="text-xs font-medium text-secondary-500">{{$employee->projects_count}}/{{$projects_not_done_count}}</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-1.5">
-                                <div class="bg-secondary-600 h-1.5 rounded-full" style="width: 23%"></div>
+                                <div class="bg-secondary-600 h-1.5 rounded-full" style="width: {{$employee->percentage_not_completed_projects}}%"></div>
                             </div>
                         </div>
                     </div>
