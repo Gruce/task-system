@@ -20,7 +20,7 @@ class ProjectSeeder extends Seeder
         for ($i = 1; $i <= 100; $i++) {
             $project = Project::create([
                 'title' => 'Project ' . $i,
-                'description' => 'Project ' . $i . ' description',
+                'description' => 'Project ' . $i . ' descriptionsdfsdfsdfsdfsdfdsfsdfdfsdfdfsdfdsfdescriptionsdfsdfsdfsdfsdfdsfsdfdfsdfdfsdfdsfdescriptionsdfsdfsdfsdfsdfdsfsdfdfsdfdfsdfdsfdescriptionsdfsdfsdfsdfsdfdsfsdfdfsdfdfsdfdsf',
             ]);
 
             $project->labels()->createMany([
