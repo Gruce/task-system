@@ -160,4 +160,9 @@ return [
     'show_profile' => 'Show Profile',
     'mark_as_done' => 'Mark As Done',
     'mark_as_in_progress' => 'Mark As In Progress',
+    'project_progress' => 'Project Progress',
+    'total_tasks' => 'Total Tasks',
+    'create_at' => 'Create At',
+    'uncompleted_tasks' => 'Uncompleted Tasks',
+    'completed_at' => 'Completed At',
 ];

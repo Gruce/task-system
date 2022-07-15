@@ -20,15 +20,15 @@ class ProjectSeeder extends Seeder
         for ($i = 1; $i <= 100; $i++) {
             $project = Project::create([
                 'title' => 'Project ' . $i,
-                'description' => 'Project ' . $i . ' descriptionsdfsdfsdfsdfsdfdsfsdfdfsdfdfsdfdsfdescriptionsdfsdfsdfsdfsdfdsfsdfdfsdfdfsdfdsfdescriptionsdfsdfsdfsdfsdfdsfsdfdfsdfdfsdfdsfdescriptionsdfsdfsdfsdfsdfdsfsdfdfsdfdfsdfdsf',
+                'description' => 'Project ' . $i . ' description',
             ]);
 
-            $project->labels()->createMany([
-                [
-                    'name' => 'label ' . $i,
-                    'color' => '#ff000' . $i,
-                ],
-            ]);
+            // $project->labels()->createMany([
+            //     [
+            //         'name' => 'label ' . $i,
+            //         'color' => '#ff000' . $i,
+            //     ],
+            // ]);
         }
 
         $projects = Project::get();

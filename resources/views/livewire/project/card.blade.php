@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li>
-                            <a wire:click="" href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
+                            <a wire:click="export({{ $project->id}})" class="cursor block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
                                 Export to Excle
                             </a>
                         </li>
@@ -64,9 +64,9 @@
 
         <div class="flex my-4 -space-x-4 rtl:space-x-reverse">
             @foreach ($project->employees as $employee)
-                <a href="https://github.com/Gruce/task-system/issues/2">
-                    <img src="{{$employee->photo}}" class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"  alt="">
-                </a>
+            <a href="https://github.com/Gruce/task-system/issues/2">
+                <img src="{{$employee->photo}}" class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" alt="">
+            </a>
             @endforeach
             @if($project->employees_count > 2)
             <a href="#" class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800">

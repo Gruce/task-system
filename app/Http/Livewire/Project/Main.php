@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Project;
 
 use App\Exports\ProjectsExport;
+use App\Exports\ProjectsTableExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Livewire\Component;
 
@@ -22,7 +23,7 @@ class Main extends Component
 
     public function export()
     {
-        return Excel::download(new ProjectsExport, 'Projects.xlsx' );
+        return Excel::download(new ProjectsTableExport, 'Projects ' . date('Y-m-d') . '.xlsx');
     }
 
 

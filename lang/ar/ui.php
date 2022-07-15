@@ -160,5 +160,9 @@ return [
     'show_profile' => 'عرض الملف الشخصي',
     'mark_as_done' => 'اغلاق المشروع',
     'mark_as_in_progress' => 'تحديد المشروع قيد التنفيذ',
-
+    'project_progress' => 'تقدم المشروع',
+    'total_tasks' => 'عدد المهام',
+    'create_at' => 'تاريخ الانشاء',
+    'uncompleted_tasks' => 'المهام الغير مكتملة',
+    'completed_at' => 'تاريخ الانتهاء',
 ];
