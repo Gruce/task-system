@@ -22,7 +22,7 @@ class Main extends Component
 
     public function export()
     {
-        return Excel::download(new ProjectsExport, 'Projects.xlsx',  \Maatwebsite\Excel\Excel::MPDF);
+        return Excel::download(new ProjectsExport, 'Projects.xlsx' );
     }
 
 

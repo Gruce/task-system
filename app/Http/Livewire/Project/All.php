@@ -20,14 +20,15 @@ class All extends Component
     {
         $search = '%' . $this->search . '%';
 
+
         $projects = Project::withCount(['tasks', 'files' , 'employees'])
-                    ->with(
-                        [
+                    ->with([
                             'employees'=> fn($employee) => $employee->limit(2),
                         ])
                     ->where('title' , 'LIKE' , $search)
                     ->orderByDesc('id')
                     ->paginate(24);
+
         return view('livewire.project.all', compact('projects'));
     }
 }

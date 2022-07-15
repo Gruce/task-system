@@ -15,7 +15,7 @@ class Project extends Model
     use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
     protected $fillable = ['title', 'description' , 'done' , 'change_at'];
-    // protected $appends = ['completed_tasks' , 'percentage_completed_tasks'];
+    // protected $appends = ['project_employees' , 'completed_tasks' , 'un_completed_tasks' , 'percentage_completed_tasks'];
     // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
@@ -62,11 +62,29 @@ class Project extends Model
         );
     }
 
+    protected function unCompletedTasks(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                return $this->tasks()->whereIn('state', [1,2])->count();
+            },
+        );
+    }
+
     protected function percentageCompletedTasks(): Attribute
     {
         return Attribute::make(
             get: function () {
                 return $this->tasks()->count() ? intval($this->completed_tasks / $this->tasks()->count() * 100) : 0;
+            },
+        );
+    }
+
+    protected function projectEmployees(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                return $this->employees()->get(['id' , 'name']);
             },
         );
     }
