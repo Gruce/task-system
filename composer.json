@@ -16,6 +16,8 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.5",
+        "maatwebsite/excel": "^3.1",
+        "psr/simple-cache": "2.0",
         "pusher/pusher-php-server": "^7.0",
         "silviolleite/laravelpwa": "^2.0",
         "spatie/laravel-backup": "^8.1",

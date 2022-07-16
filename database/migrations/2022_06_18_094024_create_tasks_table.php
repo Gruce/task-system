@@ -19,10 +19,11 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);
-            $table->integer('state')->default(1); // 1: new  2: in progress  3: done  4: hanging  5: rejected 6: accepted  7: Certified  8: Unaccredited
+            $table->integer('state')->default(1); // 1: to do  2: in progress  3: done
             $table->integer('importance')->default(1); // 1: low , 2: medium , 3: high
             $table->date('start_at');
             $table->date('end_at')->nullable();
+            $table->date('change_at')->default(date('Y-m-d'));
             $table->timestamps();
             $table->softDeletes();
         });

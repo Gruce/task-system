@@ -22,15 +22,15 @@ class Overview extends Component
     ];
 
     public function edit(){
-        $project = Project::with('employees')->findOrFail($this->task['project_id']);
+        $project = Project::findOrFail($this->task['project_id']);
 
         $task_employee_ids = $this->task->employees()->get()->pluck('id')->toArray();
 
-        $project_employee_ids = $project->employees->pluck('id')->toArray();
+        // $project_employee_ids = $project->employees->pluck('id')->toArray();
 
-        $employee_ids = array_diff($task_employee_ids , $project_employee_ids);
+        // $employee_ids = array_diff($task_employee_ids , $project_employee_ids);
 
-        $project->employees()->attach($employee_ids);
+        $project->employees()->syncWithoutDetaching($task_employee_ids);
         $this->task->save();
 
         $this->emitTo( 'task.all' , '$refresh');
@@ -58,6 +58,11 @@ class Overview extends Component
         if($this->task){
             $employees = Employee::whereNotIn('id' , $this->task->employees->pluck('id'))->get();
         }
+
+         //$employees = Employee::whereIn('id', array_keys($this->taskEmployees))->paginate(10);
+        // $this->taskEmployees = $this->task->employees->pluck('id');
+        // //dd($employees->toArray());
+        //dd($taskEmployees);
 
         return view('livewire.task.modal.overview' , [
             'projects' => $projects,

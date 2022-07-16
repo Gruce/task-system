@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description')->nullable();
+            $table->boolean('done')->default(false);
+            $table->date('change_at')->default(date('Y-m-d'));
             $table->timestamps();
             $table->softDeletes();
         });

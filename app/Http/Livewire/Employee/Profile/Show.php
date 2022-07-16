@@ -16,7 +16,7 @@ use Asantibanez\LivewireCharts\Models\RadarChartModel;
 class Show extends Component
 {
     use LivewireAlert, WithFileUploads;
-    public $state, $photo, $taskID;
+    public $state, $photo, $tasks, $taskID, $todo_tasks, $in_progress_tasks, $done_tasks;
 
     protected $listeners = ['$refresh', 'toggleModal'];
 
@@ -35,6 +35,24 @@ class Show extends Component
         'employee.user.phonenumber' => 'required',
         'employee.user.email' => 'required|email|unique:users,email',
     ];
+
+    public function mount($id)
+    {
+        $this->employee = Employee::with(['tasks', 'files', 'user'])
+            ->withCount(['tasks', 'files', 'projects'])
+            ->findOrFail($id);
+        // $this->employee->user->password = null;
+        $this->tasks = $this->employee->tasks()->get();
+
+        $this->todo_tasks = $this->tasks->where('state', 1)->count();
+        $this->in_progress_tasks = $this->tasks->where('state', 2)->count();
+        $this->done_tasks = $this->tasks->where('state', 3)->count();
+
+        //projects count
+        $this->projects = $this->employee->projects()->get();
+        $this->projects_done_count = $this->projects->where('done', true)->count();
+        $this->projects_not_done_count = $this->projects->where('done', false)->count();
+    }
 
 
     public function updatedPhoto($photo)
@@ -77,14 +95,7 @@ class Show extends Component
         $this->employee->user->save();
     }
 
-    public function mount($id)
-    {
-        $this->employee = Employee::with(['tasks', 'files', 'user'])
-            ->withCount(['tasks', 'files'])
-            ->findOrFail($id);
 
-        // $this->employee->user->password = null;
-    }
     // public function calctimeprogress()
     // {
     //     $this->task = Task::get()->last();
@@ -103,18 +114,22 @@ class Show extends Component
 
     public function edit()
     {
-        dg($this->employee->toArray());
+
         $this->employee->user->update([
-            'name' => $this->employee->user->name,
-            'username' => $this->employee->user->username,
-            'password' => $this->employee->user->password,
-            'email' => $this->employee->user->email,
-            'phonenumber' => $this->employee->user->phonenumber,
+            'name' => $this->employee['user']['name'],
+            'username' => $this->employee['user']['username'],
+            'email' => $this->employee['user']['email'],
+            'phonenumber' => $this->employee['user']['phonenumber'],
+            // 'password' => $this->employee->user->password,
         ]);
 
+        // $this->employee->job = $this->employee['job'];
+        // $this->employee->save();
+
         $this->employee->update([
-            'job' => $this->employee->job,
+            'job' => $this->employee['job'],
         ]);
+
 
         $this->alert('success', __('ui.data_has_been_edited_successfully'), [
             'position' => 'top',
@@ -124,38 +139,25 @@ class Show extends Component
             'width' => '400',
         ]);
     }
-    public function render()
+
+    public function getPieChartModelProperty()
     {
 
-        $tasks = $this->employee->tasks()->get();
-
-        $todo_tasks = $tasks->where('state', 1)->count();
-        $in_progress_tasks = $tasks->where('state', 2)->count();
-        $done_tasks = $tasks->where('state', 3)->count();
 
         $tasks = [
             [
                 'type' => __('ui.tasks'),
-                'value' => $todo_tasks
+                'value' => $this->todo_tasks
             ],
             [
                 'type' => __('ui.in_progress'),
-                'value' => $in_progress_tasks
+                'value' => $this->in_progress_tasks
             ],
             [
                 'type' => __('ui.completed_tasks'),
-                'value' => $done_tasks
+                'value' => $this->done_tasks
             ],
         ];
-
-        // $radarChartModel = new RadarChartModel;
-
-        // $radarChartModel->setAnimated(true);
-
-        // $radarChartModel = $radarChartModel->addSeries(__('ui.tasks'), __('ui.tasks'), $todo_tasks);
-        // $radarChartModel = $radarChartModel->addSeries(__('ui.in_progress'), __('ui.in_progress'), $in_progress_tasks);
-        // $radarChartModel = $radarChartModel->addSeries(__('ui.completed_tasks'), __('ui.completed_tasks'), $done_tasks);
-
 
         $pieChartModel = new LivewireCharts();
 
@@ -178,10 +180,12 @@ class Show extends Component
                     ->setColors(['#92a3c5', '#ffc94b', '#00EE63', '#f66665'])
             );
 
-        // $this->progress = $this->calctimeprogress();
-        return view('livewire.employee.profile.show', [
-            // 'radarChartModel' => $radarChartModel
-            'pieChartModel' => $pieChartModel
-        ]);
+        return $pieChartModel;
+    }
+
+
+    public function render()
+    {
+        return view('livewire.employee.profile.show');
     }
 }
