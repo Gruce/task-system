@@ -17,13 +17,13 @@ class Add extends Component
 
     protected $rules = [
         'user.name' => 'required',
-        'user.email' => 'required|email|unique:users',
-        'user.username' => 'required|unique:users',
-        'user.password' => 'required',
+        'user.email' => 'required|email|unique:users,email',
+        'user.username' => 'required|string|regex:/\w*$/|max:255|unique:users,username',
+        'user.password' => 'required|min:6',
         'user.gender' => 'required',
         'user.phonenumber' => 'required',
         'user.profile_photo_path' => '',
-        'user.employee.state' => 'required',
+        'user.employee.state' => '',
         'user.employee.job' => 'required',
     ];
 
@@ -37,7 +37,6 @@ class Add extends Component
 
     public function save()
     {
-        dg($this->user);
         $this->validate();
         $this->user['password'] = bcrypt($this->user['password']);
 

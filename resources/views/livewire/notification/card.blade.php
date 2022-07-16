@@ -27,7 +27,7 @@
                         </div>
                         <div class="ml-3 text-sm font-normal mr-3">
                             <span class="mb-1  text-sm font-semibold text-gray-900 dark:text-white"> {{$item->title}} </span>
-                            <div class="mb-2 text-sm font-normal">
+                            <div class="mb-2 text-sm font-normal ">
                                 {{$item->description}}
                             </div>
                             <div class="grid grid-cols-2 gap-2">

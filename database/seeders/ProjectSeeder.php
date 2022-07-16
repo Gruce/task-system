@@ -23,12 +23,12 @@ class ProjectSeeder extends Seeder
                 'description' => 'Project ' . $i . ' description',
             ]);
 
-            $project->labels()->createMany([
-                [
-                    'name' => 'label ' . $i,
-                    'color' => '#ff000' . $i,
-                ],
-            ]);
+            // $project->labels()->createMany([
+            //     [
+            //         'name' => 'label ' . $i,
+            //         'color' => '#ff000' . $i,
+            //     ],
+            // ]);
         }
 
         $projects = Project::get();

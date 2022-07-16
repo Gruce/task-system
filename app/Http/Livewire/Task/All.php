@@ -23,7 +23,8 @@ class All extends Component
         $type = $value['type'];
         $id = $value['id'];
         Task::findOrFail($id)->update([
-            'state' => $type
+            'state' => $type,
+            'change_at' => date('Y-m-d')
         ]);
     }
 

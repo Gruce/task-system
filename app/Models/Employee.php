@@ -24,27 +24,33 @@ class Employee extends Model
     /******************* RELATIONSHIPS ******************/
     /****************************************************/
 
-    public function tasks(){
+    public function tasks()
+    {
         return $this->belongsToMany(Task::class);
     }
 
-    public function projects(){
+    public function projects()
+    {
         return $this->belongsToMany(Project::class)->withTimestamps();
     }
 
-    public function files(){
+    public function files()
+    {
         return $this->morphMany(File::class, 'fileable');
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function notifications(){
+    public function notifications()
+    {
         return $this->belongsToMany(Notification::class)->withTimestamps()->withPivot(['read']);
     }
 
-    public function add($data){
+    public function add($data)
+    {
         $this->name = $data['name'];
         $this->email = $data['email'];
         $this->password = bcrypt($data['password']);
@@ -53,7 +59,8 @@ class Employee extends Model
         $this->save();
     }
 
-    public function state($state){
+    public function state($state)
+    {
         $this->state = !$state;
         $this->save();
     }
@@ -63,7 +70,8 @@ class Employee extends Model
     /****************************************************/
     /************** ACCESSORS & MUTATORS ****************/
     /****************************************************/
-    protected function name(): Attribute{
+    protected function name(): Attribute
+    {
         return Attribute::make(
             get: function () {
                 return $this->user->name;
@@ -71,10 +79,31 @@ class Employee extends Model
         );
     }
 
-    protected function photo(): Attribute{
+    protected function photo(): Attribute
+    {
         return Attribute::make(
             get: function () {
                 return $this->user->profile_photo;
+            },
+        );
+    }
+
+
+
+    protected function percentageCompletedProjects(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                return $this->projects()->count() ? intval($this->projects()->where('done', 1)->count() / $this->projects()->count() * 100) : 0;
+            },
+        );
+    }
+
+    protected function percentageNotCompletedProjects(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                return $this->projects()->count() ? intval($this->projects()->where('done', 0)->count() / $this->projects()->count() * 100) : 0;
             },
         );
     }

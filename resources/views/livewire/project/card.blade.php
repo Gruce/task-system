@@ -1,6 +1,6 @@
 <div wire:loading.class="opacity-50" @click="window.location.href = '{{route('projects.show', $project->id)}}'" x-data="{name: false, dropdown: false}" @ class="cursor-pointer relative p-5 group bg-white border-t-[12px] border-x border-b border-x-transparent border-b-transparent rounded-lg transition-all duration-200 delay-100 ease-in-out hover:border-x-secondary-500 hover:border-b-secondary-500 hover:shadow-xl hover:shadow-secondary-100 border-secondary-500 hover:border-2">
-    <span class="absolute px-2 py-1 tracking-wider text-white uppercase duration-200 ease-in-out delay-100 border-2 border-transparent rounded-lg ransition-all left-5 text-2xs -top-2 bg-secondary-500 group-hover:bg-white group-hover:border-secondary-500 group-hover:text-secondary-600">
-        Section
+    <span class="absolute px-2 py-1 tracking-wider text-white uppercase duration-200 ease-in-out delay-100 border-2 border-transparent rounded-lg ransition-all left-5 text-2xs -top-2 bg-{{$project->done ? 'green' : 'secondary'}}-600 group-hover:bg-{{$project->done ? 'green' : 'secondary'}}-500 group-hover:border-{{$project->done ? 'green' : 'secondary'}}-500 group-hover:text-{{$project->done ? 'white' : 'secondary'}}-100">
+        {{$project->done ? 'Done' : 'In Progress'}}
     </span>
     <div class="flex flex-col">
         {{-- Do your work, then step back. --}}
@@ -38,6 +38,16 @@
                             </a>
                         </li>
                         <li>
+                            <a wire:click="chnageDone({{$project->id}})" href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
+                                {{$project->done ? __('ui.mark_as_in_progress') : __('ui.mark_as_done')}}
+                            </a>
+                        </li>
+                        <li>
+                            <a wire:click="export({{ $project->id}})" class="cursor block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
+                                Export to Excle
+                            </a>
+                        </li>
+                        <li>
                             <a wire:click="confirmed({{ $project->id }})" href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
                                 {{__('ui.delete')}}
                             </a>
@@ -54,9 +64,9 @@
 
         <div class="flex my-4 -space-x-4 rtl:space-x-reverse">
             @foreach ($project->employees as $employee)
-                <a href="https://github.com/Gruce/task-system/issues/2">
-                    <img src="{{$employee->photo}}" class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"  alt="">
-                </a>
+            <a href="https://github.com/Gruce/task-system/issues/2">
+                <img src="{{$employee->photo}}" class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" alt="">
+            </a>
             @endforeach
             @if($project->employees_count > 2)
             <a href="#" class="flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800">
