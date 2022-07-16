@@ -34,17 +34,17 @@ class Sidebar extends Component
                     new TabItem(__('ui.employees'), 'fa-solid fa-users', 'employees'),
                     new TabItem(__('ui.projects'), 'fa-solid fa-diagram-project', 'projects'),
                     new TabItem(__('ui.task'), 'fa-solid fa-list-check', 'tasks'),
-                    new TabItem(__('ui.export_reports'), 'fa-solid fa-file-arrow-down', 'report'),
+
 
                 ]
             ),
-             new Tab(
+            new Tab(
                 'Notifcation',
                 [
                     new TabItem(__('ui.notifications'), 'fa-solid fa-bell', 'notifications'),
                 ],
-                 true
-             ),
+                true
+            ),
         ];
 
         $this->tabs = collect($this->tabs);

@@ -11,7 +11,6 @@ use App\Http\Livewire\{
     Project\Main as ProjectMain,
     Project\Show as ProjectShow,
     Notification\Main as NotificationMain,
-    Report\ExportReport as Report,
 };
 
 /*
@@ -68,9 +67,5 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('notifications')->group(function () {
         Route::get('/', NotificationMain::class)->name('notifications');
-    });
-
-    Route::prefix('report')->group(function () {
-        Route::get('/', Report::class)->name('report');
     });
 });
