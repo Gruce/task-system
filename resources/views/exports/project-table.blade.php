@@ -116,10 +116,10 @@
             <td>
                 @switch($task->importance)
                 @case(1)
-                {{__('ui.low')}}
+                {{__('ui.importance_low')}}
                 @break
                 @case(2)
-                {{__('ui.medium')}}
+                {{__('ui.importance_medium')}}
                 @break
                 @case(3)
                 {{__('ui.importance_high')}}
