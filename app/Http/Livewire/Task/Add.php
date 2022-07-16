@@ -13,7 +13,7 @@ class Add extends Component
 {
     use  LivewireAlert, WithFileUploads, WithPagination, NotificationTrait;
 
-    public $task, $taskd, $search, $employeesSearch, $employee_id, $taskEmployees = [], $files = [];
+    public $task, $taskd, $search, $employeesSearch, $employee_id, $project,  $taskEmployees = [], $files = [];
 
     protected $listeners = ['$refresh', 'duplicatTask'];
 
@@ -101,6 +101,9 @@ class Add extends Component
         $this->task['start_at'] = date('Y-m-d');
         $this->task['end_at'] = date('Y-m-d');
         $this->task['importance'] = 1;
+
+        if ($this->project)
+            $this->task['project_id'] = $this->project->id;
     }
 
     public function render()
