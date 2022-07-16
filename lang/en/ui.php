@@ -166,4 +166,6 @@ return [
     'uncompleted_tasks' => 'Uncompleted Tasks',
     'completed_at' => 'Completed At',
     'end_at' => 'End At',
+    'is_hold' => 'Hold',
+    'is_not_hold' => 'Not Hold',
 ];

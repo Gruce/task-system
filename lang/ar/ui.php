@@ -166,4 +166,6 @@ return [
     'uncompleted_tasks' => 'المهام الغير مكتملة',
     'completed_at' => 'تاريخ الانتهاء',
     'end_at' => 'تاريخ الانتهاء',
+    'is_hold' => 'معلقة',
+    'is_not_hold' => 'غير معلقة',
 ];

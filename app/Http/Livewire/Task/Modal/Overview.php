@@ -53,9 +53,8 @@ class Overview extends Component
             $search = '%' . $this->search . '%';
             $projects = Project::where('title' , 'LIKE' , $search)->paginate(24);
         }
+
         $employees = [];
-        //$taskEmployees = $this->task->employees->pluck('id');
-        //get employees that are not assigned to task
         if($this->task){
             $employees = Employee::whereNotIn('id' , $this->task->employees->pluck('id'))->get();
         }
@@ -68,7 +67,6 @@ class Overview extends Component
         return view('livewire.task.modal.overview' , [
             'projects' => $projects,
             'employees' => $employees,
-
         ]);
     }
 }

@@ -61,6 +61,22 @@ class View extends Component
         $this->emitTo('task.all' , '$refresh');
     }
 
+    public function is_hold ($is_hold){
+        $this->task->is_hold = $is_hold;
+        $this->task->save();
+
+        $this->alert('success', __('ui.data_has_been_edited_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
+
+        $this->emitSelf('$refresh');
+        $this->emitTo('task.all' , '$refresh');
+    }
+
     public function edit(){
         if($this->task->start_at < $this->task->end_at){
             $this->alert('warning', __('ui.start_data_more_than_end_data'), [
