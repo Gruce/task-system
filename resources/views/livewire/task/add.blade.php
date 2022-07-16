@@ -1,4 +1,11 @@
 <div class="p-4 bg-white rounded-lg sm:p-8">
+    @if($project)
+    <div>
+        <button @click="addTask=!addTask" class="px-2 py-1 mb-2 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    @endif
     <form wire:submit.prevent="add">
         <div class="flex flex-col gap-10 sm:flex-row">
             <div class="flex flex-col gap-4 sm:basis-3/4">
