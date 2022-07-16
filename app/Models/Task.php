@@ -16,7 +16,7 @@ class Task extends Model
 
     protected $fillable = [
         'project_id', 'title', 'description', 'is_active', 'state',
-        'importance', 'start_at', 'end_at' , 'change_at'
+        'importance', 'start_at', 'end_at' , 'change_at' , 'is_hold'
     ];
 
     protected $appends = ['state_title'];

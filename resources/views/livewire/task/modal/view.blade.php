@@ -107,6 +107,34 @@
                                     </span>
                                     <i class="text-xs fa-solid fa-circle"></i>
                                 </div>
+
+                                {{-- hold Drop Down --}}
+                            <div class="relative w-full sm:w-44" x-data="{priorityDropDown: false}">
+                                <div x-show="priorityDropDown" x-transition class="absolute left-0 flex flex-col justify-center w-full gap-1 p-1 bg-white bg-opacity-75 border rounded bottom-10">
+                                    <div @click="priorityDropDown = !priorityDropDown" wire:click="is_hold(1)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-secondary-50 text-secondary-700">
+                                        <span class="text-xs">{{__('ui.is_hold')}}</span>
+                                        <i class="text-2xs fa-solid fa-circle"></i>
+                                    </div>
+                                    <div @click="priorityDropDown = !priorityDropDown" wire:click="is_hold(0)" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer bg-primary-100 text-primary-800">
+                                        <span class="text-xs">{{__('ui.is_not_hold')}}</span>
+                                        <i class="text-2xs fa-solid fa-circle"></i>
+                                    </div>
+                        
+                                </div>
+                                <div @click="priorityDropDown = !priorityDropDown" class="flex items-center justify-between px-4 py-2 rounded cursor-pointer {{ $task->is_hold == 1 ? 'bg-secondary-50 text-secondary-700' : ( $task->is_hold == 0 ? 'bg-primary-100 text-primary-800' : 'bg-error-100 text-error-900') }}">
+                                    {{-- Dropdown --}}
+                                    <span class="text-sm">
+                                        @if ($task->is_hold == 1)
+                                        {{__('ui.is_hold')}}
+                                        @else
+                                        {{__('ui.is_not_hold')}}
+                                        @endif
+                                    </span>
+                                    <i class="text-xs fa-solid fa-circle"></i>
+                                </div>
+                                
+
+
                             </div>
 
 

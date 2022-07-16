@@ -165,4 +165,6 @@ return [
     'create_at' => 'Create At',
     'uncompleted_tasks' => 'Uncompleted Tasks',
     'completed_at' => 'Completed At',
+    'is_hold' => 'Hold',
+    'is_not_hold' => 'Not Hold',
 ];
