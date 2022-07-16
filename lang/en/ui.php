@@ -165,4 +165,5 @@ return [
     'create_at' => 'Create At',
     'uncompleted_tasks' => 'Uncompleted Tasks',
     'completed_at' => 'Completed At',
+    'end_at' => 'End At',
 ];

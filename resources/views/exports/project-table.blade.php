@@ -62,3 +62,112 @@
         </tr>
     </tbody>
 </table>
+
+//Task Table
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                {{__('ui.task_name')}}
+            </th>
+            <th>
+                {{__('ui.task_description')}}
+            </th>
+            <th>
+                {{__('ui.task_state')}}
+            </th>
+            <th>
+                {{__('ui.task_importance')}}
+            </th>
+            <th>
+                {{__('ui.start_at')}}
+            </th>
+            <th>
+                {{__('ui.end_at')}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($tasks as $index => $task )
+        <tr>
+            <th>
+                {{$loop->index + 1}}
+            </th>
+            <th>
+                {{$task->title}}
+            </th>
+            <th>
+                {{$task->description}}
+            </th>
+            <td>
+                @if ($task->state == 1)
+                {{__('ui.to_do')}}
+                @elseif ($task->state == 2)
+                {{__('ui.in_progress')}}
+                @else
+                {{__('ui.done')}}
+
+                @endif
+            </td>
+            <td>
+                @switch($task->importance)
+                @case(1)
+                {{__('ui.low')}}
+                @break
+                @case(2)
+                {{__('ui.medium')}}
+                @break
+                @case(3)
+                {{__('ui.importance_high')}}
+                @break
+                @default
+                {{__('ui.no_data')}}
+                @endswitch
+            </td>
+            <td>
+                {{$task->start_at}}
+            </td>
+            <td>
+                {{$task->end_at}}
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
+//Employee Table
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                {{__('ui.name')}}
+            </th>
+            <th>
+                {{__('ui.task_count')}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($employees as $index => $employee )
+        <tr>
+            <th>
+                {{$loop->index + 1}}
+            </th>
+            <th>
+                {{$employee->name}}
+            </th>
+            <th>
+                {{$employee->tasks_count}}
+            </th>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
