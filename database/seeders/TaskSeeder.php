@@ -20,7 +20,7 @@ class TaskSeeder extends Seeder
         $projects = Project::get();
 
         foreach ($projects as $project)
-            for ($i = 1; $i <= 1; $i++) {
+            for ($i = 1; $i <= 5; $i++) {
                 $task = Task::create([
                     'title' => 'title ' . $i,
                     'project_id' => $project->id,
