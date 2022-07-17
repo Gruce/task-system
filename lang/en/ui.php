@@ -168,4 +168,5 @@ return [
     'end_at' => 'End At',
     'is_hold' => 'Hold',
     'is_not_hold' => 'Not Hold',
+    'this_field_is_required' => 'This field is required',
 ];

@@ -17,7 +17,10 @@
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.title') }}
                         </label>
-                        <input wire:model.defer="task.title" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.title') }} required>
+                        <input wire:model.defer="task.title" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.title') }} >
+                    @error('task.title')
+                        <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
+                    @enderror
                     </div>
                     @if (!$project)
                     <div>
@@ -25,7 +28,8 @@
                             {{ __('ui.choose_project') }}</label>
                         </label>
                         <div class="flex w-full gap-2">
-                            <input wire:model="search" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.project_title')}}" required>
+                            <input wire:model="search" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.project_title')}}" >
+
                             @if ($search)
                             <select wire:model="task.project_id" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option value="" selected>{{__('ui.select_project')}}</option>
@@ -35,13 +39,19 @@
                             </select>
                             @endif
                         </div>
+                        @error('task.project_id')
+                                <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
+                        @enderror
                     </div>
                     @endif
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.start_date') }}
                         </label>
-                        <input wire:model.defer="task.start_at" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select date">
+                        <input wire:model="task.start_at" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select date">
+                        @error('task.start_at')
+                            <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
+                        @enderror
                     </div>
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -56,7 +66,6 @@
                         {{ __('ui.description') }}
                     </label>
                     <textarea wire:model.defer="task.description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.project_description') }}></textarea>
-
                 </div>
 
                 <div class="grid xl:grid-cols-2 xl:gap-6">
@@ -66,11 +75,13 @@
                             {{ __('ui.importance') }}</label>
                         </label>
                         <select wire:model.defer="task.importance" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected="">{{ __('ui.importance') }}</option>
                             <option value="1">{{ __('ui.importance_low') }}</option>
                             <option value="2">{{ __('ui.importance_medium') }}</option>
                             <option value="3">{{ __('ui.importance_high') }}</option>
                         </select>
+                        @error('task.importance')
+                            <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
+                        @enderror
                     </div>
                     <div>
                         <div class="grid xl:grid-cols-2 xl:gap-6">
@@ -90,6 +101,9 @@
                                     </button>
                                 </select>
                                 @endif
+                                @error('employee_id')
+                                <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
+                            @enderror
                             </div>
                             <div>
                                 <ul>
@@ -104,7 +118,10 @@
                                     <li>{{ __('ui.no_data') }}</li>
                                     @endforelse
                                 </ul>
+
                             </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -138,6 +155,7 @@
                         </div>
                     </div>
                     <input wire:model="files" type="file" class="w-full h-full opacity-0 cursor-pointer" name="" multiple>
+                    @error('files') <span class="error">{{__('ui.this_field_is_required')}}</span> @enderror
                 </div>
 
                 {{-- Preview --}}
