@@ -168,4 +168,6 @@ return [
     'end_at' => 'End At',
     'is_hold' => 'Hold',
     'is_not_hold' => 'Not Hold',
+    'employees_active' => 'Employees Active',
+    'employees_not_active' => 'Employees Disabled',
 ];

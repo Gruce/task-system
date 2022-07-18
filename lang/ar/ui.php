@@ -168,4 +168,6 @@ return [
     'end_at' => 'تاريخ الانتهاء',
     'is_hold' => 'معلقة',
     'is_not_hold' => 'غير معلقة',
+    'employees_active' => 'الموظفين النشطين',
+    'employees_not_active' => 'الموظفين الغير نشطين',
 ];
