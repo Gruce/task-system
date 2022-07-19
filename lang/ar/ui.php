@@ -168,5 +168,3 @@ return [
     'end_at' => 'تاريخ الانتهاء',
     'is_hold' => 'معلقة',
     'is_not_hold' => 'غير معلقة',
-    'this_field_is_required' => 'هذا الحقل مطلوب',
-];
