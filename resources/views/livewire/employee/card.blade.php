@@ -21,12 +21,15 @@
 
             </div>
             <div class="flex justify-between mt-4 text-sm text-center text-gray-500">
-                <div @class([ 'px-4 py-2 basis-1/3 flex items-center justify-center gap-2' , 'border-r'=> en(),
+                <button wire:click="state({{ $employee->id }}" @class([ 'px-4 py-2 basis-1/3 flex items-center justify-center rounded-lg gap-2 hover:text-secondary-800 hover:bg-green-200 duration-150 ease-in delay-75' , 'border-r'=> en(),
                     'border-l' => ar(),
                     ]) class="">
-                    <i class="ri-chat-1-line"></i>
-                    <span>234</span>
-                </div>
+                    @if ($employee->state)
+                    <i class="fa-solid fa-user-check text-green-400"></i>
+                    @else
+                    <i class="fa-solid fa-user-large-slash text-red-400"></i>
+                    @endif
+                </button>
                 <div @class([ 'px-4 py-2 basis-1/3 flex items-center justify-center gap-2' , 'border-r'=> en(),
                     'border-l' => ar(),
                     ]) class="">
