@@ -5,7 +5,7 @@
 <div class="flex flex-col h-full m-5">
     <div class="flex gap-8 ">
         <div class="basis-1/4">
-            <div class="p-4 bg-white rounded-xl  border-gray-200 shadow-md ">
+            <div class="p-4 bg-white rounded-lg  border-gray-200 shadow-md ">
                 <div class="flex justify-between">
                     <div>
                         <i class="fa-2x fa-solid fa-diagram-project text-blue-500"></i>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="basis-1/4">
-            <div class="p-4 bg-white rounded-xl border-gray-200 shadow-md ">
+            <div class="p-4 bg-white rounded-lg border-gray-200 shadow-md ">
                 <div class="flex justify-between">
                     <div>
                         <i class="fa-2x fa-solid fa-file-circle-exclamation text-red-400"></i>
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="basis-1/4">
-            <div class="p-4 bg-white rounded-xl  border-gray-200 shadow-md ">
+            <div class="p-4 bg-white rounded-lg  border-gray-200 shadow-md ">
                 <div class="flex justify-between">
                     <div>
                         <i class="fa-2x fa-solid fa-list-check text-blue-500"></i>
@@ -60,7 +60,7 @@
             </div>
         </div>
         <div class="basis-1/4">
-            <div class="p-4 bg-white rounded-xl border-gray-200 shadow-md ">
+            <div class="p-4 bg-white rounded-lg border-gray-200 shadow-md ">
                 <div class="flex justify-between">
                     <div>
                         <i class="fa-2x fa-solid fa-triangle-exclamation text-red-400"></i>
@@ -83,7 +83,7 @@
     <div class="flex gap-8 mt-5">
         <div class="basis-1/4">
             <div class="flex flex-col gap-8">
-                <div class="p-4 bg-white rounded-xl border-gray-200 shadow-md ">
+                <div class="p-4 bg-white rounded-lg border-gray-200 shadow-md ">
                     <div class="flex justify-between">
                         <div>
                             <i class="fa-2x fa-solid fa-users text-blue-500"></i>
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-4 bg-white rounded-xl border-gray-200 shadow-md ">
+                <div class="p-4 bg-white rounded-lg border-gray-200 shadow-md ">
                     <div class="flex justify-between">
                         <div>
                             <i class="fa-2x fa-solid fa-users-slash text-red-400"></i>
@@ -122,7 +122,7 @@
         {{-- Right Side --}}
         <div class="basis-3/4">
             <div class=" h-full">
-                <div class=" h-full bg-white rounded-xl  border-gray-200 shadow-md ">
+                <div class=" h-full bg-white rounded-lg  border-gray-200 shadow-md ">
                     ASDdasdasdasdasdasdasdasdsadasdsadasdasdd
                 </div>
             </div>
