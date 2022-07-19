@@ -3,8 +3,8 @@
 @section('title', __('ui.home'))
 
 <div class="flex flex-col h-full m-5">
-    <div class="flex gap-8 ">
-        <div class="basis-1/4">
+    <div class="flex flex-col lg:flex-row  gap-8 ">
+        <div class="basis-1/4 ">
             <div class="p-4 bg-white rounded-xl  border-gray-200 shadow-md ">
                 <div class="flex justify-between">
                     <div>
@@ -80,7 +80,7 @@
         </div>
     </div>
     {{-- End of row --}}
-    <div class="flex gap-8 mt-5">
+    <div class="flex flex-col lg:flex-row gap-8 mt-5">
         <div class="basis-1/4">
             <div class="flex flex-col gap-8">
                 <div class="p-4 bg-white rounded-xl border-gray-200 shadow-md ">
@@ -91,7 +91,6 @@
                         <div>
                             <span class="text-xl font-medium text-secondary-400">{{ __('ui.employees_active') }}</span>
                         </div>
-
                     </div>
                     <div class="flex flex-col items-center mt-4 pb-2">
                         <div class="flex items-baseline text-secondary-600">
@@ -108,7 +107,6 @@
                         <div>
                             <span class="text-xl font-medium text-secondary-400">{{ __('ui.employees_not_active') }}</span>
                         </div>
-
                     </div>
                     <div class="flex flex-col items-center mt-4 pb-2">
                         <div class="flex items-baseline text-secondary-600">
