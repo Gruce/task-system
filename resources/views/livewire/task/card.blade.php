@@ -32,9 +32,6 @@
                     @if($task->is_hold == 1)
                     <span class="bg-gray-600 text-gray-50 text-2xs font-semibold px-2.5 py-0.5 rounded uppercase">{{ __('ui.is_hold') }}</span>
                     @endif
-                    @if($task->is_hold == 0)
-                    <span class="bg-gray-600 text-gray-50 text-2xs font-semibold px-2.5 py-0.5 rounded uppercase">{{ __('ui.is_not_hold') }}</span>
-                    @endif
                 </div>
 
             </div>

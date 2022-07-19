@@ -20,10 +20,8 @@ class Add extends Component
     protected $rules = [
         'task.title' => 'required',
         'task.project_id' => 'required',
-        'task.importance' => 'required',
         'task.start_at' => 'required',
-        'task.end_at' => 'required',
-        'task.description' => 'required',
+        'employee_id' => 'required',
     ];
 
 
