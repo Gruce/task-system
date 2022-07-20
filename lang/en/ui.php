@@ -176,4 +176,6 @@ return [
     'no_notifications' => 'No Notifications',
     'notifications' => 'Notifications',
     'view_all' => 'View All',
+    'unselect_all' => 'Unselect All',
+    'Searchemployees' => 'Search Employees',
 ];

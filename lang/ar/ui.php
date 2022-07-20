@@ -177,4 +177,6 @@ return [
     'no_notifications' => 'لا يوجد إشعارات',
     'notifications' => 'الإشعارات',
     'view_all' => 'عرض الكل',
+    'unselect_all' => 'إلغاء تحديد الكل',
+    'Searchemployees' => 'بحث عن موظف',
 ];

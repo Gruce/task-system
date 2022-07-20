@@ -56,16 +56,11 @@ class Add extends Component
         ]);
     }
 
-    public function updatingSelectAll($value)
+    public function select()
     {
-        if ($value) {
-            $this->selected = $this->employees->pluck('id')->toArray();
-        } else {
-            $this->selected = [];
-        }
+        $this->selectAll = !$this->selectAll;
+        $this->selected = $this->selectAll ? $this->employees->pluck('id')->toArray() : [];
     }
-
-
 
     public function render()
     {

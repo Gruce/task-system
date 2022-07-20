@@ -59,7 +59,7 @@
                     @foreach ($files as $key => $file)
                     <div class="flex items-center justify-between p-4 rounded-lg bg-secondary-50 text-secondary-500">
                         <span>{{__('ui.file') . ' ' . ($key+1)}}</span>
-                        <button wire:click="removeFile({{$key}})" type="button" class="focus:outline-none text-error-600 hover:bg-error-100 focus:ring-4 focus:ring-error-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2">
+                        <button wire:model="removeFile({{$key}})" type="button" class="focus:outline-none text-error-600 hover:bg-error-100 focus:ring-4 focus:ring-error-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2">
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </div>
