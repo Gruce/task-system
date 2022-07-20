@@ -3,8 +3,8 @@
         <i class="text-xl fa-solid fa-filter"></i>
     </button>
 
-    <div id="dropdownFilterHome" class="hidden mt-8 rounded-lg z-10 w-44 bg-secondary-50  divide-y divide-gray-100 shadow ">
-        <ul class="p-3 space-y-1 text-sm text-gray-700" aria-labelledby="filterHome">
+    <div id="dropdownFilterHome" class="hidden   rounded-lg z-10 w-44 bg-secondary-50  divide-y divide-gray-100 shadow ">
+        <ul class="p-3 space-y-1   text-sm text-gray-700" aria-labelledby="filterHome">
             <li>
                 <div class="flex items-center p-2 rounded hover:bg-white">
                     <input wire:model="currentFilter" id="default-radio-1" type="radio" value="1" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
