@@ -17,10 +17,10 @@
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.title') }}
                         </label>
-                        <input wire:model.defer="task.title" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.title') }} >
-                    @error('task.title')
+                        <input wire:model.defer="task.title" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.title') }}>
+                        @error('task.title')
                         <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
-                    @enderror
+                        @enderror
                     </div>
                     @if (!$project)
                     <div>
@@ -28,7 +28,7 @@
                             {{ __('ui.choose_project') }}</label>
                         </label>
                         <div class="flex w-full gap-2">
-                            <input wire:model="search" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.project_title')}}" >
+                            <input wire:model="search" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.project_title')}}">
 
                             @if ($search)
                             <select wire:model="task.project_id" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
@@ -40,7 +40,7 @@
                             @endif
                         </div>
                         @error('task.project_id')
-                                <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
+                        <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
                         @enderror
                     </div>
                     @endif
@@ -50,7 +50,7 @@
                         </label>
                         <input wire:model="task.start_at" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select date">
                         @error('task.start_at')
-                            <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
+                        <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
                         @enderror
                     </div>
                     <div>
@@ -80,52 +80,52 @@
                             <option value="3">{{ __('ui.importance_high') }}</option>
                         </select>
                         @error('task.importance')
-                            <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
+                        <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
                         @enderror
                     </div>
                     <div>
-                        <div class="grid xl:grid-cols-2 xl:gap-6">
+                        <div class="grid xl:grid-cols-1 xl:gap-6">
                             <div>
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
-                                    {{ __('ui.employees') }}</label>
-                                </label>
-                                <input wire:model="employeesSearch" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.name')}}">
-                                @if($employeesSearch)
-                                <select wire:model="employee_id" wire:change="addEmployee" class="my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected="">{{ __('ui.select_employee') }}</option>
-                                    @foreach($employees as $employee)
-                                    <option value="{{$employee->id}}">{{$employee->name}}</option>
-                                    @endforeach
-                                    <button wire:click="add" @click="add=!add" class="px-4 py-1 duration-150 ease-in-out delay-75 border rounded-lg hover:text-success-800 hover:bg-success-100">
-                                        <i class="fas fa-check"></i>
-                                    </button>
-                                </select>
-                                @endif
-                                @error('employee_id')
-                                <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
-                            @enderror
-                            </div>
-                            <div>
-                                <ul>
-                                    @forelse ($taskEmployees as $key => $employee )
-                                    <li>
-                                        {{$loop->iteration}} : {{$employee['name']}}
-                                        <button type="button" wire:click="removeEmployee({{$key}})">
-                                            <i class="mx-4 my-2 fas fa-times text-red-500"></i>
+                                <div>
+                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
+                                        {{ __('ui.employees') }}</label>
+                                    </label>
+                                    <input wire:model="employeesSearch" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.name')}}">
+                                </div>
+                                <div>
+                                    @if($employeesSearch)
+                                    <select wire:model="employee_id" wire:change="addEmployee" class="my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option selected="">{{ __('ui.select_employee') }}</option>
+                                        @foreach($employees as $employee)
+                                        <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                        @endforeach
+                                        <button wire:click="add" @click="add=!add" class="px-4 py-1 duration-150 ease-in-out delay-75 border rounded-lg hover:text-success-800 hover:bg-success-100">
+                                            <i class="fas fa-check"></i>
                                         </button>
-                                    </li>
-                                    @empty
-                                    <li>{{ __('ui.no_data') }}</li>
-                                    @endforelse
-                                </ul>
-
+                                    </select>
+                                    @endif
+                                    @error('employee_id')
+                                    <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
+                                    @enderror
+                                </div>
                             </div>
-
-
                         </div>
                     </div>
+
                 </div>
-                <button type="submit" class="text-white hover:bg-blue-700 bg-blue-600 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                <div class="flex flex-wrap gap-2">
+                    @foreach ($taskEmployees as $key => $employee)
+                    <div>
+                        <span class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-lg mr-2">
+                            <button wire:click="removeEmployee({{$key}}) class=" m-1 duration-150 ease-in delay-75 rounded-full hover:text-secondary-800 hover:bg-secondary-100">
+                                <i class="fas fa-times p-1  "></i>
+                            </button>
+                            {{$employee['name']}}
+                        </span>
+                    </div>
+                    @endforeach
+                </div>
+                <button type="submit" class="text-white hover:bg-blue-700 bg-blue-600 font-medium rounded-lg mt-4 text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                     {{ __('ui.add') }}
                 </button>
             </div>
