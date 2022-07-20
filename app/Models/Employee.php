@@ -46,7 +46,7 @@ class Employee extends Model
 
     public function notifications()
     {
-        return $this->belongsToMany(Notification::class)->withTimestamps()->withPivot(['read']);
+        return $this->belongsToMany(Notification::class)->withTimestamps()->withPivot(['read'])->orderByDesc('id');
     }
 
     public function add($data)

@@ -43,7 +43,7 @@ class Users extends Component
 
         $this->sendNotification(
             $this->task->title,
-            __('ui.remove_in_task') . " '" . $this->task->title . "'",
+            'ui.remove_in_task',
             $this->employee_id
         );
 
@@ -77,7 +77,7 @@ class Users extends Component
 
         $this->sendNotification(
             $this->task->title,
-            __('ui.add_in_task') . " '" . $this->task->title . "'",
+            'ui.add_in_task',
             $this->userId
         );
 
@@ -85,8 +85,8 @@ class Users extends Component
             $this->task->project->employees()->attach($this->userId);
 
             $this->sendNotification(
-                __('ui.add_task') . " '" . $this->task->project->title . "'",
-                __('ui.addattachments'),
+                $this->task->project->title,
+                'ui.add_in_project',
                 $this->userId
             );
         }

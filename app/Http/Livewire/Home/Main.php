@@ -15,7 +15,30 @@ use App\Models\{
 
 class Main extends Component
 {
+    protected $listeners = ['$refresh', 'currentFilter'];
     public $select = 1;
+
+    public function currentFilter($filter)
+    {
+        $this->select = $filter;
+    }
+
+    public function getCurrentProperty()
+    {
+        switch ($this->select) {
+            case 2:
+                return __('ui.current_month');
+                break;
+            case 3:
+                return __('ui.current_week');
+                break;
+            case 4:
+                return __('ui.current_day');
+                break;
+            default:
+                return __('ui.current_year');
+        }
+    }
 
     public function render()
     {

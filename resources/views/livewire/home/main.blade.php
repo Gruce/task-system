@@ -17,7 +17,7 @@
                 <div class="flex flex-col items-center mt-4 pb-2">
                     <div class="flex items-baseline text-secondary-600">
                         <span class="text-5xl font-extrabold tracking-tight">{{ $projects_done_count }}</span>
-                        <span class="ml-1 text-xl font-normal text-gray-400">/ {{ __('ui.current_week') }}</span>
+                        <span class="ml-1 text-xl font-normal text-gray-400">/ {{$this->current}}</span>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 <div class="flex flex-col items-center mt-4 pb-2">
                     <div class="flex items-baseline text-secondary-600">
                         <span class="text-5xl font-extrabold tracking-tight">{{ $projects_not_done_count }}</span>
-                        <span class="ml-1 text-xl font-normal text-gray-400">/ {{ __('ui.current_week') }}</span>
+                        <span class="ml-1 text-xl font-normal text-gray-400">/ {{$this->current}}</span>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                 <div class="flex flex-col items-center mt-4 pb-2">
                     <div class="flex items-baseline text-secondary-600">
                         <span class="text-5xl font-extrabold tracking-tight">{{ $tasks_done_count }}</span>
-                        <span class="ml-1 text-xl font-normal text-gray-400">/ {{ __('ui.current_week') }}</span>
+                        <span class="ml-1 text-xl font-normal text-gray-400">/ {{$this->current}}</span>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                 <div class="flex flex-col items-center mt-4 pb-2">
                     <div class="flex items-baseline text-secondary-600">
                         <span class="text-5xl font-extrabold tracking-tight">{{ $tasks_in_progress_count }}</span>
-                        <span class="ml-1 text-xl font-normal text-gray-400">/ {{ __('ui.current_week') }}</span>
+                        <span class="ml-1 text-xl font-normal text-gray-400">/ {{$this->current}}</span>
                     </div>
                 </div>
             </div>

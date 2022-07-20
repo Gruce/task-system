@@ -34,9 +34,8 @@ class Card extends Component
             $employee = auth()->user()->employee;
             $notifications = $employee->notifications->where('pivot.read', false);
         } else {
-            $notifications = Notification::all();
+            $notifications = Notification::orderByDesc('id')->get();
         }
-
         return view('livewire.notification.card', [
             'notifications' => $notifications,
         ]);

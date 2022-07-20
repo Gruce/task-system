@@ -143,6 +143,8 @@ return [
     'projects_not_completed' => 'Projects Not Completed',
     'current_week' => 'Current Week',
     'current_month' => 'Current Month',
+    'current_year' => 'Current Year',
+    'current_day' => 'Current Day',
     'tasks_completed' => 'Tasks Completed',
     'task_not_completed' => 'Tasks Not Completed',
     'number_of_employees' => 'Number Of Employees',
@@ -171,4 +173,7 @@ return [
     'this_field_is_required' => 'This field is required',
     'employees_active' => 'Employees Active',
     'employees_not_active' => 'Employees Disabled',
+    'no_notifications' => 'No Notifications',
+    'notifications' => 'Notifications',
+    'view_all' => 'View All',
 ];

@@ -11,6 +11,8 @@ class Card extends Component
     use LivewireAlert;
     protected $listeners = ['delete'];
     public $ID;
+    public $employee;
+
 
     public function confirmed($id, $function)
     {
@@ -36,7 +38,27 @@ class Card extends Component
         ]);
         $this->emitTo('employee.all', '$refresh');
     }
-    public $employee;
+
+    public function state(Employee $employee)
+    {
+        $employee->state = !$employee->state;
+        $employee->save();
+        $msg = !$employee->state ? 'ui.the_account_has_been_disabled' : 'ui.the_account_has_been_activated';
+        $this->alert(
+            'success',
+            __($msg),
+            [
+                'position' => 'top',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+                'width' => '400',
+            ]
+        );
+
+        $this->emitTo('employee.all', '$refresh');
+    }
+
     public function render()
     {
         return view('livewire.employee.card');

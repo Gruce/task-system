@@ -21,7 +21,7 @@
 
             </div>
             <div class="flex justify-between mt-4 text-sm text-center text-gray-500">
-                <button wire:click="state({{ $employee->id }}" @class([ 'px-4 py-2 basis-1/3 flex items-center justify-center rounded-lg gap-2 hover:text-secondary-800 hover:bg-green-200 duration-150 ease-in delay-75' , 'border-r'=> en(),
+                <button @click.stop="" wire:click="state({{$employee->id}})" @class([ 'px-4 py-2 basis-1/3 flex items-center justify-center rounded-lg gap-2   hover:bg-gray-200 duration-150 ease-in delay-75' , 'border-r'=> en(),
                     'border-l' => ar(),
                     ]) class="">
                     @if ($employee->state)

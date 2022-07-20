@@ -11,9 +11,9 @@ class MiniSidebar extends Component
      *
      * @return void
      */
+    public $langs;
     public function __construct()
     {
-        //
     }
 
     /**

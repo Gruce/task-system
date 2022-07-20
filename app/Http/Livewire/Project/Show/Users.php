@@ -58,7 +58,7 @@ class Users extends Component
 
         $this->sendNotification(
             $this->project->title,
-            __('ui.remove_in_project') . " '" . $this->project->title . "'",
+            'ui.remove_in_project',
             $this->employee_id
         );
 
@@ -93,7 +93,7 @@ class Users extends Component
 
         $this->sendNotification(
             $this->project->title,
-            __('ui.add_in_project') . " '" . $this->project->title . "'",
+            'ui.add_in_project',
             $this->userId
         );
 
