@@ -154,7 +154,7 @@
                     <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 ">
                         <div class="flex flex-col">
                             <div class="flex flex-row items-center">
-                                <div class="w-10 h-10  bg-gray-400 rounded-full">
+                                <div class="w-10 h-10   rounded-full text-secondary-500 bg-secondary-50">
                                     <i class="fa-solid fa-list-check p-3"></i>
                                 </div>
                                 <div>
@@ -175,7 +175,7 @@
                     <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <div class="flex flex-col">
                             <div class="flex flex-row items-center">
-                                <div class="w-10 h-10  bg-gray-400 rounded-full">
+                                <div class="w-10 h-10  text-secondary-500 bg-secondary-50 rounded-full">
                                     <i class="fa-solid fa-file-circle-exclamation p-3 "></i>
                                 </div>
                                 <div>
@@ -196,7 +196,7 @@
                     <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <div class="flex flex-col">
                             <div class="flex flex-row items-center">
-                                <div class="w-10 h-10  bg-gray-400 rounded-full">
+                                <div class="w-10 h-10  text-secondary-500 bg-secondary-50 rounded-full">
                                     <i class="fa-solid fa-diagram-project  p-3"></i>
                                 </div>
                                 <div>

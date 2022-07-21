@@ -40,13 +40,19 @@ class Main extends Component
         }
     }
 
+    public function mount()
+    {
+        $employees = Employee::get(['id']);
+        $this->employees_active_count = $employees->where('state', true)->count();
+        $this->employees_disable_count = $employees->where('state', false)->count();
+    }
+
     public function render()
     {
 
         $year = date('Y');
         $month = date('m');
 
-        $employees_count = Employee::count();
 
         $projects = Project::whereYear('change_at', $year);
         $tasks = Task::whereYear('change_at', $year);
@@ -79,7 +85,6 @@ class Main extends Component
 
 
         return view('livewire.home.main', [
-            'employees_count' => $employees_count,
             'tasks_done_count' => $tasks_done_count,
             'tasks_in_progress_count' => $tasks_in_progress_count,
             'projects' => $projects,

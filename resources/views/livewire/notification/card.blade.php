@@ -5,7 +5,8 @@
             <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
         </svg>
         <div class="flex relative">
-            <div class="inline-flex relative -top-2 right-3 w-3 h-3 bg-red-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+            <span class="absolute inline-flex w-full h-full -top-2 right-3  rounded-full opacity-75 animate-ping   bg-red-400"></span>
+            <span class="relative inline-flex w-3 h-3 rounded-full border-white border-2 bg-red-500 -top-2 right-3"></span>
         </div>
     </button>
     <!-- Dropdown menu -->
