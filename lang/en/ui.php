@@ -179,4 +179,5 @@ return [
     'unselect_all' => 'Unselect All',
     'select_all' => 'Select All',
     'Searchemployees' => 'Search Employees',
+    'no_employee_selected' => 'No Employee Selected',
 ];

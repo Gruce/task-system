@@ -65,7 +65,7 @@
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
                         {{ __('ui.description') }}
                     </label>
-                    <textarea wire:model.defer="task.description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.project_description') }}></textarea>
+                    <textarea wire:model.defer="task.description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.description') }}></textarea>
                 </div>
 
                 <div class="grid xl:grid-cols-2 xl:gap-6">

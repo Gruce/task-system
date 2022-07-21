@@ -180,4 +180,6 @@ return [
     'unselect_all' => 'إلغاء تحديد الكل',
     'select_all' => 'تحديد الكل',
     'Searchemployees' => 'بحث عن موظف',
+    'no_employee_selected' => 'لم يتم تحديد موظف',
+    'description' => 'الوصف',
 ];
