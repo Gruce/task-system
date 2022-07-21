@@ -42,7 +42,7 @@ class Main extends Component
 
     public function mount()
     {
-        $employees = Employee::get(['id']);
+        $employees = Employee::get(['id', 'state']);
         $this->employees_active_count = $employees->where('state', true)->count();
         $this->employees_disable_count = $employees->where('state', false)->count();
     }
