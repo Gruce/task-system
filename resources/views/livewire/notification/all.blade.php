@@ -24,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($notifications as $notification)
+                    @forelse ($notifications as $notification)
                     <tr
                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ">
                         <th scope="row"
@@ -38,14 +38,40 @@
                         <td class="px-6 py-4">
                             {{$notification->description}}
                         </td>
+                        {{-- <td class="px-6 py-4">
+                            <button id="states-button" data-dropdown-toggle="dropdown-states" class="flex  inline-flex items-center py-2 px-3 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300  hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </button>
+                            <div id="dropdown-states" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
+
+                                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="states-button">
+                                    @foreach ($notification->employees as $employee)
+                                    <li class="px-4 py-2">
+                                        {{ $employee->name }}
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </td> --}}
+
                         <td class="px-6 py-4">
-                            {{$notification->employees->count()}}
+                            @foreach($notification->employees as $employee)
+                                <span class="inline-flex py-2 px-4  text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    {{$employee->name}}
+                                </span>
+                            @endforeach
                         </td>
+
                         <td class="px-6 py-4">
                             {{ $notification->created_at->format('d/m/Y') }}
                         </td>
                     </tr>
-                    @endforeach
+
+                    @empty
+                        <td colspan="5" class="text-center pt-4">
+                            {{ __('ui.no_notifications') }}
+                        </td>
+                    @endforelse
 
                 </tbody>
             </table>
