@@ -10,14 +10,19 @@
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         {{ __('ui.title') }}
                     </label>
-                    <input wire:model.defer="notification.title" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder required>
+                    <input wire:model.defer="notification.title" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder >
+                    @error('notification.title')
+                        <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
+                        @enderror
                 </div>
                 <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         {{ __('ui.description') }}
                     </label>
                     <textarea wire:model.defer="notification.description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder></textarea>
-
+                    @error('notification.description')
+                    <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
+                    @enderror
                 </div>
                 <button type="submit" class="text-white hover:bg-blue-700 bg-blue-600 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                     {{__('ui.send')}}

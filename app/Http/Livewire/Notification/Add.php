@@ -10,11 +10,11 @@ use App\Traits\Livewire\NotificationTrait;
 class Add extends Component
 {
     use  LivewireAlert, NotificationTrait;
-    protected $listeners = ['search'];
+    protected $listeners = ['search' , '$refresh'];
 
     protected $rules = [
         'notification.title' => 'required',
-        'notification.description' => '',
+        'notification.description' => 'required',
     ];
 
     public $search, $employee_id, $notification, $employees;
@@ -47,7 +47,7 @@ class Add extends Component
         );
 
         $this->reset();
-        $this->emitTo('notification.card', '$refresh');
+        $this->emitTo('notification.all',  '$refresh');
 
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
