@@ -12,13 +12,13 @@
                                 </div>
                             </div>
                             <div id="tooltip-default" role="tooltip" class="inline-block absolute invisible z-10  py-2 px-3 text-sm font-medium text-white bg-green-700 rounded-lg  opacity-0 transition-opacity duration-300 tooltip">
-                                تفعيل
+                                {{__('ui.active')}}
                                 <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
                             @else
                             <img class="w-40 h-40 p-1 mb-3 ring-4 ring-green-600 rounded-full" src="{{ $employee->user->profile_photo }}" alt="">
                             <div id="tooltip-default" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-red-600 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                تعطيل
+                                {{__('ui.disable')}}
                                 <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
                             @endif
@@ -32,7 +32,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <span x-show="!edit" class="text-2xl font-bold text-secondary-600">
                     {{ $employee->name }}
@@ -41,8 +40,8 @@
                     {{ $employee->user->username }}
                 </p>
                 <button x-show="!edit" @click="edit = !edit" type="button" class="w-full flex justify-center text-secondary-600 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center    mr-2 mb-2">
-                    <i class="fa-solid fa-pen-to-square "></i>
-                    <span>Edit Profile</span>
+                    <i class="fa-solid fa-pen-to-square mx-2"></i>
+                    <span>{{__('ui.edit_profile')}}</span>
                 </button>
                 <div x-show="!edit" class="w-full flex justify-start">
                     <div>
@@ -71,7 +70,6 @@
                 <div x-show="!edit" class="mt-4 h-96">
                     <livewire:livewire-pie-chart key="{{ $this->pieChartModel->reactiveKey() }}" :pie-chart-model="$this->pieChartModel" />
                 </div>
-
 
                 {{-- edit --}}
                 <div x-show="edit" class="w-full flex-col">
@@ -186,8 +184,6 @@
                                     </h3>
                                 </div>
                             </div>
-
-
                             <div class="flex justify-between mt-5">
                                 <span class="text-xs font-medium text-secondary-500">{{$employee->percentage_not_completed_projects}}%</span>
                                 <span class="text-xs font-medium text-secondary-500">{{$employee->projects_count}}/{{$projects_not_done_count}}</span>
@@ -205,7 +201,7 @@
                                 </div>
                                 <div>
                                     <h3 class="font-semibold text-secondary-600 text-l p-1">
-                                        {{__('ui.projects_completed')}}
+                                        erert
                                     </h3>
                                 </div>
                             </div>
@@ -218,7 +214,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 {{-- Bottom --}}
                 <div class="sm:ml-3  w-full mt-3 bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">

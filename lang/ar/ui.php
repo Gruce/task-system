@@ -177,4 +177,7 @@ return [
     'no_notifications' => 'لا يوجد إشعارات',
     'notifications' => 'الإشعارات',
     'view_all' => 'عرض الكل',
+    'export' => 'تصدير',
+    'export_to_excel' =>  'تصدير إلى Excel',
+    'edit_profile' => 'تعديل الملف الشخصي',
 ];

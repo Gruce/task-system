@@ -1668,6 +1668,9 @@ select {
 .basis-\[80\%\] {
   flex-basis: 80%;
 }
+.basis-\[90\%\] {
+  flex-basis: 90%;
+}
 .origin-top-left {
   transform-origin: top left;
 }

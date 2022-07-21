@@ -9,9 +9,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Livewire\WithFileUploads;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Asantibanez\LivewireCharts\Facades\LivewireCharts;
-use Asantibanez\LivewireCharts\Models\RadarChartModel;
 
 class Show extends Component
 {
@@ -96,22 +94,6 @@ class Show extends Component
     }
 
 
-    // public function calctimeprogress()
-    // {
-    //     $this->task = Task::get()->last();
-    //     $task=$this->task;
-    //     $start_at = $task->start_at;
-
-    //        $s = strtotime($start_at) ;
-    //        $end_at = $task->end_at;
-    //        $e = strtotime($end_at);
-    //        $t1 = strtotime($end_at)- strtotime(now());
-    //        $t2 = strtotime($end_at)- strtotime($start_at);
-    //        $res = 100 - ($t1/$t2)*100;
-
-    //     return (int)$res;
-    //     }
-
     public function edit()
     {
 
@@ -142,8 +124,6 @@ class Show extends Component
 
     public function getPieChartModelProperty()
     {
-
-
         $tasks = [
             [
                 'type' => __('ui.tasks'),

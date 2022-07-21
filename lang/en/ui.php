@@ -176,4 +176,7 @@ return [
     'no_notifications' => 'No Notifications',
     'notifications' => 'Notifications',
     'view_all' => 'View All',
+    'export' => 'Export',
+    'export_to_excel' =>  'Export To Excel',
+    'edit_profile' => 'Edit Profile',
 ];
