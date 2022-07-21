@@ -179,4 +179,5 @@ return [
     'export' => 'Export',
     'export_to_excel' =>  'Export To Excel',
     'edit_profile' => 'Edit Profile',
+    'disable' => 'Disable',
 ];

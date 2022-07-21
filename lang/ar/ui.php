@@ -180,4 +180,5 @@ return [
     'export' => 'تصدير',
     'export_to_excel' =>  'تصدير إلى Excel',
     'edit_profile' => 'تعديل الملف الشخصي',
+    'disable' => 'تعطيل',
 ];
