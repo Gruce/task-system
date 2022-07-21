@@ -32,7 +32,7 @@ class Add extends Component
         $this->validate();
 
         if (!$this->selected) {
-            $this->alert('error', __('ui.no_tasks'), [
+            $this->alert('error', __('ui.no_employee_selected'), [
                 'position' => 'top',
                 'timer' => 3000,
                 'toast' => true,
