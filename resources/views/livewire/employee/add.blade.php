@@ -68,7 +68,7 @@
                         <div class="avatar self-end mx-2">
                             <div class="w-12 h-12 rounded-lg">
                                 <div wire:loading.remove wire:target="user.profile_photo_path">
-                                    @if ($user['profile_photo_path'])
+                                    @if (isset($user['profile_photo_path']))
                                     <img src="{{ $user['profile_photo_path']->temporaryUrl() }}">
                                     @else
                                     <img class="rounded-lg" src="https://ccemdata.mcmaster.ca/media/avatars/default.png" />
@@ -83,13 +83,13 @@
                 </div>
 
                 <div class="flex justify-center rounded-md shadow-sm gap-2 w-full" role="group">
-                    <label class="@if ($user['gender'] == 2) text-red-500 @else  text-gray-900 @endif basis-1/2 flex justify-center items-center py-2 px-4 text-sm font-medium  bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-rose-700 focus:text-rose-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-rose-500 dark:focus:text-white">
+                    <label class="@isset($user['gender']) @if ($user['gender'] == 2) text-red-500 @else  text-gray-900 @endif @endisset  basis-1/2 flex justify-center items-center py-2 px-4 text-sm font-medium  bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-rose-700 focus:text-rose-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-rose-500 dark:focus:text-white">
                         <span>
                             <i class="fas fa-2x fa-female"></i>
                         </span>
                         <input class="hidden" type="radio" name="gender" value="2" wire:model="user.gender">
                     </label>
-                    <label class="@if ($user['gender'] == 1) text-blue-500 @else text-gray-900 @endif basis-1/2 flex justify-center items-center py-2 px-4 text-sm font-medium  bg-white rounded-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                    <label class="@isset($user['gender']) @if ($user['gender'] == 1) text-blue-500 @else text-gray-900 @endif @endisset  basis-1/2 flex justify-center items-center py-2 px-4 text-sm font-medium  bg-white rounded-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
                         <span>
                             <i class="fas fa-2x fa-male"></i>
                         </span>
