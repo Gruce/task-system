@@ -28,7 +28,7 @@
 
                 <div class="mb-3 flex items-center gap-4">
                     <span class=" w-3.5 h-3.5 bg-primary-400 border-2 border-white rounded-full"></span>
-                    <span>{{__('ui.users')}}</span>
+                    <span>{{__('ui.employees')}}</span>
                 </div>
 
                 {{-- search --}}

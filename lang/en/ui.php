@@ -23,7 +23,6 @@ return [
     'empty'       => 'Empty',
     'employee'    => 'Employee',
     'employees'   => 'Employees',
-    'employees'   => 'Employees',
     'not_assigned' => 'Not Assigned',
     'assigned'    => 'Assigned',
     'all'         => 'All',
