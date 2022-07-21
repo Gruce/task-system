@@ -38,6 +38,7 @@
                         <td class="px-6 py-4">
                             {{$notification->description}}
                         </td>
+                        {{-- show enployee in list --}}
                         {{-- <td class="px-6 py-4">
                             <button id="states-button" data-dropdown-toggle="dropdown-states" class="flex  inline-flex items-center py-2 px-3 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300  hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button">
                                 <i class="fa-solid fa-angle-down"></i>
