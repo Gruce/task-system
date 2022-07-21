@@ -177,5 +177,6 @@ return [
     'notifications' => 'Notifications',
     'view_all' => 'View All',
     'unselect_all' => 'Unselect All',
+    'select_all' => 'Select All',
     'Searchemployees' => 'Search Employees',
 ];

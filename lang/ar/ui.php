@@ -178,5 +178,6 @@ return [
     'notifications' => 'الإشعارات',
     'view_all' => 'عرض الكل',
     'unselect_all' => 'إلغاء تحديد الكل',
+    'select_all' => 'تحديد الكل',
     'Searchemployees' => 'بحث عن موظف',
 ];
