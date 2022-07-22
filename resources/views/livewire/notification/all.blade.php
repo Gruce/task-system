@@ -56,13 +56,13 @@
                         </td>
 
 
-                        <td class="px-6 py-4">
+                        {{-- <td class="px-6 py-4">
                             @foreach($notification->employees as $employee)
                                 <span class="inline-flex py-2 px-4  text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
                                     {{$employee->name}}
                                 </span>
                             @endforeach
-                        </td>
+                        </td> --}}
 
                         <td class="px-6 py-4">
                             {{ $notification->created_at->format('d/m/Y') }}
