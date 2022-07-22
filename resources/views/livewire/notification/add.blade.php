@@ -39,7 +39,7 @@
                 {{-- search --}}
                 <input wire:model="search" type="text" class=" mb-6 block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.Searchemployees')}}">
 
-                <div  class="flex flex-col pl-2 overflow-y-auto h-projectfiles ">
+                <div  class="flex flex-col pl-2 overflow-y-auto py-1 h-48 ">
 
                     {{-- Addition --}}
                     <div class="flex flex-col gap-4  text-lg font-semibold capitalize pr-9 bg-white rounded-lg   text-secondary-600" x-data="{add:false}" x-cloak>

@@ -39,13 +39,13 @@
                             {{$notification->description}}
                         </td>
                         {{-- show enployee in list --}}
-                        {{-- <td class="px-6 py-4">
+                        <td class="px-6 py-4">
                             <button id="states-button" data-dropdown-toggle="dropdown-states" class="flex  inline-flex items-center py-2 px-3 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300  hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button">
                                 <i class="fa-solid fa-angle-down"></i>
                             </button>
-                            <div id="dropdown-states" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
+                            <div id="dropdown-states" class="hidden z-10  bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
 
-                                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="states-button">
+                                <ul class=" overflow-y-auto h-40 py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="states-button">
                                     @foreach ($notification->employees as $employee)
                                     <li class="px-4 py-2">
                                         {{ $employee->name }}
@@ -53,7 +53,8 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        </td> --}}
+                        </td>
+
 
                         <td class="px-6 py-4">
                             @foreach($notification->employees as $employee)
