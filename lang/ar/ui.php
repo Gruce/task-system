@@ -187,4 +187,6 @@ return [
     'export_to_excel' =>  'تصدير إلى Excel',
     'edit_profile' => 'تعديل الملف الشخصي',
     'disable' => 'تعطيل',
+    'username_already_exists' => 'اسم المستخدم موجود بالفعل',
+    'email_already_exists' => 'البريد الإلكتروني موجود بالفعل',
 ];

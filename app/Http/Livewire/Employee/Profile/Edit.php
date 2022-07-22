@@ -2,8 +2,12 @@
 
 namespace App\Http\Livewire\Employee\Profile;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class Edit extends Component
 {
@@ -17,6 +21,7 @@ class Edit extends Component
     public function mount($employee)
     {
         $this->employee = $employee;
+        $this->user = $employee->user;
         $this->name = $employee->user->name;
         $this->email = $employee->user->email;
         $this->username = $employee->user->username;
@@ -27,8 +32,8 @@ class Edit extends Component
 
     protected $rules = [
         'name' => 'required',
-        'email' => 'required|email|unique:users,email',
-        'username' => 'required|unique:users,username',
+        'email' => 'required|email',
+        'username' => 'required',
         'gender' => 'required',
 
     ];
@@ -37,6 +42,25 @@ class Edit extends Component
     public function edit()
     {
         $this->validate();
+
+        if ($this->email != $this->employee->user->email && User::where('email', $this->email)->exists())
+            return $this->alert('error', __('ui.email_already_exists'), [
+                'position' => 'top',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+                'width' => '400',
+            ]);
+
+        if ($this->username != $this->employee->user->username && User::where('username', $this->username)->exists())
+            return $this->alert('error', __('ui.username_already_exists'), [
+                'position' => 'top',
+                'timer' => 3000,
+                'toast' => true,
+                'timerProgressBar' => true,
+                'width' => '400',
+            ]);
+
         $this->employee->user->update([
             'name' => $this->name,
             'email' => $this->email,
@@ -70,9 +94,14 @@ class Edit extends Component
             $this->employee->user->update([
                 'password' => bcrypt($this->password),
             ]);
-            return redirect()->route('home');
+            Auth::logout();
+            redirect()->route('login');
         }
     }
+
+
+
+
 
 
 
