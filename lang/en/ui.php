@@ -179,4 +179,8 @@ return [
     'select_all' => 'Select All',
     'Searchemployees' => 'Search Employees',
     'no_employee_selected' => 'No Employee Selected',
+    'export' => 'Export',
+    'export_to_excel' =>  'Export To Excel',
+    'edit_profile' => 'Edit Profile',
+    'disable' => 'Disable',
 ];

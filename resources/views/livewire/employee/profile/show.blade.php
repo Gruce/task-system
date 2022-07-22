@@ -12,13 +12,13 @@
                                 </div>
                             </div>
                             <div id="tooltip-default" role="tooltip" class="inline-block absolute invisible z-10  py-2 px-3 text-sm font-medium text-white bg-green-700 rounded-lg  opacity-0 transition-opacity duration-300 tooltip">
-                                تفعيل
+                                {{__('ui.active')}}
                                 <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
                             @else
                             <img class="w-40 h-40 p-1 mb-3 ring-4 ring-green-600 rounded-full" src="{{ $employee->user->profile_photo }}" alt="">
                             <div id="tooltip-default" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-red-600 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                                تعطيل
+                                {{__('ui.disable')}}
                                 <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
                             @endif
@@ -32,7 +32,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <span x-show="!edit" class="text-2xl font-bold text-secondary-600">
                     {{ $employee->name }}
@@ -41,8 +40,8 @@
                     {{ $employee->user->username }}
                 </p>
                 <button x-show="!edit" @click="edit = !edit" type="button" class="w-full flex justify-center text-secondary-600 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center    mr-2 mb-2">
-                    <i class="fa-solid fa-pen-to-square "></i>
-                    <span>Edit Profile</span>
+                    <i class="fa-solid fa-pen-to-square mx-2"></i>
+                    <span>{{__('ui.edit_profile')}}</span>
                 </button>
                 <div x-show="!edit" class="w-full flex justify-start">
                     <div>
@@ -72,81 +71,9 @@
                     <livewire:livewire-pie-chart key="{{ $this->pieChartModel->reactiveKey() }}" :pie-chart-model="$this->pieChartModel" />
                 </div>
 
-
                 {{-- edit --}}
                 <div x-show="edit" class="w-full flex-col">
-                    <div>
-                        <input wire:keydown.enter="edit" wire:model.defer="employee.user.name" type="text" class="mt-2 bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-4 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder={{ __('ui.name') }} required>
-                        @error('employee.user.name')<span class="text-red-500">{{ $message }}</span> @enderror
-                    </div>
-                    <div>
-                        <input wire:keydown.enter="edit" wire:model.defer="employee.user.username" type="text" class="mt-2 bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-4 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder={{ __('ui.username') }} required>
-                        @error('employee.user.username')<span class="text-red-500">{{ $message }}</span> @enderror
-                    </div>
-                    <hr class="my-2">
-                    <div class="flex mt-2">
-                        <div class="relative w-full">
-                            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                <i class="fa-regular fa-at  text-gray-500 dark:text-gray-400"></i>
-                            </div>
-                            <input type="text" wire:keydown.enter="edit" wire:model.defer="employee.user.email" class="bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-10 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder="{{__('ui.email')}}">
-                            @error('employee.user.email')<span class="text-red-500">{{ $message }}</span> @enderror
-                        </div>
-                    </div>
-                    <div class="flex mt-2">
-                        <div class="relative w-full">
-                            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                <i class="fa-solid fa-phone  text-gray-400 dark:text-gray-400"></i>
-                            </div>
-                            <input type="text" wire:keydown.enter="edit" wire:model.defer="employee.user.phonenumber" class="bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-10 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder="{{__('ui.phonenumber')}}">
-                            @error('employee.user.phonenumber')<span class="text-red-500">{{ $message }}</span> @enderror
-                        </div>
-                    </div>
-                    <div class="flex mt-2">
-                        <div class="relative w-full">
-                            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                <i class="fa-solid fa-bullhorn  text-gray-400 dark:text-gray-400"></i>
-                            </div>
-                            <input wire:keydown.enter="edit" type="text" wire:model.defer="employee.job" class="bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-10 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder="{{__('ui.job')}}">
-                            @error('employee.job')<span class="text-red-500">{{ $message }}</span> @enderror
-                        </div>
-                    </div>
-                    <div class="flex mt-2">
-                        <div class="relative w-full">
-                            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                <i class="fa-solid fa-key  text-gray-400 dark:text-gray-400"></i>
-                            </div>
-                            <input wire:keydown.enter="edit" type="text" wire:model.defer="employee.user.password" class="bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-10 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder="{{__('ui.new_password')}}">
-                            @error('employee.user.password')<span class="text-red-500">{{ $message }}</span> @enderror
-                        </div>
-                    </div>
-                    <div class="flex mt-2">
-                        <div class="relative w-full">
-                            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                <i class="fa-solid fa-key  text-gray-400 dark:text-gray-400"></i>
-                            </div>
-                            <input wire:keydown.enter="edit" type="text" wire:model.defer="employee.password_confirmation" class="bg-gray-100 border-0 text-gray-500 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 pl-10 {{ar() ? 'pl-10' : 'pr-10'}}" placeholder="{{__('ui.confirm_password')}}">
-                            @error('employee.password_confirmation')<span class="text-red-500">{{ $message }}</span> @enderror
-                        </div>
-                    </div>
-                    <div class="flex justify-center rounded-md shadow-sm gap-2 w-full mt-2" role="group">
-                        <label class="@if ($employee['user']['gender'] == 2) text-red-500 @else  text-gray-900 @endif basis-1/2 flex justify-center items-center py-2 px-4 text-sm font-medium bg-white   rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-rose-700 focus:text-rose-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-rose-500 dark:focus:text-white">
-                            <span>
-                                <i class="fas fa-2x fa-female"></i>
-                            </span>
-                            <input class="hidden" type="radio" name="gender" value="2" wire:model.lazy="employee.user.gender">
-                        </label>
-                        <label class="@if ($employee['user']['gender'] == 1) text-blue-500 @else text-gray-900 @endif basis-1/2 flex justify-center items-center py-2 px-4 text-sm font-medium bg-white  rounded-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
-                            <span>
-                                <i class="fas fa-2x fa-male"></i>
-                            </span>
-                            <input class="hidden" type="radio" name="gender" value="1" wire:model.lazy="employee.user.gender">
-                        </label>
-                    </div>
-                    <div class="mt-4">
-                        <button wire:keydown.enter="edit" wire:click="edit" @click="edit = !edit" type="button" class="text-white bg-blue-700  font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">{{__('ui.save')}}</button>
-                        <button @click="edit = !edit" type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">{{__('ui.cancel')}}</button>
-                    </div>
+                    @livewire('employee.profile.edit', ['employee' => $employee])
                 </div>
             </div>
         </div>
@@ -156,7 +83,7 @@
                     <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 ">
                         <div class="flex flex-col">
                             <div class="flex flex-row items-center">
-                                <div class="w-10 h-10  bg-gray-400 rounded-full">
+                                <div class="w-10 h-10   rounded-full text-secondary-500 bg-secondary-50">
                                     <i class="fa-solid fa-list-check p-3"></i>
                                 </div>
                                 <div>
@@ -177,7 +104,7 @@
                     <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <div class="flex flex-col">
                             <div class="flex flex-row items-center">
-                                <div class="w-10 h-10  bg-gray-400 rounded-full">
+                                <div class="w-10 h-10  text-secondary-500 bg-secondary-50 rounded-full">
                                     <i class="fa-solid fa-file-circle-exclamation p-3 "></i>
                                 </div>
                                 <div>
@@ -186,8 +113,6 @@
                                     </h3>
                                 </div>
                             </div>
-
-
                             <div class="flex justify-between mt-5">
                                 <span class="text-xs font-medium text-secondary-500">{{$employee->percentage_not_completed_projects}}%</span>
                                 <span class="text-xs font-medium text-secondary-500">{{$employee->projects_count}}/{{$projects_not_done_count}}</span>
@@ -200,12 +125,12 @@
                     <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                         <div class="flex flex-col">
                             <div class="flex flex-row items-center">
-                                <div class="w-10 h-10  bg-gray-400 rounded-full">
+                                <div class="w-10 h-10  text-secondary-500 bg-secondary-50 rounded-full">
                                     <i class="fa-solid fa-diagram-project  p-3"></i>
                                 </div>
                                 <div>
                                     <h3 class="font-semibold text-secondary-600 text-l p-1">
-                                        {{__('ui.projects_completed')}}
+                                        erert
                                     </h3>
                                 </div>
                             </div>
@@ -218,7 +143,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 {{-- Bottom --}}
                 <div class="sm:ml-3  w-full mt-3 bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">

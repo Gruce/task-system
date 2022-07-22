@@ -1,3 +1,4 @@
+
 <?php
 
 //Aribc Sentense File
@@ -182,4 +183,8 @@ return [
     'Searchemployees' => 'بحث عن موظف',
     'no_employee_selected' => 'لم يتم تحديد موظف',
     'description' => 'الوصف',
+    'export' => 'تصدير',
+    'export_to_excel' =>  'تصدير إلى Excel',
+    'edit_profile' => 'تعديل الملف الشخصي',
+    'disable' => 'تعطيل',
 ];

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Comment;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Task extends Model
@@ -16,10 +17,10 @@ class Task extends Model
 
     protected $fillable = [
         'project_id', 'title', 'description', 'is_active', 'state',
-        'importance', 'start_at', 'end_at' , 'change_at' , 'is_hold'
+        'importance', 'start_at', 'end_at', 'change_at', 'is_hold'
     ];
 
-    protected $appends = ['state_title'];
+    protected $appends = ['state_title', 'is_late'];
     //protected $hidden = ['created_at', 'updated_at', 'delete_at'];
 
 
@@ -72,13 +73,32 @@ class Task extends Model
         return Attribute::make(
             get: function () {
                 switch ($this->state) {
-                    case 1: return __('ui.tasks'); break;
-                    case 2: return __('ui.in_progress'); break;
-                    case 3: return __('ui.completed_tasks'); break;
+                    case 1:
+                        return __('ui.tasks');
+                        break;
+                    case 2:
+                        return __('ui.in_progress');
+                        break;
+                    case 3:
+                        return __('ui.completed_tasks');
+                        break;
 
-                    default: return __('ui.unknown'); break;
+                    default:
+                        return __('ui.unknown');
+                        break;
                 }
             },
+        );
+    }
+
+    protected function isLate(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                if ($this->end_at < Carbon::now() && $this->state != 3)
+                    return true;
+                return false;
+            }
         );
     }
 }

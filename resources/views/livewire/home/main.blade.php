@@ -94,7 +94,7 @@
                     </div>
                     <div class="flex flex-col items-center mt-4 pb-2">
                         <div class="flex items-baseline text-secondary-600">
-                            <span class="text-5xl font-extrabold tracking-tight">30</span>
+                            <span class="text-5xl font-extrabold tracking-tight">{{$employees_active_count}}</span>
                             <span class="ml-1 text-xl font-normal text-gray-400"><i class="fa-solid fa-sort-up text-green-400"></i></span>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                     </div>
                     <div class="flex flex-col items-center mt-4 pb-2">
                         <div class="flex items-baseline text-secondary-600">
-                            <span class="text-5xl font-extrabold tracking-tight">55</span>
+                            <span class="text-5xl font-extrabold tracking-tight">{{$employees_disable_count}}</span>
                             <span class="ml-1 text-xl font-normal text-gray-400"><i class="fa-solid fa-sort-down text-red-400"></i></span>
                         </div>
                     </div>
