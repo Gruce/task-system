@@ -180,4 +180,6 @@ return [
     'export_to_excel' =>  'Export To Excel',
     'edit_profile' => 'Edit Profile',
     'disable' => 'Disable',
+    'email_already_exists' => 'Email already exists',
+    'username_already_exists' => 'Username already exists',
 ];
