@@ -1,3 +1,4 @@
+
 <?php
 
 //Aribc Sentense File
@@ -177,6 +178,11 @@ return [
     'no_notifications' => 'لا يوجد إشعارات',
     'notifications' => 'الإشعارات',
     'view_all' => 'عرض الكل',
+    'unselect_all' => 'إلغاء تحديد الكل',
+    'select_all' => 'تحديد الكل',
+    'Searchemployees' => 'بحث عن موظف',
+    'no_employee_selected' => 'لم يتم تحديد موظف',
+    'description' => 'الوصف',
     'export' => 'تصدير',
     'export_to_excel' =>  'تصدير إلى Excel',
     'edit_profile' => 'تعديل الملف الشخصي',
