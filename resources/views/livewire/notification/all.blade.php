@@ -35,8 +35,10 @@
                             class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                             {{ $notification->title }}
                         </td>
-                        <td class="px-6 py-4">
-                            {{$notification->description}}
+                        <td class="px-6 py-4 w-48">
+                            {{-- show part of description --}}
+                            {{ substr($notification->description, 0, 50) }}
+
                         </td>
                         {{-- show enployee in list --}}
                         <td class="px-6 py-4">
