@@ -54,7 +54,7 @@
 
         <div class="flex my-4 -space-x-4 rtl:space-x-reverse">
             @foreach ($project->employees as $employee)
-            <a href="https://github.com/Gruce/task-system/issues/2">
+            <a href="#">
                 <img src="{{$employee->photo}}" class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" alt="">
             </a>
             @endforeach

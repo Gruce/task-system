@@ -13,7 +13,11 @@
                 <i class="fa-solid fa-file-arrow-down"></i>
                 {{__('ui.export')}}
             </button>
+            <button id="multiLevelDropdownButton" data-dropdown-toggle="dropdown" class="text-white bg-gradient-to-r from-gray-500 via-gray-600 to-gray-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-gray-300 shadow-lg shadow-gray-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 inline-flex items-center gap-4 " type="button">
+                <i class="text-xl fa-solid fa-filter"></i>
+            </button>
         </div>
+
         {{-- <div class="basis-[80%]">
             Filteration
         </div> --}}

@@ -51,12 +51,12 @@
                     </div>
                     @yield('header-actions')
                     <div class="flex flex-row items-center">
-                            <button @click="showSideBar=!showSideBar" type="button" class=" inline-flex items-center px-4 py-2 text-lg text-gray-400 bg-transparent rounded-lg sm:hidden hover:bg-gray-200 hover:text-gray-900 ">
-                                <i class="fas fa-bars"></i>
-                            </button>
+                        <button @click="showSideBar=!showSideBar" type="button" class=" inline-flex items-center px-4 py-2 text-lg text-gray-400 bg-transparent rounded-lg sm:hidden hover:bg-gray-200 hover:text-gray-900 ">
+                            <i class="fas fa-bars"></i>
+                        </button>
                         <!-- Profile dropdown -->
                         <div class="ml-10 mr-10">
-                        @livewire('notification.card')
+                            @livewire('notification.card')
                         </div>
                         <div x-data="{ dropdown: false }" class=" ml-10 relative mr-10 ">
                             <div>
@@ -72,7 +72,6 @@
                                 @else
                                 <a href="{{ route('home') }}" class="block px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-200" role="menuitem" tabindex="-1" id="user-menu-item-0">{{ __('ui.profile') }}</a>
                                 @endif
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-200" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
                                     <a href="{{ route('logout') }}" @click.prevent="$root.submit();" class="block px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-200" role="menuitem" tabindex="-1" id="user-menu-item-2">{{ __('ui.logout') }}</a>
