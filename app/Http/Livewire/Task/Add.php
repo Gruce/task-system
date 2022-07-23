@@ -21,7 +21,6 @@ class Add extends Component
         'task.title' => 'required',
         'task.project_id' => 'required',
         'task.start_at' => 'required',
-        'employee_id' => 'required',
     ];
 
 

@@ -104,9 +104,6 @@
                                         </button>
                                     </select>
                                     @endif
-                                    @error('employee_id')
-                                    <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
-                                    @enderror
                                 </div>
                             </div>
                         </div>
