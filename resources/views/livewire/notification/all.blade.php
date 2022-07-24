@@ -90,7 +90,8 @@
                 </div>
             </div>
             <h2 id="employee-{{$notification->id}}">
-                <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 bg-white" data-accordion-target="#employee-body-{{$notification->id}}" aria-expanded="false" aria-controls="employee-body-{{$notification->id}}">
+                <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 focus:ring-4 hover:bg-gray-100
+                    focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 bg-white" data-accordion-target="#employee-body-{{$notification->id}}" aria-expanded="false" aria-controls="employee-body-{{$notification->id}}">
                     <span class="flex items-center ">
                         {{__('ui.employees')}}
                     </span>
@@ -99,7 +100,7 @@
                     </svg>
                 </button>
             </h2>
-            <div id="employee-body-{{$notification->id}}" class="hidden" aria-labelledby="employee-{{$notification->id}}">
+            <div id="employee-body-{{$notification->id}}" class="overflow-x-auto  h-48 hidden" aria-labelledby="employee-{{$notification->id}}">
                 <div class="p-5 font-light border border-b-0 bg-gray-50 border-gray-200">
                     @foreach ($notification->employees as $employee)
                     <span class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-lg mr-2">
@@ -108,6 +109,11 @@
                     @endforeach
                 </div>
             </div>
+            <button wire:click="confirmed({{ $notification->id }}, 'delete') " type="button" class=" items-center  w-full p-5 font-medium text-center rounded-b-lg hover:bg-red-100 text-red-500 border  border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 bg-white"   >
+                    <span class=" items-center ">
+                        <i class="fa-solid fa-trash"></i>
+                    </span>
+            </button>
         </div>
         @empty
         <div class="text-center pt-4">
