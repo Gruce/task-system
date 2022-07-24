@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div>
-                Filteration
+
             </div>
         </div>
 
@@ -18,6 +18,6 @@
 
         @livewire('notification.all')
         {{-- @elseif ($selectedTab == 1) --}}
-        
+
     </div>
 </div>
