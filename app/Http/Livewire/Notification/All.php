@@ -5,37 +5,18 @@ namespace App\Http\Livewire\Notification;
 use Livewire\Component;
 use App\Models\Notification;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use App\Traits\Livewire\DeleteTrait;
+
 
 class All extends Component
 {
     use LivewireAlert;
-    public $ID;
+    use DeleteTrait;
     protected $listeners = [ '$refresh' , 'delete'];
 
-    public function confirmed ($id, $function)
+    public function confirmed($id)
     {
-        $this->ID = $id;
-        $this->confirm(__('ui.are_you_sure'), [
-            'toast' => false,
-            'position' => 'center',
-            'showConfirmButton' => "true",
-            'cancelButtonText' => (__('ui.cancel')),
-            'confirmButtonText' => (__('ui.confirm')),
-            'onConfirmed' => $function,
-        ]);
-    }
-    public function delete ()
-    {
-        Notification::findOrFail($this->ID)->delete();
-        $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
-            'position' => 'top',
-            'timer' => 3000,
-            'toast' => true,
-            'timerProgressBar' => true,
-            'width' => '400',
-        ]);
-        $this->emitSelf('$refresh');
-        $this->emitTo('notification.card' , '$refresh');
+        $this->confirmedDelete(new Notification, $id, 'delete', ['notification.all' , 'notification.card'] );
     }
 
     public function render()
