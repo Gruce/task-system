@@ -35,18 +35,22 @@ class All extends Component
     public function render()
     {
         $search = '%' . $this->search . '%';
-
-        $tasks  = Task::withCount('files')
-            ->with(
-                [
-                    'project:id,title',
-                    'employees' => fn ($employee) => $employee->with('user:id,name'),
-                    'files'
-                ]
-            )
-            ->where('title', 'LIKE', $search)
-            ->orderByDesc('updated_at');
-
+        if (is_admin()) {
+            $tasks = Task::withCount(['files', 'employees'])
+                ->with([
+                    'employees' => fn ($employee) => $employee->limit(2),
+                ])
+                ->where('title', 'LIKE', $search)
+                ->orderBy('importance')->orderByDesc('id');
+        } else {
+            $tasks = is_employee()->tasks()
+                ->withCount(['files', 'employees'])
+                ->with([
+                    'employees' => fn ($employee) => $employee->limit(2),
+                ])
+                ->where('title', 'LIKE', $search)
+                ->orderBy('importance')->orderByDesc('id');
+        }
 
         if (!$this->project && !$this->importance) $tasks->orWhereRelation('project', 'title', 'LIKE', $search);
 

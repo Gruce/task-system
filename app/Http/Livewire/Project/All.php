@@ -28,13 +28,22 @@ class All extends Component
     {
         $search = '%' . $this->search . '%';
 
-
-        $projects = Project::withCount(['tasks', 'files', 'employees'])
-            ->with([
-                'employees' => fn ($employee) => $employee->limit(2),
-            ])
-            ->where('title', 'LIKE', $search)
-            ->orderBy('done')->orderByDesc('id');
+        if (is_admin()) {
+            $projects = Project::withCount(['tasks', 'files', 'employees'])
+                ->with([
+                    'employees' => fn ($employee) => $employee->limit(2),
+                ])
+                ->where('title', 'LIKE', $search)
+                ->orderBy('done')->orderByDesc('id');
+        } else {
+            $projects = is_employee()->projects()
+                ->withCount(['tasks', 'files', 'employees'])
+                ->with([
+                    'employees' => fn ($employee) => $employee->limit(2),
+                ])
+                ->where('title', 'LIKE', $search)
+                ->orderBy('done')->orderByDesc('id');
+        }
 
         if ($this->done) $projects->where('done', $this->done);
 

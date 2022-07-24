@@ -186,4 +186,5 @@ return [
     'email_already_exists' => 'Email already exists',
     'username_already_exists' => 'Username already exists',
     'closed' => 'Closed',
+    'admin' => 'Admin',
 ];

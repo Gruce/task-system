@@ -45,10 +45,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/', HomeMain::class)->name('home');
 
-    // Route::prefix('home')->group(function () {
-    //     Route::get('/', Home::class)->name('home');
 
-    // });
 
     Route::prefix('employees')->group(function () {
         Route::get('/', EmployeeMain::class)->name('employees');

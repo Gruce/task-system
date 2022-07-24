@@ -80,7 +80,7 @@
         <div class="basis-3/4 sm:ml-5 sm:mr-5">
             <div class="flex flex-col">
                 <div class="sm:flex justify-between ">
-                    <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 ">
+                    <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8">
                         <div class="flex flex-col">
                             <div class="flex flex-row items-center">
                                 <div class="w-10 h-10   rounded-full text-secondary-500 bg-secondary-50">
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8">
                         <div class="flex flex-col">
                             <div class="flex flex-row items-center">
                                 <div class="w-10 h-10  text-secondary-500 bg-secondary-50 rounded-full">
@@ -122,30 +122,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="p-4 sm:ml-3 mt-3 w-full bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                        <div class="flex flex-col">
-                            <div class="flex flex-row items-center">
-                                <div class="w-10 h-10  text-secondary-500 bg-secondary-50 rounded-full">
-                                    <i class="fa-solid fa-diagram-project  p-3"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-semibold text-secondary-600 text-l p-1">
-                                        erert
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="flex justify-between mt-5">
-                                <span class="text-xs font-medium text-secondary-500">234234%</span>
-                                <span class="text-xs font-medium text-secondary-500">{{$employee->tasks_count}}/23</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-1.5">
-                                <div class="bg-secondary-600 h-1.5 rounded-full" style="width: 23%"></div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                 {{-- Bottom --}}
-                <div class="sm:ml-3  w-full mt-3 bg-white rounded-lg sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                <div class="sm:ml-3  w-full mt-3 bg-white rounded-lg sm:p-8">
                     <span class="block p-3 sm:hidden">{{__('ui.tasks')}}</span>
                     @livewire('task.all', ['employee' => $employee])
                     @if ($taskID)

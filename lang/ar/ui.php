@@ -190,4 +190,5 @@ return [
     'username_already_exists' => 'اسم المستخدم موجود بالفعل',
     'email_already_exists' => 'البريد الإلكتروني موجود بالفعل',
     'closed' => 'مغلق',
+    'admin' => 'مدير',
 ];
