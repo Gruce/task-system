@@ -47,15 +47,14 @@ class All extends Component
             ->where('title', 'LIKE', $search)
             ->orderByDesc('updated_at');
 
-        if (!$this->project) $tasks->orWhereRelation('project', 'title', 'LIKE', $search);
+
+        if (!$this->project && !$this->importance) $tasks->orWhereRelation('project', 'title', 'LIKE', $search);
 
         if ($this->project) $tasks->where('project_id', $this->project->id);
 
-
-        if ($this->importance) $tasks->where('importance', $this->importance);
-
         if ($this->employee) $tasks = $this->employee->tasks();
 
+        if ($this->importance) $tasks->where('importance', $this->importance);
 
         $tasks = $tasks->paginate(24);
 
