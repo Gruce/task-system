@@ -50,15 +50,15 @@
                         </nav>
                     </div>
                     @yield('header-actions')
-                    <div class="flex flex-row items-center">
+                    <div class="flex flex-row items-center justify-between">
                         <button @click="showSideBar=!showSideBar" type="button" class=" inline-flex items-center px-4 py-2 text-lg text-gray-400 bg-transparent rounded-lg sm:hidden hover:bg-gray-200 hover:text-gray-900 ">
                             <i class="fas fa-bars"></i>
                         </button>
                         <!-- Profile dropdown -->
-                        <div class="ml-10 mr-10">
+                        <div class="ml-3 mr-3">
                             @livewire('notification.card')
                         </div>
-                        <div x-data="{ dropdown: false }" class=" ml-10 relative mr-10 ">
+                        <div x-data="{ dropdown: false }" class=" ml-8 relative mr-8 ">
                             <div>
                                 <button @click.stop="dropdown = !dropdown" type="button" class="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                     <span class="sr-only">Open user menu</span>
@@ -78,7 +78,8 @@
                                 </form>
                             </div>
                         </div>
-                        @hasSection ('disable-search')
+                            
+                            @hasSection('disable-search')
                         @else
                         @if (Request::route()->getName() == 'home')
                         <livewire:ui.filter />
