@@ -3,7 +3,7 @@
         <div class="flex flex-col items-center justify-center h-full" :class="sidebar_extended ? 'pr-9 pl-3' : ''">
             <div class="flex-none pb-5 mb-5 basis-96">
                 <a href="{{ route('home') }}" class="flex items-center justify-center p-2 text-base rounded-lg text-primary-700 text-gray">
-                    <img class="w-20" :class="sidebar_extended ? 'w-32' : 'w-20'" src="{{asset('images/task-logo.png')}}" alt="">
+                    <img class="w-20" :class="sidebar_extended ? 'w-32' : 'w-20'" src="{{asset('images\logo.jpg')}}" alt="">
                 </a>
             </div>
             <div class="flex-1 w-full grow">
@@ -27,7 +27,7 @@
                     @endforeach
                 </ul>
                 @endforeach
-                
+
             </div>
             <div class="flex flex-col items-center justify-center flex-none w-full basis-96">
                 @foreach ($langs as $locale => $name)
