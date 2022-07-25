@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div>
-                Filteration
+                {{-- Filteration --}}
             </div>
         </div>
 

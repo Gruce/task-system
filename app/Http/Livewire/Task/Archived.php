@@ -7,8 +7,9 @@ use App\Models\Task;
 
 class Archived extends Component
 {
-    public function render(){
+    public function render()
+    {
         $tasks = Task::onlyTrashed()->get();
-        return view('livewire.task.archived' , ['tasks' => $tasks]);
+        return view('livewire.task.archived', ['tasks' => $tasks]);
     }
 }

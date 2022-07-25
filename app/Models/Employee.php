@@ -59,11 +59,7 @@ class Employee extends Model
         $this->save();
     }
 
-    public function state($state)
-    {
-        $this->state = !$state;
-        $this->save();
-    }
+
 
 
 

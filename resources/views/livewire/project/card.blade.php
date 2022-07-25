@@ -28,27 +28,17 @@
                 <div @click.outside="dropdown = false" @click.stop="" x-show="dropdown" class="absolute z-10 text-base list-none bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 {{ar() ? 'left-0' : 'right-0'}}">
                     <ul class="py-1">
                         <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
-                                {{__('ui.create_task')}}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
-                                {{__('ui.edit')}}
-                            </a>
-                        </li>
-                        <li>
-                            <a wire:click="chnageDone({{$project->id}})" href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
+                            <a wire:click="chnageDone({{$project->id}})" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
                                 {{$project->done ? __('ui.mark_as_in_progress') : __('ui.mark_as_done')}}
                             </a>
                         </li>
                         <li>
                             <a wire:click="export({{ $project->id}})" class="cursor block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
-                                Export to Excle
+                                {{__('ui.export_to_excel')}}
                             </a>
                         </li>
                         <li>
-                            <a wire:click="confirmed({{ $project->id }})" href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
+                            <a wire:click="confirmed({{ $project->id }})" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black">
                                 {{__('ui.delete')}}
                             </a>
                         </li>
@@ -64,7 +54,7 @@
 
         <div class="flex my-4 -space-x-4 rtl:space-x-reverse">
             @foreach ($project->employees as $employee)
-            <a href="https://github.com/Gruce/task-system/issues/2">
+            <a href="#">
                 <img src="{{$employee->photo}}" class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" alt="">
             </a>
             @endforeach
