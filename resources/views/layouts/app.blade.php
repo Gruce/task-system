@@ -58,7 +58,7 @@
                         <div class="ml-3 mr-3">
                             @livewire('notification.card')
                         </div>
-                        <div x-data="{ dropdown: false }" class=" ml-8 relative mr-8 ">
+                        <div x-data="{ dropdown: false }" class=" ml-9 relative mr-9 ">
                             <div>
                                 <button @click.stop="dropdown = !dropdown" type="button" class="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                     <span class="sr-only">Open user menu</span>
@@ -78,7 +78,7 @@
                                 </form>
                             </div>
                         </div>
-                            
+
                             @hasSection('disable-search')
                         @else
                         @if (Request::route()->getName() == 'home')
