@@ -177,7 +177,7 @@ return [
     'view_all' => 'View All',
     'unselect_all' => 'Unselect All',
     'select_all' => 'Select All',
-    'Searchemployees' => 'Search Employees',
+    'search_employees' => 'Search Employees',
     'no_employee_selected' => 'No Employee Selected',
     'export' => 'Export',
     'export_to_excel' =>  'Export To Excel',
@@ -185,4 +185,6 @@ return [
     'disable' => 'Disable',
     'email_already_exists' => 'Email already exists',
     'username_already_exists' => 'Username already exists',
+    'closed' => 'Closed',
+    'admin' => 'Admin',
 ];

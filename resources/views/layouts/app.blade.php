@@ -70,7 +70,7 @@
                                 @if (!auth()->user()->is_admin)
                                 <a href="{{ route('employees.profile', ['id' => auth()->user()->id]) }}" class="block px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-200" role="menuitem" tabindex="-1" id="user-menu-item-0">{{ __('ui.profile') }}</a>
                                 @else
-                                <a href="{{ route('home') }}" class="block px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-200" role="menuitem" tabindex="-1" id="user-menu-item-0">{{ __('ui.profile') }}</a>
+                                <a href="{{ route('profile.show') }}" class="block px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-200" role="menuitem" tabindex="-1" id="user-menu-item-0">{{ __('ui.profile') }}</a>
                                 @endif
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf

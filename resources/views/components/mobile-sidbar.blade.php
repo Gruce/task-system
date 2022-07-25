@@ -36,6 +36,24 @@
                 @else class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" @endif>{{ __('ui.tasks') }}</a>
         </div>
     </li>
+    @admin()
+    <li>
+        <div class="flex items-center p-2 ">
+            <i @if (Request::route()->getName() == 'employees') class="fa-solid fa-users text-primary-500"
+                @else class="fa-solid fa-users text-gray-700" @endif></i>
+            <a href="{{ route('employees') }}" aria-current="page" @if (Request::route()->getName() == 'employees') class="block py-2 pr-4 pl-3 text-primary-500 group-hover:text-primary-500 rounded"
+                @else class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" @endif>{{ __('ui.employees') }}</a>
+        </div>
+    </li>
+    <li>
+        <div class="flex items-center p-2 ">
+            <i @if (Request::route()->getName() == 'notifications') class="fa-solid fa-bell text-primary-500"
+                @else class="fa-solid fa-bell text-gray-700" @endif></i>
+            <a href="{{ route('notifications') }}" aria-current="page" @if (Request::route()->getName() == 'notifications') class="block py-2 pr-4 pl-3 text-primary-500 group-hover:text-primary-500 rounded"
+                @else class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" @endif>{{ __('ui.notifications') }}</a>
+        </div>
+    </li>
+    @endadmin()
     <hr>
     <li class="block py-2 pr-4 pl-3 text-xs text-black group-hover:text-gray-500 rounded">
         @foreach ($langs as $locale => $name)

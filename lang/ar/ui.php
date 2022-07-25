@@ -180,7 +180,7 @@ return [
     'view_all' => 'عرض الكل',
     'unselect_all' => 'إلغاء تحديد الكل',
     'select_all' => 'تحديد الكل',
-    'Searchemployees' => 'بحث عن موظف',
+    'search_employees' => 'بحث عن موظف',
     'no_employee_selected' => 'لم يتم تحديد موظف',
     'description' => 'الوصف',
     'export' => 'تصدير',
@@ -189,4 +189,6 @@ return [
     'disable' => 'تعطيل',
     'username_already_exists' => 'اسم المستخدم موجود بالفعل',
     'email_already_exists' => 'البريد الإلكتروني موجود بالفعل',
+    'closed' => 'مغلق',
+    'admin' => 'مدير',
 ];

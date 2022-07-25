@@ -35,27 +35,30 @@ class All extends Component
     public function render()
     {
         $search = '%' . $this->search . '%';
+        if (is_admin()) {
+            $tasks = Task::withCount(['files', 'employees'])
+                ->with([
+                    'employees' => fn ($employee) => $employee->limit(2),
+                ])
+                ->where('title', 'LIKE', $search)
+                ->orderBy('importance')->orderByDesc('id');
+        } else {
+            $tasks = is_employee()->tasks()
+                ->withCount(['files', 'employees'])
+                ->with([
+                    'employees' => fn ($employee) => $employee->limit(2),
+                ])
+                ->where('title', 'LIKE', $search)
+                ->orderBy('importance')->orderByDesc('id');
+        }
 
-        $tasks  = Task::withCount('files')
-            ->with(
-                [
-                    'project:id,title',
-                    'employees' => fn ($employee) => $employee->with('user:id,name'),
-                    'files'
-                ]
-            )
-            ->where('title', 'LIKE', $search)
-            ->orderByDesc('updated_at');
-
-        if (!$this->project) $tasks->orWhereRelation('project', 'title', 'LIKE', $search);
+        if (!$this->project && !$this->importance) $tasks->orWhereRelation('project', 'title', 'LIKE', $search);
 
         if ($this->project) $tasks->where('project_id', $this->project->id);
 
-
-        if ($this->importance) $tasks->where('importance', $this->importance);
-
         if ($this->employee) $tasks = $this->employee->tasks();
 
+        if ($this->importance) $tasks->where('importance', $this->importance);
 
         $tasks = $tasks->paginate(24);
 
