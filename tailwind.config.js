@@ -21,7 +21,7 @@ module.exports = {
                  'profile': 'calc(100vh - 6rem)'
             },
             fontFamily: {
-                sans: ['Cairo', ...defaultTheme.fontFamily.sans],
+                sans: ['Tajawal', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 'primary': {
