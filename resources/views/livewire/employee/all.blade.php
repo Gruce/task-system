@@ -4,6 +4,7 @@
             @forelse ($employees as $employee )
             @livewire('employee.card' , ['employee' => $employee])
             @empty
+            {{__('ui.no_data')}}
             @endforelse
         </div>
     </div>
