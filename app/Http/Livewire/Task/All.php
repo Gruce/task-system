@@ -36,6 +36,7 @@ class All extends Component
     {
         $search = '%' . $this->search . '%';
         if (is_admin()) {
+
             $tasks = Task::withCount(['files', 'employees'])
                 ->with([
                     'employees' => fn ($employee) => $employee->limit(2),
@@ -50,6 +51,7 @@ class All extends Component
                 ])
                 ->where('title', 'LIKE', $search)
                 ->orderBy('importance')->orderByDesc('id');
+            // dd($tasks->get());
         }
 
         if (!$this->project && !$this->importance) $tasks->orWhereRelation('project', 'title', 'LIKE', $search);
