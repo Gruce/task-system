@@ -47,7 +47,9 @@ class Add extends Component
         );
 
         $this->reset();
-        $this->emitTo('notification.all',  '$refresh');
+        $this->emitTo('notification.all', '$refresh');
+        $this->emitTo('notification.card', '$refresh');
+
 
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
