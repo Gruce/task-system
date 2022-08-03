@@ -45,23 +45,22 @@ class Add extends Component
         if ($this->user['profile_photo_path'])
             $user->add_file('profile_photo_path', $this->user['profile_photo_path'], 'users/' . $user->id . '/profile_photo/');
 
-        $user = $user->employee()->create([
+        $employee = $user->employee()->create([
             'state' => $this->user['employee']['state'] ?? 1,
             'job' => $this->user['employee']['job'],
         ]);
 
         if (count($this->files) > 0)
             foreach ($this->files as $file) {
-                $new_file = $user->employee->files()->create([
+                $new_file = $employee->files()->create([
                     'name' => 'File',
                 ]);
-                $new_file->add_file('name', $file, 'employees/' . $user->employee->id . '/files/' . $new_file->id);
+                $new_file->add_file('name', $file, 'employees/' . $employee->id . '/files/' . $new_file->id);
             }
 
 
-        $this->emitTo('employee.main', '$refresh');
-
         $this->reset();
+        $this->emitTo('employee.all', '$refresh');
 
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
@@ -70,6 +69,11 @@ class Add extends Component
             'timerProgressBar' => true,
             'width' => '400',
         ]);
+    }
+
+    public function removeFile($index)
+    {
+        unset($this->files[$index]);
     }
 
     public function render()

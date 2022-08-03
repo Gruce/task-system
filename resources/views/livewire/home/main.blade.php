@@ -166,7 +166,7 @@
                 </a>
                 @empty
                 <div class="flex flex-col gap-4 px-2 m-1">
-                    {{ __('ui.no_projects_in_progress') }} خلوها بالنص
+                    {{ __('ui.no_projects_in_progress') }}
                 </div>
                 @endforelse
             </div>

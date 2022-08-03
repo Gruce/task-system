@@ -8,4 +8,7 @@
             @endforelse
         </div>
     </div>
+    <div class=" pt-3" dir="ltr">
+        {{ $employees->links() }}
+    </div>
 </div>
