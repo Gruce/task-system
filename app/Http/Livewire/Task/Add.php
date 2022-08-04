@@ -87,10 +87,6 @@ class Add extends Component
         $this->reset();
         $this->task = $task;
         $this->search = $task['project']['title'];
-
-        $this->taskEmployees = collect($task['employees'])
-            ->map(fn ($item) => ['id' => $item['id'], 'name' => $item['user']['name']])
-            ->toArray();
     }
 
     public function mount()
