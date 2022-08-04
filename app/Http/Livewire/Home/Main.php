@@ -49,6 +49,9 @@ class Main extends Component
 
     public function render()
     {
+        // if (!is_admin()) {
+        //     return redirect()->route('tasks');
+        // }
 
         $year = date('Y');
         $month = date('m');

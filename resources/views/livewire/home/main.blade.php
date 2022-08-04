@@ -1,7 +1,7 @@
 @section('header-actions')
 @endsection
 @section('title', __('ui.home'))
-
+@admin()
 <div class="flex flex-col h-full m-5">
     <div class="flex flex-col lg:flex-row  gap-8 ">
         <div class="basis-1/4 ">
@@ -173,6 +173,8 @@
         </div>
     </div>
 </div>
+
+@endadmin
 
 
 

@@ -18,7 +18,7 @@ class All extends Component
     {
         $search = '%' . $this->search . '%';
         $employees = Employee::withCount(['tasks', 'files', 'projects'])
-            ->where('job', 'LIKE', $search)
+            ->whereRelation('user', 'name', 'LIKE', $search)
             ->orderByDesc('id')
             ->paginate(24);
         return view('livewire.employee.all', compact('employees'));

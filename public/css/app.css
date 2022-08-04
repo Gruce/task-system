@@ -2409,6 +2409,9 @@ select {
 .pb-1 {
   padding-bottom: 0.25rem;
 }
+.pt-3 {
+  padding-top: 0.75rem;
+}
 .pt-8 {
   padding-top: 2rem;
 }
@@ -2441,9 +2444,6 @@ select {
 }
 .pb-5 {
   padding-bottom: 1.25rem;
-}
-.pt-3 {
-  padding-top: 0.75rem;
 }
 .pl-5 {
   padding-left: 1.25rem;

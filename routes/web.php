@@ -41,11 +41,10 @@ Route::get('change-language/{locale}', [MainController::class, 'changeLanguage']
 // });
 
 
+
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', HomeMain::class)->name('home');
-
-
 
     Route::prefix('employees')->group(function () {
         Route::get('/', EmployeeMain::class)->name('employees');
@@ -64,5 +63,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('notifications')->group(function () {
         Route::get('/', NotificationMain::class)->name('notifications');
+    });
+
+    Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     });
 });
