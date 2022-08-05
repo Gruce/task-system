@@ -1199,6 +1199,9 @@ select {
 .m-5 {
   margin: 1.25rem;
 }
+.m-4 {
+  margin: 1rem;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1579,6 +1582,9 @@ select {
 .max-w-xs {
   max-width: 20rem;
 }
+.max-w-full {
+  max-width: 100%;
+}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1614,6 +1620,15 @@ select {
 }
 .basis-\[80\%\] {
   flex-basis: 80%;
+}
+.basis-9\/12 {
+  flex-basis: 75%;
+}
+.basis-4\/5 {
+  flex-basis: 80%;
+}
+.basis-1\/5 {
+  flex-basis: 20%;
 }
 .origin-top-left {
   transform-origin: top left;
