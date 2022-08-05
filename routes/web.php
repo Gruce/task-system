@@ -44,7 +44,8 @@ Route::get('change-language/{locale}', [MainController::class, 'changeLanguage']
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/', HomeMain::class)->name('home');
+
+    Route::get('/', TaskMain::class)->name('tasks');
 
     Route::prefix('employees')->group(function () {
         Route::get('/', EmployeeMain::class)->name('employees');
@@ -57,7 +58,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::prefix('task')->group(function () {
-        Route::get('/', TaskMain::class)->name('tasks');
+
         Route::get('/archived', TaskArchived::class)->name('tasks.archive');
     });
 
@@ -65,6 +66,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', NotificationMain::class)->name('notifications');
     });
 
-    Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
+    Route::group(['middleware' => 'admin'], function () {
+        Route::get('/dashboard', HomeMain::class)->name('home');
     });
 });

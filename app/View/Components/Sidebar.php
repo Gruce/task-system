@@ -30,9 +30,9 @@ class Sidebar extends Component
             new Tab(
                 __('ui.menu'),
                 [
-                    new TabItem(is_admin() ? __('ui.home') : __('ui.task'), is_admin() ? 'fa-solid fa-home' : 'fa-solid fa-list-check', is_admin() ? 'home' : 'tasks'),
+
                     new TabItem(__('ui.projects'), 'fa-solid fa-diagram-project', 'projects'),
-                    // new TabItem(__('ui.task'), 'fa-solid fa-list-check', 'tasks'),
+                    new TabItem(__('ui.task'), 'fa-solid fa-list-check', 'tasks'),
 
 
                 ]
@@ -40,6 +40,7 @@ class Sidebar extends Component
             new Tab(
                 __('ui.admin'),
                 [
+                    new TabItem(__('ui.home'), 'fa-solid fa-home', 'home'),
                     new TabItem(__('ui.employees'), 'fa-solid fa-users', 'employees'),
                     new TabItem(__('ui.notifications'), 'fa-solid fa-bell', 'notifications'),
 

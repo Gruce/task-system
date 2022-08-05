@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Home;
 use Livewire\Component;
 use Asantibanez\LivewireCharts\Facades\LivewireCharts;
 use Asantibanez\LivewireCharts\Models\ColumnChartModel;
+use Asantibanez\LivewireCharts\Models\PieChartModel;
 use Carbon\Carbon;
 
 use App\Models\{
@@ -47,6 +48,89 @@ class Main extends Component
         $this->employees_disable_count = $employees->where('state', false)->count();
     }
 
+    public function getPieChartModelProperty()
+    {
+        $tasks = [
+            // [
+            //     'type' => __('ui.tasks'),
+            //     'value' => $this->tasks_done_count
+            // ],
+            [
+                'type' => __('ui.in_progress'),
+                'value' => $this->tasks_in_progress_count
+            ],
+            [
+                'type' => __('ui.completed_tasks'),
+                'value' => $this->tasks_done_count
+            ],
+        ];
+
+        $pieChartModel = new LivewireCharts();
+
+        $pieChartModel = collect($tasks)
+            ->reduce(
+                function ($pieChartModel, $data) {
+                    $type = $data['type'];
+                    $value = $data['value'];
+
+                    return $pieChartModel->addSlice($type, $value, '#aaa');
+                },
+                LivewireCharts::pieChartModel()
+                    // ->setTitle('Expenses by Type')
+                    ->setAnimated(true)
+                    ->setType('donut')
+                    // ->withoutLegend()
+                    ->legendPositionBottom()
+                    ->legendHorizontallyAlignedCenter()
+                    ->setDataLabelsEnabled(true)
+                    ->setColors(['#ffc94b', '#92a3c5',  '#00EE63', '#f66665'])
+            );
+
+        return $pieChartModel;
+    }
+
+
+    public function getProjectChartModelProperty()
+    {
+        $projects = [
+            // [
+            //     'type' => __('ui.tasks'),
+            //     'value' => $this->tasks_done_count
+            // ],
+            [
+                'type' => __('ui.projects_in_progress'),
+                'value' => $this->projects_not_done_count
+            ],
+            [
+                'type' => __('ui.projects_completed'),
+                'value' => $this->projects_not_done_count
+            ],
+        ];
+
+        $pieChartModel = new LivewireCharts();
+
+        $pieChartModel = collect($projects)
+            ->reduce(
+                function ($pieChartModel, $data) {
+                    $type = $data['type'];
+                    $value = $data['value'];
+
+                    return $pieChartModel->addSlice($type, $value, '#aaa');
+                },
+                LivewireCharts::pieChartModel()
+                    //->setTitle('Expenses by Type')
+                    ->setAnimated(true)
+                    ->setType('donut')
+                    // ->withoutLegend()
+                    ->legendPositionBottom()
+                    ->legendHorizontallyAlignedCenter()
+                    ->setDataLabelsEnabled(true)
+                    ->setColors(['#f66665', '#00EE63', '#00EE63', '#f66665'])
+            );
+
+        return $pieChartModel;
+    }
+
     public function render()
     {
         // if (!is_admin()) {
@@ -79,20 +163,20 @@ class Main extends Component
         $projects = $projects->get(['id', 'title', 'done']);
         $tasks = $tasks->get(['id', 'state']);
 
-        $projects_done_count = $projects->where('done', true)->count();
-        $projects_not_done_count = $projects->where('done', false)->count();
+        $this->projects_done_count = $projects->where('done', true)->count();
+        $this->projects_not_done_count = $projects->where('done', false)->count();
 
-        $tasks_done_count = $tasks->where('state', 3)->count();
-        $tasks_in_progress_count = $tasks->whereIn('state', [1, 2])->count();
+        $this->tasks_done_count = $tasks->where('state', 3)->count();
+        $this->tasks_in_progress_count = $tasks->whereIn('state', [1, 2])->count();
 
 
 
         return view('livewire.home.main', [
-            'tasks_done_count' => $tasks_done_count,
-            'tasks_in_progress_count' => $tasks_in_progress_count,
+            'tasks_done_count' => $this->tasks_done_count,
+            'tasks_in_progress_count' => $this->tasks_in_progress_count,
             'projects' => $projects,
-            'projects_done_count' => $projects_done_count,
-            'projects_not_done_count' => $projects_not_done_count,
+            'projects_done_count' => $this->projects_done_count,
+            'projects_not_done_count' => $this->projects_not_done_count,
         ]);
     }
 }

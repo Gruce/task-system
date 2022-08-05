@@ -31,8 +31,7 @@ class Card extends Component
     public function render()
     {
         if (!auth()->user()->is_admin) {
-            $employee = auth()->user()->employee;
-            $notifications = $employee->notifications->where('pivot.read', false);
+            $notifications = is_employee()->notifications->where('pivot.read', false);
         } else {
             $notifications = Notification::orderByDesc('id')->get();
         }

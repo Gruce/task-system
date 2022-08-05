@@ -18,7 +18,8 @@ module.exports = {
                 'tasklist': 'calc(100vh - 23.5rem)',
                 'minitasklist': 'calc(100vh - 39rem)',
                 'projectfiles': 'calc(100vh - 25rem)',
-                 'profile': 'calc(100vh - 6rem)'
+                'profile': 'calc(100vh - 6rem)',
+                'chart': 'calc(100vh - 22rem)'
             },
             fontFamily: {
                 sans: ['Tajawal', ...defaultTheme.fontFamily.sans],
