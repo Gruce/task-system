@@ -9,6 +9,7 @@
                 <h5 x-show="!name" class="text-xl font-bold tracking-tight text-secondary-700">
                     {{ $project->title }}
                 </h5>
+                @admin()
                 <div class="flex items-center gap-4" @click.stop="" @click.outside="name = false">
                     <input wire:keydown.enter="edit_name" wire:model="project.title" type="text" x-show="name" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" required>
 
@@ -17,7 +18,9 @@
                         <a wire:click="edit_name" @click="name = !name" x-show="name" href="#"><i class="fas fa-check"></i></a>
                     </div>
                 </div>
+                @endadmin
             </div>
+            @admin()
             <div class="relative">
                 <button @click.stop="dropdown = !dropdown" class="sm:inline-block text-gray-400 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -25,6 +28,7 @@
                         </path>
                     </svg>
                 </button>
+
                 <div @click.outside="dropdown = false" @click.stop="" x-show="dropdown" class="absolute z-10 text-base list-none bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 {{ar() ? 'left-0' : 'right-0'}}">
                     <ul class="py-1">
                         <li>
@@ -45,6 +49,7 @@
                     </ul>
                 </div>
             </div>
+            @endadmin
         </div>
 
         <p class="max-w-xs text-sm tracking-tighter text-secondary-600">

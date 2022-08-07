@@ -4,9 +4,11 @@
     </button>
     <div id="dropdown" class="hidden z-10 w-48 m-1 bg-white rounded divide-y divide-gray-100 shadow ">
         <ul class="py-1 text-sm text-gray-700" aria-labelledby="multiLevelDropdownButton">
+            @admin()
             <li>
                 <button @click="archive=!archive" type="button" class="flex justify-between m-1 rounded-lg items-center py-2 px-4 w-full hover:bg-secondary-50 text-secondary-700">{{__('ui.archive')}}</button>
             </li>
+            @endadmin
             <li>
                 <button @click="importance=!importance" data-dropdown-placement="right-start" type="button" class="flex justify-between items-center m-1 rounded-lg py-2 px-4 w-full hover:bg-secondary-50 text-secondary-700">{{__('ui.importance')}}
                     <i class="fa-solid fa-angle-down"></i>
