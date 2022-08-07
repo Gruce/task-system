@@ -191,4 +191,5 @@ return [
     'email_already_exists' => 'البريد الإلكتروني موجود بالفعل',
     'closed' => 'مغلق',
     'admin' => 'مدير',
+    'current_password' => 'كلمة المرور الحالية',
 ];
