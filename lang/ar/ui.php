@@ -192,4 +192,5 @@ return [
     'closed' => 'مغلق',
     'admin' => 'مدير',
     'current_password' => 'كلمة المرور الحالية',
+    'no_projects_in_progress' => 'لا يوجد مشروع قيد التنفيذ',
 ];

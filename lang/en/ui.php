@@ -187,4 +187,6 @@ return [
     'username_already_exists' => 'Username already exists',
     'closed' => 'Closed',
     'admin' => 'Admin',
+    'current_password' => 'Current Password',
+    'no_projects_in_progress' => 'No Projects In Progress',
 ];
