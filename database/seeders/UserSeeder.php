@@ -24,12 +24,12 @@ class UserSeeder extends Seeder
             'is_admin' => true,
         ]);
 
-        $user->create([
-            'name' => 'Hussam Haider',
-            'email' => 'hussam@gmail.com',
-            'username' => 'hmh_6',
-            'password' => bcrypt('123456'),
-        ]);
+        // $user->create([
+        //     'name' => 'Hussam Haider',
+        //     'email' => 'hussam@gmail.com',
+        //     'username' => 'hmh_6',
+        //     'password' => bcrypt('123456'),
+        // ]);
 
         $user->create([
             'name' => 'Hassan Khalid',
@@ -38,27 +38,27 @@ class UserSeeder extends Seeder
             'password' => bcrypt('123456'),
         ]);
 
-        $user->create([
-            'name' => 'Hassan Hazim',
-            'email' => 'hazim@gmail.com',
-            'username' => 'hazim',
-            'password' => bcrypt('123456'),
-        ]);
+        // $user->create([
+        //     'name' => 'Hassan Hazim',
+        //     'email' => 'hazim@gmail.com',
+        //     'username' => 'hazim',
+        //     'password' => bcrypt('123456'),
+        // ]);
 
-        $user->create([
-            'name' => 'Hassan Kadhim',
-            'email' => 'hassan@gmail.com',
-            'username' => 'hassan',
-            'password' => bcrypt('123456'),
-        ]);
+        // $user->create([
+        //     'name' => 'Hassan Kadhim',
+        //     'email' => 'hassan@gmail.com',
+        //     'username' => 'hassan',
+        //     'password' => bcrypt('123456'),
+        // ]);
 
-        $user->create([
-            'name' => 'Zainab Amjed',
-            'email' => 'zainab@gmail.com',
-            'username' => 'zainab',
-            'password' => bcrypt('123456'),
-            'gender' => 2
-        ]);
+        // $user->create([
+        //     'name' => 'Zainab Amjed',
+        //     'email' => 'zainab@gmail.com',
+        //     'username' => 'zainab',
+        //     'password' => bcrypt('123456'),
+        //     'gender' => 2
+        // ]);
 
         // for ($i = 1; $i <= 200; $i++)
         //     User::create([

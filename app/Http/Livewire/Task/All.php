@@ -51,10 +51,9 @@ class All extends Component
                 ])
                 ->where('title', 'LIKE', $search)
                 ->orderBy('importance')->orderByDesc('id');
-            // dd($tasks->get());
         }
 
-        if (!$this->project && !$this->importance) $tasks->orWhereRelation('project', 'title', 'LIKE', $search);
+        // if (!$this->project && !$this->importance) $tasks->orWhereRelation('project', 'title', 'LIKE', $search);
 
         if ($this->project) $tasks->where('project_id', $this->project->id);
 
