@@ -29,6 +29,7 @@
 
         <div class="flex flex-col w-full gap-2 pl-2 overflow-y-auto h-projectfiles">
             {{-- Addition --}}
+            @admin()
             <div class="relative flex items-center justify-center h-20 border-2 border-dotted rounded-lg hover:bg-secondary-50 border-secondary-300">
                 <div class="absolute">
                     <div class="flex flex-col items-center cursor-pointer">
@@ -42,25 +43,28 @@
                 </div>
                 <input wire:model="files" type="file" class="w-full h-full opacity-0 cursor-pointer" name="" multiple>
             </div>
+            @endadmin
 
             {{-- Loop Item Below --}}
             @forelse ($project->files as $key => $file)
-                <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
-                    <span>{{__('ui.file')}} {{$key + 1}}</span>
-                    <div class="flex gap-2">
-                        <a href="{{$file->file_path}}" download class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
-                            <i class="fas fa-download"></i>
-                        </a>
-                        {{-- <button class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
-                            <i class="fas fa-download"></i>
-                        </button> --}}
-                        <button wire:click="confirmed({{ $file->id }} , 'delete')" class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
+            <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
+                <span>{{__('ui.file')}} {{$key + 1}}</span>
+                <div class="flex gap-2">
+                    <a href="{{$file->file_path}}" download class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
+                        <i class="fas fa-download"></i>
+                    </a>
+                    {{-- <button class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
+                        <i class="fas fa-download"></i>
+                    </button> --}}
+                    @admin()
+                    <button wire:click="confirmed({{ $file->id }} , 'delete')" class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                    @endadmin
                 </div>
+            </div>
             @empty
-                {{__('ui.no_data')}}
+            {{__('ui.no_data')}}
             @endforelse
         </div>
     </div>

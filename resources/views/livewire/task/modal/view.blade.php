@@ -44,8 +44,8 @@
 
 
                             {{-- Date --}}
-                            <input wire:model.lazy="task.start_at" @admin() wire:click="edit" type="date" @endadmin class="sm:w-44 w-full bg-gray-100 border-0 text-secondary-700 text-sm rounded p-2.5">
-                            <input wire:model.lazy="task.end_at" @admin() wire:click="edit" type="date" @endadmin class="sm:w-44 w-full bg-gray-100 border-0 text-secondary-700 text-sm rounded p-2.5">
+                            <input wire:model.lazy="task.start_at" @admin() wire:click="edit" type="date" @endadmin type="button" class="sm:w-44 w-full bg-gray-100 border-0 text-secondary-700 text-sm rounded p-2.5">
+                            <input wire:model.lazy="task.end_at" @admin() wire:click="edit" type="date" @endadmin type="button" class="sm:w-44 w-full bg-gray-100 border-0 text-secondary-700 text-sm rounded p-2.5">
 
                             {{-- State Drop Down --}}
                             <div class="relative w-full sm:w-44" x-data="{stateDropDown: false}">
