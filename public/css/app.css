@@ -1304,6 +1304,9 @@ select {
 .mb-4 {
   margin-bottom: 1rem;
 }
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
 .-mt-px {
   margin-top: -1px;
 }
@@ -1339,9 +1342,6 @@ select {
 }
 .mr-10 {
   margin-right: 2.5rem;
-}
-.mb-5 {
-  margin-bottom: 1.25rem;
 }
 .mb-10 {
   margin-bottom: 2.5rem;
