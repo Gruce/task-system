@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class File extends Model
 {
-    use HasFactory, SoftDeletes , HelperTrait;
+    use HasFactory, SoftDeletes, HelperTrait;
 
-    protected $fillable = ['name' , 'fileable_id' , 'fileable_type'];
+    protected $fillable = ['name', 'fileable_id', 'fileable_type'];
 
     protected $appends = ['file_path'];
     // protected $hidden = ['name' , 'created_at', 'updated_at', 'delete_at'];
@@ -21,7 +21,8 @@ class File extends Model
     /******************* RELATIONSHIPS ******************/
     /****************************************************/
 
-    public function fileable(){
+    public function fileable()
+    {
         return $this->morphTo();
     }
 
@@ -30,19 +31,22 @@ class File extends Model
     /****************************************************/
 
 
-    protected function filePath(): Attribute {
+    protected function filePath(): Attribute
+    {
         return Attribute::make(
             get: function () {
-                $file = '/files/' . $this->id . '/' . $this->name ;
+                $file = '/files/' . $this->id . '/' . $this->name;
 
                 if (str_contains($this->fileable_type, 'Project'))
                     return config('app.url') . '/storage/projects/' . $this->fileable_id . $file;
 
-                elseif(str_contains($this->fileable_type, 'Task'))
+                elseif (str_contains($this->fileable_type, 'Task'))
                     return config('app.url') . '/storage/tasks/' . $this->fileable_id . $file;
 
-                else return null;
+                elseif (str_contains($this->fileable_type, 'Employee'))
+                    return config('app.url') . '/storage/employee/' . $this->fileable_id . $file;
 
+                else return null;
             },
         );
     }

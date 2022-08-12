@@ -1,5 +1,5 @@
 <div>
-    <div class="sm:flex flex-row" x-data="{ edit: false , showModal: false }" x-cloak>
+    <div class="sm:flex flex-row" x-data="{ edit: false , file: false , showModal: false }" x-cloak>
         <div class="basis-1/4 mt-3">
             <div class="flex flex-col items-center gap-2 p-8 text-center bg-white rounded-lg basis-1/4">
                 <div class="flex items-center gap-2">
@@ -33,17 +33,27 @@
                         </div>
                     </div>
                 </div>
-                <span x-show="!edit" class="text-2xl font-bold text-secondary-600">
+                <span x-show="!edit && !file" class="text-2xl font-bold text-secondary-600">
                     {{ $employee->name }}
                 </span>
-                <p x-show="!edit" class="text-sm tracking-tighter text-secondary-500">
+                <p x-show="!edit && !file" class="text-sm tracking-tighter text-secondary-500">
                     {{ $employee->user->username }}
                 </p>
-                <button x-show="!edit" @click="edit = !edit" type="button" class="w-full flex justify-center text-secondary-600 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center    mr-2 mb-2">
-                    <i class="fa-solid fa-pen-to-square mx-2"></i>
-                    <span>{{__('ui.edit_profile')}}</span>
-                </button>
-                <div x-show="!edit" class="w-full flex justify-start">
+                <div class="flex gap-2 justify-between">
+                    <div>
+                        <button x-show="!edit && !file" @click="edit = !edit" type="button" class="w-full flex justify-center text-secondary-600 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center    mr-2 mb-2">
+                            <i class="fa-solid fa-pen-to-square mx-2"></i>
+                            <span>{{__('ui.edit_profile')}}</span>
+                        </button>
+                    </div>
+                    <div class="">
+                        <button x-show="!edit && !file" @click="file = !file" type="button" class="w-full flex justify-center text-secondary-600 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center  items-center    mr-2 mb-2">
+                            <i class="fa-solid fa-folder mx-1 p-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div x-show="!edit && !file" class="w-full flex justify-start">
                     <div>
                         <i class="fa-regular fa-at  text-secondary-500"></i>
                         <span class="text-sm tracking-tighter text-secondary-500">
@@ -51,7 +61,7 @@
                         </span>
                     </div>
                 </div>
-                <div x-show="!edit" class="w-full flex justify-start">
+                <div x-show="!edit && !file" class="w-full flex justify-start">
                     <div>
                         <i class="fa-solid fa-phone  text-secondary-500"></i>
                         <span class="text-sm tracking-tighter text-secondary-500">
@@ -59,7 +69,7 @@
                         </span>
                     </div>
                 </div>
-                <div x-show="!edit" class="w-full flex justify-items-start">
+                <div x-show="!edit && !file" class="w-full flex justify-items-start">
                     <div>
                         <i class="fa-solid fa-mars-and-venus mx-2 text-secondary-500"></i>
                         <span class="text-sm tracking-tighter text-secondary-500">
@@ -67,13 +77,44 @@
                         </span>
                     </div>
                 </div>
-                <div x-show="!edit" class="mt-4 h-96">
+                <div x-show="!edit && !file" class="mt-4 h-96">
                     <livewire:livewire-pie-chart key="{{ $this->pieChartModel->reactiveKey() }}" :pie-chart-model="$this->pieChartModel" />
                 </div>
 
                 {{-- edit --}}
                 <div x-show="edit" class="w-full flex-col">
                     @livewire('employee.profile.edit', ['employee' => $employee])
+                </div>
+
+                {{-- file --}}
+                <div @click.outside="file = false" x-show="file" class="mt-4 w-full">
+                    <hr class="mb-2">
+                    @forelse ($employee->files as $key => $file)
+
+                    <div class="flex justify-between w-full px-4 py-2 rounded-lg hover:bg-secondary-50 text-secondary-500">
+                        <span>{{__('ui.file')}} {{$key + 1}}</span>
+                        <div class="flex gap-2">
+                            @if (pathinfo($file->file_path, PATHINFO_EXTENSION) == 'png' || pathinfo($file->file_path, PATHINFO_EXTENSION) == 'jpg' || pathinfo($file->file_path, PATHINFO_EXTENSION) == 'jpeg' || pathinfo($file->file_path, PATHINFO_EXTENSION) == 'gif')
+                            <a href="{{ $file->file_path }}" target="_blank" class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
+                                <i class="fas fa-file-image text-green-500"></i>
+                            </a>
+                            @endif
+                            <a href="{{$file->file_path}}" download class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
+                                <i class="fas fa-download"></i>
+                            </a>
+
+
+
+                            @admin()
+                            <button wire:click="confirmed({{ $file->id }} , 'delete')" class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            @endadmin
+                        </div>
+                    </div>
+                    @empty
+                    {{__('ui.no_data')}}
+                    @endforelse
                 </div>
             </div>
         </div>

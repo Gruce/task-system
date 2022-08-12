@@ -14,9 +14,9 @@ use Asantibanez\LivewireCharts\Facades\LivewireCharts;
 class Show extends Component
 {
     use LivewireAlert, WithFileUploads;
-    public $state, $photo, $tasks, $taskID, $todo_tasks, $in_progress_tasks, $done_tasks;
+    public $state, $photo, $tasks, $taskID, $todo_tasks, $file_id,  $in_progress_tasks, $done_tasks;
 
-    protected $listeners = ['$refresh', 'toggleModal'];
+    protected $listeners = ['$refresh', 'toggleModal', 'delete'];
 
     public function toggleModal($task_id)
     {
@@ -41,6 +41,34 @@ class Show extends Component
         $this->projects = $this->employee->projects()->get();
         $this->projects_done_count = $this->projects->where('done', true)->count();
         $this->projects_not_done_count = $this->projects->where('done', false)->count();
+    }
+
+
+    public function confirmed($id, $function)
+    {
+        $this->file_id = $id;
+        $this->confirm(__('ui.are_you_sure'), [
+            'toast' => false,
+            'position' => 'center',
+            'showConfirmButton' => "true",
+            'cancelButtonText' => (__('ui.cancel')),
+            'confirmButtonText' => (__('ui.confirm')),
+            'onConfirmed' => $function,
+        ]);
+    }
+
+    public function delete()
+    {
+        $this->employee->files()->findOrFail($this->file_id)->delete();
+        $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
+
+        $this->emitSelf('$refresh');
     }
 
 
