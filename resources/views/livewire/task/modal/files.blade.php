@@ -5,7 +5,7 @@
             <div class="absolute w-full px-4">
                 <div class="flex items-center justify-between cursor-pointer">
                     <span class="text-secondary-600">{{__('ui.upload_files')}}</span>
-    
+
                     <div wire:loading wire:target="files">
                         <i class="text-xl fas fa-spin fa-spinner text-secondary-600"></i>
                     </div>
@@ -35,15 +35,17 @@
             <a href="{{$file->file_path}}" download class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
                 <i class="fas fa-download"></i>
             </a>
-            {{-- <button class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
-                <i class="fas fa-download"></i>
-            </button> --}}
+            @if (pathinfo($file->file_path, PATHINFO_EXTENSION) == 'png' || pathinfo($file->file_path, PATHINFO_EXTENSION) == 'jpg' || pathinfo($file->file_path, PATHINFO_EXTENSION) == 'jpeg' || pathinfo($file->file_path, PATHINFO_EXTENSION) == 'gif')
+            <a href="{{ $file->file_path }}" target="_blank" class="px-4 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">
+                <i class="fas fa-file-image text-green-500"></i>
+            </a>
+            @endif
             <button wire:click="confirmed({{ $file->id }})" class="px-4 py-1 duration-150 ease-in-out delay-75 rounded-lg hover:text-error-600 hover:bg-error-100">
                 <i class="fas fa-trash"></i>
             </button>
         </div>
     </div>
-@empty
+    @empty
     {{__('ui.no_data')}}
-@endforelse
+    @endforelse
 </div>
