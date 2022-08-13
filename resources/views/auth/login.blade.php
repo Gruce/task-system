@@ -4,7 +4,7 @@
 
     <div class="flex flex-col h-full justify-center items-center lg:m-40 mt-20">
         <div class="bg-white  px-3   border rounded-3xl lg:w-1/4 sm:w-full   shadow-sm  h-full ">
-            <div class="ml-40">
+            <div class="flex justify-center">
                 <img src="{{ asset('images\logo.jpg') }}" class="w-20">
             </div>
 
