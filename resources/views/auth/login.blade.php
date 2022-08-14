@@ -2,27 +2,26 @@
 
     {{--NEW LOGIN--}}
 
-    <div class="flex flex-col h-full justify-center items-center lg:m-40 mt-20">
+    <div class="flex flex-col items-center h-full w-full   mt-20">
         <div class="bg-white  px-3   border rounded-3xl lg:w-1/4 sm:w-full   shadow-sm  h-full ">
             <div class="flex justify-center">
-                <img src="{{ asset('images\logo.jpg') }}" class="w-20">
+                <img src="{{ asset('images\logo.jpg') }}" class="w-48">
             </div>
 
-            <x-jet-validation-errors class="mb-4" />
+            <x-jet-validation-errors class="mb-2" />
 
             @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600">
                 {{ session('status') }}
             </div>
             @endif
-            <div class="flex flex-col  ml-10 mr-10 ">
-                <div class="flex flex-col gap-2 py-5">
-                    <h1 class="text-5xl text-dark">Login</h1>
-                    <span class="text-xl text-dark mt-2">Welcome back to Task System</span>
+            <div class="flex flex-col  mx-5 ">
+                <div class="flex flex-col items-center gap-2 py-5">
+                    <h1 class="text-2xl text-dark mt-2">Welcome back to Task System</h1>
                 </div>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    <div class="flex flex-col mt-5 h-full">
+                    <div class="flex flex-col mt-4 h-full">
                         <div class=" basis-1/2 mb-5">
                             <label for="email-address-icon" class="block mb-2 text-sm font-medium text-gray-900">{{ __('Username/Email') }}</label>
                             <div class="relative">

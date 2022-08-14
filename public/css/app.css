@@ -1235,9 +1235,9 @@ select {
   margin-left: 1rem;
   margin-right: 1rem;
 }
-.mx-40 {
-  margin-left: 10rem;
-  margin-right: 10rem;
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
 }
 .ml-3 {
   margin-left: 0.75rem;
@@ -1337,9 +1337,6 @@ select {
 }
 .mt-20 {
   margin-top: 5rem;
-}
-.ml-40 {
-  margin-left: 10rem;
 }
 .ml-10 {
   margin-left: 2.5rem;
@@ -2495,6 +2492,14 @@ select {
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
+}
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 .font-medium {
   font-weight: 500;
@@ -3912,6 +3917,11 @@ select {
 
   .lg\:m-40 {
     margin: 10rem;
+  }
+
+  .lg\:mx-40 {
+    margin-left: 10rem;
+    margin-right: 10rem;
   }
 
   .lg\:w-1\/4 {
