@@ -4,23 +4,27 @@
             <div class="flex flex-col items-center gap-2 p-8 text-center bg-white rounded-lg basis-1/4">
                 <div class="flex items-center gap-2">
                     <div class="relative">
-                        <button data-tooltip-target="tooltip-default" wire:click="state({{$employee->id}})">
+                        <button data-tooltip-target="tooltip-default" @admin() wire:click="state({{$employee->id}}) @endadmin">
                             @if(!$employee->state)
                             <div class="ring-4 ring-red-500 opacity-100 rounded-full">
                                 <div class=" blur-sm opacity-90 rounded-full ">
                                     <img class="w-40 h-40 p-1  mb-3 rounded-full" src="{{ $employee->user->profile_photo }}" alt="">
                                 </div>
                             </div>
+                            @admin()
                             <div id="tooltip-default" role="tooltip" class="inline-block absolute invisible z-10  py-2 px-3 text-sm font-medium text-white bg-green-700 rounded-lg  opacity-0 transition-opacity duration-300 tooltip">
                                 {{__('ui.active')}}
                                 <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
+                            @endadmin
                             @else
                             <img class="w-40 h-40 p-1 mb-3 ring-4 ring-green-600 rounded-full" src="{{ $employee->user->profile_photo }}" alt="">
+                            @admin()
                             <div id="tooltip-default" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-red-600 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
                                 {{__('ui.disable')}}
                                 <div class="tooltip-arrow" data-popper-arrow></div>
                             </div>
+                            @endadmin
                             @endif
                         </button>
                         <div class="relative">
