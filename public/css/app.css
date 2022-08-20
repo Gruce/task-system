@@ -1227,10 +1227,6 @@ select {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
 }
-.mx-5 {
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
-}
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -1238,6 +1234,10 @@ select {
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
 }
 .ml-3 {
   margin-left: 0.75rem;
@@ -1335,8 +1335,11 @@ select {
 .ml-0 {
   margin-left: 0px;
 }
-.mt-20 {
-  margin-top: 5rem;
+.ml-7 {
+  margin-left: 1.75rem;
+}
+.mr-6 {
+  margin-right: 1.5rem;
 }
 .mb-10 {
   margin-bottom: 2.5rem;
@@ -1359,8 +1362,8 @@ select {
 .mr-4 {
   margin-right: 1rem;
 }
-.mr-6 {
-  margin-right: 1.5rem;
+.mt-20 {
+  margin-top: 5rem;
 }
 .block {
   display: block;
@@ -1436,6 +1439,9 @@ select {
 }
 .h-3 {
   height: 0.75rem;
+}
+.h-auto {
+  height: auto;
 }
 .h-screen {
   height: 100vh;
@@ -1529,6 +1535,9 @@ select {
 }
 .w-1\/4 {
   width: 25%;
+}
+.w-10\/12 {
+  width: 83.333333%;
 }
 .w-7 {
   width: 1.75rem;
@@ -1713,6 +1722,9 @@ select {
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 .flex-row {
   flex-direction: row;
 }
@@ -1857,11 +1869,11 @@ select {
 .rounded-full {
   border-radius: 9999px;
 }
-.rounded-3xl {
-  border-radius: 1.5rem;
-}
 .rounded-xl {
   border-radius: 0.75rem;
+}
+.rounded-3xl {
+  border-radius: 1.5rem;
 }
 .rounded-l-md {
   border-top-left-radius: 0.375rem;
@@ -3953,6 +3965,10 @@ select {
   }
 }
 @media (min-width: 1280px) {
+
+  .xl\:mt-0 {
+    margin-top: 0px;
+  }
 
   .xl\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
