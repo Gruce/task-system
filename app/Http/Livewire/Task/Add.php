@@ -38,7 +38,7 @@ class Add extends Component
         $task->employees()->attach(array_keys($this->taskEmployees));
 
         if ($this->taskEmployees)
-            $this->sendNotification(__('ui.add_task') . " '$task->title'", __('ui.addattachments'), array_keys($this->taskEmployees));
+            $this->sendNotification('ui.add_task' . " '$task->title'", 'ui.addattachments', array_keys($this->taskEmployees));
 
 
         foreach ($this->taskEmployees as $employee) {
@@ -55,6 +55,7 @@ class Add extends Component
             }
 
         $this->reset();
+        $this->emitTo('notification.card', '$refresh');
         $this->emitTo('task.all', '$refresh');
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
