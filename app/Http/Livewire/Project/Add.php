@@ -6,12 +6,13 @@ use App\Models\File;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
+use App\Traits\Livewire\NotificationTrait;
 use App\Models\Project;
 
 
 class Add extends Component
 {
-    use WithFileUploads, LivewireAlert;
+    use WithFileUploads, LivewireAlert, NotificationTrait;
     public $project;
     public $files = [];
 
@@ -40,8 +41,7 @@ class Add extends Component
                 ]);
                 $new_file->add_file('name', $file, 'projects/' . $project->id . '/files/' . $new_file->id);
             }
-
-        $this->emitTo('project.main', '$refresh');
+        $this->emitTo('project.all', '$refresh');
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
             'timer' => 3000,

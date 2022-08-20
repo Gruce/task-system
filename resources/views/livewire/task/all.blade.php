@@ -1,6 +1,6 @@
 <div>
 
-    <div class="flex flex-col gap-4 sm:flex-row">
+    <div class="flex flex-col gap-4  sm:flex-row">
         <div class="flex flex-col gap-2 bg-white rounded-lg basis-1/3">
             <div class="flex items-center gap-2 p-3 m-1 text-lg rounded-lg text-secondary-600 bg-secondary-50">
                 <span class="w-3.5 h-3.5 bg-secondary-400 border-2 border-white rounded-full"></span>

@@ -61,6 +61,7 @@ class Users extends Component
             'ui.remove_in_project',
             $this->employee_id
         );
+        $this->emitTo('notification.card', '$refresh');
 
         $this->emitSelf('$refresh');
         $this->emitTo('task.modal.users', '$refresh');
@@ -96,6 +97,7 @@ class Users extends Component
             'ui.add_in_project',
             $this->userId
         );
+        $this->emitTo('notification.card', '$refresh');
 
 
         $this->emitSelf('$refresh');

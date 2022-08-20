@@ -46,7 +46,7 @@ class Users extends Component
             'ui.remove_in_task',
             $this->employee_id
         );
-
+        $this->emitTo('notification.card', '$refresh');
         $this->emitSelf('$refresh');
         $this->emitTo('project.show.users', '$refresh');
 
@@ -81,6 +81,7 @@ class Users extends Component
             $this->userId
         );
 
+
         if (!$this->task->project->employees()->wherePivot('employee_id', $this->userId)->exists()) {
             $this->task->project->employees()->attach($this->userId);
 
@@ -90,7 +91,7 @@ class Users extends Component
                 $this->userId
             );
         }
-
+        $this->emitTo('notification.card', '$refresh');
         $this->emitSelf('$refresh');
 
         $this->alert('success', __('ui.data_has_been_add_successfully'), [

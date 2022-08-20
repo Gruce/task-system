@@ -4,10 +4,11 @@ namespace App\Http\Livewire\Task\Modal;
 
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use App\Traits\Livewire\NotificationTrait;
 
 class Comments extends Component
 {
-    use LivewireAlert;
+    use LivewireAlert, NotificationTrait;
     public $task, $comment;
 
     protected $rules = [
@@ -20,13 +21,13 @@ class Comments extends Component
         $this->task->comment($this->comment);
         $this->comment = '';
 
-        $this->alert('success', __('ui.data_has_been_add_successfully'), [
-            'position' => 'top',
-            'timer' => 3000,
-            'toast' => true,
-            'timerProgressBar' => true,
-            'width' => '400',
-        ]);
+        $this->sendNotification(
+            $this->task->title,
+            'ui.add_comment',
+            is_admin() ? auth()->user()->id : auth()->user()->employee->id,
+        );
+
+        $this->emitTo('notification.card', '$refresh');
     }
 
     public function render()

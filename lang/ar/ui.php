@@ -193,4 +193,5 @@ return [
     'admin' => 'مدير',
     'current_password' => 'كلمة المرور الحالية',
     'no_projects_in_progress' => 'لا يوجد مشروع قيد التنفيذ',
+    'add_comment' => 'تعليق جديد',
 ];

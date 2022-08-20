@@ -5,10 +5,11 @@ namespace App\Http\Livewire\Project\Show;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use App\Traits\Livewire\NotificationTrait;
 
 class Comments extends Component
 {
-    use WithPagination, LivewireAlert;
+    use WithPagination, LivewireAlert, NotificationTrait;
 
     public $project, $comment;
     public $limitPerPage = 10;
@@ -17,14 +18,22 @@ class Comments extends Component
         'comment' => 'required',
     ];
 
-    public function add_comment(){
+    public function add_comment()
+    {
         $this->validate();
         $this->project->comment($this->comment);
         $this->comment = '';
 
+        $this->sendNotification(
+            $this->project->title,
+            'ui.add_comment',
+            is_admin() ? auth()->user()->id : auth()->user()->employee->id,
+        );
+        $this->emitTo('notification.card', '$refresh');
     }
 
-    public function loadMore(){
+    public function loadMore()
+    {
         $this->limitPerPage = $this->limitPerPage + 10;
     }
 
@@ -37,6 +46,6 @@ class Comments extends Component
             $comments = $comments->whereNull('commentable_id');
 
         $comments = $comments->orderByDesc('id')->paginate($this->limitPerPage);
-        return view('livewire.project.show.comments' , ['comments' => $comments]);
+        return view('livewire.project.show.comments', ['comments' => $comments]);
     }
 }

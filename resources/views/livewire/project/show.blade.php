@@ -20,7 +20,7 @@
         </div>
         @endadmin
         {{-- Bottom --}}
-        <div x-show="!expandComments" class="flex flex-col gap-4 p-4 text-lg font-semibold capitalize bg-white rounded-lg sm:p-8 text-secondary-600 sm:basis-2/3 sm:h-2/3">
+        <div x-show="!expandComments" class="flex flex-col gap-4  text-lg font-semibold capitalize bg-white rounded-lg sm:p-2 text-secondary-600 sm:basis-2/3 sm:h-2/3">
             @admin()
             <div>
                 <button @click="addTask=!addTask" class="px-2 py-1 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">

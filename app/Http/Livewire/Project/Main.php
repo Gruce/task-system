@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class Main extends Component
 {
-    protected $listeners = ['updatedSelectedTab'];
+    protected $listeners = ['updatedSelectedTab', '$refresh'];
     public function updatedSelectedTab($value)
     {
         $this->selectedTab = $value;
