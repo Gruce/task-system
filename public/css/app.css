@@ -1120,9 +1120,6 @@ select {
 .invisible {
   visibility: hidden;
 }
-.static {
-  position: static;
-}
 .fixed {
   position: fixed;
 }
@@ -1169,41 +1166,14 @@ select {
 .right-3 {
   right: 0.75rem;
 }
+.top-14 {
+  top: 3.5rem;
+}
 .left-1 {
   left: 0.25rem;
 }
 .-left-2 {
   left: -0.5rem;
-}
-.bottom-0 {
-  bottom: 0px;
-}
-.top-4 {
-  top: 1rem;
-}
-.top-10 {
-  top: 2.5rem;
-}
-.right-12 {
-  right: 3rem;
-}
-.left-12 {
-  left: 3rem;
-}
-.top-12 {
-  top: 3rem;
-}
-.top-14 {
-  top: 3.5rem;
-}
-.right-20 {
-  right: 5rem;
-}
-.left-40 {
-  left: 10rem;
-}
-.top-32 {
-  top: 8rem;
 }
 .z-0 {
   z-index: 0;
@@ -1216,9 +1186,6 @@ select {
 }
 .z-20 {
   z-index: 20;
-}
-.z-auto {
-  z-index: auto;
 }
 .col-span-6 {
   grid-column: span 6 / span 6;
@@ -1473,6 +1440,9 @@ select {
 .h-3 {
   height: 0.75rem;
 }
+.h-tasklist {
+  height: calc(100vh - 23.5rem);
+}
 .h-screen {
   height: 100vh;
 }
@@ -1484,9 +1454,6 @@ select {
 }
 .h-7 {
   height: 1.75rem;
-}
-.h-tasklist {
-  height: calc(100vh - 23.5rem);
 }
 .h-3\.5 {
   height: 0.875rem;
@@ -1503,14 +1470,16 @@ select {
 .h-projectfiles {
   height: calc(100vh - 25rem);
 }
-.h-auto {
-  height: auto;
-}
-.h-1\/2 {
-  height: 50%;
+.h-2\/3 {
+  height: 66.666667%;
 }
 .min-h-screen {
   min-height: 100vh;
+}
+.min-h-max {
+  min-height: -webkit-max-content;
+  min-height: -moz-max-content;
+  min-height: max-content;
 }
 .w-5 {
   width: 1.25rem;
@@ -1594,9 +1563,6 @@ select {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-}
-.w-96 {
-  width: 24rem;
 }
 .min-w-0 {
   min-width: 0px;
@@ -3356,14 +3322,14 @@ select {
     background-color: rgb(31 41 55 / var(--tw-bg-opacity));
   }
 
-  .dark\:bg-blue-600 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(37 99 235 / var(--tw-bg-opacity));
-  }
-
   .dark\:bg-red-200 {
     --tw-bg-opacity: 1;
     background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+  }
+
+  .dark\:bg-blue-600 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(37 99 235 / var(--tw-bg-opacity));
   }
 
   .dark\:text-gray-300 {

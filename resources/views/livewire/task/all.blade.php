@@ -7,7 +7,7 @@
                 <span>{{__('ui.to_do')}}</span>
             </div>
 
-            <div id="todo-1" class="flex flex-col gap-4 px-2 m-1 overflow-y-auto drag {{$project ? 'sm:h-minitasklist h-tasklist' : 'h-tasklist'}}" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div id="todo-1" class="flex flex-col gap-4 px-2 m-1 overflow-y-auto drag {{$project ? 'h-tasklist' : 'h-tasklist'}}" ondrop="drop(event)" ondragover="allowDrop(event)">
                 @forelse ($tasks as $item )
                 @if($item->state == 1)
                 @livewire('task.card' , ['task' => $item] , key($item->id . "-" . now()))
@@ -27,7 +27,7 @@
                 <span>{{__('ui.in_progress')}}</span>
             </div>
 
-            <div id="progress-2" class="flex flex-col gap-4 px-2 m-1 overflow-y-auto drag {{$project ? 'sm:h-minitasklist h-tasklist' : 'h-tasklist'}}" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div id="progress-2" class="flex flex-col gap-4 px-2 m-1 overflow-y-auto drag {{$project ? 'h-tasklist' : 'h-tasklist'}}" ondrop="drop(event)" ondragover="allowDrop(event)">
                 @forelse ( $tasks as $item)
                 @if($item->state == 2)
                 @livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))
@@ -49,7 +49,7 @@
                 <span>{{__('ui.done')}}</span>
             </div>
 
-            <div id="done-3" class="flex flex-col gap-4 px-2 m-1 overflow-y-auto drag {{$project ? 'sm:h-minitasklist h-tasklist' : 'h-tasklist'}}" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div id="done-3" class="flex flex-col gap-4 px-2 m-1 overflow-y-auto drag {{$project ? 'h-tasklist' : 'h-tasklist'}}" ondrop="drop(event)" ondragover="allowDrop(event)">
                 @forelse ($tasks as $item )
                 @if($item->state == 3)
                 @livewire('task.card', ['task'=>$item], key('task-id-' . $item->id))
