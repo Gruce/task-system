@@ -10,7 +10,7 @@ use App\Traits\Livewire\NotificationTrait;
 class Add extends Component
 {
     use  LivewireAlert, NotificationTrait;
-    protected $listeners = ['search' , '$refresh'];
+    protected $listeners = ['search', '$refresh'];
 
     protected $rules = [
         'notification.title' => 'required',
@@ -45,6 +45,8 @@ class Add extends Component
             $this->notification['description'],
             $this->selected
         );
+        $this->emitSelf('play');
+
 
         $this->reset();
         $this->emitTo('notification.all', '$refresh');
