@@ -45,7 +45,7 @@ class Add extends Component
             $this->notification['description'],
             $this->selected
         );
-        $this->emitSelf('play');
+
 
 
         $this->reset();

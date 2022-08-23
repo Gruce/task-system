@@ -21,8 +21,11 @@
             <div class="divide-y divide-gray-700 ">
                 <a href="#" class="flex py-3 px-4">
                     <div class="pl-3 w-full">
-                        <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400"><span class="font-semibold text-gray-900 dark:text-white">{{$item->title}}</span>: {{__($item->description)}}</div>
-                        <div class="text-xs text-blue-600 dark:text-blue-500">{{$item->created_at->diffForHumans()}}</div>
+                        <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
+                            <p class="font-semibold text-gray-900 dark:text-white break-all">{{$item->title}} :</p>
+                            <p class="break-all">{{__($item->description)}}</p>
+                        </div>
+                        <div class="text-xs text-blue-600 ">{{$item->created_at->diffForHumans()}}</div>
                     </div>
                 </a>
             </div>
@@ -44,21 +47,4 @@
         </a>
     </div>
 
-    <script>
-        document.addEventListener('livewire:load', function () {
-
-            // Run a callback when an event ("foo") is emitted from this component
-            @this.on('play', () => {
-                alert('play');
-            })
-        })
-    </script>
-    {{-- <script>
-        document.addEventListener("livewie:load", () => {
-           @this.on('play', () => {
-            alert('play');
-            //    new Audio("{{url('public/audio/not.mp3')}}").play();
-           })
-        });
-    </script> --}}
 </div>
