@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
+            $table->boolean('read_at')->default(false);
             $table->timestamps();
         });
     }

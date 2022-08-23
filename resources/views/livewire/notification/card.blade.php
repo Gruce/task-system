@@ -12,18 +12,17 @@
         @endif
     </button>
     <!-- Dropdown menu -->
-    <div wire:poll x-show="dropdownNotification" class="fixed top-14 right-15 w-auto z-20  bg-white rounded divide-y divide-gray-100 shadow overflow-visible">
+    <div wire:poll @click.outside="dropdownNotification = false" x-show="dropdownNotification" class="fixed top-14 right-15 w-auto z-20  bg-white rounded divide-y divide-gray-100 shadow overflow-visible">
         <div class="block py-2 px-4 font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-800 dark:text-white">
             {{__('ui.notifications')}}
         </div>
         <div class="overflow-y-auto h-tasklist">
             @forelse ($notifications as $item)
             <div class="divide-y divide-gray-700 ">
-                <a href="#" class="flex py-3 px-4">
-                    <div class="pl-3 w-full">
-                        <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                            <p class="font-semibold text-gray-900 dark:text-white break-all">{{$item->title}} :</p>
-                            <p class="break-all">{{__($item->description)}}</p>
+                <a href="{{ route('notifications') }}" class="flex py-3 px-4">
+                    <div class="pl-3 w-full break-all">
+                        <div wire:click="read({{$item->id}})" class="text-gray-500 text-sm mb-1.5 w-full">
+                            <p class="w-full font-semibold text-gray-900 dark:text-white hover:underline break-all">{{$item->title}}</p>{{__($item->description)}}
                         </div>
                         <div class="text-xs text-blue-600 ">{{$item->created_at->diffForHumans()}}</div>
                     </div>
