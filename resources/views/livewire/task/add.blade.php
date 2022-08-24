@@ -28,16 +28,15 @@
                             {{ __('ui.choose_project') }}</label>
                         </label>
                         <div class="flex w-full gap-2">
-                            <input wire:model="search" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.project_title')}}">
-
-                            @if ($search)
                             <select wire:model="task.project_id" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                {{-- <input wire:model="search" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.project_title')}}"> --}}
+
                                 <option value="" selected>{{__('ui.select_project')}}</option>
                                 @foreach ($projects as $project)
                                 <option value="{{$project->id}}">{{$project->title}}</option>
                                 @endforeach
                             </select>
-                            @endif
+
                         </div>
                         @error('task.project_id')
                         <p class="text-red-500 text-s ">{{__('ui.this_field_is_required')}}</p>
@@ -86,15 +85,17 @@
                     <div>
                         <div class="grid xl:grid-cols-1 xl:gap-6">
                             <div>
-                                <div>
+                                {{-- <div>
                                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
                                         {{ __('ui.employees') }}</label>
                                     </label>
                                     <input wire:model="employeesSearch" type="text" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.name')}}">
-                                </div>
+                                </div> --}}
                                 <div>
-                                    @if($employeesSearch)
-                                    <select wire:model="employee_id" wire:change="addEmployee" class="my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
+                                        {{ __('ui.employees') }}</label>
+                                    </label>
+                                    <select wire:model="employee_id" wire:change="addEmployee" class="my-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option selected="">{{ __('ui.select_employee') }}</option>
                                         @foreach($employees as $employee)
                                         <option value="{{$employee->id}}">{{$employee->name}}</option>
@@ -103,7 +104,7 @@
                                             <i class="fas fa-check"></i>
                                         </button>
                                     </select>
-                                    @endif
+
                                 </div>
                             </div>
                         </div>

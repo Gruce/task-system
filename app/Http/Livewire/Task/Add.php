@@ -38,7 +38,7 @@ class Add extends Component
         $task->employees()->attach(array_keys($this->taskEmployees));
 
         if ($this->taskEmployees)
-            $this->sendNotification('ui.add_task' . " '$task->title'", 'ui.addattachments', array_keys($this->taskEmployees));
+            $this->sendNotification($task->title, 'ui.add_task', array_keys($this->taskEmployees));
 
 
         foreach ($this->taskEmployees as $employee) {
@@ -109,11 +109,16 @@ class Add extends Component
         if ($this->search) {
             $search = '%' . $this->search . '%';
             $projects = Project::where('title', 'LIKE', $search)->paginate(24);
+        } else {
+            $projects = Project::get();
         }
+
 
         if ($this->employeesSearch) {
             $search = '%' . $this->employeesSearch . '%';
             $employees = Employee::whereNotIn('id', collect($this->taskEmployees)->pluck('id')->toArray())->whereRelation('user', 'name', 'LIKE', $search)->paginate(10);
+        } else {
+            $employees = Employee::whereNotIn('id', collect($this->taskEmployees)->pluck('id')->toArray())->get();
         }
 
         return view('livewire.task.add', [

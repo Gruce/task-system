@@ -19,14 +19,17 @@
         <div class="overflow-y-auto h-tasklist">
             @forelse ($notifications as $item)
             <div class="divide-y divide-gray-700 ">
-                <a href="{{ route('notifications') }}" class="flex py-3 px-4">
+                <a class="flex py-3 px-4">
                     <div class="flex flex-col pl-3 w-full">
-                        <div wire:click="read({{$item->id}})" class="flex justify-between text-gray-500 text-sm mb-1.5 w-full">
-                            <div>
+                        <div class="break-all flex justify-between text-gray-500 text-sm mb-1.5 w-full">
+                            <div class="">
                                 <p class="w-full font-semibold text-gray-900 dark:text-white hover:underline break-all">{{$item->title}}</p>{{__($item->description)}}
                             </div>
-                            <div>
-                                <button>x</button>
+                            <div class="mx-4">
+                                <button wire:click="read({{$item->id}})" type="button" class=" bg-white text-gray-400 hover:text-gray-900 focus:ring-4 focus:outline-none hover:bg-gray-100 focus:ring-gray-300  font-sm rounded-lg text-sm p-2.5 text-center inline-flex items-center h-8 w-8 mx-2 ">
+                                    <i class="fa-solid fa-times"></i>
+                                </button>
+
                             </div>
                         </div>
                         <div class="text-xs text-blue-600 ">{{$item->created_at->diffForHumans()}}</div>
