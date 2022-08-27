@@ -1,4 +1,4 @@
-<div class="p-4 bg-white rounded-lg sm:p-8">
+<div class="p-4 bg-white rounded-lg sm:p-8" x-init="@this.on('$refresh', ()=>{ setTimeout(()=>{ addTask = false;}, 400) })">
     @if($project)
     <div>
         <button @click="addTask=!addTask" class="px-2 py-1 mb-2 duration-150 ease-in delay-75 rounded-lg hover:text-secondary-800 hover:bg-secondary-100">

@@ -1,4 +1,4 @@
-<div class="p-8 bg-white rounded-lg">
+<div class="p-8 bg-white rounded-lg" x-init="@this.on('$refresh', ()=>{ setTimeout(()=>{ addEmployee = false;}, 400) })">
     <form wire:submit.prevent="save">
         <div class="sm:flex gap-10">
             {{-- Basic Inputs --}}
