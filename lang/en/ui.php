@@ -190,4 +190,6 @@ return [
     'current_password' => 'Current Password',
     'no_projects_in_progress' => 'No Projects In Progress',
     'add_comment' => 'Add Comment',
+    'task_has_been_archived_successfully' => 'Task has been archived successfully',
+    'task_restored_successfully' => 'Task restored successfully',
 ];

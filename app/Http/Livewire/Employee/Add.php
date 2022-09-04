@@ -59,8 +59,6 @@ class Add extends Component
             }
 
 
-        $this->reset();
-        $this->emitTo('employee.all', '$refresh');
 
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
@@ -69,6 +67,8 @@ class Add extends Component
             'timerProgressBar' => true,
             'width' => '400',
         ]);
+
+        redirect()->route('employees');
     }
 
     public function removeFile($index)

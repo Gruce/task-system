@@ -10,7 +10,7 @@ class Card extends Component
 {
 
     use  LivewireAlert;
-    protected $listeners = ['$refresh', '$play'];
+    protected $listeners = ['$refresh'];
 
     public function read($id)
     {

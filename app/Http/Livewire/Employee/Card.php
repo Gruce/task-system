@@ -9,7 +9,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class Card extends Component
 {
     use LivewireAlert;
-    protected $listeners = ['delete'];
+    protected $listeners = ['$refresh', 'delete'];
     public $ID;
     public $employee;
 

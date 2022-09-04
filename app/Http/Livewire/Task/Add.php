@@ -38,7 +38,7 @@ class Add extends Component
         $task->employees()->attach(array_keys($this->taskEmployees));
 
         if ($this->taskEmployees)
-            $this->sendNotification($task->title, 'ui.add_task', array_keys($this->taskEmployees));
+            $this->sendNotification($task->title, 'ui.add_task', array_keys($this->taskEmployees), $task->project->id);
 
 
         foreach ($this->taskEmployees as $employee) {

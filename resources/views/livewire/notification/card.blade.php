@@ -23,7 +23,11 @@
                     <div class="flex flex-col pl-3 w-full">
                         <div class="break-all flex justify-between text-gray-500 text-sm mb-1.5 w-full">
                             <div class="">
-                                <p class="w-full font-semibold text-gray-900 dark:text-white hover:underline break-all">{{$item->title}}</p>{{__($item->description)}}
+                                <p @if ($item->project_id)
+                                    @click="window.location.href = '{{route('projects.show', $item->project_id)}}'"
+                                    @else
+                                    @click="window.location.href = '{{route('notifications')}}'"
+                                    @endif class="w-full font-semibold text-gray-900 dark:text-white hover:underline break-all">{{$item->title}}</p>{{__($item->description)}}
                             </div>
                             <div class="mx-4">
                                 <button wire:click="read({{$item->id}})" type="button" class=" bg-white text-gray-400 hover:text-gray-900 focus:ring-4 focus:outline-none hover:bg-gray-100 focus:ring-gray-300  font-sm rounded-lg text-sm p-2.5 text-center inline-flex items-center h-8 w-8 mx-2 ">

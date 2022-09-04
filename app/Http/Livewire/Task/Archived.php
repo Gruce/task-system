@@ -7,6 +7,7 @@ use App\Models\Task;
 
 class Archived extends Component
 {
+    protected $listeners = ['$refresh'];
     public function render()
     {
         $tasks = Task::onlyTrashed()->get();

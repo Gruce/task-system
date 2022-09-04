@@ -194,4 +194,6 @@ return [
     'current_password' => 'كلمة المرور الحالية',
     'no_projects_in_progress' => 'لا يوجد مشروع قيد التنفيذ',
     'add_comment' => 'تعليق جديد',
+    'task_has_been_archived_successfully' => 'تم ارشفت المهمة بنجاح',
+    'task_restored_successfully' => 'تم استعادة المهمة بنجاح',
 ];

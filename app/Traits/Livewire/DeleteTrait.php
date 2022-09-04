@@ -1,11 +1,13 @@
 <?php
+
 namespace App\Traits\Livewire;
 
 trait DeleteTrait
 {
-    public $ID , $model ;
+    public $ID, $model;
 
-    public function confirmedDelete($model , $id , $function = 'delete' , $emit = null){
+    public function confirmedDelete($model, $id, $function = 'delete', $emit = null)
+    {
         $this->model = $model;
         $this->ID = $id;
         $this->emit = $emit;
@@ -20,9 +22,10 @@ trait DeleteTrait
         ]);
     }
 
-    public function delete(){
+    public function delete()
+    {
         $this->model->findOrFail($this->ID)->delete();
-        $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
+        $this->alert('success', __('ui.task_has_been_archived_successfully'), [
             'position' => 'top',
             'timer' => 3000,
             'toast' => true,
@@ -30,13 +33,13 @@ trait DeleteTrait
             'width' => '400',
         ]);
 
-        if($this->emit)
-            foreach($this->emit as $emit)
-                $this->emitTo($emit , '$refresh');
-
+        if ($this->emit)
+            foreach ($this->emit as $emit)
+                $this->emitTo($emit, '$refresh');
     }
 
-    public function forceDelete(){
+    public function forceDelete()
+    {
         $this->model->findOrFail($this->ID)->forceDelete();
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',
@@ -46,10 +49,8 @@ trait DeleteTrait
             'width' => '400',
         ]);
 
-        if($this->emit)
-            foreach($this->emit as $emit)
-                $this->emitTo($emit , '$refresh');
-
+        if ($this->emit)
+            foreach ($this->emit as $emit)
+                $this->emitTo($emit, '$refresh');
     }
-
 }

@@ -25,6 +25,7 @@ class Comments extends Component
             $this->task->title,
             'ui.add_comment',
             is_admin() ? auth()->user()->id : auth()->user()->employee->id,
+            $this->task->project->id,
         );
 
         $this->emitTo('notification.card', '$refresh');

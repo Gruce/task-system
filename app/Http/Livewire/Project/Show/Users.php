@@ -59,7 +59,8 @@ class Users extends Component
         $this->sendNotification(
             $this->project->title,
             'ui.remove_in_project',
-            $this->employee_id
+            $this->employee_id,
+            $this->project->id
         );
         $this->emitTo('notification.card', '$refresh');
 
@@ -95,7 +96,8 @@ class Users extends Component
         $this->sendNotification(
             $this->project->title,
             'ui.add_in_project',
-            $this->userId
+            $this->userId,
+            $this->project->id
         );
         $this->emitTo('notification.card', '$refresh');
 

@@ -10,7 +10,7 @@ class Notification extends Model
     use HasFactory;
     use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
-    protected $fillable = ['title', 'description', 'read', 'read_at'];
+    protected $fillable = ['title', 'project_id', 'description', 'read', 'read_at'];
 
     ### RELATIONSHIPS ###
 
