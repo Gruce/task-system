@@ -33,7 +33,6 @@
                                 <button wire:click="read({{$item->id}})" type="button" class=" bg-white text-gray-400 hover:text-gray-900 focus:ring-4 focus:outline-none hover:bg-gray-100 focus:ring-gray-300  font-sm rounded-lg text-sm p-2.5 text-center inline-flex items-center h-8 w-8 mx-2 ">
                                     <i class="fa-solid fa-times"></i>
                                 </button>
-
                             </div>
                         </div>
                         <div class="text-xs text-blue-600 ">{{$item->created_at->diffForHumans()}}</div>
