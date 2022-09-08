@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('department_id')->nullable()->constrained('departments')->onDelete('cascade');
             $table->boolean('state')->default(true); // 1: active  0: not active
             $table->string('job')->nullable();
             $table->timestamps();

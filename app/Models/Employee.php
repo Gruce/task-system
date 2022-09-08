@@ -14,7 +14,7 @@ class Employee extends Model
     use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
 
-    protected $fillable = ['user_id', 'state', 'job'];
+    protected $fillable = ['user_id', 'department_id',  'state', 'job'];
 
     // protected $appends = ['photo'];
     // protected $hidden = ['created_at', 'updated_at', 'delete_at'];
@@ -42,6 +42,10 @@ class Employee extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
     }
 
     public function notifications()
