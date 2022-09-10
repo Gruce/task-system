@@ -18,7 +18,7 @@ class Add extends Component
         Department::create([
             'name' => $this->name,
         ]);
-        $this->emitTo('project.all', '$refresh');
+        $this->emitTo('department.all', '$refresh');
         $this->reset();
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
