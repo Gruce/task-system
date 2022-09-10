@@ -20,7 +20,7 @@ class All extends Component
     public function render()
     {
         $search = '%' . $this->search . '%';
-        $departments = Department::where('name', 'LIKE', $search)->orderByDesc('id')->paginate(24);
+        $departments = Department::withCount('employees')->where('name', 'LIKE', $search)->orderByDesc('id')->paginate(24);
         return view('livewire.department.all', compact('departments'));
     }
 }

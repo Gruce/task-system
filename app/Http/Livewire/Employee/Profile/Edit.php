@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Employee\Profile;
 
+use App\Models\Department;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -28,6 +29,9 @@ class Edit extends Component
         $this->phonenumber = $employee->user->phonenumber;
         $this->gender = $employee->user->gender;
         $this->job = $employee->job;
+        $this->department_id = $employee->department_id;
+
+        $this->departments = Department::get();
     }
 
     protected $rules = [
@@ -71,6 +75,7 @@ class Edit extends Component
 
         $this->employee->update([
             'job' => $this->job,
+            'department_id' => $this->department_id,
         ]);
 
         $this->alert('success', __('ui.data_has_been_edited_successfully'), [
