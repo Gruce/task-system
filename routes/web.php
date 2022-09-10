@@ -9,6 +9,7 @@ use App\Http\Livewire\{
     Employee\Main as EmployeeMain,
     Employee\Profile\Show as EmployeeProfile,
     Project\Main as ProjectMain,
+    Department\Main as DepartmentMain,
     Project\Show as ProjectShow,
     Notification\Main as NotificationMain,
 };
@@ -55,6 +56,10 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('projects')->group(function () {
         Route::get('/', ProjectMain::class)->name('projects');
         Route::get('/{id}', ProjectShow::class)->name('projects.show');
+    });
+
+    Route::prefix('department')->group(function () {
+        Route::get('/', DepartmentMain::class)->name('department');
     });
 
     Route::prefix('task')->group(function () {

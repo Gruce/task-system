@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class Card extends Component
 {
+    public $department;
     public function render()
     {
         return view('livewire.department.card');

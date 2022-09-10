@@ -2,12 +2,25 @@
 
 namespace App\Http\Livewire\Department;
 
+use App\Models\Department;
 use Livewire\Component;
+use Livewire\WithPagination;
+
 
 class All extends Component
 {
+    use WithPagination;
+    public $search;
+    protected $listeners = ['$refresh', 'search'];
+    public function search($search)
+    {
+        $this->search = $search;
+    }
+
     public function render()
     {
-        return view('livewire.department.all');
+        $search = '%' . $this->search . '%';
+        $departments = Department::where('name', 'LIKE', $search)->orderByDesc('id')->paginate(24);
+        return view('livewire.department.all', compact('departments'));
     }
 }

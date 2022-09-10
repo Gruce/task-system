@@ -42,6 +42,7 @@ class Sidebar extends Component
                 [
                     new TabItem(__('ui.home'), 'fa-solid fa-home', 'home'),
                     new TabItem(__('ui.employees'), 'fa-solid fa-users', 'employees'),
+                    new TabItem(__('ui.department'), 'fa-solid fa-building-user', 'department'),
                     new TabItem(__('ui.notifications'), 'fa-solid fa-bell', 'notifications'),
 
                 ],

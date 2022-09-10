@@ -22,7 +22,7 @@
                         @error('user.email')<span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                 </div>
-                <div class="grid xl:grid-cols-2 xl:gap-6">
+                <div class="grid xl:grid-cols-2  xl:gap-6">
                     <div>
                         <label class="block mt-1 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.username') }}
@@ -37,21 +37,34 @@
                         <input wire:model.defer="user.password" type="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.password') }} required>
                         @error('user.password')<span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
-                    <div>
-                        <label class="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                            {{ __('ui.phonenumber') }}
-                        </label>
-                        <input wire:model.defer="user.phonenumber" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.phonenumber') }} required>
-                        @error('user.phonenumber')<span class="text-red-500">{{ $message }}</span> @enderror
-                    </div>
                 </div>
-                <div class="grid xl:grid-cols-2 xl:gap-6">
+                <div class="grid xl:grid-cols-2  xl:gap-6">
                     <div>
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {{ __('ui.job') }}
                         </label>
                         <input wire:model.defer="user.employee.job" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.job') }} required>
                         @error('user.employee.job')<span class="text-red-500">{{ $message }}</span> @enderror
+                    </div>
+                    <div>
+                        <label for="departments" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">{{__('ui.select_department')}}</label>
+                        <select wire:model.defer="department_id" id="departments" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="" selected>{{__('ui.select_department')}}</option>
+                            @foreach ($departments as $department)
+                            <option value="{{$department->id}}">{{$department->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('department_id')<span class="text-red-500">{{ $message }}</span> @enderror
+                    </div>
+
+                </div>
+                <div class="grid xl:grid-cols-2  xl:gap-6">
+                    <div>
+                        <label class="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            {{ __('ui.phonenumber') }}
+                        </label>
+                        <input wire:model.defer="user.phonenumber" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={{ __('ui.phonenumber') }} required>
+                        @error('user.phonenumber')<span class="text-red-500">{{ $message }}</span> @enderror
                     </div>
                     <div class="flex pl-4 mt-6">
                         <div class="grow">
@@ -80,8 +93,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
                 <div class="flex justify-center rounded-md shadow-sm gap-2 w-full" role="group">
                     <label class="@isset($user['gender']) @if ($user['gender'] == 2) text-red-500 @else  text-gray-900 @endif @endisset  basis-1/2 flex justify-center items-center py-2 px-4 text-sm font-medium  bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-rose-700 focus:text-rose-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-rose-500 dark:focus:text-white">
                         <span>

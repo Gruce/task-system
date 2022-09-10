@@ -196,4 +196,7 @@ return [
     'add_comment' => 'تعليق جديد',
     'task_has_been_archived_successfully' => 'تم ارشفت المهمة بنجاح',
     'task_restored_successfully' => 'تم استعادة المهمة بنجاح',
+    'department' => 'القسم',
+    'departments' => 'الاقسام',
+    'select_department' => 'اختر القسم',
 ];

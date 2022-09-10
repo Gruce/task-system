@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Employee;
 
+use App\Models\Department;
 use Livewire\Component;
 use App\Models\Employee;
 use App\Models\User;
@@ -13,7 +14,7 @@ use Livewire\WithFileUploads;
 class Add extends Component
 {
     use LivewireAlert, WithFileUploads;
-    public $user, $files = [];
+    public $user, $department_id,  $files = [];
 
     protected $rules = [
         'user.name' => 'required',
@@ -29,6 +30,7 @@ class Add extends Component
 
     public function mount()
     {
+        $this->departments = Department::get();
         $this->user['gender'] = 1;
         $this->user['profile_photo_path'] = null;
     }
@@ -46,6 +48,7 @@ class Add extends Component
             $user->add_file('profile_photo_path', $this->user['profile_photo_path'], 'users/' . $user->id . '/profile_photo/');
 
         $employee = $user->employee()->create([
+            'department_id' => $this->department_id,
             'state' => $this->user['employee']['state'] ?? 1,
             'job' => $this->user['employee']['job'],
         ]);

@@ -192,4 +192,7 @@ return [
     'add_comment' => 'Add Comment',
     'task_has_been_archived_successfully' => 'Task has been archived successfully',
     'task_restored_successfully' => 'Task restored successfully',
+    'department' => 'Department',
+    'departments' => 'Departments',
+    'select_department' => 'Select Department',
 ];
