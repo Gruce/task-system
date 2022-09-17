@@ -43,6 +43,7 @@ class Add extends Component
             }
 
         $this->emitTo('project.all', '$refresh');
+        $this->emitTo('project.delete', '$refresh');
         $this->reset();
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
