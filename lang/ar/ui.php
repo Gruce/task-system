@@ -199,4 +199,6 @@ return [
     'department' => 'القسم',
     'departments' => 'الاقسام',
     'select_department' => 'اختر القسم',
+    'completed_project' => 'المشروع مكتمل',
+    'in_progress_project' => 'المشروع قيد التنفيذ',
 ];

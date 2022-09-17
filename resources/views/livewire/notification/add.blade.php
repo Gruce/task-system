@@ -67,14 +67,5 @@
             </div>
         </div>
     </form>
-    <script>
-        document.addEventListener('livewire:load', function () {
 
-            // Run a callback when an event ("foo") is emitted from this component
-            @this.on('play', () => {
-                console.log('play');
-                new Audio("{{url('/public/audio/not.mp3')}}").play();
-            })
-            })
-    </script>
 </div>

@@ -195,4 +195,6 @@ return [
     'department' => 'Department',
     'departments' => 'Departments',
     'select_department' => 'Select Department',
+    'completed_projects' => 'Completed Projects',
+    'in_progress_project' => 'In Progress Project',
 ];
