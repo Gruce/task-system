@@ -22,7 +22,7 @@
                 <select wire:model="userId" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     <option value="" selected>{{__('ui.select_employee')}}</option>
                     @foreach ($employees as $employee)
-                    <option value="{{$employee->id}}">{{$employee->name}}</option>
+                    <option value="{{$employee->id}}">{{$employee->name}} - {{$employee->department->name ??__('ui.no_data')}} - {{$employee->job ??__('ui.no_job')}}</option>
                     @endforeach
                 </select>
                 @if ($userId)

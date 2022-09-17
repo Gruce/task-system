@@ -12,7 +12,7 @@
             </h2>
             <div id="title-body-{{$notification->id}}" class="hidden" aria-labelledby="title-{{$notification->id}}">
                 <div class="p-5 font-light border border-b-0 bg-gray-50 border-gray-200">
-                    <p class="mb-2 text-black break-all">{{ substr($notification->description, 0, 50) }}
+                    <p class="mb-2 text-black break-all">{{__($notification->description) }}
                     </p>
                 </div>
             </div>
