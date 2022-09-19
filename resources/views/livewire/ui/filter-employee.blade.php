@@ -18,7 +18,6 @@
             <li>
                 <a href="{{ route('employees') }}" class="block m-1 rounded-lg py-2 px-4  bg-secondary-50  hover:bg-secondary-50 text-secondary-700">{{__('ui.all')}}</a>
             </li>
-
             @foreach ($departments as $department)
             <li>
                 <div class="flex items-center">

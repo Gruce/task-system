@@ -22,12 +22,16 @@ class All extends Component
     public function render()
     {
         $search = '%' . $this->search . '%';
-        $employees = Employee::withCount(['tasks', 'files', 'projects'])
-            ->whereHas('user', function ($query) use ($search) {
-                $query->where('name', 'like', $search);
-            });
+        $employees = Employee::withCount(['tasks', 'files', 'projects']);
+
+        // if ($search) {
+        //     $employees = $employees->whereHas('user', function ($query) use ($search) {
+        //         $query->where('name', 'like', $search);
+        //     });
+        // }
 
         if ($this->department_id) {
+            dg($this->department_id);
             $employees = $employees->where('department_id', $this->department_id);
         }
 

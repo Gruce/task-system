@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class FilterEmployee extends Component
 {
-    public $department_id;
+    public $department_id = null;
 
     public function mount()
     {
