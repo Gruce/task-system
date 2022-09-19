@@ -25,12 +25,13 @@ class All extends Component
         $employees = Employee::withCount(['tasks', 'files', 'projects'])
             ->whereHas('user', function ($query) use ($search) {
                 $query->where('name', 'like', $search);
-            })
-            // ->orWhereHas('department', function ($query) use ($search) {
-            //     $query->where('name', 'like', $search);
-            // })
+            });
 
-            // ->whereRelation('department', 'name', 'LIKE', $search)
+        if ($this->department_id) {
+            $employees = $employees->where('department_id', $this->department_id);
+        }
+
+        $employees = $employees
             ->orderByDesc('id')
             ->paginate(24);
         return view('livewire.employee.all', compact('employees'));

@@ -2,7 +2,7 @@
     <div class="flex flex-col w-full p-3 mr-6 ml-3  ">
         <div class="mb-3 flex justify-between gap-4 py-2 bg-white rounded-lg">
             <div class="mx-2 my-1">
-                <span>{{__('ui.employees')}}</span>
+                <span>{{__('ui.departments')}}</span>
             </div>
             <div>
                 @if ($selected)

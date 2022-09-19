@@ -16,19 +16,16 @@
     <div id="filterEmployeeRadio" class="hidden z-10 w-48 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
         <ul class="p-3 space-y-3 text-sm text-gray-700" aria-labelledby="filterProjects">
             <li>
-                <a href="#" wire:click="$set('department_id', 'null')" class="block m-1 rounded-lg py-2 px-4  bg-secondary-50  hover:bg-secondary-50 text-secondary-700">{{__('ui.all')}}</a>
+                <a href="{{ route('employees') }}" class="block m-1 rounded-lg py-2 px-4  bg-secondary-50  hover:bg-secondary-50 text-secondary-700">{{__('ui.all')}}</a>
             </li>
 
             @foreach ($departments as $department)
             <li>
                 <div class="flex items-center">
-                    <input wire:model="department_id" id="default-radio-{{$department->id}}" type="radio" value="{{$department_id}}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600">
+                    <input wire:model="department_id" id="default-radio-{{$department->id}}" type="radio" value="{{$department->id}}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600">
                     <label for="default-radio-{{$department->id}}" class="mx-2 text-sm font-medium text-gray-900">{{$department->name}}</label>
                 </div>
             </li>
-            {{-- <li>
-                <a href="#" wire:click="$set('department_id', {{$department->id}})" class="block m-1 rounded-lg py-2 px-4  bg-secondary-50  hover:bg-secondary-50 text-secondary-700">{{$department->name}}</a>
-            </li> --}}
             @endforeach
         </ul>
     </div>

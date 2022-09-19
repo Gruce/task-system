@@ -18,9 +18,9 @@
                     {{__('ui.delete')}}
                 </button>
                 @endadmin
-                {{-- <div>
+                <div>
                     @livewire('ui.filter-employee')
-                </div> --}}
+                </div>
             </div>
 
         </div>
