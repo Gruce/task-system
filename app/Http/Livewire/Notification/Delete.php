@@ -1,27 +1,27 @@
 <?php
 
-namespace App\Http\Livewire\Department;
+namespace App\Http\Livewire\Notification;
 
-use App\Models\Department;
+use App\Models\Notification;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Delete extends Component
 {
     use LivewireAlert;
-    protected $listeners = ['$refresh', 'deleteCheckedDepartment'];
+    protected $listeners = ['$refresh', 'deleteCheckedProject'];
     public $selectAll = false;
     public $selected = [];
 
     public function mount()
     {
-        $this->departments = Department::withTrashed()->orderByDesc('id')->get();
+        $this->notifications = Notification::withTrashed()->orderByDesc('id')->get(['id', 'title']);
     }
 
     public function select()
     {
         $this->selectAll = !$this->selectAll;
-        $this->selected = $this->selectAll ? $this->departments->pluck('id')->toArray() : [];
+        $this->selected = $this->selectAll ? $this->notifications->pluck('id')->toArray() : [];
     }
 
     public function confirmed()
@@ -32,13 +32,13 @@ class Delete extends Component
             'showConfirmButton' => "true",
             'cancelButtonText' => (__('ui.cancel')),
             'confirmButtonText' => (__('ui.confirm')),
-            'onConfirmed' => 'deleteCheckedDepartment',
+            'onConfirmed' => 'deleteCheckedProject',
         ]);
     }
 
-    public function deleteCheckedDepartment()
+    public function deleteCheckedProject()
     {
-        Department::whereIn('id', $this->selected)->forceDelete();
+        Notification::whereIn('id', $this->selected)->forceDelete();
 
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',
@@ -48,10 +48,10 @@ class Delete extends Component
             'width' => '400',
         ]);
 
-        redirect()->route('department');
+        redirect()->route('notifications');
     }
     public function render()
     {
-        return view('livewire.department.delete');
+        return view('livewire.notification.delete');
     }
 }

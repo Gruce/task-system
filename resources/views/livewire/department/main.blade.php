@@ -15,9 +15,12 @@
                 <i :class=" gridDepartment ?  'fa-solid fa-grip-vertical':'fa-solid fa-grip'"></i>
             </button>
             @admin()
-            <button @click="deleteDepartment=!deleteDepartment" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 inline-flex items-center gap-4">
+            <button x-show="!deleteDepartment" @click="deleteDepartment=!deleteDepartment" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 inline-flex items-center gap-4">
                 <i class="fa-solid fa-trash"></i>
                 {{__('ui.delete')}}
+            </button>
+            <button x-show="deleteDepartment" @click="deleteDepartment =!deleteDepartment" class=" text-black font-medium rounded-lg text-2xl px-5 py-2.5 text-center mb-2 inline-flex items-center gap-4">
+                <i class="fa-solid fa-house"></i>
             </button>
             @endadmin
         </div>
