@@ -22,10 +22,26 @@ trait DeleteTrait
         ]);
     }
 
-    public function delete()
+    public function archived()
     {
         $this->model->findOrFail($this->ID)->delete();
         $this->alert('success', __('ui.task_has_been_archived_successfully'), [
+            'position' => 'top',
+            'timer' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+            'width' => '400',
+        ]);
+
+        if ($this->emit)
+            foreach ($this->emit as $emit)
+                $this->emitTo($emit, '$refresh');
+    }
+
+    public function delete()
+    {
+        $this->model->findOrFail($this->ID)->delete();
+        $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',
             'timer' => 3000,
             'toast' => true,

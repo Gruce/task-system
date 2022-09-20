@@ -14,7 +14,7 @@ class Main extends Component
 {
     use LivewireAlert;
     public $taskID;
-    protected $listeners = ['updatedSelectedTab', 'toggleModal', 'deleteAll'];
+    protected $listeners = ['updatedSelectedTab', 'toggleModal'];
     public function updatedSelectedTab($value)
     {
         $this->selectedTab = $value;
@@ -31,30 +31,6 @@ class Main extends Component
         $this->selectedTab = 0;
     }
 
-    public function deleteAll()
-    {
-        DB::table('tasks')->delete();
-        $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
-            'position' => 'top',
-            'timer' => 3000,
-            'toast' => true,
-            'timerProgressBar' => true,
-            'width' => '400',
-        ]);
-        $this->emitTo('task.all', '$refresh');
-    }
-
-    public function confirmed()
-    {
-        $this->confirm(__('ui.are_you_sure'), [
-            'toast' => false,
-            'position' => 'center',
-            'showConfirmButton' => "true",
-            'cancelButtonText' => (__('ui.cancel')),
-            'confirmButtonText' => (__('ui.confirm')),
-            'onConfirmed' => 'deleteAll',
-        ]);
-    }
 
     public function render()
     {

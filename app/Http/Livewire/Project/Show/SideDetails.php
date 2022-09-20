@@ -8,21 +8,22 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class SideDetails extends Component
 {
-    protected $listeners = ['$refresh' , 'delete'];
+    protected $listeners = ['$refresh', 'delete', 'forceDelete'];
 
-    use WithFileUploads , LivewireAlert;
-    public $files = [] , $file_id;
+    use WithFileUploads, LivewireAlert;
+    public $files = [], $file_id;
 
-    public function updatedFiles($files){
+    public function updatedFiles($files)
+    {
         if (count($files) > 0)
-        foreach ($files as $file) {
-            if($file){
-                $new_file = $this->project->files()->create([
-                    'name' => 'File',
-                ]);
-                $new_file->add_file('name', $file, 'projects/' . $this->project->id . '/files/' . $new_file->id);
+            foreach ($files as $file) {
+                if ($file) {
+                    $new_file = $this->project->files()->create([
+                        'name' => 'File',
+                    ]);
+                    $new_file->add_file('name', $file, 'projects/' . $this->project->id . '/files/' . $new_file->id);
+                }
             }
-        }
 
         $this->emitSelf('$refresh');
 
@@ -35,7 +36,8 @@ class SideDetails extends Component
         ]);
     }
 
-    public function confirmed($id, $function){
+    public function confirmed($id, $function)
+    {
         $this->file_id = $id;
         $this->confirm(__('ui.are_you_sure'), [
             'toast' => false,
@@ -47,8 +49,9 @@ class SideDetails extends Component
         ]);
     }
 
-    public function delete(){
-        $this->project->files()->findOrFail($this->file_id)->delete();
+    public function delete()
+    {
+        $this->project->files()->findOrFail($this->file_id)->forceDelete();
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',
             'timer' => 3000,
@@ -60,7 +63,8 @@ class SideDetails extends Component
         $this->emitSelf('$refresh');
     }
 
-    public function mount($project){
+    public function mount($project)
+    {
         $this->project = $project;
     }
 

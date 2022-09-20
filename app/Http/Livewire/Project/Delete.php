@@ -38,7 +38,7 @@ class Delete extends Component
 
     public function deleteCheckedProject()
     {
-        Project::whereIn('id', $this->selected)->delete();
+        Project::whereIn('id', $this->selected)->forceDelete();
 
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',

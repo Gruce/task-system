@@ -7,7 +7,7 @@
                 <div class="flex items-center gap-2">
                     <span class="font-semibold">{{$task->title}}</span>
                     <span>·</span>
-                    <span class="text-xs text-secondary-500">{{$task->project->title}}</span>
+                    <span class="text-xs text-secondary-500">{{$task->project->title??''}}</span>
                     @admin
                     @if(Request::route()->getName() == 'tasks' && !$task->trashed())
                     <button @click.stop="add = true" class="" wire:click="$emit('duplicatTask' , {{$task}})">

@@ -38,7 +38,7 @@ class Delete extends Component
 
     public function deleteCheckedDepartment()
     {
-        Department::whereIn('id', $this->selected)->delete();
+        Department::whereIn('id', $this->selected)->forceDelete();
 
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',

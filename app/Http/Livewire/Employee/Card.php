@@ -28,7 +28,7 @@ class Card extends Component
     }
     public function delete()
     {
-        Employee::findOrFail($this->ID)->delete();
+        Employee::findOrFail($this->ID)->forceDelete();
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',
             'timer' => 3000,

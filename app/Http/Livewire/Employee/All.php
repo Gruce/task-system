@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Employee;
 
+use App\Models\Department;
 use App\Models\Employee;
 use Livewire\Component;
 
@@ -19,21 +20,19 @@ class All extends Component
         $this->department_id = $department_id;
     }
 
+
     public function render()
     {
         $search = '%' . $this->search . '%';
         $employees = Employee::withCount(['tasks', 'files', 'projects']);
 
-        // if ($search) {
-        //     $employees = $employees->whereHas('user', function ($query) use ($search) {
-        //         $query->where('name', 'like', $search);
-        //     });
-        // }
-
-        if ($this->department_id) {
-            dg($this->department_id);
-            $employees = $employees->where('department_id', $this->department_id);
+        if ($search) {
+            $employees = $employees->whereHas('user', function ($query) use ($search) {
+                $query->where('name', 'like', $search);
+            });
         }
+
+        if ($this->department_id)  $employees->where('department_id', $this->department_id);
 
         $employees = $employees
             ->orderByDesc('id')

@@ -15,7 +15,7 @@ class Delete extends Component
 
     public function mount()
     {
-        $this->tasks = Task::orderByDesc('id')->get();
+        $this->tasks = Task::withTrashed()->orderByDesc('id')->get();
     }
 
     public function select()
@@ -38,7 +38,7 @@ class Delete extends Component
 
     public function deleteCheckedTask()
     {
-        Task::whereIn('id', $this->selected)->delete();
+        Task::whereIn('id', $this->selected)->forceDelete();
 
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',

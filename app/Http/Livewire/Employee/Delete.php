@@ -15,7 +15,7 @@ class Delete extends Component
 
     public function mount()
     {
-        $this->employees = Employee::orderByDesc('id')->get();
+        $this->employees = Employee::withTrashed()->orderByDesc('id')->get();
     }
 
     public function select()
@@ -38,7 +38,7 @@ class Delete extends Component
 
     public function deleteCheckedEmployee()
     {
-        Employee::whereIn('id', $this->selected)->delete();
+        Employee::whereIn('id', $this->selected)->forceDelete();
 
         $this->alert('success', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',

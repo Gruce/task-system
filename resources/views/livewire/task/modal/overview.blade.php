@@ -11,7 +11,7 @@
             @endadmin
         </div>
         <div class="flex items-center gap-2 group text-secondary-600">
-            <h4 @if (is_admin()) @click="project=!project" @endif x-show="!project" class="text-lg capitalize">{{$task->project->title}}</h4>
+            <h4 @if (is_admin()) @click="project=!project" @endif x-show="!project" class="text-lg capitalize">{{$task->project->title ?? ''}}</h4>
             @admin()
             <a @if (is_admin()) @click="project=!project" @endif x-show="!project" href="#" class="invisible group-hover:visible"><i class="fas fa-pen"></i></a>
             <input x-show="project" wire:model="search" type="text" class="block w-full p-2.5 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="{{__('ui.project_title')}}" required>

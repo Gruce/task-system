@@ -11,7 +11,7 @@ class View extends Component
 {
     use LivewireAlert, DeleteTrait;
 
-    protected $listeners = ['$refresh', 'delete', 'forceDelete'];
+    protected $listeners = ['$refresh', 'delete', 'forceDelete', 'archived'];
 
     protected $rules = [
         'task.start_at' => 'required',
@@ -107,7 +107,7 @@ class View extends Component
 
     public function archive()
     {
-        $this->confirmedDelete(new Task, $this->task->id, 'delete', ['task.all', 'task.archived', 'task.modal.view']);
+        $this->confirmedDelete(new Task, $this->task->id, 'archived', ['task.all', 'task.archived', 'task.modal.view']);
     }
 
     public function confirmed($id)

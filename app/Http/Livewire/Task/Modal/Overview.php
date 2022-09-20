@@ -3,17 +3,17 @@
 namespace App\Http\Livewire\Task\Modal;
 
 use Livewire\Component;
-use App\Models\{Project,Task , Employee};
+use App\Models\{Project, Task, Employee};
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithPagination;
 
 class Overview extends Component
 {
-    use WithPagination ,LivewireAlert;
+    use WithPagination, LivewireAlert;
 
     protected $listeners = ['$refresh'];
 
-    public $task , $search , $employee_id ,$project_id ,$taskEmployees=[];
+    public $task, $search, $employee_id, $project_id, $taskEmployees = [];
 
     protected $rules = [
         'task.title' => 'required',
@@ -21,7 +21,8 @@ class Overview extends Component
         'task.description' => 'required',
     ];
 
-    public function edit(){
+    public function edit()
+    {
         $project = Project::findOrFail($this->task['project_id']);
 
         $task_employee_ids = $this->task->employees()->get()->pluck('id')->toArray();
@@ -33,8 +34,8 @@ class Overview extends Component
         $project->employees()->syncWithoutDetaching($task_employee_ids);
         $this->task->save();
 
-        $this->emitTo( 'task.all' , '$refresh');
-        $this->emitTo('project.show.users' , '$refresh');
+        $this->emitTo('task.all', '$refresh');
+        $this->emitTo('project.show.users', '$refresh');
 
         $this->alert('success', __('ui.data_has_been_edited_successfully'), [
             'position' => 'top',
@@ -49,22 +50,22 @@ class Overview extends Component
     public function render()
     {
         $projects = [];
-        if($this->search){
+        if ($this->search) {
             $search = '%' . $this->search . '%';
-            $projects = Project::where('title' , 'LIKE' , $search)->paginate(24);
+            $projects = Project::where('title', 'LIKE', $search)->paginate(24);
         }
 
         $employees = [];
-        if($this->task){
-            $employees = Employee::whereNotIn('id' , $this->task->employees->pluck('id'))->get();
+        if ($this->task) {
+            $employees = Employee::whereNotIn('id', $this->task->employees->pluck('id'))->get();
         }
 
-         //$employees = Employee::whereIn('id', array_keys($this->taskEmployees))->paginate(10);
+        //$employees = Employee::whereIn('id', array_keys($this->taskEmployees))->paginate(10);
         // $this->taskEmployees = $this->task->employees->pluck('id');
         // //dd($employees->toArray());
         //dd($taskEmployees);
 
-        return view('livewire.task.modal.overview' , [
+        return view('livewire.task.modal.overview', [
             'projects' => $projects,
             'employees' => $employees,
         ]);

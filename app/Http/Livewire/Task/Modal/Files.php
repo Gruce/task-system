@@ -7,26 +7,28 @@ use Livewire\WithFileUploads;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use App\Traits\Livewire\DeleteTrait;
 use App\Models\File;
+
 class Files extends Component
 {
-    use LivewireAlert,DeleteTrait , WithFileUploads;
+    use LivewireAlert, DeleteTrait, WithFileUploads;
 
 
-    protected $listeners = ['$refresh' , 'delete'];
+    protected $listeners = ['$refresh', 'delete', 'forceDelete'];
 
     public $task;
-    public $files = [] , $file_id;
+    public $files = [], $file_id;
 
-    public function updatedFiles($files){
+    public function updatedFiles($files)
+    {
         if (count($files) > 0)
-        foreach ($files as $file) {
-            if($file){
-                $new_file = $this->task->files()->create([
-                    'name' => 'File',
-                ]);
-                $new_file->add_file('name', $file, 'tasks/' . $this->task->id . '/files/' . $new_file->id);
+            foreach ($files as $file) {
+                if ($file) {
+                    $new_file = $this->task->files()->create([
+                        'name' => 'File',
+                    ]);
+                    $new_file->add_file('name', $file, 'tasks/' . $this->task->id . '/files/' . $new_file->id);
+                }
             }
-        }
         $this->emitSelf('$refresh');
         $this->alert('success', __('ui.data_has_been_add_successfully'), [
             'position' => 'top',
@@ -37,10 +39,11 @@ class Files extends Component
         ]);
     }
 
-    public function confirmed($id){
+    public function confirmed($id)
+    {
         // make sure add 'delete' to listeners
-        if($this->task->files()->where('id' , $id)->exists())
-            $this->confirmedDelete(new File , $id , 'delete' , ['task.modal.files']);
+        if ($this->task->files()->where('id', $id)->exists())
+            $this->confirmedDelete(new File, $id, 'forceDelete', ['task.modal.files']);
 
         else $this->alert('error', __('ui.data_has_been_deleted_successfully'), [
             'position' => 'top',

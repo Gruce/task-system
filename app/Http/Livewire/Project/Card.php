@@ -15,7 +15,7 @@ class Card extends Component
 {
     use LivewireAlert, DeleteTrait;
 
-    protected $listeners = ['delete', '$refresh'];
+    protected $listeners = ['delete', 'forceDelete', '$refresh'];
     public $project, $ID;
 
     protected $rules = [
@@ -37,7 +37,7 @@ class Card extends Component
     public function confirmed($id)
     {
         // make sure add 'delete' to listeners
-        $this->confirmedDelete(new Project, $id, 'delete', ['project.all']);
+        $this->confirmedDelete(new Project, $id, 'forceDelete', ['project.all']);
     }
 
     public function chnageDone(Project $project)

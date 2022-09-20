@@ -11,7 +11,7 @@ use App\Traits\Livewire\DeleteTrait;
 class Card extends Component
 {
     use LivewireAlert, DeleteTrait;
-    protected $listeners = ['delete', '$refresh'];
+    protected $listeners = ['forceDelete', '$refresh'];
 
     public $department;
 
@@ -34,7 +34,7 @@ class Card extends Component
     public function confirmed($id)
     {
         // make sure add 'delete' to listeners
-        $this->confirmedDelete(new Department, $id, 'delete', ['department.all']);
+        $this->confirmedDelete(new Department, $id, 'forceDelete', ['department.all']);
     }
     public function render()
     {

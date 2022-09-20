@@ -12,6 +12,7 @@ class All extends Component
     use WithPagination;
     public $search;
     protected $listeners = ['$refresh', 'search'];
+
     public function search($search)
     {
         $this->search = $search;
