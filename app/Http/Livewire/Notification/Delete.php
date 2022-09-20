@@ -15,7 +15,7 @@ class Delete extends Component
 
     public function mount()
     {
-        $this->notifications = Notification::withTrashed()->orderByDesc('id')->get(['id', 'title']);
+        $this->notifications = Notification::orderByDesc('id')->get(['id', 'title']);
     }
 
     public function select()
