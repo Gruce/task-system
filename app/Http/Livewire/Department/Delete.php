@@ -15,7 +15,7 @@ class Delete extends Component
 
     public function mount()
     {
-        $this->departments = Department::withTrashed()->orderByDesc('id')->get();
+        $this->departments = Department::orderByDesc('id')->get();
     }
 
     public function select()
