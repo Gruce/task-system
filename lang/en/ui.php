@@ -197,5 +197,6 @@ return [
     'select_department' => 'Select Department',
     'completed_project' => 'Completed Project',
     'in_progress_project' => 'In Progress Project',
+    'monthly_report' => 'TEAM EVALUATION MONTHLY REPORT',
 
 ];

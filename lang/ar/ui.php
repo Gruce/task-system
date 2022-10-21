@@ -201,4 +201,5 @@ return [
     'select_department' => 'اختر القسم',
     'completed_project' => 'المشروع مكتمل',
     'in_progress_project' => 'المشروع قيد التنفيذ',
+    'monthly_report' => 'التقرير الشهري لتقيم أداء الموظفين',
 ];

@@ -1,6 +1,6 @@
 <div>
 
-    <div x-cloak class="p-4" x-data="{ addEmployee: false, gridEmployee:false, deleteEmployee:false }">
+    <div x-cloak class="p-4" x-data="{ addEmployee: false, gridEmployee:false, deleteEmployee:false,reportEmployee:false }">
         <div class="flex justify-between mb-4">
             <div>
                 <button @click="addEmployee = !addEmployee" type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 shadow-lg shadow-blue-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 inline-flex items-center gap-4">
@@ -17,9 +17,15 @@
                     <i class="fa-solid fa-trash"></i>
                     {{__('ui.delete')}}
                 </button>
-                <button x-show="deleteEmployee" @click="deleteEmployee =!deleteEmployee" class=" text-black font-medium rounded-lg text-2xl px-5 py-2.5 text-center mb-2 inline-flex items-center gap-4">
-                    <i class="fa-solid fa-house"></i>
+                <button x-show="!reportEmployee" @click="reportEmployee = !reportEmployee" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 inline-flex items-center gap-4">
+                    <i class="fa-solid fa-trash"></i>
+                    {{__('ui.report')}}
                 </button>
+                <a href="{{ route('employees') }}">
+                    <button x-show="deleteEmployee || reportEmployee" {{ route('employees') }} class=" text-black font-medium rounded-lg text-2xl px-5 py-2.5 text-center mb-2 inline-flex items-center gap-4">
+                        <i class="fa-solid fa-house"></i>
+                    </button>
+                </a>
                 @endadmin
                 <div>
                     @livewire('ui.filter-employee')
@@ -35,7 +41,10 @@
         <div x-show="deleteEmployee">
             @livewire('employee.delete')
         </div>
-        <div x-show="!deleteEmployee">
+        <div x-show="reportEmployee">
+            @livewire('employee.report')
+        </div>
+        <div x-show="!deleteEmployee && !reportEmployee">
             @livewire('employee.all')
         </div>
 
