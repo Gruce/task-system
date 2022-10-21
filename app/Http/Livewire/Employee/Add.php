@@ -8,7 +8,7 @@ use App\Models\Employee;
 use App\Models\User;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
-
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
 class Add extends Component
@@ -60,6 +60,7 @@ class Add extends Component
                 ]);
                 $new_file->add_file('name', $file, 'employees/' . $employee->id . '/files/' . $new_file->id);
             }
+
 
 
 
