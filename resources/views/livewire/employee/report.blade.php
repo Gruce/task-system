@@ -45,7 +45,9 @@
                         </th>
                         <td class="py-4 px-6">
                             @foreach ($employee->tasks as $task)
-                            {{$task->title}} -
+                            <span class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-lg mr-2">
+                                {{$task->title}}
+                            </span>
                             @endforeach
                         </td>
                         <td class="py-4 px-6">
