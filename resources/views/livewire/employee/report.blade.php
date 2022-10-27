@@ -5,8 +5,6 @@
             margin: 1cm;
         }
 
-
-
         @media print {
             body {
                 background: #fff !important;
