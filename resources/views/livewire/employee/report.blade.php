@@ -130,7 +130,7 @@
             </table>
         </div>
     </div>
-    <div class="flex justify-center h-tasklist w-full m-8">
+    <div class="flex justify-center items-center h-tasklist max-w-4xl m-8">
         <livewire:livewire-column-chart :column-chart-model="$this->columnChartModel" />
     </div>
 </div>

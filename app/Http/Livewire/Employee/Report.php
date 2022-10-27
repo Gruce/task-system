@@ -11,7 +11,7 @@ class Report extends Component
     public $employees;
     public function mount()
     {
-        $this->employees = Employee::with(['tasks'])->get();
+        $this->employees = Employee::with(['tasks' => fn ($q) => $q->whereMonth('start_at', date('m'))])->get();
         $this->date = date('Y-m-d');
     }
 
