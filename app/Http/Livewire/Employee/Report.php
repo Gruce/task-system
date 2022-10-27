@@ -12,6 +12,7 @@ class Report extends Component
     public function mount()
     {
         $this->employees = Employee::with(['tasks'])->get();
+        $this->date = date('Y-m-d');
     }
 
     function rand_color()

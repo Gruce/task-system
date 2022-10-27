@@ -1,6 +1,40 @@
-<div>
-    <div class="flex flex-col justify-center w-full">
-        <div class="flex justify-center">
+<div class="relative" id="PRINT">
+    <style>
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+
+
+
+        @media print {
+            body {
+                background: #fff !important;
+            }
+
+            div.fix-break-print-page {
+                page-break-inside: avoid;
+            }
+
+            table {
+                width: 100%;
+            }
+
+            .print {
+                display: block;
+            }
+        }
+
+        .print:last-child {
+            page-break-after: auto;
+        }
+
+        .page-number {
+            content: counter(page)
+        }
+    </style>
+    <div class="flex flex-col justify-center items-center w-full">
+        <div class="flex justify-center w-full">
             <p class="text-2xl">{{__('ui.monthly_report')}}</p>
         </div>
         <div class="flex justify-center gap-2 mt-2">
@@ -95,8 +129,15 @@
                 </tbody>
             </table>
         </div>
-        <div class="h-72  m-8">
-            <livewire:livewire-column-chart :column-chart-model="$this->columnChartModel" />
-        </div>
     </div>
+    <div class="flex justify-center h-tasklist w-full m-8">
+        <livewire:livewire-column-chart :column-chart-model="$this->columnChartModel" />
+    </div>
+</div>
+<div class="print:hidden">
+    <button onclick="printDiv('PRINT')" title="print" class="fixed ml-20 z-90 bottom-10 left-16 bg-blue-600 w-20 h-20 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-blue-700 hover:drop-shadow-2xl duration-300">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+        </svg>
+    </button>
 </div>
