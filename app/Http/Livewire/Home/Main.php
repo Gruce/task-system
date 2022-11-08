@@ -22,6 +22,7 @@ class Main extends Component
     public function currentFilter($filter)
     {
         $this->select = $filter;
+        // dd($this->select);
     }
 
     public function getCurrentProperty()
