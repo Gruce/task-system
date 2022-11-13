@@ -5,7 +5,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
+        "php": "^7.3|^8.0.2",
         "akaunting/laravel-money": "^3.0",
         "asantibanez/livewire-charts": "^2.4",
         "beyondcode/laravel-websockets": "^1.13",
