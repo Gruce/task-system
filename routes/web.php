@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\MainController;
 use App\Http\Livewire\{
     Home\Main as HomeMain,
@@ -44,7 +45,10 @@ Route::get('change-language/{locale}', [MainController::class, 'changeLanguage']
 
 
 Route::middleware(['auth'])->group(function () {
-
+    Route::get('/out', function () {
+        Auth::logout();
+        redirect()->route('login');
+    })->name('out');
 
     Route::get('/', TaskMain::class)->name('tasks');
 
