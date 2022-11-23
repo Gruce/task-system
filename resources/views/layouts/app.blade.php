@@ -73,10 +73,7 @@
                                 @else
                                 <a href="{{ route('profile.show') }}" class="block px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-200" role="menuitem" tabindex="-1" id="user-menu-item-0">{{ __('ui.profile') }}</a>
                                 @endif
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <a href="{{ route('logout') }}" @click.prevent="$root.submit();" class="block px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-200" role="menuitem" tabindex="-1" id="user-menu-item-2">{{ __('ui.logout') }}</a>
-                                </form>
+                                <a href="{{ route('out') }}" class="block px-4 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-200" role="menuitem" tabindex="-1" id="user-menu-item-2">{{ __('ui.logout') }}</a>
                             </div>
                         </div>
 
