@@ -43,12 +43,6 @@ Route::get('change-language/{locale}', [MainController::class, 'changeLanguage']
 //     })->name('dashboard');
 // });
 
-Route::get('/optimize', function () {
-    Artisan::call('optimize');
-    return  dd('Done');
-})->name('optimize');
-
-
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/out', function () {

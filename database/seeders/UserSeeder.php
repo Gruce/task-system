@@ -24,6 +24,15 @@ class UserSeeder extends Seeder
             'is_admin' => true,
         ]);
 
+        $user = new User;
+        $user->create([
+            'name' => 'Admin2',
+            'email' => 'admin2@gmail.com',
+            'username' => 'admin2',
+            'password' => bcrypt('123456'),
+            'is_admin' => true,
+        ]);
+
         // $user->create([
         //     'name' => 'Hussam Haider',
         //     'email' => 'hussam@gmail.com',
@@ -31,12 +40,12 @@ class UserSeeder extends Seeder
         //     'password' => bcrypt('123456'),
         // ]);
 
-        $user->create([
-            'name' => 'Hassan Khalid',
-            'email' => 'gruce@gmail.com',
-            'username' => 'gruce',
-            'password' => bcrypt('123456'),
-        ]);
+        // $user->create([
+        //     'name' => 'Hassan Khalid',
+        //     'email' => 'gruce@gmail.com',
+        //     'username' => 'gruce',
+        //     'password' => bcrypt('123456'),
+        // ]);
 
         // $user->create([
         //     'name' => 'Hassan Hazim',
