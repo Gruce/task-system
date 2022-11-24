@@ -29,11 +29,11 @@
 
         </div>
     </div>
-    @admin
+
     <div class="my-4" x-show="addTask" x-transition>
         @livewire('task.add')
     </div>
-    @endadmin
+
     <div>
         <div x-show="!archive && !deleteTask">
             @livewire('task.all')
