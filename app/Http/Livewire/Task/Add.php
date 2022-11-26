@@ -92,7 +92,6 @@ class Add extends Component
 
     public function mount()
     {
-        $this->employee = auth()->user()->employee;
         $this->task['start_at'] = date('Y-m-d');
         $this->task['end_at'] = date('Y-m-d');
         $this->task['importance'] = 1;
@@ -121,9 +120,11 @@ class Add extends Component
         } else {
             $employees = Employee::whereNotIn('id', collect($this->taskEmployees)->pluck('id')->toArray())->get();
         }
+        $employee_auth = auth()->user()->employee;
 
         return view('livewire.task.add', [
             'projects' => $projects,
+            'employee_auth' => $employee_auth,
             'employees' => $employees,
             'task_employees' => $task_employees,
         ]);

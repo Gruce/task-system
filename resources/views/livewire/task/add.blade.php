@@ -114,7 +114,7 @@
                                     </label>
                                     <select wire:model="employee_id" wire:change="addEmployee" class="my-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option selected="">{{ __('ui.select_employee') }}</option>
-                                        <option value="{{$employee->id}}"> {{$employee->name}} </option>
+                                        <option value="{{$employee_auth->id}}"> {{$employee_auth->name}}</option>
                                         <button wire:click="add" @click="add=!add" class="px-4 py-1 duration-150 ease-in-out delay-75 border rounded-lg hover:text-success-800 hover:bg-success-100">
                                             <i class="fas fa-check"></i>
                                         </button>
