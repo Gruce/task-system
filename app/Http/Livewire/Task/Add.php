@@ -92,6 +92,7 @@ class Add extends Component
 
     public function mount()
     {
+        $this->employee = auth()->user()->employee;
         $this->task['start_at'] = date('Y-m-d');
         $this->task['end_at'] = date('Y-m-d');
         $this->task['importance'] = 1;

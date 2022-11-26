@@ -18,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('admin', function () {
             return auth()->check() && auth()->user()->is_admin == 1;
         });
+
+        Blade::if('employee', function () {
+            return auth()->check() && auth()->user()->is_admin == 0;
+        });
     }
 
     /**
