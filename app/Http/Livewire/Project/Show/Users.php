@@ -129,7 +129,7 @@ class Users extends Component
 
         $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->paginate(10);
 
-        $project_employees = $this->project->employees()->paginate($this->limitPerPage);
+        $project_employees = $this->project->employees()->get();
 
         return view('livewire.project.show.users', [
             'employees' => $employees,
