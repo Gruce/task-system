@@ -127,7 +127,7 @@ class Users extends Component
     {
         $search = '%' . $this->search . '%';
 
-        $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->paginate(10);
+        $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
 
         $project_employees = $this->project->employees()->get();
 
