@@ -12,7 +12,7 @@
         @endif
     </button>
     <!-- Dropdown menu -->
-    <div wire:poll @click.outside="dropdownNotification = false" x-show="dropdownNotification" class="fixed top-14 right-15 w-auto z-20  bg-white rounded divide-y divide-gray-100 shadow overflow-visible">
+    <div @click.outside="dropdownNotification = false" x-show="dropdownNotification" class="fixed top-14 right-15 w-auto z-20  bg-white rounded divide-y divide-gray-100 shadow overflow-visible">
         <div class="block py-2 px-4 font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-800 dark:text-white">
             {{__('ui.notifications')}}
         </div>
