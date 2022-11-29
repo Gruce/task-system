@@ -3,14 +3,14 @@
 return [
     'name' => 'LaravelPWA',
     'manifest' => [
-        'name' => env('APP_NAME', 'My PWA App'),
+        'name' => env('APP_NAME', 'Waha'),
         'short_name' => 'PWA',
-        'start_url' => 'https://tasks.gruceing.dev/',
+        'start_url' => 'https://waha-task.com/',
         'background_color' => '#ffffff',
         'theme_color' => '#000000',
         'display' => 'standalone',
-        'orientation'=> 'any',
-        'status_bar'=> 'black',
+        'orientation' => 'any',
+        'status_bar' => 'black',
         'icons' => [
             '72x72' => [
                 'path' => '/images/icons/icon-72x72.png',
