@@ -54,10 +54,10 @@
                 </div>
                 @admin()
                 <div>
-                    @if($task->user_name)
+                    @if($task->user)
                     <span class="bg-blue-100 text-blue-500 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
                         <i class="fa-solid fa-user w-3 h-3 mx-1"></i>
-                        {{$task->user_name}}
+                        {{$task->user->name}}
                     </span>
                     @endif
                 </div>

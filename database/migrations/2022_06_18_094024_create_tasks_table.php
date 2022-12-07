@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('project_id')->nullable()->constrained('projects')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->string('title');
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);
@@ -24,7 +25,6 @@ return new class extends Migration
             $table->boolean('is_hold')->default(false); // true: hold task false: not hold task
             $table->date('start_at');
             $table->date('end_at')->nullable();
-            $table->string('user_name')->nullable();
             $table->date('change_at')->default(date('Y-m-d'));
             $table->timestamps();
             $table->softDeletes();

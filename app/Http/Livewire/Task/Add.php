@@ -22,7 +22,7 @@ class Add extends Component
         'task.title' => 'required',
         'task.project_id' => 'required',
         'task.start_at' => 'required',
-        'task.user_name' => 'required',
+        'task.user_id' => 'required',
     ];
 
 
@@ -97,7 +97,7 @@ class Add extends Component
         $this->task['start_at'] = date('Y-m-d');
         $this->task['end_at'] = date('Y-m-d');
         $this->task['importance'] = 1;
-        $this->task['user_name'] = Auth::user()->name;
+        $this->task['user_id'] = Auth::user()->id;
 
         if ($this->project)
             $this->task['project_id'] = $this->project->id;

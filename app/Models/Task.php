@@ -18,7 +18,7 @@ class Task extends Model
     protected $fillable = [
         'project_id', 'title', 'description', 'is_active', 'state',
         'importance', 'start_at', 'end_at', 'change_at', 'is_hold',
-        'user_name'
+        'user_id'
     ];
 
     protected $appends = ['state_title', 'is_late'];
@@ -33,6 +33,10 @@ class Task extends Model
     public function project()
     {
         return $this->belongsTo(Project::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function employees()
