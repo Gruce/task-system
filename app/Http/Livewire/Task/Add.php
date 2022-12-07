@@ -8,6 +8,7 @@ use Livewire\{WithFileUploads, WithPagination};
 use App\Models\{Task, Project, Employee};
 use App\Http\Controllers\Notifications;
 use App\Traits\Livewire\NotificationTrait;
+use Illuminate\Support\Facades\Auth;
 
 class Add extends Component
 {
@@ -21,6 +22,7 @@ class Add extends Component
         'task.title' => 'required',
         'task.project_id' => 'required',
         'task.start_at' => 'required',
+        'task.user_name' => 'required',
     ];
 
 
@@ -95,6 +97,7 @@ class Add extends Component
         $this->task['start_at'] = date('Y-m-d');
         $this->task['end_at'] = date('Y-m-d');
         $this->task['importance'] = 1;
+        $this->task['user_name'] = Auth::user()->name;
 
         if ($this->project)
             $this->task['project_id'] = $this->project->id;

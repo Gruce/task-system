@@ -21,9 +21,10 @@ return new class extends Migration
             $table->boolean('is_active')->default(true);
             $table->integer('state')->default(1); // 1: to do  2: in progress  3: done
             $table->integer('importance')->default(1); // 1: low , 2: medium , 3: high
-            $table->boolean ('is_hold')->default(false); // true: hold task false: not hold task
+            $table->boolean('is_hold')->default(false); // true: hold task false: not hold task
             $table->date('start_at');
             $table->date('end_at')->nullable();
+            $table->string('user_name')->nullable();
             $table->date('change_at')->default(date('Y-m-d'));
             $table->timestamps();
             $table->softDeletes();
