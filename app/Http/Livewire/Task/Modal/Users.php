@@ -119,8 +119,8 @@ class Users extends Component
     public function render()
     {
         $search = '%' . $this->search . '%';
-        $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->paginate(10);
-        $task_employees = $this->task->employees()->paginate($this->limitPerPage);
+        $employees = Employee::whereRelation('user', 'name', 'LIKE', $search)->get();
+        $task_employees = $this->task->employees()->get();
 
         return view('livewire.task.modal.users', [
             'employees' => $employees,
