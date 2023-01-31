@@ -38,7 +38,6 @@
         <div x-show="!archive && !deleteTask">
             @livewire('task.all')
         </div>
-
         <div x-show="archive">
             @livewire('task.archived')
         </div>

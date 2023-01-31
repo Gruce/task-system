@@ -2002,6 +2002,10 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(50 39 222 / var(--tw-border-opacity));
 }
+.border-gray-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
 .border-x-transparent {
   border-left-color: transparent;
   border-right-color: transparent;

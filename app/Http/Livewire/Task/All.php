@@ -9,7 +9,7 @@ use Livewire\WithPagination;
 class All extends Component
 {
     use WithPagination;
-    public $search, $project, $employee, $importance;
+    public $search, $project, $employee, $importance, $date;
 
     protected $listeners = ['$refresh', 'search', 'filterTasks', 'taskMoved'];
 
@@ -17,9 +17,10 @@ class All extends Component
     {
         $this->search = $search;
     }
-    public function filterTasks($importance)
+    public function filterTasks($importance, $date)
     {
         $this->importance = $importance;
+        $this->date = $date;
     }
 
     public function taskMoved($value)
@@ -60,6 +61,8 @@ class All extends Component
         if ($this->employee) $tasks = $this->employee->tasks();
 
         if ($this->importance) $tasks->where('importance', $this->importance);
+
+        if ($this->date) $tasks->whereMonth('start_at', date('m', strtotime($this->date)));
 
         $tasks = $tasks->paginate(24);
 

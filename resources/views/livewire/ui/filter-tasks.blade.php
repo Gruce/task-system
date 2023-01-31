@@ -10,6 +10,9 @@
             </li>
             @endadmin
             <li>
+                <input wire:model="date" type="month" class=" m-1 rounded-lg  hover:bg-secondary-50 text-secondary-700" />
+            </li>
+            <li>
                 <button @click="importance=!importance" data-dropdown-placement="right-start" type="button" class="flex justify-between items-center m-1 rounded-lg py-2 px-4 w-full hover:bg-secondary-50 text-secondary-700">{{__('ui.importance')}}
                     <i class="fa-solid fa-angle-down"></i>
                 </button>

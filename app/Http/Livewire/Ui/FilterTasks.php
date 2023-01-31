@@ -6,10 +6,12 @@ use Livewire\Component;
 
 class FilterTasks extends Component
 {
-    public $importance;
+    public $importance, $date;
+
+
     public function render()
     {
-        $this->emit('filterTasks', $this->importance);
+        $this->emit('filterTasks', $this->importance, $this->date);
         return view('livewire.ui.filter-tasks');
     }
 }
