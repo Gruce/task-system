@@ -62,7 +62,7 @@ class All extends Component
 
         if ($this->importance) $tasks->where('importance', $this->importance);
 
-        if ($this->date) $tasks->whereMonth('start_at', date('m', strtotime($this->date)));
+        if ($this->date) $tasks->where('start_at', date('Y-m-d', strtotime($this->date)));
 
         $tasks = $tasks->paginate(24);
 
