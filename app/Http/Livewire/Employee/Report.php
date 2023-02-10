@@ -9,9 +9,9 @@ use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 class Report extends Component
 {
     public $employees;
+    public $date;
     public function mount()
     {
-        $this->employees = Employee::with(['tasks' => fn ($q) => $q->whereMonth('start_at', date('m'))])->get();
         $this->date = date('Y-m-d');
     }
 
@@ -32,6 +32,7 @@ class Report extends Component
     }
     public function render()
     {
+        $this->employees = Employee::with(['tasks' => fn ($q) => $q->whereMonth('start_at', date('m', strtotime($this->date)))->whereYear('start_at', date('Y', strtotime($this->date)))])->get();
         return view('livewire.employee.report');
     }
 }

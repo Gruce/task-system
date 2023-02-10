@@ -43,7 +43,7 @@ class All extends Component
                     'employees' => fn ($employee) => $employee->limit(2),
                 ])
                 ->where('title', 'LIKE', $search)
-                ->orderBy('importance')->orderByDesc('id');
+                ->orderByDesc('id');
         } else {
             $tasks = is_employee()->tasks()
                 ->withCount(['files', 'employees'])
@@ -51,7 +51,7 @@ class All extends Component
                     'employees' => fn ($employee) => $employee->limit(2),
                 ])
                 ->where('title', 'LIKE', $search)
-                ->orderBy('importance')->orderByDesc('id');
+                ->orderByDesc('id');
         }
 
         // if (!$this->project && !$this->importance) $tasks->orWhereRelation('project', 'title', 'LIKE', $search);

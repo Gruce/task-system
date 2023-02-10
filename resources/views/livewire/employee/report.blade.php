@@ -42,9 +42,13 @@
             <img src="{{asset('images\logo.jpg')}}" alt="employee" class="w-10 h-10">
         </div>
 
-        <div class="flex justify-center gap-2 mt-2">
-            <span>{{date('Y-m-d')}}</span>
+        <div class="flex justify-center gap-2 mt-2 print:hidden">
+            <input class="print:hidden" type="date" wire:model="date" class="rounded-lg  hover:bg-secondary-50 text-secondary-700">
         </div>
+        <div class="flex justify-center gap-2 mt-2 ">
+            <span class="">{{$date}}</span>
+        </div>
+
         <div class="flex justify-center gap-2 mt-2 w-full">
             <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
