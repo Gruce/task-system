@@ -35,6 +35,7 @@ class Add extends Component
     public function add()
     {
         $this->validate();
+
         $task = Task::create($this->task);
 
         $task->employees()->attach(array_keys($this->taskEmployees));
@@ -66,6 +67,7 @@ class Add extends Component
             'timerProgressBar' => true,
             'width' => '400',
         ]);
+        $this->mount();
     }
 
     public function addEmployee()
