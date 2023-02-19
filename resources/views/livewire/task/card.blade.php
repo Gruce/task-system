@@ -8,7 +8,6 @@
                     <span class="font-semibold">{{$task->title}}</span>
                     <span>·</span>
                     <span class="text-xs text-secondary-500">{{$task->project->title??''}}</span>
-                    @admin
                     @if(Request::route()->getName() == 'tasks' && !$task->trashed())
                     <button @click.stop="addTask = true" class="" wire:click="$emit('duplicatTask' , {{$task}})">
                         <div class="px-2 py-1 duration-200  rounded-lg opacity-0 group-hover:opacity-100 hover:text-gray-500">
@@ -23,7 +22,6 @@
                         </div>
                     </button>
                     @endif
-                    @endadmin
                 </div>
             </div>
         </div>

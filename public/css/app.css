@@ -1178,9 +1178,6 @@ select {
 .-left-2 {
   left: -0.5rem;
 }
-.right-16 {
-  right: 4rem;
-}
 .z-0 {
   z-index: 0;
 }
@@ -2626,6 +2623,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity));
 }
+.text-secondary-700 {
+  --tw-text-opacity: 1;
+  color: rgb(86 105 144 / var(--tw-text-opacity));
+}
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -2649,10 +2650,6 @@ select {
 .text-error-600 {
   --tw-text-opacity: 1;
   color: rgb(240 35 20 / var(--tw-text-opacity));
-}
-.text-secondary-700 {
-  --tw-text-opacity: 1;
-  color: rgb(86 105 144 / var(--tw-text-opacity));
 }
 .text-warning-800 {
   --tw-text-opacity: 1;
@@ -2918,6 +2915,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
+.hover\:bg-secondary-50:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 246 250 / var(--tw-bg-opacity));
+}
 .hover\:bg-blue-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
@@ -2933,10 +2934,6 @@ select {
 .hover\:bg-success-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(209 255 228 / var(--tw-bg-opacity));
-}
-.hover\:bg-secondary-50:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(244 246 250 / var(--tw-bg-opacity));
 }
 .hover\:bg-gray-200:hover {
   --tw-bg-opacity: 1;
